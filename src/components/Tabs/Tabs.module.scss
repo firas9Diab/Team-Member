@@ -1,0 +1,58 @@
+.tabs {
+  display: flex;
+  gap: 10px;
+  margin: 10px 30px;
+
+  button {
+    border-radius: 10px;
+    border: 1px solid rgba(182, 178, 178, 0.3);
+    padding: 18px 50px;
+    background-color: white;
+    cursor: pointer;
+  }
+
+  .active {
+    background-color: rgb(132, 0, 255);
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+}
+
+.Header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.search {
+  padding: 7.5px;
+  border-radius: 10px;
+  border: 1px solid rgba(182, 178, 178, 0.3);
+  margin-right: 30px;
+  margin-top: 10px;
+  display: flex;
+}
+
+.inputName {
+  border: none;
+  outline: none;
+  padding: 10px 50px;
+  text-align: start;
+}
+
+@media (max-width: 1024px) {
+  .tabs {
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+
+  .search {
+    padding: 7px 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .search {
+    padding: 4px 10px;
+  }
+}

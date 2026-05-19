@@ -1,0 +1,60 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  margin: 30px;
+  padding: 20px;
+}
+
+.team {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  h1 {
+    font-weight: 650;
+  }
+
+  p {
+    color: grey;
+    font-weight: 600;
+  }
+
+  img {
+    background-color: rgba(150, 174, 226, 0.3);
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+  }
+}
+.text {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.total {
+  display: flex;
+  background-color: rgba(150, 174, 226, 0.3);
+  padding: 20px;
+  gap: 40px;
+  border-radius: 8px;
+
+  img {
+    width: 1.5rem;
+  }
+}
+
+.TotalUsers {
+  display: flex;
+  flex-direction: column;
+
+  p {
+    color: rgb(93, 115, 240);
+    font-weight: 600;
+  }
+
+  .totalCount {
+    font-weight: 700;
+    font-size: larger;
+  }
+}
