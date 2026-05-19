@@ -1,5 +1,1 @@
-<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect x="0.5" y="0.5" width="31" height="31" rx="15.5" fill="white"/>
-<rect x="0.5" y="0.5" width="31" height="31" rx="15.5" stroke="#292929"/>
-<path d="M16 16C14.9219 16 13.9375 15.4375 13.3984 14.5C12.8594 13.5859 12.8594 12.4375 13.3984 11.5C13.9375 10.5859 14.9219 10 16 10C17.0547 10 18.0391 10.5859 18.5781 11.5C19.1172 12.4375 19.1172 13.5859 18.5781 14.5C18.0391 15.4375 17.0547 16 16 16ZM14.9219 17.125H17.0547C19.375 17.125 21.25 19 21.25 21.3203C21.25 21.6953 20.9219 22 20.5469 22H11.4297C11.0547 22 10.75 21.6953 10.75 21.3203C10.75 19 12.6016 17.125 14.9219 17.125Z" fill="#292929"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-icon lucide-user"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
