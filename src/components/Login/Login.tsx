@@ -6,7 +6,7 @@ import email from "../../../public/email.svg";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 function Login() {
-  const n=useNavigate()
+  const navigation = useNavigate();
   const [VisiblePassword, SetVisiblePassword] = useState("password");
   return (
     <div className={styles.container}>
@@ -42,11 +42,14 @@ function Login() {
               placeholder="Enter your password"
             />
           </div>
-          <button onClick={() => {
+          <button
+            onClick={() => {
               VisiblePassword === "password"
                 ? SetVisiblePassword("text")
                 : SetVisiblePassword("password");
-            }} className={styles.eyes}>
+            }}
+            className={styles.eyes}
+          >
             <img src={icon} alt="" />
           </button>
         </div>
@@ -54,14 +57,17 @@ function Login() {
       <button className={styles.signinbutton}>sign in</button>
       <div className={styles.signup}>
         <p>Don't have an account?</p>
-        <button onClick={()=>{
- n("/Signup");
-        }} className={styles.go_to_signup}>
+        <button
+          onClick={() => {
+            navigation("/Signup");
+          }}
+          className={styles.go_to_signup}
+        >
           Sign up
-        </button>      
+        </button>
       </div>
     </div>
   );
 }
 
-export default Login
+export default Login;

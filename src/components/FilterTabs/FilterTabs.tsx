@@ -23,9 +23,7 @@ const FilterTabs = ({
         <li key={id}>
           <button
             onClick={() => setSelectedFilter(id)}
-            className={
-              selectedFilter === id ? styles.active : styles.link
-            }
+            className={selectedFilter === id ? styles.active : styles.link}
           >
             {id} ({getCount(id)})
           </button>
@@ -36,4 +34,3 @@ const FilterTabs = ({
 };
 
 export default FilterTabs;
-

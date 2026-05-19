@@ -79,18 +79,15 @@ const Home = () => {
   const [filteredUsers, setfilteredUsers] = useState(usersMockData);
   //-------------------------------------------------------------------------------------------
   const [filter_count, setFilterCount] = useState({});
- const Favorites_count = users.filter(
-  (user) => user.isFavorite === true
-).length;
+  const Favorites_count = users.filter(
+    (user) => user.isFavorite === true,
+  ).length;
 
-const Active_count = users.filter(
-  (user) => user.status === "active"
-).length;
+  const Active_count = users.filter((user) => user.status === "active").length;
 
-const Inactive_count = users.filter(
-  (user) => user.status === "inactive"
-).length;
-
+  const Inactive_count = users.filter(
+    (user) => user.status === "inactive",
+  ).length;
 
   useEffect(() => {
     const newarray2 = users.filter((person) => {
@@ -98,17 +95,14 @@ const Inactive_count = users.filter(
         return person.name.toLowerCase().includes(Search.toLowerCase());
       }
       if (selectedFilter === "Favorites") {
-     
         return person.isFavorite && person.name.includes(Search);
       }
 
       if (selectedFilter === "Active") {
-     
         return person.status === "active" && person.name.includes(Search);
       }
 
       if (selectedFilter === "Inactive") {
-       
         return person.status === "inactive" && person.name.includes(Search);
       }
     });

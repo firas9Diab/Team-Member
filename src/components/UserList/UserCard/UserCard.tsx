@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import styles from "./UserCard.module.scss";
-import Fav from "../../../../Icons/star-svgrepo-com.svg"
+import Fav from "../../../../Icons/star-svgrepo-com.svg";
 
 const UserCard = ({ person }) => {
   return (
@@ -20,17 +20,20 @@ const UserCard = ({ person }) => {
 
       <p>{person.role}</p>
 
-      {person.status === "active" ? (<>
-         <span className={styles.active}> <span className={styles.dotactive}></span>
-      
-          {person.status}
-        </span>
-      </>) : (<>
-<span className={styles.inactive}>
-  <span className={styles.dot}></span>
-  Inactive
-</span>
-
+      {person.status === "active" ? (
+        <>
+          <span className={styles.active}>
+            {" "}
+            <span className={styles.dotactive}></span>
+            {person.status}
+          </span>
+        </>
+      ) : (
+        <>
+          <span className={styles.inactive}>
+            <span className={styles.dot}></span>
+            Inactive
+          </span>
         </>
       )}
     </>

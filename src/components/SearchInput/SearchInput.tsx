@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import setSearch from "../Home/Home"
+import setSearch from "../Home/Home";
 
 import styles from "./SearchInput.module.scss";
 

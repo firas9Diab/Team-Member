@@ -5,9 +5,6 @@ import styles from "./UserList.module.scss";
 import UserCard from "./UserCard/UserCard";
 
 const UserList = ({ users }) => {
-
-  
-
   return (
     <div className={styles.cardBoard}>
       {users.map((person) => (
@@ -19,5 +16,3 @@ const UserList = ({ users }) => {
   );
 };
 export default UserList;
-
-

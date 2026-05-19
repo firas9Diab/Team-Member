@@ -125,7 +125,7 @@ function sign_up() {
           Password === Confirm_Password &&
           Password !== "" &&
           Confirm_Password !== ""
-            ? seterrormessage("Password is Match")
+            ? seterrormessage("")
             : seterrormessage("Password is not Match");
         }}
         className={styles.signinbutton}
