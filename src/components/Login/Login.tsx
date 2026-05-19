@@ -4,8 +4,10 @@ import peaple from "../../../public/peaple.svg";
 import password from "../../../public/password.svg";
 import email from "../../../public/email.svg";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 function Login() {
   const n=useNavigate()
+  const [VisiblePassword, SetVisiblePassword] = useState("password");
   return (
     <div className={styles.container}>
       <div className={styles.header}>
@@ -35,12 +37,16 @@ function Login() {
           <div className={styles.passwordfieldtext}>
             <img src={password} alt="" className={styles.icons} />
             <input
-              type="password"
+              type={VisiblePassword}
               className={styles.passwordtext}
               placeholder="Enter your password"
             />
           </div>
-          <button className={styles.eyes}>
+          <button onClick={() => {
+              VisiblePassword === "password"
+                ? SetVisiblePassword("text")
+                : SetVisiblePassword("password");
+            }} className={styles.eyes}>
             <img src={icon} alt="" />
           </button>
         </div>

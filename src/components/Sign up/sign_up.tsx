@@ -11,19 +11,12 @@ function sign_up() {
   const [Password, SetPassword] = useState("");
   const [Confirm_Password, Set_ConfirmPassword] = useState("");
   const [VisiblePassword, SetVisiblePassword] = useState("password");
-  const [VisiblePasswordConfirm, SetVisiblePasswordConfirm] = useState("password");
+  const [VisiblePasswordConfirm, SetVisiblePasswordConfirm] =
+    useState("password");
 
+  const [errormessage, seterrormessage] = useState("");
 
-const[errormessage,seterrormessage]=useState("");
-
-  //  if(Password===Confirm_Password&&Password!==""&&Confirm_Password!=="")
-  // {PasswordMatch(true)}else
-  // {
-  //     PasswordMatch(false)
-  // }
-
-const n= useNavigate() 
-  
+  const navigation = useNavigate();
 
   return (
     <div className={styles.container}>
@@ -118,10 +111,13 @@ const n= useNavigate()
           </button>
         </div>
       </div>
-      
-        <p className={errormessage === "Password is Match" ? styles.match : styles.notmatch}>
+
+      <p
+        className={
+          errormessage === "Password is Match" ? styles.match : styles.notmatch
+        }
+      >
         {errormessage}
-    
       </p>
 
       <button
@@ -129,24 +125,26 @@ const n= useNavigate()
           Password === Confirm_Password &&
           Password !== "" &&
           Confirm_Password !== ""
-            ? (seterrormessage("Password is Match"))
-            : (seterrormessage("Password is not Match"))
-        }
-      }
+            ? seterrormessage("Password is Match")
+            : seterrormessage("Password is not Match");
+        }}
         className={styles.signinbutton}
       >
-       Create Account
+        Create Account
       </button>
-     <div className={styles.signin}>
-            <p>Don't have an account?</p>   <button onClick={()=>{
- n("/Login");
-        }} className={styles.go_to_signin}>
+      <div className={styles.signin}>
+        <p>Don't have an account?</p>{" "}
+        <button
+          onClick={() => {
+            navigation("/Login");
+          }}
+          className={styles.go_to_signin}
+        >
           Log in
         </button>
-            
-          </div>
+      </div>
     </div>
   );
 }
 
-export default sign_up
+export default sign_up;

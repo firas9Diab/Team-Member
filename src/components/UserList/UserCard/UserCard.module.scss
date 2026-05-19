@@ -1,0 +1,76 @@
+
+
+.star
+{
+    display: flex;
+    flex-direction: row-reverse;
+
+}
+.image
+{
+    border-radius: 999px;
+}
+.active
+{
+  
+
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 6px 14px;
+  border-radius: 999px;
+
+  background-color: #e6f7ef; 
+  color: #22c55e;
+
+  font-size: 14px;
+  font-weight: 500;
+
+
+
+}
+
+
+.activecircle
+{color:green;
+ width: 8px;
+  height: 8px;
+  border-radius: 50%;
+
+}
+
+.dotactive {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #004211; 
+}
+
+
+.inactive {
+
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 6px 14px;
+  border-radius: 999px;
+
+  background-color: #ffe4e6; /* أحمر فاتح */
+  color: #ef4444;
+
+  font-size: 14px;
+  font-weight: 500;
+ 
+}
+
+
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #ef4444; 
+}
+

@@ -7,9 +7,9 @@
   margin: auto;
   text-align: center;
   border: 2px solid black;
-  /* margin-bottom: 10px; */
+  
   padding: 25px;
-  /* width: 27%; */
+ 
   display: flex;
   flex-direction: column;
   border: 1px solid #e5e7eb;
@@ -23,7 +23,7 @@
 }
 .email {
   text-align: left;
-  /* align-items: flex-end; */
+  
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
@@ -31,7 +31,6 @@
 }
 .password {
   text-align: left;
-  /* align-items: flex-end; */
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
@@ -41,8 +40,7 @@
    
   border: none;
   align-items: center;
-  /* border: 1px solid #e5e7eb; */
-  /* border-radius: 0; */
+ 
   padding: 5px 10px;
   background: white;
 }
@@ -66,9 +64,9 @@
 
 .header {
   justify-content: center;
-  /* width: 100%; */
+  
   align-items: center;
-  /* text-align: center; */
+
   display: flex;
   p {
     font-weight: bold;
@@ -80,9 +78,9 @@
 .eyes {
   background: transparent;
   border: none;
-  /* display: flex; */
+
   align-items: center;
-  /* justify-content: center; */
+  
   cursor: pointer;
 }
 .signinbutton {
@@ -92,7 +90,7 @@
   padding: 12px;
   width: 100%;
 
-  border: none; /* مهم */
+  border: none; 
   border-radius: 10px;
 
   font-size: 16px;
@@ -125,12 +123,7 @@
 .passwordfieldtext {
   display: flex;
 }
-/*
-    width: 85%;
-    align-items: center;
-    text-align: center;
-    display: flex;
-*/
+
 .signup
 {align-items: center;
       gap: 5px;

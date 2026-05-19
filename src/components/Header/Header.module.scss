@@ -1,0 +1,53 @@
+.Hicon
+{
+    gap: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+}
+.Header
+{
+display: flex;
+    justify-content: space-around;
+    /* width: 65%; */
+    margin-left: 17%;
+    margin-right: 18%;
+    /* justify-content: center; */
+    /* justify-items: stretch; */
+    align-content: space-around;
+    /* flex-direction: column; */
+    /* align-items: flex-start; */
+    /* flex-wrap: nowrap; */
+    border: 1px solid #e5e7eb;
+        padding-bottom: 10px;
+
+}
+.usersCard {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  background: #f3efff;
+  border-radius: 12px;
+
+  padding: 16px 20px;
+  width: 200px;
+}
+
+.label {
+  color: #7c6cff;
+  font-size: 20px;
+  margin: 0;
+}
+
+.count {
+  font-size: 24px;
+  font-weight: bold;
+  color: #4f46e5;
+  margin: 5px 0 0 0;
+}
+
+.icon img {
+  width: 28px;
+  height: 28px;
+}
