@@ -1,0 +1,141 @@
+.sign {
+  background-color: rgb(235, 243, 248);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  box-sizing: border-box;
+}
+.card {
+  background-color: white;
+  border: 1px solid rgba(197, 197, 197, 0.3);
+  border-radius: 30px;
+  //width: 24%;
+  padding: 50px;
+  box-shadow: 10px 10px 10px rgb(160, 159, 159, 0.3);
+}
+
+.team {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+
+  img {
+    background-color: rgb(174, 212, 243);
+    padding: 13px;
+    border-radius: 10px;
+  }
+  h1 {
+    font-weight: 600;
+  }
+}
+
+.create {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  //justify-content: center;
+  margin: 10px;
+  h1 {
+    font-weight: 600;
+  }
+  p {
+    font-weight: 500;
+    color: rgb(129, 129, 129);
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  //align-items: start;
+  //justify-content: start;
+  gap: 10px;
+
+  label {
+    font-weight: 500;
+  }
+  input {
+    border: none;
+    outline: none;
+    text-align: start;
+  }
+}
+
+.email {
+  border: 1px solid rgba(146, 145, 145, 0.3);
+  padding: 10px 10px;
+  border-radius: 10px;
+  display: flex;
+  gap: 10px;
+  //align-items: start;
+  //width: 17vw;
+
+  img {
+    width: 15px;
+    height: 15px;
+  }
+}
+
+.password {
+  border: 1px solid rgba(146, 145, 145, 0.3);
+  padding: 10px 10px;
+  border-radius: 10px;
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+  // width: 17vw;
+
+  img {
+    width: 15px;
+    height: 15px;
+  }
+
+  .passContainer {
+    display: flex;
+    gap: 10px;
+  }
+}
+
+.btn {
+  border: none;
+  background-color: white;
+}
+
+.button {
+  // padding: 3px 130px;
+  margin-top: 10px;
+  margin-right: 15px;
+  margin-left: 3px;
+  border-radius: 10px;
+  width: 100%;
+  height: 40px;
+  border: none;
+  background-color: rgb(174, 212, 243);
+  color: white;
+  cursor: pointer;
+}
+.button:hover {
+  opacity: 0.8;
+}
+.falseValue {
+  color: rgb(236, 7, 7);
+  font-size: small;
+}
+
+.account {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+
+  p {
+    color: grey;
+    font-size: 15px;
+  }
+  button {
+    color: blue;
+    border: none;
+    background-color: white;
+  }
+}
