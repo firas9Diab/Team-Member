@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 function Login() {
   const navigation = useNavigate();
-  const [VisiblePassword, SetVisiblePassword] = useState("password");
+  const [visiblePassword, SetvisiblePassword] = useState("password");
   return (
     <div className={styles.container}>
       <div className={styles.header}>
@@ -37,7 +37,7 @@ function Login() {
           <div className={styles.passwordfieldtext}>
             <img src={password} alt="" className={styles.icons} />
             <input
-              type={VisiblePassword}
+              type={visiblePassword}
               className={styles.passwordtext}
               placeholder="Enter your password"
             />
@@ -45,7 +45,7 @@ function Login() {
           <button
             onClick={() => {
       
-                        SetVisiblePassword(VisiblePassword === "password" ? "text" : "password") 
+                        SetvisiblePassword(visiblePassword === "password" ? "text" : "password") 
             }}
             className={styles.eyes}
           >

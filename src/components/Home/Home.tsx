@@ -75,38 +75,48 @@ const Home = () => {
 
   const [users, setUsers] = useState(usersMockData);
   const [selectedFilter, setSelectedFilter] = useState("All");
-  const [Search, setSearch] = useState("");
+  const [search, setSearch] = useState("");
   const [filteredUsers, setfilteredUsers] = useState(usersMockData);
-  const Favorites_count = users.filter(
+  const favoritesCount = users.filter(
     (user) => user.isFavorite === true,
   ).length;
 
-  const Active_count = users.filter((user) => user.status === "active").length;
+  const activeCount = users.filter((user) => user.status === "active").length;
 
-  const Inactive_count = users.filter(
+  const inactiveCount = users.filter(
     (user) => user.status === "inactive",
   ).length;
 
   useEffect(() => {
+    const personSearch=users.filter((person) =>  {return person.name.toLowerCase().includes(search.toLowerCase());})
     const newarray2 = users.filter((person) => {
       if (selectedFilter === "All") {
-        return person.name.toLowerCase().includes(Search.toLowerCase());
+        return personSearch;
       }
       if (selectedFilter === "Favorites") {
-        return person.isFavorite && person.name.toLowerCase().includes(Search.toLowerCase());
+        return (
+          person.isFavorite &&
+          personSearch
+        );
       }
 
       if (selectedFilter === "Active") {
-        return person.status === "active" && person.name.toLowerCase().includes(Search.toLowerCase());
+        return (
+          person.status === "active" &&
+          personSearch
+        );
       }
 
       if (selectedFilter === "Inactive") {
-        return person.status === "inactive" && person.name.toLowerCase().includes(Search.toLowerCase());
+        return (
+          person.status === "inactive" &&
+          personSearch
+        );
       }
     });
     console.log(newarray2.length);
     setfilteredUsers(newarray2);
-  }, [Search, selectedFilter]);
+  }, [search, selectedFilter]);
   console.log(filteredUsers);
 
   return (
@@ -117,12 +127,12 @@ const Home = () => {
           <FilterTabs
             selectedFilter={selectedFilter}
             setSelectedFilter={setSelectedFilter}
-            Favorites_count={Favorites_count}
-            Active_count={Active_count}
-            Inactive_count={Inactive_count}
-            All_count={usersMockData.length}
+            favoritesCount={favoritesCount}
+            activeCount={activeCount}
+            inactiveCount={inactiveCount}
+            allCount={usersMockData.length}
           />
-          <SearchInput Search={Search} setSearch={setSearch} />
+          <SearchInput Search={search} setSearch={setSearch} />
         </div>
         <div className={styles.container3}>
           <UserList users={filteredUsers} />

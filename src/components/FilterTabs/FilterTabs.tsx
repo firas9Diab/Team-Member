@@ -1,20 +1,27 @@
 import styles from "./FilterTabs.module.scss";
-
+/*
+  selectedFilter={selectedFilter}
+            setSelectedFilter={setSelectedFilter}
+            favoritesCount={favoritesCount}
+            activeCount={activeCount}
+            inactiveCount={inactiveCount}
+            allCount={usersMockData.length}
+*/
 const FilterTabs = ({
   selectedFilter,
   setSelectedFilter,
-  Favorites_count,
-  Active_count,
-  Inactive_count,
-  All_count,
+  favoritesCount,
+  activeCount,
+  inactiveCount,
+  allCount,
 }) => {
   const items = ["All", "Favorites", "Active", "Inactive"];
 
   const getCount = (id) => {
-    if (id === "All") return All_count;
-    if (id === "Favorites") return Favorites_count;
-    if (id === "Active") return Active_count;
-    if (id === "Inactive") return Inactive_count;
+    if (id === "All") return allCount;
+    if (id === "Favorites") return favoritesCount;
+    if (id === "Active") return activeCount;
+    if (id === "Inactive") return inactiveCount;
   };
 
   return (

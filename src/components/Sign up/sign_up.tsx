@@ -8,7 +8,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 function sign_up() {
-  const [Password, SetPassword]:string = useState("");
+  const [Password, SetPassword]: string = useState("");
   const [Confirm_Password, Set_ConfirmPassword] = useState("");
   const [VisiblePassword, SetVisiblePassword] = useState("password");
   const [VisiblePasswordConfirm, SetVisiblePasswordConfirm] =
@@ -73,9 +73,9 @@ function sign_up() {
           </div>
           <button
             onClick={() => {
-              VisiblePassword === "password"
-                ? SetVisiblePassword("text")
-                : SetVisiblePassword("password");
+              SetVisiblePassword(
+                VisiblePassword === "password" ? "text" : "password",
+              );
             }}
             className={styles.eyes}
           >
@@ -101,9 +101,9 @@ function sign_up() {
           </div>
           <button
             onClick={() => {
-              VisiblePasswordConfirm === "password"
-                ? SetVisiblePasswordConfirm("text")
-                : SetVisiblePasswordConfirm("password");
+              SetVisiblePasswordConfirm(
+                VisiblePasswordConfirm === "password" ? "text" : "password",
+              );
             }}
             className={styles.eyes}
           >
@@ -122,7 +122,11 @@ function sign_up() {
 
       <button
         onClick={() => {
-                SetVisiblePassword(VisiblePassword === "password" ? "text" : "password")
+          Password === Confirm_Password &&
+          Password !== "" &&
+          Confirm_Password !== ""
+            ? seterrormessage("")
+            : seterrormessage("Password is not Match");
         }}
         className={styles.signinbutton}
       >
