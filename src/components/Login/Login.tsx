@@ -44,8 +44,9 @@ function Login() {
           </div>
           <button
             onClick={() => {
-      
-                        SetvisiblePassword(visiblePassword === "password" ? "text" : "password") 
+              SetvisiblePassword(
+                visiblePassword === "password" ? "text" : "password",
+              );
             }}
             className={styles.eyes}
           >

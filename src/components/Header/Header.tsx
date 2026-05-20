@@ -1,18 +1,14 @@
 import { Link } from "react-router-dom";
 import styles from "./Header.module.scss";
 import { useState } from "react";
+import user from "../../../Icons/UsersIcon.svg";
 
 const Header = ({ count }) => {
   return (
     <div className={styles.Header}>
       <div className={styles.Hicon}>
         <div>
-          {" "}
-          <img
-            src="../Icons/UsersIcon.svg"
-            alt=""
-            className={styles.icons}
-          />{" "}
+          <img src={user} alt="" className={styles.icons} />
         </div>
         <div>
           <h1 className={styles.title}>Team Members</h1>
@@ -27,7 +23,7 @@ const Header = ({ count }) => {
         </div>
 
         <div className={styles.icon}>
-          <img src="../Icons/UsersIcon.svg" alt="user" />
+          <img src={user} alt="user" />
         </div>
       </div>
     </div>

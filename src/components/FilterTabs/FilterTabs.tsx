@@ -1,12 +1,5 @@
 import styles from "./FilterTabs.module.scss";
-/*
-  selectedFilter={selectedFilter}
-            setSelectedFilter={setSelectedFilter}
-            favoritesCount={favoritesCount}
-            activeCount={activeCount}
-            inactiveCount={inactiveCount}
-            allCount={usersMockData.length}
-*/
+
 const FilterTabs = ({
   selectedFilter,
   setSelectedFilter,

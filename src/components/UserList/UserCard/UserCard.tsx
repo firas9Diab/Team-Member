@@ -2,16 +2,12 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import styles from "./UserCard.module.scss";
 import fav from "../../../../Icons/star-svgrepo-com.svg";
-import favLight from "../../../../Icons/star-light-svgrepo-com.svg"
+import favLight from "../../../../Icons/star-light-svgrepo-com.svg";
 const UserCard = ({ person }) => {
   return (
     <>
       <div className={styles.star}>
-        {person.isFavorite === true ? (
-          <img src={fav} />
-        ) : (
-          <img src={favLight} />
-        )}
+        <img src={person.isFavorite === true ? fav : favLight} />
       </div>
 
       <img src={person.avatar} className={styles.image} alt="" />

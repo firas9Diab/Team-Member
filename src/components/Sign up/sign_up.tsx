@@ -1,17 +1,17 @@
 import styles from "../Sign up/sign_up.module.scss";
 import icon from "../../../Icons/EyeIcon.svg";
 import peaple from "../../../public/peaple.svg";
-import password from "../../../public/password.svg";
+import passwordlock from "../../../public/password.svg";
 import email from "../../../public/email.svg";
 import user from "../../../public/user.svg";
 import { useState } from "react";
 import { useEffect } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
-function sign_up() {
-  const [Password, SetPassword]: string = useState("");
-  const [Confirm_Password, Set_ConfirmPassword] = useState("");
-  const [VisiblePassword, SetVisiblePassword] = useState("password");
-  const [VisiblePasswordConfirm, SetVisiblePasswordConfirm] =
+import { useNavigate } from "react-router-dom";
+const SignUp = () => {
+  const [password, setPassword]: string = useState("");
+  const [confirmPassword, setconfirmPassword] = useState("");
+  const [visiblePassword, setvisiblePassword] = useState("password");
+  const [visiblepasswordConfirm, setvisiblepasswordConfirm] =
     useState("password");
   const [errormessage, seterrormessage] = useState("");
   const navigation = useNavigate();
@@ -56,22 +56,22 @@ function sign_up() {
         <label>Password</label>
         <div className={styles.passwordfield}>
           <div className={styles.passwordfieldtext}>
-            <img src={password} alt="" className={styles.icons} />
+            <img src={passwordlock} alt="" className={styles.icons} />
             <input
-              type={VisiblePassword}
+              type={visiblePassword}
               className={styles.passwordtext}
               placeholder="Create a password"
-              value={Password}
+              value={password}
               onChange={(e) => {
-                SetPassword(e.target.value);
+                setPassword(e.target.value);
               }}
               required
             />
           </div>
           <button
             onClick={() => {
-              SetVisiblePassword(
-                VisiblePassword === "password" ? "text" : "password",
+              setvisiblePassword(
+                visiblePassword === "password" ? "text" : "password",
               );
             }}
             className={styles.eyes}
@@ -84,22 +84,22 @@ function sign_up() {
         <label>Confirm Password</label>
         <div className={styles.passwordfield}>
           <div className={styles.passwordfieldtext}>
-            <img src={password} alt="" className={styles.icons} />
+            <img src={passwordlock} alt="" className={styles.icons} />
             <input
-              type={VisiblePasswordConfirm}
+              type={visiblepasswordConfirm}
               className={styles.passwordtext}
               placeholder="Confirm your password"
-              value={Confirm_Password}
+              value={confirmPassword}
               onChange={(e) => {
-                Set_ConfirmPassword(e.target.value);
+                setconfirmPassword(e.target.value);
               }}
               required
             />
           </div>
           <button
             onClick={() => {
-              SetVisiblePasswordConfirm(
-                VisiblePasswordConfirm === "password" ? "text" : "password",
+              setvisiblepasswordConfirm(
+                visiblepasswordConfirm === "password" ? "text" : "password",
               );
             }}
             className={styles.eyes}
@@ -119,11 +119,13 @@ function sign_up() {
 
       <button
         onClick={() => {
-          Password === Confirm_Password &&
-          Password !== "" &&
-          Confirm_Password !== ""
-            ? seterrormessage("")
-            : seterrormessage("Password is not Match");
+          seterrormessage(
+            password === confirmPassword &&
+              password !== "" &&
+              confirmPassword !== ""
+              ? ""
+              : "Password is not Match",
+          );
         }}
         className={styles.signinbutton}
       >
@@ -142,6 +144,6 @@ function sign_up() {
       </div>
     </div>
   );
-}
+};
 
-export default sign_up;
+export default SignUp;

@@ -88,36 +88,27 @@ const Home = () => {
   ).length;
 
   useEffect(() => {
-    const personSearch=users.filter((person) =>  {return person.name.toLowerCase().includes(search.toLowerCase());})
+    const personSearch = users.filter((person) => {
+      return person.name.toLowerCase().includes(search.toLowerCase());
+    });
     const newarray2 = users.filter((person) => {
       if (selectedFilter === "All") {
         return personSearch;
       }
       if (selectedFilter === "Favorites") {
-        return (
-          person.isFavorite &&
-          personSearch
-        );
+        return person.isFavorite && personSearch;
       }
 
       if (selectedFilter === "Active") {
-        return (
-          person.status === "active" &&
-          personSearch
-        );
+        return person.status === "active" && personSearch;
       }
 
       if (selectedFilter === "Inactive") {
-        return (
-          person.status === "inactive" &&
-          personSearch
-        );
+        return person.status === "inactive" && personSearch;
       }
     });
-    console.log(newarray2.length);
     setfilteredUsers(newarray2);
   }, [search, selectedFilter]);
-  console.log(filteredUsers);
 
   return (
     <>
