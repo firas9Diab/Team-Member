@@ -1,10 +1,6 @@
-//import { Link } from "react-router-dom";
 import styles from "./Home.module.scss";
-//import { useState } from "react";
 import { useEffect, useState } from "react";
 import Header from "../Header/Header";
-//import UserList from "../UserList/UserList";
-//import UserCard from "../UserList/UserCard/UserCard";
 import Tabs from "../Tabs/Tabs";
 import UserList from "../UserList/UserList";
 
@@ -24,9 +20,7 @@ const Home = () => {
   const [inputValue, setInputValue] = useState("");
 
   function onsearch(input: string) {
-    console.log(input);
     setInputValue(input);
-    console.log("inputValue", inputValue);
   }
 
   useEffect(() => {
@@ -52,7 +46,6 @@ const Home = () => {
   }, [inputValue, activeTab, usersMockData]);
 
   useEffect(() => {
-    console.log("fetch data");
     setUsersMockData([
       {
         id: "2b7e2c6e-7c6a-4f5f-8c6e-2f1d0e6c9a01",
@@ -129,56 +122,14 @@ const Home = () => {
     setFilter(newArr);
     setUsersMockData(newArr);
   }
-  /*
-  function favorite1() {
-    const newArr2 = usersMockData.filter((ele) => {
-      return ele.isFavorite === true;
-    });
-    setFilter(newArr2);
-  }
-
-  function active() {
-    const newArr3 = usersMockData.filter((ele) => {
-      return ele.status === "active";
-    });
-    setFilter(newArr3);
-  }
-
-  function inActive() {
-    const newArr4 = usersMockData.filter((ele) => {
-      return ele.status === "inactive";
-    });
-    setFilter(newArr4);
-  }
-  function all() {
-    const newArr5 = usersMockData.map((ele) => ele);
-    setFilter(newArr5);
-  }*/
-
-  {
-    /*const favorite2 = usersMockData.filter((user) => user.isFavorite).length;
-
-  const active2 = usersMockData.filter(
-    (user) => user.status === "active",
-  ).length;
-
-  const inactive2 = usersMockData.filter(
-    (user) => user.status === "inactive",
-  ).length;*/
-  }
   return (
     <div>
       <div className={styles.head}>
         <Header count={usersMockData.length} />
         <hr />
-
         <Tabs
           onSearch={onsearch}
           setActiveTab={setActiveTab}
-          /* all={usersMockData.length}
-           favorite={favorite2}
-          active={active2}
-          inactive={inactive2}*/
           users={usersMockData}
         />
         <UserList users={filter} fav={toggleFav} />

@@ -3,11 +3,8 @@ import styles from "./Sign.module.scss";
 import { NULL } from "sass";
 import { useNavigate } from "react-router-dom";
 const Sign = () => {
-  //const [toggle, setToggle] = useState(false);
-  const [toggle, setToggle] = useState("password");
-  //const [toggle1, setToggle1] = useState(false);
-  const [toggle1, setToggle1] = useState("password");
-  //const [email, setEmail] = useState("");
+  const [showPassword, setShowPassword] = useState("password");
+  const [showConfirm, setShowConfirm] = useState("password");
   const [password, setPassword] = useState("");
   const [confirm, setConfirm] = useState("");
   const [showMassage, setShowMassage] = useState("");
@@ -22,19 +19,19 @@ const Sign = () => {
     }
   }
 
-  function toggle0() {
-    if (toggle === "password") {
-      setToggle("text");
+  function showpassword() {
+    if (showPassword === "password") {
+      setShowPassword("text");
     } else {
-      setToggle("password");
+      setShowPassword("password");
     }
   }
 
-  function toggle2() {
-    if (toggle1 === "password") {
-      setToggle1("text");
+  function showconfrim() {
+    if (showConfirm === "password") {
+      setShowConfirm("text");
     } else {
-      setToggle1("password");
+      setShowConfirm("password");
     }
   }
 
@@ -68,7 +65,7 @@ const Sign = () => {
               <div className={styles.passContainer}>
                 <img src="/public/images/password.png" />
                 <input
-                  type={toggle}
+                  type={showPassword}
                   placeholder="Enter your password"
                   onChange={(e) => setPassword(e.target.value)}
                   required
@@ -78,7 +75,7 @@ const Sign = () => {
               <button
                 type="button"
                 className={styles.btn}
-                onClick={() => toggle0()}
+                onClick={() => showpassword()}
               >
                 <img src="/public/images/EyeIcon.svg" />
               </button>
@@ -91,7 +88,7 @@ const Sign = () => {
               <div className={styles.passContainer}>
                 <img src="/public/images/password.png" />
                 <input
-                  type={toggle1}
+                  type={showConfirm}
                   placeholder="Confirm your password"
                   onChange={(e) => setConfirm(e.target.value)}
                   required
@@ -100,7 +97,7 @@ const Sign = () => {
               <button
                 type="button"
                 className={styles.btn}
-                onClick={() => toggle2()}
+                onClick={() => showconfrim()}
               >
                 <img src="/public/images/EyeIcon.svg" />
               </button>

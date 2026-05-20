@@ -1,23 +1,14 @@
 import React, { useState } from "react";
-
 import styles from "./Tabs.module.scss";
 import type { UserData } from "../Home/Home";
 
 const Tabs = ({
   onSearch,
   setActiveTab,
-  /* favorite,
-  active,
-  inactive,
-  all,*/
   users,
 }: {
   onSearch: (value: string) => void;
   setActiveTab: (value: string) => void;
-  /* favorite: number;
-  active: number;
-  inactive: number;
-  all: number;*/
   users: UserData[];
 }) => {
   const [click, setClick] = useState(1);

@@ -4,10 +4,14 @@ import { useNavigate } from "react-router-dom";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [toggle, setToggle] = useState(false);
+  const [showPassword, setShowPassword] = useState("password");
 
-  function toggle1() {
-    setToggle(!toggle);
+  function showpassword() {
+    if (showPassword === "password") {
+      setShowPassword("text");
+    } else {
+      setShowPassword("password");
+    }
   }
 
   useEffect(() => {
@@ -45,13 +49,13 @@ const Login = () => {
               <div className={styles.passContainer}>
                 <img src="/public/images/password.png" />
                 <input
-                  type={toggle ? "text" : "password"}
+                  type={showPassword}
                   placeholder="Enter your password"
                   onChange={(e) => setPassword(e.target.value)}
                   required
                 />
               </div>
-              <button className={styles.btn} onClick={() => toggle1()}>
+              <button className={styles.btn} onClick={() => showpassword()}>
                 <img src="/public/images/EyeIcon.svg" />
               </button>
             </div>

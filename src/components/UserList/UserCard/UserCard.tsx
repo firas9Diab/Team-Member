@@ -13,11 +13,13 @@ const UserCard = ({ user, fav }: { user: UserData; fav: Function }) => {
             fav(user.id);
           }}
         >
-          {user.isFavorite ? (
-            <img src="/public/images/star-svgrepo-com.svg" />
-          ) : (
-            <img src="/public/images/star-light-svgrepo-com.svg" />
-          )}
+          <img
+            src={
+              user.isFavorite
+                ? "/public/images/star-svgrepo-com.svg"
+                : "/public/images/star-light-svgrepo-com.svg"
+            }
+          />
         </button>
         <img src={user.avatar} />
         <h1>{user.name}</h1>
