@@ -27,7 +27,7 @@ const Header = ({ count }) => {
         </div>
 
         <div className={styles.icon}>
-          <img src="../Icons/user.svg" alt="user" />
+          <img src="../Icons/UsersIcon.svg" alt="user" />
         </div>
       </div>
     </div>

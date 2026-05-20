@@ -8,7 +8,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 function sign_up() {
-  const [Password, SetPassword] = useState("");
+  const [Password, SetPassword]:string = useState("");
   const [Confirm_Password, Set_ConfirmPassword] = useState("");
   const [VisiblePassword, SetVisiblePassword] = useState("password");
   const [VisiblePasswordConfirm, SetVisiblePasswordConfirm] =
@@ -122,11 +122,7 @@ function sign_up() {
 
       <button
         onClick={() => {
-          Password === Confirm_Password &&
-          Password !== "" &&
-          Confirm_Password !== ""
-            ? seterrormessage("")
-            : seterrormessage("Password is not Match");
+                SetVisiblePassword(VisiblePassword === "password" ? "text" : "password")
         }}
         className={styles.signinbutton}
       >

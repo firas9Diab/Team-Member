@@ -23,24 +23,4 @@ const SearchInput = ({ search, setSearch }) => {
 };
 
 export default SearchInput;
-/*
-const SearchInput = ({ search, setSearch }) => {
-  return (
-    <div className={styles.SearchInput}>
-      <input
-        type="text"
-        value={search}
-        placeholder="Search Users..."
-        className={styles.Search}
-        onChange={(e) => setSearch(e.target.value)}
-      />
 
-      <button>
-        <img src="../Icons/searchIcon.svg" alt="" />
-      </button>
-    </div>
-  );
-};
-
-export default SearchInput;
-*/
