@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import setSearch from "../Home/Home";
-
+import searchIcon from "../../../Icons/searchIcon.svg"
 import styles from "./SearchInput.module.scss";
 
 const SearchInput = ({ search, setSearch }) => {
@@ -16,7 +16,7 @@ const SearchInput = ({ search, setSearch }) => {
       />
 
       <button className={styles.button}>
-        <img src="../Icons/searchIcon.svg" alt="" />
+        <img src={searchIcon} alt="" />
       </button>
     </div>
   );
