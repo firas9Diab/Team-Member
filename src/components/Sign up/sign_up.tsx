@@ -13,11 +13,8 @@ function sign_up() {
   const [VisiblePassword, SetVisiblePassword] = useState("password");
   const [VisiblePasswordConfirm, SetVisiblePasswordConfirm] =
     useState("password");
-
   const [errormessage, seterrormessage] = useState("");
-
   const navigation = useNavigate();
-
   return (
     <div className={styles.container}>
       <div className={styles.header}>
