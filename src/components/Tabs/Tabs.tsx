@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styles from "./Tabs.module.scss";
 import type { UserData } from "../Home/Home";
+import searchIcon from "../../assets/searchIcon.svg";
 
 const Tabs = ({
   onSearch,
@@ -71,11 +72,7 @@ const Tabs = ({
             }}
           />
 
-          <img
-            src="/public/images/searchIcon.svg"
-            alt="searchIcon"
-            className={styles.searchImg}
-          />
+          <img src={searchIcon} alt="searchIcon" className={styles.searchImg} />
         </div>
       </div>
     </div>

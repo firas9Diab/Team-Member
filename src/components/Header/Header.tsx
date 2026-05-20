@@ -1,16 +1,12 @@
 import React, { useState } from "react";
 import styles from "./Header.module.scss";
-
+import UsersIcon from "../../assets/UsersIcon.svg";
 const Header = ({ count }: { count: number }) => {
   return (
     <div>
       <div className={styles.container}>
         <div className={styles.team}>
-          <img
-            src="/public/images/UsersIcon.svg"
-            alt="user icon"
-            className={styles.UsersIcon}
-          />
+          <img src={UsersIcon} alt="user icon" className={styles.UsersIcon} />
           <div className={styles.text}>
             <h1>Team Members</h1>
             <p>Browse and filter team members</p>
@@ -21,7 +17,7 @@ const Header = ({ count }: { count: number }) => {
             <p>Total Users</p>
             <p className={styles.totalCount}>{count}</p>
           </div>
-          <img src="/public/images/UsersIcon.svg" alt="user icon" />
+          <img src={UsersIcon} alt="user icon" />
         </div>
       </div>
       <div className={styles.line}></div>

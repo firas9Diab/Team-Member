@@ -1,8 +1,9 @@
 import React from "react";
-
 import styles from "./UserCard.module.scss";
 import type { UserData } from "../../Home/Home";
-
+//import star from "../assets/star.svg";
+import starLight from "../../../assets/starLight.svg";
+import star from "../../../assets/star.svg";
 const UserCard = ({ user, fav }: { user: UserData; fav: Function }) => {
   return (
     <>
@@ -13,13 +14,7 @@ const UserCard = ({ user, fav }: { user: UserData; fav: Function }) => {
             fav(user.id);
           }}
         >
-          <img
-            src={
-              user.isFavorite
-                ? "/public/images/star-svgrepo-com.svg"
-                : "/public/images/star-light-svgrepo-com.svg"
-            }
-          />
+          <img src={user.isFavorite ? starLight : star} />
         </button>
         <img src={user.avatar} />
         <h1>{user.name}</h1>

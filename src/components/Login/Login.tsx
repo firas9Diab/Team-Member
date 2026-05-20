@@ -1,23 +1,18 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Login.module.scss";
 import { useNavigate } from "react-router-dom";
+import UsersIcon from "../../assets/UsersIcon.svg";
+import email1 from "../../assets/email1.png";
+import password1 from "../../assets/password1.png";
+import EyeIcon from "../../assets/EyeIcon.svg";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState("password");
 
   function showpassword() {
-    if (showPassword === "password") {
-      setShowPassword("text");
-    } else {
-      setShowPassword("password");
-    }
+    setShowPassword(showPassword === "password" ? "text" : "password");
   }
-
-  useEffect(() => {
-    console.log(email);
-    console.log(password);
-  }, [email, password]);
 
   const navigate = useNavigate();
 
@@ -25,7 +20,7 @@ const Login = () => {
     <div className={styles.login}>
       <div className={styles.card}>
         <div className={styles.team}>
-          <img src="/public/images/UsersIcon.svg" />
+          <img src={UsersIcon} />
           <h1>TeamFlow</h1>
         </div>
         <div className={styles.welcome}>
@@ -35,7 +30,7 @@ const Login = () => {
         <div className={styles.form}>
           <label> Email address</label>
           <div className={styles.email}>
-            <img src="/public/images/email.png" />
+            <img src={email1} />
             <input
               type="email"
               placeholder="you@example.com"
@@ -47,7 +42,7 @@ const Login = () => {
             <label>Password</label>
             <div className={styles.password}>
               <div className={styles.passContainer}>
-                <img src="/public/images/password.png" />
+                <img src={password1} />
                 <input
                   type={showPassword}
                   placeholder="Enter your password"
@@ -56,7 +51,7 @@ const Login = () => {
                 />
               </div>
               <button className={styles.btn} onClick={() => showpassword()}>
-                <img src="/public/images/EyeIcon.svg" />
+                <img src={EyeIcon} />
               </button>
             </div>
           </div>

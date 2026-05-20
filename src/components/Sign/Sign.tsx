@@ -1,7 +1,12 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Sign.module.scss";
-import { NULL } from "sass";
 import { useNavigate } from "react-router-dom";
+import UsersIcon from "../../assets/UsersIcon.svg";
+import user from "../../assets/user.png";
+import email1 from "../../assets/email1.png";
+import password1 from "../../assets/password1.png";
+import EyeIcon from "../../assets/EyeIcon.svg";
+
 const Sign = () => {
   const [showPassword, setShowPassword] = useState("password");
   const [showConfirm, setShowConfirm] = useState("password");
@@ -20,26 +25,18 @@ const Sign = () => {
   }
 
   function showpassword() {
-    if (showPassword === "password") {
-      setShowPassword("text");
-    } else {
-      setShowPassword("password");
-    }
+    setShowPassword(showPassword === "password" ? "text" : "password");
   }
 
   function showconfrim() {
-    if (showConfirm === "password") {
-      setShowConfirm("text");
-    } else {
-      setShowConfirm("password");
-    }
+    setShowConfirm(showPassword === "password" ? "text" : "password");
   }
 
   return (
     <div className={styles.sign}>
       <div className={styles.card}>
         <div className={styles.team}>
-          <img src="/public/images/UsersIcon.svg" />
+          <img src={UsersIcon} />
           <h1>TeamFlow</h1>
         </div>
 
@@ -51,19 +48,19 @@ const Sign = () => {
         <form className={styles.form}>
           <label>Full name </label>
           <div className={styles.email}>
-            <img src="/public/images/user.png" alt="user" />
+            <img src={user} alt="user" />
             <input type="text" placeholder="Enter your full name" />
           </div>
           <label> Email address</label>
           <div className={styles.email}>
-            <img src="/public/images/email.png" alt="email" />
+            <img src={email1} alt="email" />
             <input type="text" placeholder="you@example.com" required />
           </div>
           <div>
             <label>Password</label>
             <div className={styles.password}>
               <div className={styles.passContainer}>
-                <img src="/public/images/password.png" />
+                <img src={password1} />
                 <input
                   type={showPassword}
                   placeholder="Enter your password"
@@ -77,7 +74,7 @@ const Sign = () => {
                 className={styles.btn}
                 onClick={() => showpassword()}
               >
-                <img src="/public/images/EyeIcon.svg" />
+                <img src={EyeIcon} />
               </button>
             </div>
           </div>
@@ -86,7 +83,7 @@ const Sign = () => {
             <label>Confirm password</label>
             <div className={styles.password}>
               <div className={styles.passContainer}>
-                <img src="/public/images/password.png" />
+                <img src={password1} />
                 <input
                   type={showConfirm}
                   placeholder="Confirm your password"
@@ -99,7 +96,7 @@ const Sign = () => {
                 className={styles.btn}
                 onClick={() => showconfrim()}
               >
-                <img src="/public/images/EyeIcon.svg" />
+                <img src={EyeIcon} />
               </button>
             </div>
             <p className={styles.falseValue}>{showMassage}</p>
