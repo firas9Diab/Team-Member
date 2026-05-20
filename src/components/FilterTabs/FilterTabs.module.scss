@@ -1,0 +1,36 @@
+.list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+}
+
+.link {
+  color: black;
+  border: 1px solid #e5e7eb;
+  display: inline-block;
+  padding: 8px 20px;
+  background-color: white;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+.link:hover {
+  background-color: #535bf2;
+  color: white;
+}
+
+.active {
+  color: white;
+  background: linear-gradient(135deg, #6D4EFF, #5A3AE6);
+  border: 1px solid #e5e7eb;
+  display: inline-block;
+  padding: 8px 20px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.2s;
+}

@@ -1,0 +1,139 @@
+.container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  align-items: center;
+  margin: auto;
+  text-align: center;
+  border: 2px solid black;
+  padding: 25px;
+  
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  gap: 15px;
+}
+.signin {
+  gap: 10px;
+  display: flex;
+}
+.email {
+  text-align: left;
+ 
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+.password {
+  text-align: left;
+  
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+.passwordtext {
+  border: none;
+  align-items: center;
+
+  padding: 5px 10px;
+  background: white;
+}
+.passwordtext:focus
+{
+   outline: none;
+}
+.emailtext {
+  align-items: center;
+
+  border: none;
+  border-radius: 0px;
+
+  padding: 5px 10px;
+  background: white;
+}
+.emailtext:focus
+{
+   outline: none;
+}
+.header {
+  justify-content: center;
+ 
+  align-items: center;
+ 
+  display: flex;
+  p {
+    font-weight: bold;
+  }
+}
+.peapleicon {
+  width: 25%;
+}
+.eyes {
+  background: transparent;
+  border: none;
+  align-items: center;
+  cursor: pointer;
+}
+.signinbutton {
+  background: linear-gradient(135deg, #6d4eff, #5a3ae6);
+  color: white;
+
+  padding: 12px;
+  width: 100%;
+
+  border: none;
+  border-radius: 10px;
+
+  font-size: 16px;
+  font-weight: 500;
+}
+.passwordfield {
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #e5e7eb;
+  border-radius: 0;
+  padding: 5px 10px;
+  background: white;
+  display: flex;
+  width: 250px;
+}
+.icons {
+  width: 20px;
+}
+.emailfield {
+  display: flex;
+  align-items: center;
+  align-items: center;
+  border: 1px solid #e5e7eb;
+  border-radius: 0px;
+  padding: 5px 10px;
+  background: white;
+  width: 250px;
+}
+.passwordfieldtext {
+  display: flex;
+}
+.match
+{color: green;}
+.notmatch
+{color: red;}
+.go_to_signin
+{
+ font-size: medium;
+    background-color: transparent;
+    border: none;
+    color: #6d4eff;
+    text-decoration: none;
+    font-weight: bold;
+  
+}
+.signin
+{align-items: center;
+    gap: 5px;
+    display: flex;
+}
+
