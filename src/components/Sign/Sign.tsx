@@ -6,14 +6,33 @@ import user from "../../assets/user.png";
 import email1 from "../../assets/email1.png";
 import password1 from "../../assets/password1.png";
 import EyeIcon from "../../assets/EyeIcon.svg";
+import axios from "axios";
 
 const Sign = () => {
   const [showPassword, setShowPassword] = useState("password");
   const [showConfirm, setShowConfirm] = useState("password");
   const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
   const [confirm, setConfirm] = useState("");
   const [showMassage, setShowMassage] = useState("");
+  // const [first, setfirst] = useState(second)
 
+  const signUp = async () => {
+    try {
+      const response = await axios.post("http://localhost:3000/Auth/signup", {
+        fullName: name,
+        email,
+        password,
+      });
+      localStorage.setItem("token", response.data.accessToken);
+
+      //setUsers(response.data);
+      navigate("/Home");
+    } catch (error: any) {
+      console.log(error.response.data);
+    }
+  };
   const navigate = useNavigate();
   function massage() {
     if (password === confirm) {
@@ -49,12 +68,21 @@ const Sign = () => {
           <label>Full name </label>
           <div className={styles.email}>
             <img src={user} alt="user" />
-            <input type="text" placeholder="Enter your full name" />
+            <input
+              type="text"
+              placeholder="Enter your full name"
+              onChange={(e) => setName(e.target.value)}
+            />
           </div>
           <label> Email address</label>
           <div className={styles.email}>
             <img src={email1} alt="email" />
-            <input type="text" placeholder="you@example.com" required />
+            <input
+              type="text"
+              placeholder="you@example.com"
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
           </div>
           <div>
             <label>Password</label>
@@ -103,10 +131,11 @@ const Sign = () => {
           </div>
 
           <button
-            type="submit"
+            type="button"
             className={styles.button}
             onClick={() => {
               massage();
+              signUp();
             }}
           >
             Create Account

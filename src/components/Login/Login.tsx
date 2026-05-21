@@ -5,16 +5,30 @@ import UsersIcon from "../../assets/UsersIcon.svg";
 import email1 from "../../assets/email1.png";
 import password1 from "../../assets/password1.png";
 import EyeIcon from "../../assets/EyeIcon.svg";
+import axios from "axios";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState("password");
-
+  const [users, setUsers] = useState([]);
   function showpassword() {
     setShowPassword(showPassword === "password" ? "text" : "password");
   }
 
   const navigate = useNavigate();
+
+  const login = async () => {
+    try {
+      const response = await axios.post("http://localhost:3000/Auth/login", {
+        email,
+        password,
+      });
+      localStorage.setItem("token", response.data.accessToken);
+      navigate("/Home");
+    } catch (error) {
+      console.log("Login failed");
+    }
+  };
 
   return (
     <div className={styles.login}>
@@ -55,7 +69,7 @@ const Login = () => {
               </button>
             </div>
           </div>
-          <button type="submit" className={styles.button}>
+          <button type="button" className={styles.button} onClick={login}>
             {" "}
             Sign In{" "}
           </button>
