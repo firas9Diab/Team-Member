@@ -1,9 +1,10 @@
-import { Link } from "react-router-dom";
 import styles from "./Header.module.scss";
-import { useState } from "react";
 import user from "../../../Icons/UsersIcon.svg";
-
-const Header = ({ count }) => {
+type Props=
+{
+  count:number;
+}
+const Header = ({ count }:Props) => {
   return (
     <div className={styles.Header}>
       <div className={styles.Hicon}>

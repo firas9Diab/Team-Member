@@ -5,10 +5,9 @@ import passwordlock from "../../../public/password.svg";
 import email from "../../../public/email.svg";
 import user from "../../../public/user.svg";
 import { useState } from "react";
-import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 const SignUp = () => {
-  const [password, setPassword]: string = useState("");
+  const [password, setPassword] = useState<string>("");
   const [confirmPassword, setconfirmPassword] = useState("");
   const [visiblePassword, setvisiblePassword] = useState("password");
   const [visiblepasswordConfirm, setvisiblepasswordConfirm] =

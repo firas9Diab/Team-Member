@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 function Login() {
   const navigation = useNavigate();
-  const [visiblePassword, SetvisiblePassword] = useState("password");
+  const [visiblePassword, SetvisiblePassword] = useState<string>("password");
   return (
     <div className={styles.container}>
       <div className={styles.header}>

@@ -1,13 +1,22 @@
-import { Link } from "react-router-dom";
-import { useState } from "react";
-
 import styles from "./UserList.module.scss";
 import UserCard from "./UserCard/UserCard";
+interface User {
+  id: string;
+  name: string;
+  role: string;
+  status: string;
+  isFavorite: boolean;
+  avatar: string;
+}
 
-const UserList = ({ users }) => {
+type Props = {
+  users: User[];
+};
+
+const UserList = ({ users }: Props) => {
   return (
     <div className={styles.cardBoard}>
-      {users.map((person) => (
+      {users.map((person:User) => (
         <div className={styles.card} key={person.id}>
           <UserCard person={person} />
         </div>
