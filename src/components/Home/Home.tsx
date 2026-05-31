@@ -5,8 +5,16 @@ import FilterTabs from "../FilterTabs/FilterTabs";
 import SearchInput from "../SearchInput/SearchInput";
 import UserList from "../UserList/UserList";
 
+interface User {
+  id: string;
+  name: string;
+  role: string;
+  status: string;
+  isFavorite: boolean;
+  avatar: string;
+}
 const Home = () => {
-  const usersMockData = [
+  const usersMockData: User[] = [
     {
       id: "2b7e2c6e-7c6a-4f5f-8c6e-2f1d0e6c9a01",
       name: "Alex Johnson",
@@ -73,25 +81,28 @@ const Home = () => {
     },
   ];
 
-  const [users, setUsers] = useState(usersMockData);
-  const [selectedFilter, setSelectedFilter] = useState("All");
-  const [search, setSearch] = useState("");
-  const [filteredUsers, setfilteredUsers] = useState(usersMockData);
-  const favoritesCount = users.filter(
+  const [users] = useState<User[]>(usersMockData);
+  const [selectedFilter, setSelectedFilter] = useState<string>("All");
+  const [search, setSearch] = useState<string>("");
+  const [filteredUsers, setFilteredUsers] = useState<User[]>([]);
+  const favoritesCount: number = users.filter(
     (user) => user.isFavorite === true,
   ).length;
 
-  const activeCount = users.filter((user) => user.status === "active").length;
+  const activeCount: number = users.filter(
+    (user) => user.status === "active",
+  ).length;
 
-  const inactiveCount = users.filter(
+  const inactiveCount: number = users.filter(
     (user) => user.status === "inactive",
   ).length;
 
   useEffect(() => {
-    const personSearch = users.filter((person) => {
-      return person.name.toLowerCase().includes(search.toLowerCase());
-    });
-    const newarray2 = users.filter((person) => {
+    const newArray2: User[] = users.filter((person) => {
+      const personSearch = person.name
+        .toLowerCase()
+        .includes(search.toLowerCase());
+
       if (selectedFilter === "All") {
         return personSearch;
       }
@@ -107,8 +118,8 @@ const Home = () => {
         return person.status === "inactive" && personSearch;
       }
     });
-    setfilteredUsers(newarray2);
-  }, [search, selectedFilter]);
+    setFilteredUsers(newArray2);
+  }, [search, selectedFilter, users]);
 
   return (
     <>
@@ -123,7 +134,7 @@ const Home = () => {
             inactiveCount={inactiveCount}
             allCount={usersMockData.length}
           />
-          <SearchInput Search={search} setSearch={setSearch} />
+          <SearchInput search={search} setSearch={setSearch} />
         </div>
         <div className={styles.container3}>
           <UserList users={filteredUsers} />
