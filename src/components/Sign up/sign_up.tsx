@@ -8,14 +8,14 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 const SignUp = () => {
   const [password, setPassword] = useState<string>("");
-  const [confirmPassword, setconfirmPassword] = useState("");
-  const [visiblePassword, setvisiblePassword] = useState("password");
+  const [confirmPassword, setconfirmPassword] = useState<string>("");
+  const [visiblePassword, setvisiblePassword] = useState<string>("password");
   const [visiblepasswordConfirm, setvisiblepasswordConfirm] =
-    useState("password");
-  const [errormessage, seterrormessage] = useState("");
+    useState<string>("password");
+  const [errormessage, seterrormessage] = useState<string>("");
   const navigation = useNavigate();
-  const [fullName, setFullName] = useState("");
-  const [emailValue, setEmailValue] = useState("");
+  const [fullName, setFullName] = useState<string>("");
+  const [emailValue, setEmailValue] = useState<string>("");
   const handleSignup = async () => {
     if (password !== confirmPassword) {
       seterrormessage("Passwords do not match");
