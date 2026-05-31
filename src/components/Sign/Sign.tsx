@@ -36,16 +36,6 @@ const Sign = () => {
 
   const navigate = useNavigate();
 
-  function massage() {
-    if (password === confirm) {
-      setShowMassage("");
-      return true;
-    } else {
-      setShowMassage("Passwords do not match");
-      return false;
-    }
-  }
-
   function showpassword() {
     setShowPassword(showPassword === "password" ? "text" : "password");
   }
@@ -137,8 +127,11 @@ const Sign = () => {
             type="button"
             className={styles.button}
             onClick={() => {
-              if (massage()) {
+              if (password === confirm) {
+                setShowMassage("");
                 signUp();
+              } else {
+                setShowMassage("Passwords do not match");
               }
             }}
           >
