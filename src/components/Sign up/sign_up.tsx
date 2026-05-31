@@ -5,16 +5,50 @@ import passwordlock from "../../../public/password.svg";
 import email from "../../../public/email.svg";
 import user from "../../../public/user.svg";
 import { useState } from "react";
-import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 const SignUp = () => {
-  const [password, setPassword]: string = useState("");
+  const [password, setPassword] = useState<string>("");
   const [confirmPassword, setconfirmPassword] = useState("");
   const [visiblePassword, setvisiblePassword] = useState("password");
   const [visiblepasswordConfirm, setvisiblepasswordConfirm] =
     useState("password");
   const [errormessage, seterrormessage] = useState("");
   const navigation = useNavigate();
+  const [fullName, setFullName] = useState("");
+  const [emailValue, setEmailValue] = useState("");
+  const handleSignup = async () => {
+    if (password !== confirmPassword) {
+      seterrormessage("Passwords do not match");
+      return;
+    }
+
+    try {
+      const response = await fetch("http://localhost:3000/auth/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          fullName,
+          email: emailValue,
+          password,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        seterrormessage("Account created successfully");
+        localStorage.setItem("token", data.accessToken);
+        navigation("/Login");
+      } else {
+        seterrormessage(data.message || "Signup failed");
+      }
+    } catch (error) {
+      seterrormessage("Server error");
+    }
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.header}>
@@ -35,6 +69,8 @@ const SignUp = () => {
             type="text"
             className={styles.emailtext}
             placeholder="Enter your Full Name"
+            value={fullName}
+            onChange={(e) => setFullName(e.target.value)}
             required
           />
         </div>
@@ -48,6 +84,8 @@ const SignUp = () => {
             type="email"
             className={styles.emailtext}
             placeholder="you@example.com"
+            value={emailValue}
+            onChange={(e) => setEmailValue(e.target.value)}
             required
           />
         </div>
@@ -126,6 +164,7 @@ const SignUp = () => {
               ? ""
               : "Password is not Match",
           );
+          handleSignup();
         }}
         className={styles.signinbutton}
       >

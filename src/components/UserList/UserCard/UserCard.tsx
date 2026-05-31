@@ -1,9 +1,18 @@
-import { Link } from "react-router-dom";
-import { useState } from "react";
 import styles from "./UserCard.module.scss";
 import fav from "../../../../Icons/star-svgrepo-com.svg";
 import favLight from "../../../../Icons/star-light-svgrepo-com.svg";
-const UserCard = ({ person }) => {
+interface User {
+  id: string;
+  name: string;
+  role: string;
+  status: string;
+  isFavorite: boolean;
+  avatar: string;
+}
+type UserCardProps = {
+  person: User;
+};
+const UserCard = ({ person }: UserCardProps) => {
   return (
     <>
       <div className={styles.star}>

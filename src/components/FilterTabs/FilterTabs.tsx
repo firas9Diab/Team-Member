@@ -1,5 +1,12 @@
 import styles from "./FilterTabs.module.scss";
-
+type FilterTabsProps = {
+  selectedFilter: string;
+  setSelectedFilter: (value: string) => void 
+  favoritesCount: number;
+  activeCount: number;
+  inactiveCount: number;
+  allCount: number;
+};
 const FilterTabs = ({
   selectedFilter,
   setSelectedFilter,
@@ -7,10 +14,10 @@ const FilterTabs = ({
   activeCount,
   inactiveCount,
   allCount,
-}) => {
+}: FilterTabsProps ) => {
   const items = ["All", "Favorites", "Active", "Inactive"];
 
-  const getCount = (id) => {
+  const getCount = (id:string) => {
     if (id === "All") return allCount;
     if (id === "Favorites") return favoritesCount;
     if (id === "Active") return activeCount;
