@@ -9,10 +9,10 @@ interface User {
   isFavorite: boolean;
   avatar: string;
 }
-type UserCardProps={
-  person:User
-}
-const UserCard = ({ person }:UserCardProps) => {
+type UserCardProps = {
+  person: User;
+};
+const UserCard = ({ person }: UserCardProps) => {
   return (
     <>
       <div className={styles.star}>

@@ -8,6 +8,35 @@ import { useState } from "react";
 function Login() {
   const navigation = useNavigate();
   const [visiblePassword, SetvisiblePassword] = useState<string>("password");
+  const [emailValue, setEmailValue] = useState<string>("");
+  const [passwordValue, setPasswordValue] = useState<string>("");
+  const [result, setResult] = useState<string>("");
+  const handleLogin = async () => {
+    try {
+      const response = await fetch("http://localhost:3000/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: emailValue,
+          password: passwordValue,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        localStorage.setItem("token", data.accessToken);
+        navigation("/");
+      } else {
+        setResult("Invalid credentials");
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.header}>
@@ -28,6 +57,8 @@ function Login() {
             type="text"
             className={styles.emailtext}
             placeholder="you@example.com"
+            value={emailValue}
+            onChange={(e) => setEmailValue(e.target.value)}
           />
         </div>
       </div>
@@ -40,6 +71,8 @@ function Login() {
               type={visiblePassword}
               className={styles.passwordtext}
               placeholder="Enter your password"
+              value={passwordValue}
+              onChange={(e) => setPasswordValue(e.target.value)}
             />
           </div>
           <button
@@ -54,7 +87,10 @@ function Login() {
           </button>
         </div>
       </div>
-      <button className={styles.signinbutton}>sign in</button>
+      <button className={styles.signinbutton} onClick={handleLogin}>
+        sign in
+      </button>
+      {result === "Invalid credentials" ? <p>{result}</p> : null}
       <div className={styles.signup}>
         <p>Don't have an account?</p>
         <button
