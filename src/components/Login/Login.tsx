@@ -10,7 +10,7 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState("password");
-  const [users, setUsers] = useState([]);
+  const [error, setError] = useState("");
   function showpassword() {
     setShowPassword(showPassword === "password" ? "text" : "password");
   }
@@ -23,13 +23,14 @@ const Login = () => {
         email,
         password,
       });
-      localStorage.setItem("token", response.data.accessToken);
-      navigate("/Home");
+      if (response.data.accessToken) {
+        localStorage.setItem("token", response.data.accessToken);
+        navigate("/");
+      }
     } catch (error) {
-      console.log("Login failed");
+      setError("Invalid email or password");
     }
   };
-
   return (
     <div className={styles.login}>
       <div className={styles.card}>
@@ -64,10 +65,12 @@ const Login = () => {
                   required
                 />
               </div>
+
               <button className={styles.btn} onClick={() => showpassword()}>
                 <img src={EyeIcon} />
               </button>
             </div>
+            <div className={styles.error}>{error ? <p>{error}</p> : ""}</div>
           </div>
           <button type="button" className={styles.button} onClick={login}>
             {" "}

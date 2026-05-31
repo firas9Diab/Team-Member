@@ -16,7 +16,7 @@ const Sign = () => {
   const [name, setName] = useState("");
   const [confirm, setConfirm] = useState("");
   const [showMassage, setShowMassage] = useState("");
-  // const [first, setfirst] = useState(second)
+  const [error, setError] = useState("");
 
   const signUp = async () => {
     try {
@@ -25,21 +25,24 @@ const Sign = () => {
         email,
         password,
       });
-      localStorage.setItem("token", response.data.accessToken);
-
-      //setUsers(response.data);
-      navigate("/Home");
+      if (response.data.accessToken) {
+        localStorage.setItem("token", response.data.accessToken);
+        navigate("/");
+      }
     } catch (error: any) {
-      console.log(error.response.data);
+      setError(error.response.data.message);
     }
   };
+
   const navigate = useNavigate();
+
   function massage() {
     if (password === confirm) {
       setShowMassage("");
-      alert("signedIn");
+      return true;
     } else {
-      setShowMassage("password not true");
+      setShowMassage("Passwords do not match");
+      return false;
     }
   }
 
@@ -48,7 +51,7 @@ const Sign = () => {
   }
 
   function showconfrim() {
-    setShowConfirm(showPassword === "password" ? "text" : "password");
+    setShowConfirm(showConfirm === "password" ? "text" : "password");
   }
 
   return (
@@ -129,13 +132,14 @@ const Sign = () => {
             </div>
             <p className={styles.falseValue}>{showMassage}</p>
           </div>
-
+          <div className={styles.falseValue}>{error ? <p>{error}</p> : ""}</div>
           <button
             type="button"
             className={styles.button}
             onClick={() => {
-              massage();
-              signUp();
+              if (massage()) {
+                signUp();
+              }
             }}
           >
             Create Account
