@@ -9,11 +9,11 @@ interface User {
   avatar: string;
 }
 
-type Props = {
+type UserListProps = {
   users: User[];
 };
 
-const UserList = ({ users }: Props) => {
+const UserList = ({ users }: UserListProps) => {
   return (
     <div className={styles.cardBoard}>
       {users.map((person:User) => (

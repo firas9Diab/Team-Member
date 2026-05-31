@@ -1,5 +1,5 @@
 import styles from "./FilterTabs.module.scss";
-type props = {
+type FilterTabsProps = {
   selectedFilter: string;
   setSelectedFilter: (value: string) => void 
   favoritesCount: number;
@@ -14,7 +14,7 @@ const FilterTabs = ({
   activeCount,
   inactiveCount,
   allCount,
-}: props) => {
+}: FilterTabsProps ) => {
   const items = ["All", "Favorites", "Active", "Inactive"];
 
   const getCount = (id:string) => {

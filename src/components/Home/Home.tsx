@@ -5,7 +5,7 @@ import FilterTabs from "../FilterTabs/FilterTabs";
 import SearchInput from "../SearchInput/SearchInput";
 import UserList from "../UserList/UserList";
 
-interface user {
+interface User {
   id: string;
   name: string;
   role: string;
@@ -14,7 +14,7 @@ interface user {
   avatar: string;
 }
 const Home = () => {
-  const usersMockData: user[] = [
+  const usersMockData: User[] = [
     {
       id: "2b7e2c6e-7c6a-4f5f-8c6e-2f1d0e6c9a01",
       name: "Alex Johnson",
@@ -81,10 +81,10 @@ const Home = () => {
     },
   ];
 
-  const [users] = useState<user[]>(usersMockData);
+  const [users] = useState<User[]>(usersMockData);
   const [selectedFilter, setSelectedFilter] = useState<string>("All");
   const [search, setSearch] = useState<string>("");
-  const [filteredUsers, setFilteredUsers] = useState<user[]>([]);
+  const [filteredUsers, setFilteredUsers] = useState<User[]>([]);
   const favoritesCount: number = users.filter(
     (user) => user.isFavorite === true,
   ).length;
@@ -98,7 +98,7 @@ const Home = () => {
   ).length;
 
   useEffect(() => {
-    const newArray2: user[] = users.filter((person) => {
+    const newArray2: User[] = users.filter((person) => {
       const personSearch = person.name
         .toLowerCase()
         .includes(search.toLowerCase());

@@ -1,7 +1,7 @@
 import styles from "./UserCard.module.scss";
 import fav from "../../../../Icons/star-svgrepo-com.svg";
 import favLight from "../../../../Icons/star-light-svgrepo-com.svg";
-interface user {
+interface User {
   id: string;
   name: string;
   role: string;
@@ -9,10 +9,10 @@ interface user {
   isFavorite: boolean;
   avatar: string;
 }
-type Props={
-  person:user
+type UserCardProps={
+  person:User
 }
-const UserCard = ({ person }:Props) => {
+const UserCard = ({ person }:UserCardProps) => {
   return (
     <>
       <div className={styles.star}>
