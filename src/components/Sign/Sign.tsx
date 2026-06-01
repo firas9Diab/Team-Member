@@ -19,18 +19,23 @@ const Sign = () => {
   const [error, setError] = useState("");
 
   const signUp = async () => {
-    try {
-      const response = await axios.post("http://localhost:3000/Auth/signup", {
-        fullName: name,
-        email,
-        password,
-      });
-      if (response.data.accessToken) {
-        localStorage.setItem("token", response.data.accessToken);
-        navigate("/");
+    if (password === confirm) {
+      setShowMassage("");
+      try {
+        const response = await axios.post("http://localhost:3000/Auth/signup", {
+          fullName: name,
+          email,
+          password,
+        });
+        if (response.data.accessToken) {
+          localStorage.setItem("token", response.data.accessToken);
+          navigate("/");
+        }
+      } catch (error: any) {
+        setError(error.response.data.message);
       }
-    } catch (error: any) {
-      setError(error.response.data.message);
+    } else {
+      setShowMassage("Passwords do not match");
     }
   };
 
@@ -127,12 +132,7 @@ const Sign = () => {
             type="button"
             className={styles.button}
             onClick={() => {
-              if (password === confirm) {
-                setShowMassage("");
-                signUp();
-              } else {
-                setShowMassage("Passwords do not match");
-              }
+              signUp();
             }}
           >
             Create Account
