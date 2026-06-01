@@ -5,6 +5,7 @@ import password from "../../../public/password.svg";
 import email from "../../../public/email.svg";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import axios from "axios";
 function Login() {
   const navigation = useNavigate();
   const [visiblePassword, SetvisiblePassword] = useState<string>("password");
@@ -12,31 +13,23 @@ function Login() {
   const [passwordValue, setPasswordValue] = useState<string>("");
   const [error, setError] = useState<string>("");
 
-  const handleLogin = async () => {
-    try {
-      const response = await fetch("http://localhost:3000/auth/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email: emailValue,
-          password: passwordValue,
-        }),
-      });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        localStorage.setItem("token", data.accessToken);
-        navigation("/"); // أو home page
-      } else {
-        setError(data.message || "Login failed");
+const handleLogin = async () => {
+  try {
+    const response = await axios.post(
+      "http://localhost:3000/auth/login",
+      {
+        email: emailValue,
+        password: passwordValue,
       }
-    } catch (err) {
-      setError("Server error");
-    }
-  };
+    );
+
+    localStorage.setItem("token", response.data.accessToken);
+
+    navigation("/");
+  } catch (err: any) {
+    setError(err.response?.data?.message || "Login failed");
+  }
+};
 
   return (
     <div className={styles.container}>
@@ -90,7 +83,7 @@ function Login() {
         </div>
       </div>
       
-      {error && <p style={{ color: "red" }}>{error}</p>}
+      {error && <p className={styles.errormessage}>{error}</p>}
 
       <button onClick={handleLogin} className={styles.signinbutton}>
         sign in

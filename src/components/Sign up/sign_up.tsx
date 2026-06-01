@@ -6,48 +6,50 @@ import email from "../../../public/email.svg";
 import user from "../../../public/user.svg";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+
 const SignUp = () => {
   const [password, setPassword] = useState<string>("");
-  const [confirmPassword, setconfirmPassword] = useState("");
-  const [visiblePassword, setvisiblePassword] = useState("password");
+  const [confirmPassword, setconfirmPassword] = useState<string>("");
+  const [visiblePassword, setvisiblePassword] = useState<string>("password");
   const [visiblepasswordConfirm, setvisiblepasswordConfirm] =
-    useState("password");
-  const [errormessage, seterrormessage] = useState("");
+    useState<string>("password");
+  const [errormessage, seterrormessage] = useState<string>("");
   const navigation = useNavigate();
-  const [fullName, setFullName] = useState("");
-  const [emailValue, setEmailValue] = useState("");
-  const handleSignup = async () => {
-    if (password !== confirmPassword) {
-      seterrormessage("Passwords do not match");
-      return;
-    }
+  const [fullName, setFullName] = useState<string>("");
+  const [emailValue, setEmailValue] = useState<string>("");
 
-    try {
-      const response = await fetch("http://localhost:3000/auth/signup", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          fullName,
-          email: emailValue,
-          password,
-        }),
-      });
 
-      const data = await response.json();
+const handleSignup = async () => {
+  if (password !== confirmPassword) {
+    seterrormessage("Passwords do not match");
+    return;
+  }
 
-      if (response.ok) {
-        seterrormessage("Account created successfully");
-        localStorage.setItem("token", data.accessToken);
-        navigation("/Login");
-      } else {
-        seterrormessage(data.message || "Signup failed");
+  try {
+    const response = await axios.post(
+      "http://localhost:3000/auth/signup",
+      {
+        fullName,
+        email: emailValue,
+        password,
       }
-    } catch (error) {
-      seterrormessage("Server error");
-    }
-  };
+    );
+
+    seterrormessage("Account created successfully");
+
+    localStorage.setItem(
+      "token",
+      response.data.accessToken
+    );
+
+    navigation("/Login");
+  } catch (error: any) {
+    seterrormessage(
+      error.response?.data?.message || "Signup failed"
+    );
+  }
+};
 
   return (
     <div className={styles.container}>
