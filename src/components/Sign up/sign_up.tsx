@@ -6,14 +6,42 @@ import email from "../../../public/email.svg";
 import user from "../../../public/user.svg";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+
 const SignUp = () => {
   const [password, setPassword] = useState<string>("");
-  const [confirmPassword, setconfirmPassword] = useState("");
-  const [visiblePassword, setvisiblePassword] = useState("password");
+  const [confirmPassword, setconfirmPassword] = useState<string>("");
+  const [visiblePassword, setvisiblePassword] = useState<string>("password");
   const [visiblepasswordConfirm, setvisiblepasswordConfirm] =
-    useState("password");
-  const [errormessage, seterrormessage] = useState("");
+    useState<string>("password");
+  const [errormessage, seterrormessage] = useState<string>("");
   const navigation = useNavigate();
+  const [fullName, setFullName] = useState<string>("");
+  const [emailValue, setEmailValue] = useState<string>("");
+
+  const handleSignup = async () => {
+    if (password !== confirmPassword) {
+      seterrormessage("Passwords do not match");
+      return;
+    }
+   
+    try {
+      const response = await axios.post("http://localhost:3000/auth/signup", {
+        fullName,
+        email: emailValue,
+        password,
+      });
+
+      seterrormessage("Account created successfully");
+
+      localStorage.setItem("token", response.data.accessToken);
+
+      navigation("/Login");
+    } catch (error: any) {
+      seterrormessage(error.response?.data?.message || "Signup failed");
+    }
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.header}>
@@ -34,6 +62,8 @@ const SignUp = () => {
             type="text"
             className={styles.emailtext}
             placeholder="Enter your Full Name"
+            value={fullName}
+            onChange={(e) => setFullName(e.target.value)}
             required
           />
         </div>
@@ -47,6 +77,8 @@ const SignUp = () => {
             type="email"
             className={styles.emailtext}
             placeholder="you@example.com"
+            value={emailValue}
+            onChange={(e) => setEmailValue(e.target.value)}
             required
           />
         </div>
@@ -118,13 +150,7 @@ const SignUp = () => {
 
       <button
         onClick={() => {
-          seterrormessage(
-            password === confirmPassword &&
-              password !== "" &&
-              confirmPassword !== ""
-              ? ""
-              : "Password is not Match",
-          );
+          handleSignup();
         }}
         className={styles.signinbutton}
       >
