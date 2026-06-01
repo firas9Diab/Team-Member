@@ -6,30 +6,47 @@ import user from "../../assets/user.png";
 import email1 from "../../assets/email1.png";
 import password1 from "../../assets/password1.png";
 import EyeIcon from "../../assets/EyeIcon.svg";
+import axios from "axios";
 
 const Sign = () => {
   const [showPassword, setShowPassword] = useState("password");
   const [showConfirm, setShowConfirm] = useState("password");
   const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
   const [confirm, setConfirm] = useState("");
   const [showMassage, setShowMassage] = useState("");
+  const [error, setError] = useState("");
 
-  const navigate = useNavigate();
-  function massage() {
+  const signUp = async () => {
     if (password === confirm) {
       setShowMassage("");
-      alert("signedIn");
+      try {
+        const response = await axios.post("http://localhost:3000/Auth/signup", {
+          fullName: name,
+          email,
+          password,
+        });
+        if (response.data.accessToken) {
+          localStorage.setItem("token", response.data.accessToken);
+          navigate("/");
+        }
+      } catch (error: any) {
+        setError(error.response.data.message);
+      }
     } else {
-      setShowMassage("password not true");
+      setShowMassage("Passwords do not match");
     }
-  }
+  };
+
+  const navigate = useNavigate();
 
   function showpassword() {
     setShowPassword(showPassword === "password" ? "text" : "password");
   }
 
   function showconfrim() {
-    setShowConfirm(showPassword === "password" ? "text" : "password");
+    setShowConfirm(showConfirm === "password" ? "text" : "password");
   }
 
   return (
@@ -49,12 +66,21 @@ const Sign = () => {
           <label>Full name </label>
           <div className={styles.email}>
             <img src={user} alt="user" />
-            <input type="text" placeholder="Enter your full name" />
+            <input
+              type="text"
+              placeholder="Enter your full name"
+              onChange={(e) => setName(e.target.value)}
+            />
           </div>
           <label> Email address</label>
           <div className={styles.email}>
             <img src={email1} alt="email" />
-            <input type="text" placeholder="you@example.com" required />
+            <input
+              type="text"
+              placeholder="you@example.com"
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
           </div>
           <div>
             <label>Password</label>
@@ -101,12 +127,12 @@ const Sign = () => {
             </div>
             <p className={styles.falseValue}>{showMassage}</p>
           </div>
-
+          <div className={styles.falseValue}>{error ? <p>{error}</p> : ""}</div>
           <button
-            type="submit"
+            type="button"
             className={styles.button}
             onClick={() => {
-              massage();
+              signUp();
             }}
           >
             Create Account

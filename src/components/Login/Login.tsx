@@ -5,17 +5,32 @@ import UsersIcon from "../../assets/UsersIcon.svg";
 import email1 from "../../assets/email1.png";
 import password1 from "../../assets/password1.png";
 import EyeIcon from "../../assets/EyeIcon.svg";
+import axios from "axios";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState("password");
-
+  const [error, setError] = useState("");
   function showpassword() {
     setShowPassword(showPassword === "password" ? "text" : "password");
   }
 
   const navigate = useNavigate();
 
+  const login = async () => {
+    try {
+      const response = await axios.post("http://localhost:3000/Auth/login", {
+        email,
+        password,
+      });
+      if (response.data.accessToken) {
+        localStorage.setItem("token", response.data.accessToken);
+        navigate("/");
+      }
+    } catch (error) {
+      setError("Invalid email or password");
+    }
+  };
   return (
     <div className={styles.login}>
       <div className={styles.card}>
@@ -50,12 +65,14 @@ const Login = () => {
                   required
                 />
               </div>
+
               <button className={styles.btn} onClick={() => showpassword()}>
                 <img src={EyeIcon} />
               </button>
             </div>
+            <div className={styles.error}>{error ? <p>{error}</p> : ""}</div>
           </div>
-          <button type="submit" className={styles.button}>
+          <button type="button" className={styles.button} onClick={login}>
             {" "}
             Sign In{" "}
           </button>
