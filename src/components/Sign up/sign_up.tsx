@@ -19,37 +19,28 @@ const SignUp = () => {
   const [fullName, setFullName] = useState<string>("");
   const [emailValue, setEmailValue] = useState<string>("");
 
-
-const handleSignup = async () => {
-  if (password !== confirmPassword) {
-    seterrormessage("Passwords do not match");
-    return;
-  }
-
-  try {
-    const response = await axios.post(
-      "http://localhost:3000/auth/signup",
-      {
+  const handleSignup = async () => {
+    if (password !== confirmPassword) {
+      seterrormessage("Passwords do not match");
+      return;
+    }
+   
+    try {
+      const response = await axios.post("http://localhost:3000/auth/signup", {
         fullName,
         email: emailValue,
         password,
-      }
-    );
+      });
 
-    seterrormessage("Account created successfully");
+      seterrormessage("Account created successfully");
 
-    localStorage.setItem(
-      "token",
-      response.data.accessToken
-    );
+      localStorage.setItem("token", response.data.accessToken);
 
-    navigation("/Login");
-  } catch (error: any) {
-    seterrormessage(
-      error.response?.data?.message || "Signup failed"
-    );
-  }
-};
+      navigation("/Login");
+    } catch (error: any) {
+      seterrormessage(error.response?.data?.message || "Signup failed");
+    }
+  };
 
   return (
     <div className={styles.container}>
@@ -159,13 +150,6 @@ const handleSignup = async () => {
 
       <button
         onClick={() => {
-          seterrormessage(
-            password === confirmPassword &&
-              password !== "" &&
-              confirmPassword !== ""
-              ? ""
-              : "Password is not Match",
-          );
           handleSignup();
         }}
         className={styles.signinbutton}
