@@ -24,3 +24,73 @@
     flex-wrap: wrap;
   }
 }
+
+.addButton {
+  border-radius: 10px;
+  border: 1px solid rgba(182, 178, 178, 0.3);
+  padding: 18px 50px;
+  background-color: rgb(132, 0, 255);
+  color: white;
+  gap: 10px;
+  margin: 10px 30px;
+  cursor: pointer;
+}
+
+.form {
+  gap: 10px;
+  margin: 10px 30px;
+  display: flex;
+  input {
+    border-radius: 10px;
+    border: 1px solid rgba(182, 178, 178, 0.3);
+    padding: 5px 5px;
+  }
+  label {
+    align-items: center;
+  }
+}
+
+.fullForm {
+  display: flex;
+  align-items: center;
+  .formButton {
+    border-radius: 10px;
+    border: 1px solid rgba(182, 178, 178, 0.3);
+    width: 60px;
+    height: 30px;
+  }
+}
+select {
+  border-radius: 10px;
+  border: 1px solid rgba(182, 178, 178, 0.3);
+  padding: 5px 5px;
+}
+
+@media (max-width: 1024px) {
+  .fullForm {
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: start;
+  }
+  .form {
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+}
+
+.pages {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  font-weight: 500;
+  align-items: center;
+
+  button {
+    border-radius: 10px;
+    border: 1px solid rgba(182, 178, 178, 0.3);
+    padding: 10px;
+    background-color: rgb(132, 0, 255);
+    color: white;
+    cursor: pointer;
+  }
+}

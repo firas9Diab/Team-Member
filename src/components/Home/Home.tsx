@@ -1,9 +1,9 @@
 import styles from "./Home.module.scss";
-import { useEffect, useState } from "react";
+import { useEffect, useState, type SetStateAction } from "react";
 import Header from "../Header/Header";
 import Tabs from "../Tabs/Tabs";
 import UserList from "../UserList/UserList";
-
+import axios from "axios";
 export interface UserData {
   id: string;
   name: string;
@@ -18,7 +18,8 @@ const Home = () => {
   const [filter, setFilter] = useState<UserData[]>([]);
   const [activeTab, setActiveTab] = useState("all");
   const [inputValue, setInputValue] = useState("");
-
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
   function onsearch(input: string) {
     setInputValue(input);
   }
@@ -46,82 +47,138 @@ const Home = () => {
   }, [inputValue, activeTab, usersMockData]);
 
   useEffect(() => {
-    setUsersMockData([
-      {
-        id: "2b7e2c6e-7c6a-4f5f-8c6e-2f1d0e6c9a01",
-        name: "Alex Johnson",
-        role: "Frontend Developer",
-        status: "active",
-        isFavorite: true,
-        avatar: "https://i.pravatar.cc/150?img=11",
-      },
-      {
-        id: "8c1d5a24-3e6f-4f90-a2b7-1c9e7f6d2a12",
-        name: "Sarah Williams",
-        role: "UI/UX Designer",
-        status: "active",
-        isFavorite: false,
-        avatar: "https://i.pravatar.cc/150?img=47",
-      },
-      {
-        id: "f13a8d49-8d47-45a7-b9bb-5b38c1e20344",
-        name: "Michael Brown",
-        role: "Backend Developer",
-        status: "active",
-        isFavorite: true,
-        avatar: "https://i.pravatar.cc/150?img=12",
-      },
-      {
-        id: "a96d58ef-8e35-4a91-9e8f-4c56f2bc7e21",
-        name: "Emily Davis",
-        role: "Product Manager",
-        status: "inactive",
-        isFavorite: false,
-        avatar: "https://i.pravatar.cc/150?img=32",
-      },
-      {
-        id: "74f9c8b7-28e2-4f5d-8c77-19f8265f456a",
-        name: "David Wilson",
-        role: "DevOps Engineer",
-        status: "active",
-        isFavorite: false,
-        avatar: "https://i.pravatar.cc/150?img=13",
-      },
-      {
-        id: "c1e6f7d2-98a2-4f79-b6d5-5c9f3a7e8120",
-        name: "Lisa Anderson",
-        role: "QA Engineer",
-        status: "inactive",
-        isFavorite: true,
-        avatar: "https://i.pravatar.cc/150?img=44",
-      },
-      {
-        id: "e3f89b10-6b8a-44ef-b0d3-91f72d5c4a33",
-        name: "James Taylor",
-        role: "Full Stack Developer",
-        status: "active",
-        isFavorite: false,
-        avatar: "https://i.pravatar.cc/150?img=16",
-      },
-      {
-        id: "5d4b7e31-f9d8-47e1-a7c9-6a2e4f8d0b55",
-        name: "Olivia Martinez",
-        role: "Marketing Specialist",
-        status: "inactive",
-        isFavorite: false,
-        avatar: "https://i.pravatar.cc/150?img=45",
-      },
-    ]);
-  }, []);
+    const fetchUsers = async () => {
+      const users = await getUsers(currentPage);
+      const favorite = await getFavorite();
 
-  function toggleFav(id: string) {
-    const newArr = usersMockData.map((ele) =>
-      ele.id === id ? { ...ele, isFavorite: !ele.isFavorite } : ele,
-    );
+      if (users) {
+        const updatedUsers = users.map((user: any) => ({
+          ...user,
+          isFavorite: favorite.includes(user.id),
+        }));
 
-    setFilter(newArr);
-    setUsersMockData(newArr);
-  }
+        setUsersMockData(updatedUsers);
+      }
+    };
+
+    fetchUsers();
+  }, [currentPage]);
+
+  const getUsers = async (page: number) => {
+    try {
+      const token = localStorage.getItem("token");
+
+      const response = await axios.get(
+        `http://localhost:3000/team-members?page=${page}&limit=8`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
+      );
+      if (response.data && response.data.meta) {
+        setTotalPages(response.data.meta.totalPages);
+      }
+      const users = response.data.data.map((user: any) => ({
+        id: String(user.id),
+        name: user.fullName,
+        role: user.jobTitle,
+        status: user.status.toLowerCase(),
+        isFavorite: user.isFavorite,
+        avatar: user.avatarUrl,
+      }));
+
+      return users;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const addUser = async (
+    fullName: string,
+    jobTitle: string,
+    status: string,
+    avatarUrl: string,
+  ) => {
+    try {
+      const token = localStorage.getItem("token");
+      const response = await axios.post(
+        "http://localhost:3000/team-members",
+        { fullName, jobTitle, status: status.trim().toUpperCase(), avatarUrl },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
+      );
+      console.log("RESPONSE:", response.data);
+
+      const user = response.data?.data ?? response.data;
+      const newUser = {
+        id: String(user.id),
+        name: user.fullName,
+        role: user.jobTitle,
+        status: user.status.toLowerCase(),
+        isFavorite: user.isFavorite ?? false,
+        avatar: user.avatarUrl,
+      };
+      if (currentPage === totalPages) {
+        setUsersMockData((prev) => [...prev, newUser]);
+      } else {
+        setCurrentPage(totalPages);
+      }
+    } catch (error: any) {
+      console.log("FULL ERROR:", error);
+    }
+  };
+
+  const getFavorite = async () => {
+    const token = localStorage.getItem("token");
+    const response = await axios.get("http://localhost:3000/users/me", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return response.data.favorites.map((fav: any) => String(fav.id));
+  };
+
+  const toggleFav = async (id: string) => {
+    const fav = usersMockData.find((user) => user.id === id);
+    if (!fav) return;
+
+    const isCurrentlyFavorite = fav.isFavorite;
+    const token = localStorage.getItem("token");
+
+    try {
+      if (!isCurrentlyFavorite) {
+        await axios.post(
+          `http://localhost:3000/users/me/favorites/${id}`,
+          {},
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          },
+        );
+      } else {
+        await axios.delete(`http://localhost:3000/users/me/favorites/${id}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+      }
+
+      const updatedArray = usersMockData.map((user) =>
+        user.id === id ? { ...user, isFavorite: !user.isFavorite } : user,
+      );
+
+      setUsersMockData(updatedArray);
+      setFilter(updatedArray);
+    } catch (error) {
+      console.error("Failed to update favorite status:", error);
+    }
+  };
+
   return (
     <div>
       <div className={styles.head}>
@@ -132,7 +189,14 @@ const Home = () => {
           setActiveTab={setActiveTab}
           users={usersMockData}
         />
-        <UserList users={filter} fav={toggleFav} />
+        <UserList
+          users={filter}
+          fav={toggleFav}
+          add={addUser}
+          currentPage={currentPage}
+          totalPages={totalPages}
+          setCurrentPage={setCurrentPage}
+        />
       </div>
     </div>
   );
