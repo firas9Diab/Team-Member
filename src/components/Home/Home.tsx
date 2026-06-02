@@ -15,6 +15,7 @@ export interface UserData {
 
 const Home = () => {
   const [usersMockData, setUsersMockData] = useState<UserData[]>([]);
+  const [paginatedUsers, setPaginatedUsers] = useState<UserData[]>([]);
   const [filter, setFilter] = useState<UserData[]>([]);
   const [activeTab, setActiveTab] = useState("all");
   const [inputValue, setInputValue] = useState("");
@@ -44,11 +45,13 @@ const Home = () => {
     });
 
     setFilter(newArr);
+    const calculatedPages = Math.ceil(newArr.length / 8);
+    setTotalPages(calculatedPages || 1);
   }, [inputValue, activeTab, usersMockData]);
 
   useEffect(() => {
     const fetchUsers = async () => {
-      const users = await getUsers(currentPage);
+      const users = await getUsers();
       const favorite = await getFavorite();
 
       if (users) {
@@ -62,14 +65,26 @@ const Home = () => {
     };
 
     fetchUsers();
-  }, [currentPage]);
+  }, []);
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [inputValue, activeTab]);
+  useEffect(() => {
+    const startIndex = (currentPage - 1) * 8;
+    const endIndex = startIndex + 8;
 
-  const getUsers = async (page: number) => {
+    // Slice exactly 8 users out of the filtered pool
+    const current8Users = filter.slice(startIndex, endIndex);
+
+    setPaginatedUsers(current8Users);
+  }, [currentPage, filter]);
+
+  const getUsers = async () => {
     try {
       const token = localStorage.getItem("token");
 
       const response = await axios.get(
-        `http://localhost:3000/team-members?page=${page}&limit=8`,
+        `http://localhost:3000/team-members?page=1&limit=1000`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -190,7 +205,7 @@ const Home = () => {
           users={usersMockData}
         />
         <UserList
-          users={filter}
+          users={paginatedUsers}
           fav={toggleFav}
           add={addUser}
           currentPage={currentPage}
