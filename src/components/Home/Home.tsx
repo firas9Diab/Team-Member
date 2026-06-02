@@ -113,12 +113,14 @@ const Home = () => {
             allCount={users.length}
             search={search}
             fetchUsers={fetchUsers}
+            selectedpage={selectedPage}
             setSelectedPage={setSelectedPage}
           />
 
           <SearchInput
             fetchUsers={fetchUsers}
             search={search}
+            selectedpage={selectedPage}
             setSearch={setSearch}
           />
         </div>
