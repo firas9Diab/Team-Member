@@ -116,7 +116,7 @@ const Home = () => {
             activeCount={activeCount}
             inactiveCount={inactiveCount}
             allCount={users.length}
-            fetchUsers={fetchUsers}
+             fetchusers={fetchUsers}
             setSelectedPage={setSelectedPage}
           />
 

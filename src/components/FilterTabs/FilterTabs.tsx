@@ -7,6 +7,7 @@ type FilterTabsProps = {
   favoritesCount: number;
   activeCount: number;
   inactiveCount: number;
+  fetchusers: (page?: number, filter?: string, search?: string) => void;
   allCount: number;
 };
 const FilterTabs = ({
@@ -15,6 +16,7 @@ const FilterTabs = ({
   favoritesCount,
   activeCount,
   inactiveCount,
+  fetchusers,
   allCount,
 }: FilterTabsProps) => {
   const navigate = useNavigate();
@@ -43,7 +45,10 @@ const FilterTabs = ({
       {items.map((id) => (
         <li key={id}>
           <button
-            onClick={() => setSelectedFilter(id)}
+            onClick={() => {
+              setSelectedFilter(id);
+              fetchusers(1, id, "");
+            }}
             className={selectedFilter === id ? styles.active : styles.link}
           >
             {id} ({getCount(id)})
