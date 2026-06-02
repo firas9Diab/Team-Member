@@ -19,11 +19,7 @@ const Home = () => {
   const [totalPages, setTotalPages] = useState<number>(1);
   const [clickpower, setClickPower] = useState<boolean>(false);
 
-  const fetchUsers = async (
-    page: number,
-    filter: string,
-    search: string,
-  ) => {
+  const fetchUsers = async (page: number, filter: string, search: string) => {
     const token = localStorage.getItem("token");
 
     const params: any = {
@@ -111,6 +107,7 @@ const Home = () => {
           <FilterTabs
             selectedFilter={selectedFilter}
             setSelectedFilter={setSelectedFilter}
+            search={search}
             favoritesCount={favoritesCount}
             activeCount={activeCount}
             inactiveCount={inactiveCount}
