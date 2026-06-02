@@ -100,7 +100,7 @@ const Home = () => {
 
     setFilteredUsers(filtered);
   }, [search, selectedFilter, users]);
-  console.log(users);
+
   return (
     <>
       <Header count={users.length} />
