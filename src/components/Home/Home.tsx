@@ -4,7 +4,6 @@ import Header from "../Header/Header";
 import FilterTabs from "../FilterTabs/FilterTabs";
 import SearchInput from "../SearchInput/SearchInput";
 import UserList from "../UserList/UserList";
-import axios from "axios";
 interface User {
   id: number;
   name: string;
@@ -16,7 +15,7 @@ interface User {
 
 type Props = {
   users: User[];
-  fetchUsers: (num: number) => void;
+  fetchUsers: (num?: number) => void;
   totalPages: number;
 };
 
@@ -24,20 +23,23 @@ const Home = ({ users, fetchUsers, totalPages }: Props) => {
   const [selectedFilter, setSelectedFilter] = useState<string>("All");
   const [search, setSearch] = useState<string>("");
   const [filteredUsers, setFilteredUsers] = useState<User[]>([]);
-const[selectedPage,setSelectedPage]=useState(1);
+  const [selectedPage, setSelectedPage] = useState(1);
   const favoritesCount = users.filter((u) => u.isFavorite).length;
 
   const activeCount = users.filter((u) => u.status === "active").length;
 
   const inactiveCount = users.filter((u) => u.status === "inactive").length;
-  useEffect(() => {
-    fetchUsers();
-  }, []);
+
   const pages = [];
 
   for (let i = 1; i <= totalPages; i++) {
     pages.push(i);
   }
+
+  useEffect(() => {
+    fetchUsers();
+  }, []);
+
   useEffect(() => {
     const filtered = users.filter((person) => {
       const matchSearch =
@@ -91,7 +93,11 @@ const[selectedPage,setSelectedPage]=useState(1);
                   setSelectedPage(page);
                   fetchUsers(page);
                 }}
-                className={selectedPage === page ? styles.activePageButton : styles.pageButton}
+                className={
+                  selectedPage === page
+                    ? styles.activePageButton
+                    : styles.pageButton
+                }
               >
                 {page}
               </button>

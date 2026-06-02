@@ -19,7 +19,7 @@ interface User {
 const App = () => {
   const [users, setUsers] = useState<User[]>([]);
   const [totalPages, setTotalPages] = useState(1);
-  const fetchUsers = async (page: number) => {
+  const fetchUsers = async (page: number=1) => {
     const token = localStorage.getItem("token");
 
     const response = await axios.get("http://localhost:3000/team-members", {
