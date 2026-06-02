@@ -18,8 +18,8 @@ type UserCardProps = {
 };
 
 const UserCard = ({ person }: UserCardProps) => {
-  const [isFavorite, setIsFavorite] = useState(person.isFavorite);
-  const [loading, setLoading] = useState(false);
+  const [isFavorite, setIsFavorite] = useState<boolean>(person.isFavorite);
+  const [loading, setLoading] = useState<boolean>(false);
 
   const toggleFavorite = async () => {
     try {

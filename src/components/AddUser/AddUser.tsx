@@ -6,13 +6,13 @@ import { useNavigate } from "react-router-dom";
 const AddUser = ({ fetchUsers }: { fetchUsers: () => void }) => {
   const navigation = useNavigate();
 
-  const [nameValue, setNameValue] = useState("");
-  const [roleValue, setRoleValue] = useState("");
-  const [statusValue, setStatusValue] = useState("inactive");
-  const [avatarValue, setAvatarValue] = useState("");
+  const [nameValue, setNameValue] = useState<string>("");
+  const [roleValue, setRoleValue] = useState<string>("");
+  const [statusValue, setStatusValue] = useState<string>("inactive");
+  const [avatarValue, setAvatarValue] = useState<string>("");
 
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string>("");
 
   const handleSubmit = async () => {
     if (!nameValue || !roleValue || !avatarValue) {

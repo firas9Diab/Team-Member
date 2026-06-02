@@ -23,14 +23,14 @@ const Home = ({ users, fetchUsers, totalPages }: Props) => {
   const [selectedFilter, setSelectedFilter] = useState<string>("All");
   const [search, setSearch] = useState<string>("");
   const [filteredUsers, setFilteredUsers] = useState<User[]>([]);
-  const [selectedPage, setSelectedPage] = useState(1);
-  const favoritesCount = users.filter((u) => u.isFavorite).length;
+  const [selectedPage, setSelectedPage] = useState<number>(1);
+  const favoritesCount = users.filter((u) => u.isFavorite).length as number;
 
-  const activeCount = users.filter((u) => u.status === "active").length;
+  const activeCount = users.filter((u) => u.status === "active").length as number;
 
-  const inactiveCount = users.filter((u) => u.status === "inactive").length;
+  const inactiveCount = users.filter((u) => u.status === "inactive").length as number;
 
-  const pages = [];
+  const pages: number[] = [];
 
   for (let i = 1; i <= totalPages; i++) {
     pages.push(i);

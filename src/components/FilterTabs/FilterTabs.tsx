@@ -17,7 +17,7 @@ const FilterTabs = ({
   allCount,
 }: FilterTabsProps) => {
   const navigate = useNavigate();
-  const items = ["All", "Favorites", "Active", "Inactive"];
+  const items: string[] = ["All", "Favorites", "Active", "Inactive"];
 
   const getCount = (id: string) => {
     if (id === "All") return allCount;
