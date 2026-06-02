@@ -37,7 +37,10 @@ const Home = () => {
       headers: {
         Authorization: `Bearer ${token}`,
       },
-      params,
+      params:
+      {
+        
+      },
     });
 
     const mapped = response.data.data.map((user: any) => ({
@@ -56,20 +59,9 @@ const Home = () => {
   const [selectedFilter, setSelectedFilter] = useState<string>("All");
   const [search, setSearch] = useState<string>("");
   const [filteredUsers, setFilteredUsers] = useState<User[]>([]);
-  const [selectedPage, setSelectedPage] = useState<number>(1);
-  const favoritesCount = users.filter((u) => u.isFavorite).length as number;
-
-  const activeCount = users.filter((u) => u.status === "active")
-    .length as number;
-
-  const inactiveCount = users.filter((u) => u.status === "inactive")
-    .length as number;
-
-  const pages: number[] = [];
-
-  for (let i = 1; i <= totalPages; i++) {
-    pages.push(i);
-  }
+  const [currentPage, setSelectedPage] = useState<number>(1);
+ 
+ const [totalpages, setTotalPages] = useState<number>(1);
 
   useEffect(() => {
     fetchUsers(1, "All", "");
@@ -113,14 +105,14 @@ const Home = () => {
             allCount={users.length}
             search={search}
             fetchUsers={fetchUsers}
-            selectedpage={selectedPage}
+            selectedpage={currentPage}
             setSelectedPage={setSelectedPage}
           />
 
           <SearchInput
             fetchUsers={fetchUsers}
             search={search}
-            selectedpage={selectedPage}
+            selectedpage={currentPage}
             setSearch={setSearch}
           />
         </div>
