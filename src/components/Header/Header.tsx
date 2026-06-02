@@ -1,11 +1,9 @@
 import styles from "./Header.module.scss";
 import user from "../../../Icons/UsersIcon.svg";
-import { useNavigate } from "react-router-dom";
 type HeaderProps = {
   count: number;
 };
 const Header = ({ count }: HeaderProps) => {
-  const navigate = useNavigate();
   return (
     <div className={styles.Header}>
       <div className={styles.Hicon}>
