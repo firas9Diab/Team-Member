@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import styles from "./FilterTabs.module.scss";
+import axios from "axios";
 type FilterTabsProps = {
   selectedFilter: string;
   setSelectedFilter: (value: string) => void;

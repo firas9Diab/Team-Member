@@ -4,6 +4,7 @@ import Header from "../Header/Header";
 import FilterTabs from "../FilterTabs/FilterTabs";
 import SearchInput from "../SearchInput/SearchInput";
 import UserList from "../UserList/UserList";
+import axios from "axios";
 interface User {
   id: number;
   name: string;
@@ -13,22 +14,59 @@ interface User {
   avatar: string;
 }
 
-type Props = {
-  users: User[];
-  fetchUsers: (num?: number) => void;
-  totalPages: number;
-};
+const Home = () => {
+  const [users, setUsers] = useState<User[]>([]);
+  const [totalPages, setTotalPages] = useState<number>(1);
+  const fetchUsers = async (
+    page: number = 1,
+    filter: string = "All",
+    search: string = "",
+  ) => {
+    const token = localStorage.getItem("token");
 
-const Home = ({ users, fetchUsers, totalPages }: Props) => {
+    const params: any = {
+      limit: 5,
+      page,
+    };
+
+    if (search.trim() !== "") {
+      params.search = search;
+    }
+    if (filter === "Favorites") params.favoritesOnly = true;
+    else if (filter === "Active") params.status = "ACTIVE";
+    else if (filter === "Inactive") params.status = "INACTIVE";
+
+    const response = await axios.get("http://localhost:3000/team-members", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      params,
+    });
+
+    const mapped = response.data.data.map((user: any) => ({
+      id: user.id,
+      name: user.fullName,
+      role: user.jobTitle,
+      status: user.status.toLowerCase(),
+      isFavorite: user.isFavorite ?? false,
+      avatar: user.avatarUrl,
+    }));
+
+    setUsers(mapped);
+    setTotalPages(response.data.meta.totalPages);
+  };
+
   const [selectedFilter, setSelectedFilter] = useState<string>("All");
   const [search, setSearch] = useState<string>("");
   const [filteredUsers, setFilteredUsers] = useState<User[]>([]);
   const [selectedPage, setSelectedPage] = useState<number>(1);
   const favoritesCount = users.filter((u) => u.isFavorite).length as number;
 
-  const activeCount = users.filter((u) => u.status === "active").length as number;
+  const activeCount = users.filter((u) => u.status === "active")
+    .length as number;
 
-  const inactiveCount = users.filter((u) => u.status === "inactive").length as number;
+  const inactiveCount = users.filter((u) => u.status === "inactive")
+    .length as number;
 
   const pages: number[] = [];
 
@@ -76,6 +114,8 @@ const Home = ({ users, fetchUsers, totalPages }: Props) => {
             activeCount={activeCount}
             inactiveCount={inactiveCount}
             allCount={users.length}
+            fetchUsers={fetchUsers}
+            setSelectedPage={setSelectedPage}
           />
 
           <SearchInput search={search} setSearch={setSearch} />

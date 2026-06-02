@@ -3,7 +3,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const AddUser = ({ fetchUsers }: { fetchUsers: () => void }) => {
+const AddUser = () => {
   const navigation = useNavigate();
 
   const [nameValue, setNameValue] = useState<string>("");
@@ -40,8 +40,6 @@ const AddUser = ({ fetchUsers }: { fetchUsers: () => void }) => {
           },
         },
       );
-
-      await fetchUsers();
 
       navigation("/");
     } catch (err: any) {
