@@ -16,7 +16,7 @@ type UserListProps = {
 const UserList = ({ users }: UserListProps) => {
   return (
     <div className={styles.cardBoard}>
-      {users.map((person:User) => (
+      {users.map((person: User) => (
         <div className={styles.card} key={person.id}>
           <UserCard person={person} />
         </div>

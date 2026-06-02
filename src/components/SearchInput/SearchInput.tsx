@@ -1,10 +1,10 @@
 import searchIcon from "../../../Icons/searchIcon.svg";
 import styles from "./SearchInput.module.scss";
 type Props = {
-  search:string;
+  search: string;
   setSearch: (value: string) => void;
 };
-const SearchInput = ({ search, setSearch }:Props) => {
+const SearchInput = ({ search, setSearch }: Props) => {
   return (
     <div className={styles.SearchInput}>
       <input

@@ -24,7 +24,7 @@ const Home = ({ users, fetchUsers, totalPages }: Props) => {
   const [selectedFilter, setSelectedFilter] = useState<string>("All");
   const [search, setSearch] = useState<string>("");
   const [filteredUsers, setFilteredUsers] = useState<User[]>([]);
-
+const[selectedPage,setSelectedPage]=useState(1);
   const favoritesCount = users.filter((u) => u.isFavorite).length;
 
   const activeCount = users.filter((u) => u.status === "active").length;
@@ -87,7 +87,11 @@ const Home = ({ users, fetchUsers, totalPages }: Props) => {
             {pages.map((page) => (
               <button
                 className={styles.pageButton}
-                onClick={() => fetchUsers(page)}
+                onClick={() => {
+                  setSelectedPage(page);
+                  fetchUsers(page);
+                }}
+                className={selectedPage === page ? styles.activePageButton : styles.pageButton}
               >
                 {page}
               </button>

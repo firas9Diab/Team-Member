@@ -22,13 +22,10 @@ const UserCard = ({ person }: UserCardProps) => {
   const [loading, setLoading] = useState(false);
 
   const toggleFavorite = async () => {
-   
     try {
       setLoading(true);
 
       const token = localStorage.getItem("token");
-
-      
 
       if (!isFavorite) {
         await axios.post(
@@ -38,7 +35,7 @@ const UserCard = ({ person }: UserCardProps) => {
             headers: {
               Authorization: `Bearer ${token}`,
             },
-          }
+          },
         );
 
         setIsFavorite(true);
@@ -49,7 +46,7 @@ const UserCard = ({ person }: UserCardProps) => {
             headers: {
               Authorization: `Bearer ${token}`,
             },
-          }
+          },
         );
 
         setIsFavorite(false);

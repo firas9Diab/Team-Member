@@ -38,14 +38,13 @@ const AddUser = ({ fetchUsers }: { fetchUsers: () => void }) => {
           headers: {
             Authorization: `Bearer ${token}`,
           },
-        }
+        },
       );
 
       // 🔥 أهم سطر
       await fetchUsers();
 
       navigation("/");
-
     } catch (err: any) {
       setError(err.response?.data?.message || "Failed to create user");
     } finally {
