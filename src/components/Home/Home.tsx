@@ -1,5 +1,5 @@
 import styles from "./Home.module.scss";
-import { useEffect, useState, type SetStateAction } from "react";
+import { useEffect, useState } from "react";
 import Header from "../Header/Header";
 import Tabs from "../Tabs/Tabs";
 import UserList from "../UserList/UserList";
@@ -15,9 +15,9 @@ export interface UserData {
 
 const Home = () => {
   const [usersMockData, setUsersMockData] = useState<UserData[]>([]);
-  const [paginatedUsers, setPaginatedUsers] = useState<UserData[]>([]);
-  const [filter, setFilter] = useState<UserData[]>([]);
   const [activeTab, setActiveTab] = useState("all");
+  //const [paginatedUsers, setPaginatedUsers] = useState<UserData[]>([]);
+  //const [filter, setFilter] = useState<UserData[]>([]);
   const [inputValue, setInputValue] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
@@ -25,7 +25,7 @@ const Home = () => {
     setInputValue(input);
   }
 
-  useEffect(() => {
+  /* useEffect(() => {
     const newArr = usersMockData.filter((user) => {
       const matchesSearch = user.name
         .toLowerCase()
@@ -47,11 +47,11 @@ const Home = () => {
     setFilter(newArr);
     const calculatedPages = Math.ceil(newArr.length / 8);
     setTotalPages(calculatedPages || 1);
-  }, [inputValue, activeTab, usersMockData]);
+  }, [inputValue, activeTab, usersMockData]);*/
 
   useEffect(() => {
     const fetchUsers = async () => {
-      const users = await getUsers();
+      const users = await getUsers(currentPage);
       const favorite = await getFavorite();
 
       if (users) {
@@ -65,11 +65,11 @@ const Home = () => {
     };
 
     fetchUsers();
-  }, []);
+  }, [currentPage, inputValue, activeTab]);
   useEffect(() => {
     setCurrentPage(1);
   }, [inputValue, activeTab]);
-  useEffect(() => {
+  /* useEffect(() => {
     const startIndex = (currentPage - 1) * 8;
     const endIndex = startIndex + 8;
 
@@ -77,20 +77,22 @@ const Home = () => {
     const current8Users = filter.slice(startIndex, endIndex);
 
     setPaginatedUsers(current8Users);
-  }, [currentPage, filter]);
+  }, [currentPage, filter]);*/
 
-  const getUsers = async () => {
+  const getUsers = async (page: number) => {
     try {
       const token = localStorage.getItem("token");
-
-      const response = await axios.get(
-        `http://localhost:3000/team-members?page=1&limit=1000`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
+      let url = `http://localhost:3000/team-members?page=${page}&limit=8&search=${inputValue}`;
+      if (activeTab === "active" || activeTab === "inactive") {
+        url += `&status=${activeTab.toUpperCase()}`;
+      } else if (activeTab === "favorites") {
+        url += `&isFavorite=true`;
+      }
+      const response = await axios.get(url, {
+        headers: {
+          Authorization: `Bearer ${token}`,
         },
-      );
+      });
       if (response.data && response.data.meta) {
         setTotalPages(response.data.meta.totalPages);
       }
@@ -142,6 +144,17 @@ const Home = () => {
       } else {
         setCurrentPage(totalPages);
       }
+
+      const users = await getUsers(currentPage);
+      const favorite = await getFavorite();
+
+      if (users) {
+        const updatedUsers = users.map((user: any) => ({
+          ...user,
+          isFavorite: favorite.includes(user.id),
+        }));
+        setUsersMockData(updatedUsers);
+      }
     } catch (error: any) {
       console.log("FULL ERROR:", error);
     }
@@ -188,7 +201,7 @@ const Home = () => {
       );
 
       setUsersMockData(updatedArray);
-      setFilter(updatedArray);
+      //setFilter(updatedArray);
     } catch (error) {
       console.error("Failed to update favorite status:", error);
     }
@@ -205,7 +218,7 @@ const Home = () => {
           users={usersMockData}
         />
         <UserList
-          users={paginatedUsers}
+          users={usersMockData}
           fav={toggleFav}
           add={addUser}
           currentPage={currentPage}
