@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import styles from "./FilterTabs.module.scss";
-import axios from "axios";
+import { useState } from "react";
 type FilterTabsProps = {
   selectedFilter: string;
   setSelectedFilter: (value: string) => void;
@@ -21,7 +21,7 @@ const FilterTabs = ({
 }: FilterTabsProps) => {
   const navigate = useNavigate();
   const items: string[] = ["All", "Favorites", "Active", "Inactive"];
-
+  const [clickpower, setClickPower] = useState<boolean>(false);
   const getCount = (id: string) => {
     if (id === "All") return allCount;
     if (id === "Favorites") return favoritesCount;
@@ -47,10 +47,10 @@ const FilterTabs = ({
           <button
             onClick={() => {
               setSelectedFilter(id);
-              {
-                fetchusers(1, id, "");
-              }
+              setClickPower(true);
+              fetchusers(1, id, "");
             }}
+            disabled={clickpower && selectedFilter === id}
             className={selectedFilter === id ? styles.active : styles.link}
           >
             {id} ({getCount(id)})

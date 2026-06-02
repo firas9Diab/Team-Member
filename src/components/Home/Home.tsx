@@ -17,6 +17,8 @@ interface User {
 const Home = () => {
   const [users, setUsers] = useState<User[]>([]);
   const [totalPages, setTotalPages] = useState<number>(1);
+  const [clickpower, setClickPower] = useState<boolean>(false);
+
   const fetchUsers = async (
     page: number = 1,
     filter: string = "All",
@@ -25,7 +27,7 @@ const Home = () => {
     const token = localStorage.getItem("token");
 
     const params: any = {
-      limit: 15,
+      limit: 5,
       page,
     };
 
@@ -74,8 +76,8 @@ const Home = () => {
   }
 
   useEffect(() => {
-    fetchUsers();
-  }, []);
+    fetchUsers( 1,selectedFilter, search);
+  }, [selectedFilter, search]);
 
   useEffect(() => {
     const filtered = users.filter((person) => {
@@ -117,7 +119,11 @@ const Home = () => {
             setSelectedPage={setSelectedPage}
           />
 
-          <SearchInput search={search} setSearch={setSearch} />
+          <SearchInput
+            fetchusers={fetchUsers}
+            search={search}
+            setSearch={setSearch}
+          />
         </div>
 
         <div className={styles.container3}>
@@ -131,7 +137,9 @@ const Home = () => {
                 onClick={() => {
                   setSelectedPage(page);
                   fetchUsers(page, selectedFilter, search);
+                  setClickPower(true);
                 }}
+                disabled={clickpower && selectedPage === page}
                 className={
                   selectedPage === page
                     ? styles.activePageButton

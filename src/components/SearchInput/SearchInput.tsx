@@ -3,8 +3,9 @@ import styles from "./SearchInput.module.scss";
 type Props = {
   search: string;
   setSearch: (value: string) => void;
+  fetchusers: (page?: number, filter?: string, search?: string) => void;
 };
-const SearchInput = ({ search, setSearch }: Props) => {
+const SearchInput = ({ search, setSearch, fetchusers }: Props) => {
   return (
     <div className={styles.SearchInput}>
       <input
@@ -12,7 +13,9 @@ const SearchInput = ({ search, setSearch }: Props) => {
         value={search}
         placeholder="Search users..."
         className={styles.Search}
-        onChange={(e) => setSearch(e.target.value)}
+        onChange={(e) => {setSearch(e.target.value);
+          fetchusers(1, undefined, e.target.value);
+        }}
       />
 
       <button className={styles.button}>
