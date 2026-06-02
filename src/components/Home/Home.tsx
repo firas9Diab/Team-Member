@@ -29,9 +29,9 @@ const Home = () => {
       page,
     };
 
-    if (search.trim() !== "") {
+ if(search.trim() !== "")
       params.search = search;
-    }
+    
     if (filter === "Favorites") params.favoritesOnly = true;
     else if (filter === "Active") params.status = "ACTIVE";
     else if (filter === "Inactive") params.status = "INACTIVE";
@@ -54,6 +54,8 @@ const Home = () => {
 
     setUsers(mapped);
     setTotalPages(response.data.meta.totalPages);
+   
+    
   };
 
   const [selectedFilter, setSelectedFilter] = useState<string>("All");
@@ -131,8 +133,9 @@ const Home = () => {
                 className={styles.pageButton}
                 onClick={() => {
                   setSelectedPage(page);
-                  fetchUsers(page);
+                  fetchUsers(page,selectedFilter,search);
                 }}
+               
                 className={
                   selectedPage === page
                     ? styles.activePageButton
