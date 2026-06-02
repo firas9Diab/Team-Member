@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import styles from "./FilterTabs.module.scss";
 type FilterTabsProps = {
   selectedFilter: string;
@@ -15,6 +16,7 @@ const FilterTabs = ({
   inactiveCount,
   allCount,
 }: FilterTabsProps ) => {
+  const navigate = useNavigate();
   const items = ["All", "Favorites", "Active", "Inactive"];
 
   const getCount = (id:string) => {
@@ -26,6 +28,14 @@ const FilterTabs = ({
 
   return (
     <ul className={styles.list}>
+     <li> <button
+          onClick={() => {
+            navigate("/AddUser");
+          }}
+          className={styles.link}
+        >
+          Add User
+        </button></li>
       {items.map((id) => (
         <li key={id}>
           <button
