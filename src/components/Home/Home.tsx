@@ -107,11 +107,11 @@ const Home = () => {
           <FilterTabs
             selectedFilter={selectedFilter}
             setSelectedFilter={setSelectedFilter}
-            search={search}
             favoritesCount={favoritesCount}
             activeCount={activeCount}
             inactiveCount={inactiveCount}
             allCount={users.length}
+            search={search}
             fetchUsers={fetchUsers}
             setSelectedPage={setSelectedPage}
           />

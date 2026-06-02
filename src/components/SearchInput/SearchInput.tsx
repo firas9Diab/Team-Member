@@ -14,7 +14,7 @@ const SearchInput = ({ search, setSearch, fetchUsers }: Props) => {
         placeholder="Search users..."
         className={styles.Search}
         onChange={(e) => {setSearch(e.target.value);
-          fetchUsers(1, undefined, e.target.value);
+          fetchUsers(1, search, e.target.value);
         }}
       />
 
