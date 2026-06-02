@@ -7,7 +7,7 @@ type FilterTabsProps = {
   favoritesCount: number;
   activeCount: number;
   inactiveCount: number;
-  fetchusers: (page?: number, filter?: string, search?: string) => void;
+  fetchUsers: (page?: number, filter?: string, search?: string) => void;
   allCount: number;
 };
 const FilterTabs = ({
@@ -16,7 +16,7 @@ const FilterTabs = ({
   favoritesCount,
   activeCount,
   inactiveCount,
-  fetchusers,
+  fetchUsers,
   allCount,
 }: FilterTabsProps) => {
   const navigate = useNavigate();
@@ -48,7 +48,7 @@ const FilterTabs = ({
             onClick={() => {
               setSelectedFilter(id);
               setClickPower(true);
-              fetchusers(1, id, "");
+              fetchUsers(1, id, "");
             }}
             disabled={clickpower && selectedFilter === id}
             className={selectedFilter === id ? styles.active : styles.link}

@@ -20,9 +20,9 @@ const Home = () => {
   const [clickpower, setClickPower] = useState<boolean>(false);
 
   const fetchUsers = async (
-    page: number = 1,
-    filter: string = "All",
-    search: string = "",
+    page: number,
+    filter: string,
+    search: string,
   ) => {
     const token = localStorage.getItem("token");
 
@@ -115,12 +115,12 @@ const Home = () => {
             activeCount={activeCount}
             inactiveCount={inactiveCount}
             allCount={users.length}
-            fetchusers={fetchUsers}
+            fetchUsers={fetchUsers}
             setSelectedPage={setSelectedPage}
           />
 
           <SearchInput
-            fetchusers={fetchUsers}
+            fetchUsers={fetchUsers}
             search={search}
             setSearch={setSearch}
           />
