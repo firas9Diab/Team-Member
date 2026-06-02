@@ -1,21 +1,27 @@
-import { useState, useRef, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import styles from './Navbar.module.scss';
+import { useState, useRef, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import styles from "./Navbar.module.scss";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
-
+  const navigate = useNavigate();
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
         setMenuOpen(false);
       }
     };
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    setMenuOpen(false);
+
+    navigate("/login");
+  };
   return (
     <nav className={styles.navbar}>
       <Link to="/" className={styles.brand}>
@@ -34,7 +40,9 @@ const Navbar = () => {
         {menuOpen && (
           <ul className={styles.dropdown}>
             <li className={styles.dropdownItem}>Profile</li>
-            <li className={styles.dropdownItem}>Logout</li>
+            <li className={styles.dropdownItem} onClick={handleLogout}>
+              Logout
+            </li>
           </ul>
         )}
       </div>
