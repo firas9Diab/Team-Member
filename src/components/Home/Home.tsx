@@ -76,8 +76,8 @@ const Home = () => {
   }
 
   useEffect(() => {
-    fetchUsers( 1,selectedFilter, search);
-  }, [selectedFilter, search]);
+    fetchUsers(1, "All", "");
+  }, []);
 
   useEffect(() => {
     const filtered = users.filter((person) => {
