@@ -41,7 +41,6 @@ const AddUser = ({ fetchUsers }: { fetchUsers: () => void }) => {
         },
       );
 
-      // 🔥 أهم سطر
       await fetchUsers();
 
       navigation("/");
