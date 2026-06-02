@@ -25,13 +25,12 @@ const Home = () => {
     const token = localStorage.getItem("token");
 
     const params: any = {
-      limit: 5,
+      limit: 15,
       page,
     };
 
- if(search.trim() !== "")
-      params.search = search;
-    
+    if (search.trim() !== "") params.search = search;
+
     if (filter === "Favorites") params.favoritesOnly = true;
     else if (filter === "Active") params.status = "ACTIVE";
     else if (filter === "Inactive") params.status = "INACTIVE";
@@ -54,8 +53,6 @@ const Home = () => {
 
     setUsers(mapped);
     setTotalPages(response.data.meta.totalPages);
-   
-    
   };
 
   const [selectedFilter, setSelectedFilter] = useState<string>("All");
@@ -116,7 +113,7 @@ const Home = () => {
             activeCount={activeCount}
             inactiveCount={inactiveCount}
             allCount={users.length}
-             fetchusers={fetchUsers}
+            fetchusers={fetchUsers}
             setSelectedPage={setSelectedPage}
           />
 
@@ -133,9 +130,8 @@ const Home = () => {
                 className={styles.pageButton}
                 onClick={() => {
                   setSelectedPage(page);
-                  fetchUsers(page,selectedFilter,search);
+                  fetchUsers(page, selectedFilter, search);
                 }}
-               
                 className={
                   selectedPage === page
                     ? styles.activePageButton

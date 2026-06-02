@@ -47,7 +47,9 @@ const FilterTabs = ({
           <button
             onClick={() => {
               setSelectedFilter(id);
-              fetchusers(1, id, "");
+              {
+                fetchusers(1, id, "");
+              }
             }}
             className={selectedFilter === id ? styles.active : styles.link}
           >
