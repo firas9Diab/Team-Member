@@ -17,56 +17,56 @@ interface User {
 const Home = () => {
   const [users, setUsers] = useState<User[]>([]);
   const [totalPages, setTotalPages] = useState<number>(1);
-  const[currentPage, setcurrentPage] = useState<number>(1);
+  const [currentPage, setcurrentPage] = useState<number>(1);
 
-const fetchUsers = async (
-  page: number = 1,
-  filter: string = selectedFilter,
-  searchValue: string = search
-) => {
-  const token = localStorage.getItem("token");
+  const fetchUsers = async (
+    page: number = 1,
+    filter: string = selectedFilter,
+    searchValue: string = search,
+  ) => {
+    const token = localStorage.getItem("token");
 
-  const response = await axios.get("http://localhost:3000/team-members", {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-    params: {
-      search: searchValue || undefined,
-      status:
-        filter === "Active"
-          ? "ACTIVE"
-          : filter === "Inactive"
-          ? "INACTIVE"
-          : undefined,
-      favoritesOnly: filter === "Favorites" ? true : undefined,
-      page,
-      limit: 5,
-    },
-  });
+    const response = await axios.get("http://localhost:3000/team-members", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      params: {
+        search: searchValue || undefined,
+        status:
+          filter === "Active"
+            ? "ACTIVE"
+            : filter === "Inactive"
+              ? "INACTIVE"
+              : undefined,
+        favoritesOnly: filter === "Favorites" ? true : undefined,
+        page,
+        limit: 5,
+      },
+    });
 
-  const mapped = response.data.data.map((user: any) => ({
-    id: user.id,
-    name: user.fullName,
-    role: user.jobTitle,
-    status: user.status.toLowerCase(),
-    isFavorite: user.isFavorite ?? false,
-    avatar: user.avatarUrl,
-  }));
+    const mapped = response.data.data.map((user: any) => ({
+      id: user.id,
+      name: user.fullName,
+      role: user.jobTitle,
+      status: user.status.toLowerCase(),
+      isFavorite: user.isFavorite ?? false,
+      avatar: user.avatarUrl,
+    }));
 
-  setUsers(mapped);
-  setTotalPages(response.data.meta.totalPages);
-};
+    setUsers(mapped);
+    setTotalPages(response.data.meta.totalPages);
+  };
 
   const [selectedFilter, setSelectedFilter] = useState<string>("All");
   const [search, setSearch] = useState<string>("");
- 
-useEffect(() => {
-  setcurrentPage(1);
-}, [selectedFilter, search]);
 
-useEffect(() => {
-  fetchUsers(currentPage, selectedFilter, search);
-}, [currentPage, selectedFilter, search]);
+  useEffect(() => {
+    setcurrentPage(1);
+  }, [selectedFilter, search]);
+
+  useEffect(() => {
+    fetchUsers(currentPage, selectedFilter, search);
+  }, [currentPage, selectedFilter, search]);
   return (
     <>
       <Header count={users.length} />
@@ -76,7 +76,6 @@ useEffect(() => {
           <FilterTabs
             selectedFilter={selectedFilter}
             setSelectedFilter={setSelectedFilter}
-          
             allCount={users.length}
             search={search}
             fetchUsers={fetchUsers}
@@ -97,26 +96,24 @@ useEffect(() => {
         </div>
         <div className={styles.container4}>
           <ul className={styles.list}>
-       {new Array(totalPages).fill(0).map((_, i) => {
- 
-
-  return (
-   <button
-  key={i + 1}
-  onClick={() => {
-    setcurrentPage(i + 1);
-  }}
-  disabled={currentPage === i + 1}
-  className={
-    currentPage === i + 1
-      ? styles.activePageButton
-      : styles.pageButton
-  }
->
-  {i + 1}
-</button>
-  );
-})}
+            {new Array(totalPages).fill(0).map((_, i) => {
+              return (
+                <button
+                  key={i + 1}
+                  onClick={() => {
+                    setcurrentPage(i + 1);
+                  }}
+                  disabled={currentPage === i + 1}
+                  className={
+                    currentPage === i + 1
+                      ? styles.activePageButton
+                      : styles.pageButton
+                  }
+                >
+                  {i + 1}
+                </button>
+              );
+            })}
           </ul>
         </div>
       </div>

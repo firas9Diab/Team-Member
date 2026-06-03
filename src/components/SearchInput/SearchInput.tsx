@@ -6,7 +6,12 @@ type Props = {
   setSearch: (value: string) => void;
   fetchUsers: (page?: number, filter?: string, search?: string) => void;
 };
-const SearchInput = ({ selectedPage, search, setSearch, fetchUsers }: Props) => {
+const SearchInput = ({
+  selectedPage,
+  search,
+  setSearch,
+  fetchUsers,
+}: Props) => {
   return (
     <div className={styles.SearchInput}>
       <input
@@ -14,7 +19,8 @@ const SearchInput = ({ selectedPage, search, setSearch, fetchUsers }: Props) => 
         value={search}
         placeholder="Search users..."
         className={styles.Search}
-        onChange={(e) => {setSearch(e.target.value);
+        onChange={(e) => {
+          setSearch(e.target.value);
           fetchUsers(selectedPage, search, e.target.value);
         }}
       />
