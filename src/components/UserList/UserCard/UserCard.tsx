@@ -15,13 +15,15 @@ interface User {
 
 type UserCardProps = {
   person: User;
+  fetchUsers: () => void | Promise<void>;
 };
 
-const UserCard = ({ person }: UserCardProps) => {
-  const [isFavorite, setIsFavorite] = useState<boolean>(person.isFavorite);
+const UserCard = ({ person, fetchUsers }: UserCardProps) => {
   const [loading, setLoading] = useState<boolean>(false);
-
-  const toggleFavorite = async () => {
+  const [clickfavorite, setClickFavorite] = useState<boolean>(
+    person.isFavorite,
+  );
+  const handleToggleFavorite = async (id: number, isFavorite: boolean) => {
     try {
       setLoading(true);
 
@@ -29,7 +31,7 @@ const UserCard = ({ person }: UserCardProps) => {
 
       if (!isFavorite) {
         await axios.post(
-          `http://localhost:3000/users/me/favorites/${person.id}`,
+          `http://localhost:3000/users/me/favorites/${id}`,
           {},
           {
             headers: {
@@ -38,19 +40,17 @@ const UserCard = ({ person }: UserCardProps) => {
           },
         );
 
-        setIsFavorite(true);
+        setClickFavorite(true);
       } else {
-        await axios.delete(
-          `http://localhost:3000/users/me/favorites/${person.id}`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
+        await axios.delete(`http://localhost:3000/users/me/favorites/${id}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
           },
-        );
-
-        setIsFavorite(false);
+        });
+        setClickFavorite(false);
       }
+
+      await fetchUsers();
     } catch (error) {
       console.error("Favorite error:", error);
     } finally {
@@ -63,14 +63,15 @@ const UserCard = ({ person }: UserCardProps) => {
       <div className={styles.star}>
         <button
           className={styles.starbutton}
-          onClick={toggleFavorite}
+          onClick={() => handleToggleFavorite(person.id, person.isFavorite)}
           disabled={loading}
         >
-          <img src={isFavorite ? fav : favLight} />
+          <img src={clickfavorite ? fav : favLight} alt="favorite" />
         </button>
       </div>
 
-      <img src={person.avatar} className={styles.image} alt="" />
+      <img src={person.avatar} className={styles.image} alt={person.name} />
+
       <h3>{person.name}</h3>
       <p>{person.role}</p>
 
