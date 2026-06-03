@@ -11,7 +11,6 @@ type FilterTabsProps = {
 const FilterTabs = ({
   selectedFilter,
   setSelectedFilter,
- 
 
   allCount,
 }: FilterTabsProps) => {

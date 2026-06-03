@@ -14,7 +14,7 @@ type UserListProps = {
   fetchUsers: () => void | Promise<void>;
 };
 
-const UserList = ({ users , fetchUsers }: UserListProps ) => {
+const UserList = ({ users, fetchUsers }: UserListProps) => {
   return (
     <div className={styles.cardBoard}>
       {users.map((person: User) => (

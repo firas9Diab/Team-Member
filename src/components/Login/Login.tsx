@@ -26,21 +26,16 @@ const Login = () => {
   };
   return (
     <div className={styles.container}>
-      
       <div className={styles.header}>
-        
         <img src={peaple} alt="" className={styles.peapleicon} />
         <p>TeamFlow</p>
       </div>
       <div>
-        
         <h1>Welcome back</h1> <p>Sign in to your Account</p>
       </div>
       <div className={styles.email}>
-        
         <label>Email Address</label>
         <div className={styles.emailfield}>
-          
           <img src={email} alt="" />
           <input
             type="text"
@@ -52,12 +47,9 @@ const Login = () => {
         </div>
       </div>
       <div className={styles.password}>
-        
         <label>Password</label>
         <div className={styles.passwordfield}>
-          
           <div className={styles.passwordfieldtext}>
-            
             <img src={password} alt="" className={styles.icons} />
             <input
               type={visiblePassword}
@@ -75,18 +67,15 @@ const Login = () => {
             }}
             className={styles.eyes}
           >
-            
             <img src={icon} alt="" />
           </button>
         </div>
       </div>
       {error && <p className={styles.errormessage}>{error}</p>}
       <button onClick={handleLogin} className={styles.signinbutton}>
-        
         sign in
       </button>
       <div className={styles.signup}>
-        
         <p>Don't have an account?</p>
         <button
           onClick={() => {
@@ -94,7 +83,6 @@ const Login = () => {
           }}
           className={styles.go_to_signup}
         >
-          
           Sign up
         </button>
       </div>

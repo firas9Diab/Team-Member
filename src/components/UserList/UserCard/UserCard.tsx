@@ -37,7 +37,6 @@ const UserCard = ({ person, fetchUsers }: UserCardProps) => {
             },
           },
         );
-
       } else {
         await axios.delete(`http://localhost:3000/users/me/favorites/${id}`, {
           headers: {
