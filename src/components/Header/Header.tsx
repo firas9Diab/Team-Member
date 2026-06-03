@@ -1,10 +1,9 @@
 import styles from "./Header.module.scss";
 import user from "../../../Icons/UsersIcon.svg";
-type HeaderProps =
-{
-  count:number;
-}
-const Header = ({ count }:HeaderProps ) => {
+type HeaderProps = {
+  count: number;
+};
+const Header = ({ count }: HeaderProps) => {
   return (
     <div className={styles.Header}>
       <div className={styles.Hicon}>

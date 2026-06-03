@@ -24,7 +24,7 @@ const SignUp = () => {
       seterrormessage("Passwords do not match");
       return;
     }
-   
+
     try {
       const response = await axios.post("http://localhost:3000/auth/signup", {
         fullName,
@@ -157,7 +157,7 @@ const SignUp = () => {
         Create Account
       </button>
       <div className={styles.signin}>
-        <p>Don't have an account?</p>{" "}
+        <p>Don't have an account?</p>
         <button
           onClick={() => {
             navigation("/Login");

@@ -11,14 +11,15 @@ interface User {
 
 type UserListProps = {
   users: User[];
+  fetchUsers: () => void | Promise<void>;
 };
 
-const UserList = ({ users }: UserListProps) => {
+const UserList = ({ users, fetchUsers }: UserListProps) => {
   return (
     <div className={styles.cardBoard}>
-      {users.map((person:User) => (
+      {users.map((person: User) => (
         <div className={styles.card} key={person.id}>
-          <UserCard person={person} />
+          <UserCard person={person} fetchUsers={fetchUsers} />
         </div>
       ))}
     </div>
