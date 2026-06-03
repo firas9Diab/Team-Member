@@ -16,38 +16,12 @@ export interface UserData {
 const Home = () => {
   const [usersMockData, setUsersMockData] = useState<UserData[]>([]);
   const [activeTab, setActiveTab] = useState("all");
-  //const [paginatedUsers, setPaginatedUsers] = useState<UserData[]>([]);
-  //const [filter, setFilter] = useState<UserData[]>([]);
   const [inputValue, setInputValue] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   function onsearch(input: string) {
     setInputValue(input);
   }
-
-  /* useEffect(() => {
-    const newArr = usersMockData.filter((user) => {
-      const matchesSearch = user.name
-        .toLowerCase()
-        .includes(inputValue.toLowerCase());
-
-      if (!matchesSearch) return false;
-
-      if (activeTab === "all") return true;
-
-      if (activeTab === "favorites") return user.isFavorite;
-
-      if (activeTab === "active") return user.status === "active";
-
-      if (activeTab === "inactive") return user.status === "inactive";
-
-      return false;
-    });
-
-    setFilter(newArr);
-    const calculatedPages = Math.ceil(newArr.length / 8);
-    setTotalPages(calculatedPages || 1);
-  }, [inputValue, activeTab, usersMockData]);*/
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -60,12 +34,6 @@ const Home = () => {
           isFavorite: favorite.includes(user.id),
         }));
 
-        /* if (activeTab === "favorites") {
-          setUsersMockData(updatedUsers.filter((user: any) => user.isFavorite));
-          setTotalPages(1);
-        } else {
-          
-        }*/
         setUsersMockData(updatedUsers);
       }
     };
@@ -75,15 +43,6 @@ const Home = () => {
   useEffect(() => {
     setCurrentPage(1);
   }, [inputValue, activeTab]);
-  /* useEffect(() => {
-    const startIndex = (currentPage - 1) * 8;
-    const endIndex = startIndex + 8;
-
-    // Slice exactly 8 users out of the filtered pool
-    const current8Users = filter.slice(startIndex, endIndex);
-
-    setPaginatedUsers(current8Users);
-  }, [currentPage, filter]);*/
 
   const getUsers = async (page: number) => {
     try {
@@ -202,12 +161,16 @@ const Home = () => {
         });
       }
 
-      const updatedArray = usersMockData.map((user) =>
-        user.id === id ? { ...user, isFavorite: !user.isFavorite } : user,
-      );
+      const users = await getUsers(currentPage);
+      const favorite = await getFavorite();
 
-      setUsersMockData(updatedArray);
-      //setFilter(updatedArray);
+      if (users) {
+        const updatedUsers = users.map((user: any) => ({
+          ...user,
+          isFavorite: favorite.includes(user.id),
+        }));
+        setUsersMockData(updatedUsers);
+      }
     } catch (error) {
       console.error("Failed to update favorite status:", error);
     }
