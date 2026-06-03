@@ -77,18 +77,10 @@ const Home = () => {
             selectedFilter={selectedFilter}
             setSelectedFilter={setSelectedFilter}
             allCount={users.length}
-            search={search}
-            fetchUsers={fetchUsers}
-            selectedpage={currentPage}
             setSelectedPage={setcurrentPage}
           />
 
-          <SearchInput
-            fetchUsers={fetchUsers}
-            search={search}
-            selectedpage={currentPage}
-            setSearch={setSearch}
-          />
+          <SearchInput search={search} setSearch={setSearch} />
         </div>
 
         <div className={styles.container3}>
