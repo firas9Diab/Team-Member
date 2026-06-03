@@ -83,7 +83,7 @@ const Home = () => {
         </div>
 
         <div className={styles.container3}>
-          <UserList users={users} />
+          <UserList users={users} fetchUsers={fetchUsers} />
         </div>
         <div className={styles.container4}>
           <ul className={styles.list}>
