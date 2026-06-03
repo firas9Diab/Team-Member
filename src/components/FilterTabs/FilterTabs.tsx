@@ -4,7 +4,6 @@ import styles from "./FilterTabs.module.scss";
 type FilterTabsProps = {
   selectedFilter: string;
   setSelectedFilter: (value: string) => void;
-  setSelectedPage: (value: number) => void;
 
   allCount: number;
 };
@@ -12,7 +11,7 @@ type FilterTabsProps = {
 const FilterTabs = ({
   selectedFilter,
   setSelectedFilter,
-  setSelectedPage,
+ 
 
   allCount,
 }: FilterTabsProps) => {
@@ -39,7 +38,6 @@ const FilterTabs = ({
           <button
             onClick={() => {
               setSelectedFilter(id);
-              setSelectedPage(1);
             }}
             disabled={selectedFilter === id}
             className={selectedFilter === id ? styles.active : styles.link}

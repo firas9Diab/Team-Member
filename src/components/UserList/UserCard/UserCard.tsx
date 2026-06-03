@@ -20,9 +20,7 @@ type UserCardProps = {
 
 const UserCard = ({ person, fetchUsers }: UserCardProps) => {
   const [loading, setLoading] = useState<boolean>(false);
-  const [clickfavorite, setClickFavorite] = useState<boolean>(
-    person.isFavorite,
-  );
+
   const handleToggleFavorite = async (id: number, isFavorite: boolean) => {
     try {
       setLoading(true);
@@ -40,14 +38,12 @@ const UserCard = ({ person, fetchUsers }: UserCardProps) => {
           },
         );
 
-        setClickFavorite(true);
       } else {
         await axios.delete(`http://localhost:3000/users/me/favorites/${id}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         });
-        setClickFavorite(false);
       }
 
       await fetchUsers();
@@ -66,7 +62,7 @@ const UserCard = ({ person, fetchUsers }: UserCardProps) => {
           onClick={() => handleToggleFavorite(person.id, person.isFavorite)}
           disabled={loading}
         >
-          <img src={clickfavorite ? fav : favLight} alt="favorite" />
+          <img src={person.isFavorite ? fav : favLight} alt="favorite" />
         </button>
       </div>
 

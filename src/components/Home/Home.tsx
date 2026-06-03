@@ -77,7 +77,6 @@ const Home = () => {
             selectedFilter={selectedFilter}
             setSelectedFilter={setSelectedFilter}
             allCount={users.length}
-            setSelectedPage={setcurrentPage}
           />
 
           <SearchInput search={search} setSearch={setSearch} />
