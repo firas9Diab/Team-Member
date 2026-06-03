@@ -60,6 +60,12 @@ const Home = () => {
           isFavorite: favorite.includes(user.id),
         }));
 
+        /* if (activeTab === "favorites") {
+          setUsersMockData(updatedUsers.filter((user: any) => user.isFavorite));
+          setTotalPages(1);
+        } else {
+          
+        }*/
         setUsersMockData(updatedUsers);
       }
     };
@@ -86,7 +92,7 @@ const Home = () => {
       if (activeTab === "active" || activeTab === "inactive") {
         url += `&status=${activeTab.toUpperCase()}`;
       } else if (activeTab === "favorites") {
-        url += `&isFavorite=true`;
+        url += `&favoritesOnly=true`;
       }
       const response = await axios.get(url, {
         headers: {
@@ -144,7 +150,7 @@ const Home = () => {
       } else {
         setCurrentPage(totalPages);
       }
-
+      //return;
       const users = await getUsers(currentPage);
       const favorite = await getFavorite();
 
