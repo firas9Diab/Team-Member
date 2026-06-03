@@ -176,6 +176,30 @@ const Home = () => {
     }
   };
 
+  const deleteicon = async (id: string) => {
+    //const deleteid = usersMockData.find((user) => user.id === id);
+    const token = localStorage.getItem("token");
+    try {
+      await axios.delete(`http://localhost:3000/team-members/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      const users = await getUsers(currentPage);
+      const favorite = await getFavorite();
+
+      if (users) {
+        const updatedUsers = users.map((user: any) => ({
+          ...user,
+          isFavorite: favorite.includes(user.id),
+        }));
+        setUsersMockData(updatedUsers);
+      }
+    } catch (error) {
+      console.error("Failed to update favorite status:", error);
+    }
+  };
+
   return (
     <div>
       <div className={styles.head}>
@@ -193,6 +217,7 @@ const Home = () => {
           currentPage={currentPage}
           totalPages={totalPages}
           setCurrentPage={setCurrentPage}
+          del={deleteicon}
         />
       </div>
     </div>

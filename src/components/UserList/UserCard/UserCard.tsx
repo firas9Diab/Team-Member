@@ -1,21 +1,41 @@
 import React from "react";
 import styles from "./UserCard.module.scss";
 import type { UserData } from "../../Home/Home";
-//import star from "../assets/star.svg";
+
 import starLight from "../../../assets/starLight.svg";
 import star from "../../../assets/star.svg";
-const UserCard = ({ user, fav }: { user: UserData; fav: Function }) => {
+import deleteIcon from "../../../assets/delete.svg";
+const UserCard = ({
+  user,
+  fav,
+  del,
+}: {
+  user: UserData;
+  fav: Function;
+  del: Function;
+}) => {
   return (
     <>
       <div className={styles.cardItems}>
-        <button
-          className={styles.icon}
-          onClick={() => {
-            fav(user.id);
-          }}
-        >
-          <img src={user.isFavorite ? starLight : star} />
-        </button>
+        <div className={styles.icons}>
+          <button
+            className={styles.delete}
+            onClick={() => {
+              del(user.id);
+            }}
+          >
+            <img src={deleteIcon} />
+          </button>
+
+          <button
+            className={styles.icon}
+            onClick={() => {
+              fav(user.id);
+            }}
+          >
+            <img src={user.isFavorite ? starLight : star} />
+          </button>
+        </div>
         <img src={user.avatar} />
         <h1>{user.name}</h1>
         <p>{user.role}</p>
