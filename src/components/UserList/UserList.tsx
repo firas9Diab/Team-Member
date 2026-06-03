@@ -10,6 +10,7 @@ const UserList = ({
   add,
   currentPage,
   totalPages,
+  del,
   setCurrentPage,
 }: {
   users: UserData[];
@@ -18,6 +19,7 @@ const UserList = ({
   currentPage: number;
   totalPages: number;
   setCurrentPage: Dispatch<SetStateAction<number>>;
+  del: Function;
 }) => {
   const [click, setClick] = useState(false);
   const [fullName, setFullName] = useState("");
@@ -83,7 +85,7 @@ const UserList = ({
             return (
               <div>
                 <div key={user.id}>
-                  <UserCard user={user} fav={fav} />
+                  <UserCard user={user} fav={fav} del={del} />
                 </div>
               </div>
             );

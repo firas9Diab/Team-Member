@@ -17,7 +17,7 @@
   box-shadow: 3px 3px 3px rgb(204, 200, 200);
   display: flex;
   flex-direction: column;
-  // flex-wrap: wrap;
+  position: relative;
   align-items: center;
   width: 430px;
   height: 350px;
@@ -91,4 +91,22 @@
   .cardItems {
     flex-wrap: wrap;
   }
+}
+
+.icons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0 10px;
+  box-sizing: border-box;
+  margin-bottom: 12px;
+}
+.delete {
+  border: none;
+  background-color: white;
+}
+.delete:hover {
+  opacity: 0.5;
 }
