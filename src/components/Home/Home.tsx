@@ -83,7 +83,8 @@ const Home = () => {
         </div>
 
         <div className={styles.container3}>
-          <UserList users={users} fetchUsers={fetchUsers} />
+          <UserList users={users}   fetchUsers={() => fetchUsers(currentPage, selectedFilter, search)}
+ />
         </div>
         <div className={styles.container4}>
           <ul className={styles.list}>
