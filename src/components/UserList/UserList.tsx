@@ -1,7 +1,6 @@
 import React, { useState, type Dispatch, type SetStateAction } from "react";
 import type { UserData } from "../Home/Home";
 import styles from "./UserList.module.scss";
-
 import UserCard from "./UserCard/UserCard";
 
 const UserList = ({
@@ -11,6 +10,7 @@ const UserList = ({
   currentPage,
   totalPages,
   del,
+
   setCurrentPage,
 }: {
   users: UserData[];

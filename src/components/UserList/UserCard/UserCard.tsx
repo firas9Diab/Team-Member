@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./UserCard.module.scss";
 import type { UserData } from "../../Home/Home";
-
+import Popup from "../Popup";
 import starLight from "../../../assets/starLight.svg";
 import star from "../../../assets/star.svg";
 import deleteIcon from "../../../assets/delete.svg";
+import { useNavigate } from "react-router-dom";
 const UserCard = ({
   user,
   fav,
@@ -14,19 +15,35 @@ const UserCard = ({
   fav: Function;
   del: Function;
 }) => {
+  const [showModal, setShowModal] = useState(false);
+  const navigate = useNavigate();
+
+  const handleCardClick = () => {
+    navigate(`/UpdateUser/${user.id}`);
+  };
   return (
     <>
-      <div className={styles.cardItems}>
-        <div className={styles.icons}>
+      <div className={styles.cardItems} onClick={handleCardClick}>
+        <div className={styles.icons} onClick={(e) => e.stopPropagation()}>
           <button
             className={styles.delete}
             onClick={() => {
-              del(user.id);
+              setShowModal(true);
             }}
           >
             <img src={deleteIcon} />
           </button>
-
+          {showModal ? (
+            <Popup
+              handleDeleteTrue={() => {
+                del(user.id);
+                setShowModal(false);
+              }}
+              handleCancel={() => setShowModal(false)}
+            />
+          ) : (
+            ""
+          )}
           <button
             className={styles.icon}
             onClick={() => {

@@ -4,6 +4,7 @@ import Header from "../Header/Header";
 import Tabs from "../Tabs/Tabs";
 import UserList from "../UserList/UserList";
 import axios from "axios";
+
 export interface UserData {
   id: string;
   name: string;
@@ -19,6 +20,7 @@ const Home = () => {
   const [inputValue, setInputValue] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+
   function onsearch(input: string) {
     setInputValue(input);
   }
@@ -177,8 +179,8 @@ const Home = () => {
   };
 
   const deleteicon = async (id: string) => {
-    //const deleteid = usersMockData.find((user) => user.id === id);
     const token = localStorage.getItem("token");
+
     try {
       await axios.delete(`http://localhost:3000/team-members/${id}`, {
         headers: {
@@ -199,6 +201,45 @@ const Home = () => {
       console.error("Failed to update favorite status:", error);
     }
   };
+  /*
+  const updateUser = async (
+    id: string,
+    fullName: string,
+    jobTitle: string,
+    status: string,
+    avatarUrl: string,
+  ) => {
+    try {
+      const token = localStorage.getItem("token");
+      await axios.put(
+        `http://localhost:3000/team-members/${id}`,
+        {
+          fullName,
+          jobTitle,
+          status: status.trim().toUpperCase(),
+          avatarUrl,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
+      );
+
+      const users = await getUsers(currentPage);
+      const favorite = await getFavorite();
+
+      if (users) {
+        const updatedUsers = users.map((user: any) => ({
+          ...user,
+          isFavorite: favorite.includes(user.id),
+        }));
+        setUsersMockData(updatedUsers);
+      }
+    } catch (error) {
+      console.error("Failed to update user profile:", error);
+    }
+  };*/
 
   return (
     <div>
@@ -218,6 +259,7 @@ const Home = () => {
           totalPages={totalPages}
           setCurrentPage={setCurrentPage}
           del={deleteicon}
+          //update={updateUser}
         />
       </div>
     </div>
