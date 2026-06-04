@@ -8,7 +8,7 @@ const UpdateUser = () => {
   const [jobTitle, setJobTitle] = useState("");
   const [status, setStatus] = useState("");
   const [avatarUrl, setAvatarUrl] = useState("");
-  //const [isSubmitting, setIsSubmitting] = useState(false);
+
   const navigate = useNavigate();
   const { id } = useParams();
 
@@ -27,12 +27,7 @@ const UpdateUser = () => {
           },
         },
       );
-      /*  return response.data.map(
-        (user: any) => setFullName(user.name),
-        setJobTitle(user.jobTitle),
-        setStatus(user.status),
-        setAvatarUrl(user.avatarUrl),
-      );*/
+
       const data = response.data;
       setFullName(data.fullName);
       setJobTitle(data.jobTitle);
@@ -51,7 +46,6 @@ const UpdateUser = () => {
     }
 
     try {
-      //setIsSubmitting(true);
       const token = localStorage.getItem("token");
       await axios.patch(
         `http://localhost:3000/team-members/${id}`,
