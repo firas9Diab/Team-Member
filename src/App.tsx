@@ -4,6 +4,7 @@ import Home from "./components/Home/Home";
 import Sign from "./components/Sign/Sign";
 import Login from "./components/Login/Login";
 import UpdateUser from "./components/UserList/UpdateUser";
+import AddUser from "./components/UserList/AddUser";
 // import Item from "./components/Item/Item";
 
 const App = () => {
@@ -16,6 +17,7 @@ const App = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/Sign" element={<Sign />} />
         <Route path="/UpdateUser/:id" element={<UpdateUser />} />
+        <Route path="/AddUser" element={<AddUser />} />
       </Routes>
     </div>
   );

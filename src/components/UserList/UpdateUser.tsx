@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from "./UpdateUser.module.scss";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useParams } from "react-router";
+import edit from "../../Assets/edit.svg";
+
 const UpdateUser = () => {
   const [fullName, setFullName] = useState("");
   const [jobTitle, setJobTitle] = useState("");
@@ -10,11 +12,15 @@ const UpdateUser = () => {
   const [avatarUrl, setAvatarUrl] = useState("");
 
   const navigate = useNavigate();
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
   const { id } = useParams();
 
   useEffect(() => {
-    getId();
-  }, []);
+    if (id) {
+      getId();
+    }
+  }, [id]);
 
   const getId = async () => {
     const token = localStorage.getItem("token");
@@ -68,12 +74,58 @@ const UpdateUser = () => {
     }
   };
 
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const selectedFile = e.target.files?.[0];
+    if (!selectedFile) return;
+
+    try {
+      const token = localStorage.getItem("token");
+      const formData = new FormData();
+
+      formData.append("file", selectedFile);
+
+      const response = await axios.post(
+        "http://localhost:3000/upload",
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "multipart/form-data",
+          },
+        },
+      );
+
+      console.log("Uploaded URL:", response.data.url);
+      setAvatarUrl(response.data.url);
+    } catch (error: any) {
+      console.log("UPLOAD ERROR:", error);
+    }
+  };
+
   return (
     <div>
       <div className={styles.fullForm}>
         <div className={styles.allForm}>
           <h2>Update User Profile</h2>
           <form className={styles.form} onSubmit={(e) => e.preventDefault()}>
+            <img
+              src={avatarUrl || "/default-avatar.png"}
+              alt="Avatar"
+              className={styles.avatar}
+            />
+            <button
+              type="button"
+              className={styles.editAvatar}
+              onClick={() => fileInputRef.current?.click()}
+            >
+              <img src={edit} alt="edit" />
+            </button>
+            <input
+              type="file"
+              onChange={handleFileChange}
+              ref={fileInputRef}
+              accept="image/*"
+            />
             <label>Full Name</label>
             <input
               type="text"
@@ -99,11 +151,6 @@ const UpdateUser = () => {
             </select>
 
             <label>Avatar URL</label>
-            <input
-              type="text"
-              value={avatarUrl}
-              onChange={(e) => setAvatarUrl(e.target.value)}
-            />
           </form>
 
           <div>

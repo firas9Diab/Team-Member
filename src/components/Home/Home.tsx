@@ -78,54 +78,54 @@ const Home = () => {
     }
   };
 
-  const addUser = async (
-    fullName: string,
-    jobTitle: string,
-    status: string,
-    avatarUrl: string,
-  ) => {
-    try {
-      const token = localStorage.getItem("token");
-      const response = await axios.post(
-        "http://localhost:3000/team-members",
-        { fullName, jobTitle, status: status.trim().toUpperCase(), avatarUrl },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        },
-      );
-      console.log("RESPONSE:", response.data);
+  // const addUser = async (
+  //   fullName: string,
+  //   jobTitle: string,
+  //   status: string,
+  //   avatarUrl: string,
+  // ) => {
+  //   try {
+  //     const token = localStorage.getItem("token");
+  //     const response = await axios.post(
+  //       "http://localhost:3000/team-members",
+  //       { fullName, jobTitle, status: status.trim().toUpperCase(), avatarUrl },
+  //       {
+  //         headers: {
+  //           Authorization: `Bearer ${token}`,
+  //         },
+  //       },
+  //     );
+  //     console.log("RESPONSE:", response.data);
 
-      const user = response.data?.data ?? response.data;
-      const newUser = {
-        id: String(user.id),
-        name: user.fullName,
-        role: user.jobTitle,
-        status: user.status.toLowerCase(),
-        isFavorite: user.isFavorite ?? false,
-        avatar: user.avatarUrl,
-      };
-      if (currentPage === totalPages) {
-        setUsersMockData((prev) => [...prev, newUser]);
-      } else {
-        setCurrentPage(totalPages);
-      }
-      //return;
-      const users = await getUsers(currentPage);
-      const favorite = await getFavorite();
+  //     const user = response.data?.data ?? response.data;
+  //     const newUser = {
+  //       id: String(user.id),
+  //       name: user.fullName,
+  //       role: user.jobTitle,
+  //       status: user.status.toLowerCase(),
+  //       isFavorite: user.isFavorite ?? false,
+  //       avatar: user.avatarUrl,
+  //     };
+  //     if (currentPage === totalPages) {
+  //       setUsersMockData((prev) => [...prev, newUser]);
+  //     } else {
+  //       setCurrentPage(totalPages);
+  //     }
+  //     //return;
+  //     const users = await getUsers(currentPage);
+  //     const favorite = await getFavorite();
 
-      if (users) {
-        const updatedUsers = users.map((user: any) => ({
-          ...user,
-          isFavorite: favorite.includes(user.id),
-        }));
-        setUsersMockData(updatedUsers);
-      }
-    } catch (error: any) {
-      console.log("FULL ERROR:", error);
-    }
-  };
+  //     if (users) {
+  //       const updatedUsers = users.map((user: any) => ({
+  //         ...user,
+  //         isFavorite: favorite.includes(user.id),
+  //       }));
+  //       setUsersMockData(updatedUsers);
+  //     }
+  //   } catch (error: any) {
+  //     console.log("FULL ERROR:", error);
+  //   }
+  // };
 
   const getFavorite = async () => {
     const token = localStorage.getItem("token");
@@ -254,7 +254,7 @@ const Home = () => {
         <UserList
           users={usersMockData}
           fav={toggleFav}
-          add={addUser}
+          //add={addUser}
           currentPage={currentPage}
           totalPages={totalPages}
           setCurrentPage={setCurrentPage}
