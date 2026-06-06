@@ -4,22 +4,18 @@
   padding: 18px 50px;
   background-color: rgb(132, 0, 255);
   color: white;
-  gap: 10px;
   margin: 10px 30px;
   cursor: pointer;
 }
 
 .form {
-  gap: 10px;
   margin: 10px 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 15px;
   text-align: center;
-  gap: 10px;
-  margin: 10px 30px;
-  display: flex;
+ 
   input {
     border-radius: 10px;
     border: 1px solid rgba(182, 178, 178, 0.3);
@@ -65,8 +61,34 @@ select {
   gap: 10px;
   text-align: center;
   width: 300px;
-  height: 410px;
+  min-height: 500px;
 }
 .select {
-  width: 185px;
+  width: 178px;
+}
+.avatar{
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.avatarContainer {
+  position: relative;
+  width: 120px;
+  height: 120px;
+}
+.editAvatar {
+  position: absolute;
+  bottom: -10px;
+  right: -20px;
+  width: 32px;
+  height: 32px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.buttons {
+  display: flex;
+  gap: 10px;
 }

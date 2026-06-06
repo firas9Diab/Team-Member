@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "./UserCard.module.scss";
 import type { UserData } from "../../Home/Home";
-import Popup from "../Popup";
+import Popup from "../../Popup/Popup";
 import starLight from "../../../assets/starLight.svg";
 import star from "../../../assets/star.svg";
 import deleteIcon from "../../../assets/delete.svg";
@@ -53,7 +53,7 @@ const UserCard = ({
             <img src={user.isFavorite ? starLight : star} />
           </button>
         </div>
-        <img src={user.avatar} />
+        <img src={user.avatar}  className={styles.avatar} />
         <h1>{user.name}</h1>
         <p>{user.role}</p>
         <div

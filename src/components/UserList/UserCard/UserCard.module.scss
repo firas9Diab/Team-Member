@@ -3,11 +3,9 @@
 }
 .card {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  align-items: center;
+   grid-template-columns: repeat(4, 1fr);
   justify-items: center;
   gap: 10px;
-  margin: 28px;
   padding: 15px;
 }
 
@@ -19,9 +17,11 @@
   flex-direction: column;
   position: relative;
   align-items: center;
-  width: 430px;
-  height: 350px;
+  width: 100%;
+  max-width: 430px;
+  min-height: 350px;
   gap: 10px;
+  padding: 15px;
 
   img {
     border-radius: 100px;
@@ -36,7 +36,6 @@
     display: flex;
     align-items: center;
     gap: 8px;
-
     padding: 8px 30px;
     border-radius: 20px;
   }
@@ -75,12 +74,15 @@
   background-color: white;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1400px) {
   .card {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
   }
-  .cardItems {
-    flex-wrap: wrap;
+}
+
+@media (max-width: 1100px) {
+  .card {
+     grid-template-columns: repeat(2, 1fr);
   }
 }
 
@@ -89,7 +91,7 @@
     grid-template-columns: 1fr;
   }
   .cardItems {
-    flex-wrap: wrap;
+    max-width: 100%;
   }
 }
 
@@ -109,4 +111,11 @@
 }
 .delete:hover {
   opacity: 0.5;
+}
+
+.avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
 }

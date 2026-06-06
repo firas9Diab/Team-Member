@@ -4,12 +4,15 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useParams } from "react-router";
 import edit from "../../Assets/edit.svg";
+import userp from "../../Assets/userp.svg";
+
 
 const UpdateUser = () => {
   const [fullName, setFullName] = useState("");
   const [jobTitle, setJobTitle] = useState("");
   const [status, setStatus] = useState("");
   const [avatarUrl, setAvatarUrl] = useState("");
+  const [previewUrl, setPreviewUrl] = useState("");
 
   const navigate = useNavigate();
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -77,7 +80,7 @@ const UpdateUser = () => {
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile = e.target.files?.[0];
     if (!selectedFile) return;
-
+    setPreviewUrl(URL.createObjectURL(selectedFile));
     try {
       const token = localStorage.getItem("token");
       const formData = new FormData();
@@ -108,8 +111,9 @@ const UpdateUser = () => {
         <div className={styles.allForm}>
           <h2>Update User Profile</h2>
           <form className={styles.form} onSubmit={(e) => e.preventDefault()}>
+            <div className={styles.avatarContainer}>
             <img
-              src={avatarUrl || "/default-avatar.png"}
+              src={previewUrl || avatarUrl || userp}
               alt="Avatar"
               className={styles.avatar}
             />
@@ -120,11 +124,14 @@ const UpdateUser = () => {
             >
               <img src={edit} alt="edit" />
             </button>
+            </div>
             <input
               type="file"
+              hidden
               onChange={handleFileChange}
               ref={fileInputRef}
               accept="image/*"
+              className={styles.hiddenInput}
             />
             <label>Full Name</label>
             <input
@@ -150,7 +157,6 @@ const UpdateUser = () => {
               <option value="inactive">Inactive</option>
             </select>
 
-            <label>Avatar URL</label>
           </form>
 
           <div>

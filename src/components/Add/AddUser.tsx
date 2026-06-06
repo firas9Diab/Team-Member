@@ -3,13 +3,14 @@ import styles from "./AddUser.module.scss";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import edit from "../../Assets/edit.svg";
+import userp from "../../Assets/userp.svg";
+
 const AddUser = () => {
   const [fullName, setFullName] = useState("");
   const [jobTitle, setJobTitle] = useState("");
   const [status, setStatus] = useState("");
   const [avatarUrl, setAvatarUrl] = useState("");
-  //const [file, setFile] = useState<File | null>(null);
-
+  const [previewUrl, setPreviewUrl] = useState("");
   const navigate = useNavigate();
   const fileInputRef = useRef<HTMLInputElement>(null);
   const addUser = async (
@@ -38,6 +39,7 @@ const AddUser = () => {
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile = e.target.files?.[0];
     if (!selectedFile) return;
+    setPreviewUrl(URL.createObjectURL(selectedFile));
     try {
       const token = localStorage.getItem("token");
       const formData = new FormData();
@@ -66,8 +68,9 @@ const AddUser = () => {
       <div className={styles.allForm}>
         <h1>Add User</h1>
         <form className={styles.form}>
+     <div className={styles.avatarContainer}>
           <img
-            src={avatarUrl || "/default-avatar.png"}
+            src={previewUrl || avatarUrl || userp}
             alt="Avatar"
             className={styles.avatar}
           />
@@ -78,11 +81,13 @@ const AddUser = () => {
           >
             <img src={edit} alt="edit" />
           </button>
+          </div>
           <input
             type="file"
             onChange={handleFileChange}
             ref={fileInputRef}
             accept="image/*"
+            hidden
           />
           <label>fullName</label>
           <input
@@ -91,19 +96,20 @@ const AddUser = () => {
             onChange={(e) => setFullName(e.target.value)}
           />
           <label>jobTitle</label>
-          <input type="text" onChange={(e) => setJobTitle(e.target.value)} />
+          <input type="text" value={jobTitle} onChange={(e) => setJobTitle(e.target.value)} />
           <label>status</label>
           <select
             className={styles.select}
+            value={status}
             onChange={(e) => setStatus(e.target.value)}
           >
-            <option>select</option>
-            <option>active</option>
-            <option>inactive</option>
+            <option value="">select</option>
+            <option value="active">active</option>
+            <option value="inactive">inactive</option>
           </select>
 
-          <label>AvatarUrl</label>
         </form>
+        <div className={styles.buttons}>
         <button
           type="button"
           className={styles.formButton}
@@ -113,6 +119,14 @@ const AddUser = () => {
         >
           save
         </button>
+        <button
+              type="button"
+              onClick={() => navigate("/")}
+              className={styles.formButton}
+            >
+              Cancel
+            </button>
+            </div>
       </div>
     </div>
   );

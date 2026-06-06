@@ -19,7 +19,7 @@
   gap: 10px;
   text-align: center;
   width: 300px;
-  height: 410px;
+  min-height: 410px;
 }
 
 .form {
@@ -28,9 +28,8 @@
   align-items: center;
   gap: 15px;
   text-align: center;
-  gap: 10px;
   margin: 10px 30px;
-  display: flex;
+
   input {
     border-radius: 10px;
     border: 1px solid rgba(182, 178, 178, 0.3);
@@ -49,6 +48,33 @@
   background-color: rgb(132, 0, 255);
   color: white;
 }
+.buttonForm:hover {
+  cursor: pointer;
+  opacity: 0.9;
+}
 .select {
   width: 185px;
 }
+.avatar{
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.avatarContainer {
+  position: relative;
+  width: 120px;
+  height: 120px;
+}
+.editAvatar {
+  position: absolute;
+  bottom: 0;
+  right: -10px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+.hiddenInput {
+  display: none;
+}
+
