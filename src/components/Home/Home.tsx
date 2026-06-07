@@ -108,7 +108,7 @@ const Home = () => {
     }
   };
 
-  const deleteicon = async (id: string) => {
+  const handleDeleteUser = async (id: string) => {
     const token = localStorage.getItem("token");
 
     try {
@@ -132,21 +132,21 @@ const Home = () => {
     }
   };
 
+  const fetchUsers = async () => {
+    const users = await getUsers(currentPage);
+    const favorite = await getFavorite();
+
+    if (users) {
+      const updatedUsers = users.map((user: any) => ({
+        ...user,
+        isFavorite: favorite.includes(user.id),
+      }));
+
+      setUserData(updatedUsers);
+    }
+  };
+
   useEffect(() => {
-    const fetchUsers = async () => {
-      const users = await getUsers(currentPage);
-      const favorite = await getFavorite();
-
-      if (users) {
-        const updatedUsers = users.map((user: any) => ({
-          ...user,
-          isFavorite: favorite.includes(user.id),
-        }));
-
-        setUserData(updatedUsers);
-      }
-    };
-
     fetchUsers();
   }, [currentPage, inputValue, activeTab]);
 
@@ -166,11 +166,11 @@ const Home = () => {
         />
         <UserList
           users={userData}
-          Favorite={toggleFav}
+          handleToggleFav={toggleFav}
           currentPage={currentPage}
           totalPages={totalPages}
           setCurrentPage={setCurrentPage}
-          Delete={deleteicon}
+          handleDeleteUser={handleDeleteUser}
         />
       </div>
     </div>

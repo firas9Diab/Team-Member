@@ -8,18 +8,18 @@ import Popup from "../Popup/Popup";
 
 const UserList = ({
   users,
-  Favorite,
+  handleToggleFav,
   currentPage,
   totalPages,
-  Delete,
+  handleDeleteUser,
   setCurrentPage,
 }: {
   users: UserData[];
-  Favorite: (id: string) => void;
+  handleToggleFav: (id: string) => void;
   currentPage: number;
   totalPages: number;
   setCurrentPage: Dispatch<SetStateAction<number>>;
-  Delete: (id: string) => void;
+  handleDeleteUser: (id: string) => void;
 }) => {
   const [selectedUserId, setSelectedUserId] = useState<string | null>(null);
   const [showPopup, setShowPopup] = useState(false);
@@ -32,7 +32,7 @@ const UserList = ({
 
   const confirmDelete = () => {
     if (selectedUserId) {
-      Delete(selectedUserId);
+      handleDeleteUser(selectedUserId);
     }
     setSelectedUserId(null);
     setShowPopup(false);
@@ -59,8 +59,8 @@ const UserList = ({
                 <div key={user.id}>
                   <UserCard
                     user={user}
-                    Favorite={Favorite}
-                    Delete={handleDeleteClick}
+                    handleToggleFav={handleToggleFav}
+                    handleDeleteUser={handleDeleteClick}
                   />
                 </div>
               </div>
