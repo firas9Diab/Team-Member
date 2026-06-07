@@ -14,7 +14,7 @@ const FilterTabs = ({
   allCount,
 }: FilterTabsProps) => {
   const navigate = useNavigate();
-  const token = localStorage.getItem('token')
+  const token = localStorage.getItem("token");
 
   const items: string[] = ["All", "Favorites", "Active", "Inactive"];
 
@@ -27,11 +27,14 @@ const FilterTabs = ({
   return (
     <ul className={styles.list}>
       <li>
-        <button type="button" onClick={() => {
-          localStorage.removeItem("token");
-          navigate("/Login");
-        }}
-          className={styles.link}>
+        <button
+          type="button"
+          onClick={() => {
+            localStorage.removeItem("token");
+            navigate("/Login");
+          }}
+          className={styles.link}
+        >
           {!token ? "Log in" : "sign out"}
         </button>
       </li>

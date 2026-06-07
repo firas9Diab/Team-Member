@@ -18,19 +18,19 @@ type UserCardProps = {
   setId: (id: number) => void;
   handleToggleFavorite: (id: number, isFavorite: boolean) => void;
   loading: boolean;
-  
 };
 
-const UserCard = ({ person, setisModelOpen, setId, handleToggleFavorite, loading }: UserCardProps) => {
-
-
-
-
+const UserCard = ({
+  person,
+  setisModelOpen,
+  setId,
+  handleToggleFavorite,
+  loading,
+}: UserCardProps) => {
   return (
     <>
       <div className={styles.star}>
         <div
-
           onClick={(e) => {
             e.stopPropagation();
             setId(person.id);
@@ -41,16 +41,13 @@ const UserCard = ({ person, setisModelOpen, setId, handleToggleFavorite, loading
         </div>
         <div
           onClick={(e) => {
-
             setisModelOpen(true);
 
             e.stopPropagation();
             // e.nativeEvent.stopImmediatePropagation();
           }}
           className={styles.deleteUser}
-        >
-
-        </div>
+        ></div>
         <button
           className={styles.starbutton}
           onClick={(e) => {

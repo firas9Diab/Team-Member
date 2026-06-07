@@ -8,7 +8,7 @@
   text-align: center;
   border: 2px solid black;
   padding: 25px;
-  
+
   display: flex;
   flex-direction: column;
   border: 1px solid #e5e7eb;
@@ -21,7 +21,7 @@
 }
 .email {
   text-align: left;
- 
+
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
@@ -29,7 +29,7 @@
 }
 .password {
   text-align: left;
-  
+
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
@@ -42,9 +42,8 @@
   padding: 5px 10px;
   background: white;
 }
-.passwordtext:focus
-{
-   outline: none;
+.passwordtext:focus {
+  outline: none;
 }
 .emailtext {
   align-items: center;
@@ -55,15 +54,14 @@
   padding: 5px 10px;
   background: white;
 }
-.emailtext:focus
-{
-   outline: none;
+.emailtext:focus {
+  outline: none;
 }
 .header {
   justify-content: center;
- 
+
   align-items: center;
- 
+
   display: flex;
   p {
     font-weight: bold;
@@ -117,23 +115,22 @@
 .passwordfieldtext {
   display: flex;
 }
-.match
-{color: green;}
-.notmatch
-{color: red;}
-.go_to_signin
-{
- font-size: medium;
-    background-color: transparent;
-    border: none;
-    color: #6d4eff;
-    text-decoration: none;
-    font-weight: bold;
-  
+.match {
+  color: green;
 }
-.signin
-{align-items: center;
-    gap: 5px;
-    display: flex;
+.notmatch {
+  color: red;
 }
-
+.go_to_signin {
+  font-size: medium;
+  background-color: transparent;
+  border: none;
+  color: #6d4eff;
+  text-decoration: none;
+  font-weight: bold;
+}
+.signin {
+  align-items: center;
+  gap: 5px;
+  display: flex;
+}

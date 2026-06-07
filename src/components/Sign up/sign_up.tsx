@@ -12,8 +12,7 @@ const SignUp = () => {
   const [password, setPassword] = useState<string>("");
   const [confirmPassword, setconfirmPassword] = useState<string>("");
   const [visiblePassword, setvisiblePassword] = useState<string>("password");
-  const [visiblepasswordConfirm, setvisiblepasswordConfirm] =
-    useState<string>("password");
+  const [visiblepasswordConfirm, setvisiblepasswordConfirm] = useState<string>("password");
   const [errormessage, seterrormessage] = useState<string>("");
   const navigation = useNavigate();
   const [fullName, setFullName] = useState<string>("");
@@ -101,9 +100,7 @@ const SignUp = () => {
           </div>
           <button
             onClick={() => {
-              setvisiblePassword(
-                visiblePassword === "password" ? "text" : "password",
-              );
+              setvisiblePassword(visiblePassword === "password" ? "text" : "password");
             }}
             className={styles.eyes}
           >
@@ -130,7 +127,7 @@ const SignUp = () => {
           <button
             onClick={() => {
               setvisiblepasswordConfirm(
-                visiblepasswordConfirm === "password" ? "text" : "password",
+                visiblepasswordConfirm === "password" ? "text" : "password"
               );
             }}
             className={styles.eyes}
@@ -140,11 +137,7 @@ const SignUp = () => {
         </div>
       </div>
 
-      <p
-        className={
-          errormessage === "Password is Match" ? styles.match : styles.notmatch
-        }
-      >
+      <p className={errormessage === "Password is Match" ? styles.match : styles.notmatch}>
         {errormessage}
       </p>
 

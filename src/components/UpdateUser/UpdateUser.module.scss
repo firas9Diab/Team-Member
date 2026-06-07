@@ -39,26 +39,22 @@
   gap: 8px;
   text-align: left;
   width: 250px;
- 
 }
-.imagefield
-{
-position: relative;
-width: 150px;
+.imagefield {
+  position: relative;
+  width: 150px;
   height: 150px;
 }
-.image
-{
+.image {
   width: 150px;
   height: 150px;
   border-radius: 999px;
 }
-.editicon
-{
+.editicon {
   position: absolute;
   bottom: 0;
   right: 0;
-   width: 30px;
+  width: 30px;
   height: 30px;
 }
 input {
@@ -128,7 +124,6 @@ select {
   font-weight: bold;
   cursor: pointer;
 }
-.homenav
-{
+.homenav {
   color: #6d4eff;
 }

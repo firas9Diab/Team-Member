@@ -2,7 +2,7 @@ import styles from "./AddUser.module.scss";
 import { useRef, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import editIcon from "../../../Icons/edit-button-svgrepo-com.svg"
+import editIcon from "../../../Icons/edit-button-svgrepo-com.svg";
 
 const AddUser = () => {
   const navigation = useNavigate();
@@ -39,7 +39,7 @@ const AddUser = () => {
           headers: {
             Authorization: `Bearer ${token}`,
           },
-        },
+        }
       );
 
       navigation("/");
@@ -49,7 +49,7 @@ const AddUser = () => {
       setLoading(false);
     }
   };
- const uploadImage = async (): Promise<string> => {
+  const uploadImage = async (): Promise<string> => {
     if (!avatarFile) {
       return "";
     }
@@ -57,55 +57,46 @@ const AddUser = () => {
     const formData = new FormData();
     formData.append("file", avatarFile);
 
-    const response = await axios.post(
-      "http://localhost:3000/upload",
-      formData,
-      {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      }
-    );
+    const response = await axios.post("http://localhost:3000/upload", formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
     return response.data.url;
-  }
+  };
 
   return (
     <div className={styles.container}>
       <h1>Add New Team Member</h1>
-      {avatarFile === null ? "" : (<>
+      {avatarFile === null ? (
+        ""
+      ) : (
+        <>
           <div className={styles.imagefield}>
-        <img className={styles.image} src={URL.createObjectURL(avatarFile)} alt="" />
-        <img className={styles.editicon}
-          onClick={() => ref.current?.click()}
-          src={editIcon} alt="" />
+            <img className={styles.image} src={URL.createObjectURL(avatarFile)} alt="" />
+            <img
+              className={styles.editicon}
+              onClick={() => ref.current?.click()}
+              src={editIcon}
+              alt=""
+            />
+          </div>
+        </>
+      )}
 
-      </div>
-      
-      
-      </>)}
-  
       <div className={styles.field}>
         <label>Full Name</label>
-        <input
-          value={nameValue}
-          onChange={(e) => setNameValue(e.target.value)}
-        />
+        <input value={nameValue} onChange={(e) => setNameValue(e.target.value)} />
       </div>
 
       <div className={styles.field}>
         <label>Role</label>
-        <input
-          value={roleValue}
-          onChange={(e) => setRoleValue(e.target.value)}
-        />
+        <input value={roleValue} onChange={(e) => setRoleValue(e.target.value)} />
       </div>
 
       <div className={styles.field}>
         <label>Status</label>
-        <select
-          value={statusValue}
-          onChange={(e) => setStatusValue(e.target.value)}
-        >
+        <select value={statusValue} onChange={(e) => setStatusValue(e.target.value)}>
           <option value="active">Active</option>
           <option value="inactive">Inactive</option>
         </select>
@@ -115,7 +106,6 @@ const AddUser = () => {
         <label>Avatar</label>
 
         <input
-
           ref={ref}
           type="file"
           accept="image/*"
@@ -137,8 +127,12 @@ const AddUser = () => {
       <button onClick={handleSubmit} disabled={loading}>
         {loading ? "Creating..." : "Create User"}
       </button>
-            <div>Back to <b onClick={() => navigation("/")} className={styles.homenav}>Home</b></div>
-
+      <div>
+        Back to{" "}
+        <b onClick={() => navigation("/")} className={styles.homenav}>
+          Home
+        </b>
+      </div>
     </div>
   );
 };

@@ -1,41 +1,36 @@
 .container {
   padding: 22px;
 }
-.container2
-{
-display: flex;
-    justify-content: space-around;
+.container2 {
+  display: flex;
+  justify-content: space-around;
 }
-.container3
-{
+.container3 {
   display: flex;
 
-    justify-content: center;
-    margin-top: 10px;
+  justify-content: center;
+  margin-top: 10px;
 }
-.container4
-{
+.container4 {
   display: flex;
-    justify-content: center;
-    margin-top: 10px;
+  justify-content: center;
+  margin-top: 10px;
 }
 .title {
   font-size: 32px;
   margin-bottom: 24px;
 }
-.main
-{
+.main {
   padding-top: 10px;
-    width: 65%;
-    margin-left: 17%;
-    margin-right: 17%;
-    display: flex;
-  
-    align-content: space-around;
-    flex-direction: column;
-  
-    border: 1px solid #e5e7eb;
+  width: 65%;
+  margin-left: 17%;
+  margin-right: 17%;
+  display: flex;
 
+  align-content: space-around;
+  flex-direction: column;
+
+  border: 1px solid #e5e7eb;
 }
 .list {
   list-style: none;
@@ -43,59 +38,57 @@ display: flex;
   display: flex;
   flex-direction: row;
   gap: 12px;
-
- }
+}
 
 .link {
-     color: rgb(0, 0, 0);
-    border: 1px solid #e5e7eb;
-    border-radius: 12px;
-    display: inline-block;
-    padding: 8px 20px;
-    background-color: #e2dfdf;
+  color: rgb(0, 0, 0);
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  display: inline-block;
+  padding: 8px 20px;
+  background-color: #e2dfdf;
 
-    border-radius: 6px;
-    text-decoration: none;
-    font-weight: 500;
-    transition: background-color 0.2s;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.2s;
 
   &:hover {
     background-color: #535bf2;
   }
 }
-.pageButton
-{
+.pageButton {
   color: rgb(0, 0, 0);
-    border: 1px solid #e5e7eb;
-    border-radius: 12px;
-    display: inline-block;
-    padding: 8px 20px;
-    background-color: #e2dfdf;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  display: inline-block;
+  padding: 8px 20px;
+  background-color: #e2dfdf;
 
-    border-radius: 6px;
-    text-decoration: none;
-    font-weight: 500;
-    transition: background-color 0.2s;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.2s;
 
   &:hover {
     background-color: #535bf2;
-}}
-.activePageButton
-{
+  }
+}
+.activePageButton {
   color: white;
-    border: 1px solid #e5e7eb;
-    border-radius: 12px;
-    display: inline-block;
-    padding: 8px 20px;
-    background-color: #535bf2;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  display: inline-block;
+  padding: 8px 20px;
+  background-color: #535bf2;
 
-    border-radius: 6px;
-    text-decoration: none;
-    font-weight: 500;
-    transition: background-color 0.2s;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.2s;
 }
 .cardBoard {
-    width: 75%;
+  width: 75%;
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
@@ -103,17 +96,14 @@ display: flex;
 }
 
 .card {
-text-align: center;
+  text-align: center;
   border: 2px solid black;
   margin-bottom: 10px;
   padding: 10px;
   width: 23%;
 }
-.active
-{
-  
-
- display: inline-flex;
+.active {
+  display: inline-flex;
   align-items: center;
   gap: 6px;
 
@@ -125,14 +115,10 @@ text-align: center;
 
   font-size: 14px;
   font-weight: 500;
-
-
 }
 
-.inactive
-{
-
- display: inline-flex;
+.inactive {
+  display: inline-flex;
   align-items: center;
   gap: 6px;
 
@@ -144,60 +130,39 @@ text-align: center;
 
   font-size: 14px;
   font-weight: 500;
-
-
 }
-.image
-{
-    border-radius: 999px;
+.image {
+  border-radius: 999px;
 }
 
-.star
-{
-    display: flex;
-    flex-direction: row-reverse;
-
+.star {
+  display: flex;
+  flex-direction: row-reverse;
 }
-.card
-{
-      margin-top: 30px;
+.card {
+  margin-top: 30px;
 }
 
-
-
-
-@media(max-width:800px)
-{
-.main
-{
-   min-width: 65%;
+@media (max-width: 800px) {
+  .main {
+    min-width: 65%;
+  }
+  .container2 {
+    flex-wrap: wrap;
+  }
 }
-.container2{
-  flex-wrap: wrap;
+@media (min-width: 768px) and (max-width: 1024px) {
+  .main {
+    min-width: 65%;
+  }
 
-}
-
-}
-@media(min-width:768px) and (max-width:1024px) {
- .main{
-
-     min-width: 65%;
-
- }
-
- .container2{
-  flex-wrap: wrap;
-
+  .container2 {
+    flex-wrap: wrap;
+  }
 }
 
-}
-
-@media(min-width:1024px)
-{
-.main{
-
-     min-width: 65%;
-
-}
-
+@media (min-width: 1024px) {
+  .main {
+    min-width: 65%;
+  }
 }

@@ -22,14 +22,12 @@ const Home = () => {
   const [selectedFilter, setSelectedFilter] = useState<string>("All");
   const [search, setSearch] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
-  const [error, setError] = useState<string>("")
-
-
+  const [error, setError] = useState<string>("");
 
   const fetchUsers = async (
     page: number = 1,
     filter: string = selectedFilter,
-    searchValue: string = search,
+    searchValue: string = search
   ) => {
     const token = localStorage.getItem("token");
 
@@ -39,12 +37,7 @@ const Home = () => {
       },
       params: {
         search: searchValue || undefined,
-        status:
-          filter === "Active"
-            ? "ACTIVE"
-            : filter === "Inactive"
-              ? "INACTIVE"
-              : undefined,
+        status: filter === "Active" ? "ACTIVE" : filter === "Inactive" ? "INACTIVE" : undefined,
         favoritesOnly: filter === "Favorites" ? true : undefined,
         page,
         limit: 5,
@@ -64,19 +57,15 @@ const Home = () => {
     setTotalPages(response.data.meta.totalPages);
   };
 
-
   const handleDelete = async (deletedperson: number) => {
     try {
       const token = localStorage.getItem("token");
 
-      await axios.delete(
-        `http://localhost:3000/team-members/${deletedperson}`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      await axios.delete(`http://localhost:3000/team-members/${deletedperson}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
 
       await fetchUsers(currentPage, selectedFilter, search);
       setisModelOpen(false);
@@ -98,7 +87,7 @@ const Home = () => {
             headers: {
               Authorization: `Bearer ${token}`,
             },
-          },
+          }
         );
       } else {
         await axios.delete(`http://localhost:3000/users/me/favorites/${id}`, {
@@ -140,7 +129,15 @@ const Home = () => {
         </div>
 
         <div className={styles.container3}>
-          <UserList users={users} handleToggleFavorite={handleToggleFavorite} handleDelete={handleDelete} setisModelOpen={setisModelOpen} isModelOpen={isModelOpen} loading={loading} error={error} />
+          <UserList
+            users={users}
+            handleToggleFavorite={handleToggleFavorite}
+            handleDelete={handleDelete}
+            setisModelOpen={setisModelOpen}
+            isModelOpen={isModelOpen}
+            loading={loading}
+            error={error}
+          />
         </div>
         <div className={styles.container4}>
           <ul className={styles.list}>
@@ -152,11 +149,7 @@ const Home = () => {
                     setcurrentPage(i + 1);
                   }}
                   disabled={currentPage === i + 1}
-                  className={
-                    currentPage === i + 1
-                      ? styles.activePageButton
-                      : styles.pageButton
-                  }
+                  className={currentPage === i + 1 ? styles.activePageButton : styles.pageButton}
                 >
                   {i + 1}
                 </button>

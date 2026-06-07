@@ -4,18 +4,13 @@ interface Props {
   setisModelOpen: (model: boolean) => void;
   handleDelete: (id: number) => void | Promise<void>;
   deletedperson: number;
-  error:string;
-
+  error: string;
 }
 
-const Modal = ({ setisModelOpen, handleDelete, deletedperson,error}: Props) => {
+const Modal = ({ setisModelOpen, handleDelete, deletedperson, error }: Props) => {
   return (
     <div className={styles.popup}>
-      <button
-        type="button"
-        className={styles.popupx}
-        onClick={() => setisModelOpen(false)}
-      >
+      <button type="button" className={styles.popupx} onClick={() => setisModelOpen(false)}>
         X
       </button>
 
@@ -23,9 +18,13 @@ const Modal = ({ setisModelOpen, handleDelete, deletedperson,error}: Props) => {
         <h1>Do you want to delete this user?</h1>
       </div>
 
-
       <div className={styles.pubuttoncontainer}>
-        <button type="button" onClick={() => { handleDelete(deletedperson)}}>
+        <button
+          type="button"
+          onClick={() => {
+            handleDelete(deletedperson);
+          }}
+        >
           Yes, delete.
         </button>
 
@@ -33,8 +32,7 @@ const Modal = ({ setisModelOpen, handleDelete, deletedperson,error}: Props) => {
           No, thank you.
         </button>
       </div>
-            {error && <p className={styles.error}>{error}</p>}
-
+      {error && <p className={styles.error}>{error}</p>}
     </div>
   );
 };

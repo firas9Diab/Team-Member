@@ -25,7 +25,7 @@
 
 .active {
   color: white;
-  background: linear-gradient(135deg, #6D4EFF, #5A3AE6);
+  background: linear-gradient(135deg, #6d4eff, #5a3ae6);
   border: 1px solid #e5e7eb;
   display: inline-block;
   padding: 8px 20px;
@@ -35,25 +35,16 @@
   transition: 0.2s;
 }
 
-@media(max-width:800px)
-{
+@media (max-width: 800px) {
   .list {
- 
-  flex-wrap: wrap;
+    flex-wrap: wrap;
+  }
 }
-}
-@media(min-width:768px) and (max-width:1024px) {
-
- 
+@media (min-width: 768px) and (max-width: 1024px) {
   .list {
- 
-  flex-wrap: wrap;
+    flex-wrap: wrap;
+  }
 }
 
-}
-
-@media(min-width:1024px)
-{
-
-
+@media (min-width: 1024px) {
 }

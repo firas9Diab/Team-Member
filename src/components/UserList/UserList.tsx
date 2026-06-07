@@ -22,12 +22,18 @@ type UserListProps = {
   isModelOpen: boolean;
   loading: boolean;
   error: string;
- 
 };
 
-const UserList = ({ users, handleToggleFavorite, handleDelete, setisModelOpen, isModelOpen, loading, error }: UserListProps) => {
+const UserList = ({
+  users,
+  handleToggleFavorite,
+  handleDelete,
+  setisModelOpen,
+  isModelOpen,
+  loading,
+  error,
+}: UserListProps) => {
   const navigate = useNavigate();
-
 
   const [id, setId] = useState<number | null>(null);
 
@@ -36,11 +42,9 @@ const UserList = ({ users, handleToggleFavorite, handleDelete, setisModelOpen, i
       {isModelOpen && id !== null && (
         <Modal
           setisModelOpen={setisModelOpen}
-
           handleDelete={handleDelete}
           deletedperson={id}
           error={error}
-        
         />
       )}
 
@@ -52,12 +56,10 @@ const UserList = ({ users, handleToggleFavorite, handleDelete, setisModelOpen, i
         >
           <UserCard
             person={person}
-
             setisModelOpen={setisModelOpen}
             setId={setId}
             handleToggleFavorite={handleToggleFavorite}
             loading={loading}
-
           />
         </div>
       ))}

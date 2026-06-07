@@ -1,24 +1,21 @@
-.Hicon
-{
-    gap: 10px;
-    display: flex;
-    flex-direction: row;
-    align-items: baseline;
+.Hicon {
+  gap: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
 }
-.Header
-{
-display: flex;
-    justify-content: space-around;
-    
-    margin-left: 17%;
-    margin-right: 18%;
-   
-    align-content: space-around;
-  
-    border: 1px solid #e5e7eb;
-        padding-bottom: 10px;
-        flex-wrap: wrap;
+.Header {
+  display: flex;
+  justify-content: space-around;
 
+  margin-left: 17%;
+  margin-right: 18%;
+
+  align-content: space-around;
+
+  border: 1px solid #e5e7eb;
+  padding-bottom: 10px;
+  flex-wrap: wrap;
 }
 .usersCard {
   display: flex;
