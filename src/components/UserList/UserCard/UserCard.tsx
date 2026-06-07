@@ -16,8 +16,7 @@ type UserCardProps = {
 
   handleToggleFavorite: (id: number, isFavorite: boolean) => void;
   loading: boolean;
-  setdeletedUserById: (id: number) => void;
-  onConfirm: (changeid: boolean) => void;
+  changeModal: (id: number | null, confirmDelete: boolean) => void;
 };
 
 const UserCard = ({
@@ -25,8 +24,7 @@ const UserCard = ({
 
   handleToggleFavorite,
   loading,
-  setdeletedUserById,
-  onConfirm,
+  changeModal,
 }: UserCardProps) => {
   return (
     <>
@@ -34,8 +32,7 @@ const UserCard = ({
         <div
           onClick={(e) => {
             e.stopPropagation();
-            setdeletedUserById(person.id);
-            onConfirm(false);
+            changeModal(person.id, false);
           }}
         >
           <img src={deleteicon} alt="delete" />

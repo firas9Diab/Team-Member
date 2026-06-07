@@ -4,7 +4,9 @@ import Header from "../Header/Header";
 import FilterTabs from "../FilterTabs/FilterTabs";
 import SearchInput from "../SearchInput/SearchInput";
 import UserList from "../UserList/UserList";
+import Modal from "../Modal/Modal";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 interface User {
   id: number;
   name: string;
@@ -15,15 +17,16 @@ interface User {
 }
 
 const Home = () => {
-  const [deletedUserById, setdeletedUserById] = useState<number | null>(null);
+  const navigate = useNavigate();
+
   const [users, setUsers] = useState<User[]>([]);
   const [totalPages, setTotalPages] = useState<number>(1);
   const [currentPage, setcurrentPage] = useState<number>(1);
-  const [isModelOpen, setIsModelOpen] = useState(false);
   const [selectedFilter, setSelectedFilter] = useState<string>("All");
   const [search, setSearch] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
-  const [error, setError] = useState<string>("");
+  const [isModelOpen, setIsModelOpen] = useState(false);
+  const [SelectedUserById, setSelectedUserById] = useState<number | null>(null);
 
   const fetchUsers = async (
     page: number = 1,
@@ -58,11 +61,11 @@ const Home = () => {
     setTotalPages(response.data.meta.totalPages);
   };
 
-  const handleDelete = async (deletedUserById: number) => {
+  const handleDelete = async () => {
     try {
       const token = localStorage.getItem("token");
 
-      await axios.delete(`http://localhost:3000/team-members/${deletedUserById}`, {
+      await axios.delete(`http://localhost:3000/team-members/${SelectedUserById}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -107,13 +110,20 @@ const Home = () => {
     }
   };
 
-  const onConfirm = (changeid: boolean) => {
-    setIsModelOpen(true);
-    if (changeid) handleDelete(deletedUserById);
-  };
-  const onClose = () => {
-    setIsModelOpen(false);
-    fetchUsers(currentPage, selectedFilter, search);
+  const changeModal = (id: number | null, confirmDelete: boolean) => {
+    if (id !== null && confirmDelete === false) {
+      setSelectedUserById(id);
+      setIsModelOpen(true);
+      return;
+    }
+    if (confirmDelete) {
+      handleDelete();
+      return;
+    } else {
+      setIsModelOpen(false);
+
+      return;
+    }
   };
 
   useEffect(() => {
@@ -140,16 +150,14 @@ const Home = () => {
         </div>
 
         <div className={styles.container3}>
+          {isModelOpen && <Modal changeModal={changeModal} />}
+
           <UserList
             users={users}
             handleToggleFavorite={handleToggleFavorite}
-            setIsModelOpen={setIsModelOpen}
-            isModelOpen={isModelOpen}
             loading={loading}
-            error={error}
-            setdeletedUserById={setdeletedUserById}
-            onConfirm={onConfirm}
-            onClose={onClose}
+            changeModal={changeModal}
+            navigate={navigate}
           />
         </div>
         <div className={styles.container4}>
