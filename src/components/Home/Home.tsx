@@ -15,7 +15,7 @@ export interface UserData {
 }
 
 const Home = () => {
-  const [usersMockData, setUsersMockData] = useState<UserData[]>([]);
+  const [userData, setUserData] = useState<UserData[]>([]);
   const [activeTab, setActiveTab] = useState("all");
   const [inputValue, setInputValue] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
@@ -24,27 +24,6 @@ const Home = () => {
   function onsearch(input: string) {
     setInputValue(input);
   }
-
-  useEffect(() => {
-    const fetchUsers = async () => {
-      const users = await getUsers(currentPage);
-      const favorite = await getFavorite();
-
-      if (users) {
-        const updatedUsers = users.map((user: any) => ({
-          ...user,
-          isFavorite: favorite.includes(user.id),
-        }));
-
-        setUsersMockData(updatedUsers);
-      }
-    };
-
-    fetchUsers();
-  }, [currentPage, inputValue, activeTab]);
-  useEffect(() => {
-    setCurrentPage(1);
-  }, [inputValue, activeTab]);
 
   const getUsers = async (page: number) => {
     try {
@@ -89,7 +68,7 @@ const Home = () => {
   };
 
   const toggleFav = async (id: string) => {
-    const fav = usersMockData.find((user) => user.id === id);
+    const fav = userData.find((user) => user.id === id);
     if (!fav) return;
 
     const isCurrentlyFavorite = fav.isFavorite;
@@ -122,7 +101,7 @@ const Home = () => {
           ...user,
           isFavorite: favorite.includes(user.id),
         }));
-        setUsersMockData(updatedUsers);
+        setUserData(updatedUsers);
       }
     } catch (error) {
       console.error("Failed to update favorite status:", error);
@@ -146,30 +125,52 @@ const Home = () => {
           ...user,
           isFavorite: favorite.includes(user.id),
         }));
-        setUsersMockData(updatedUsers);
+        setUserData(updatedUsers);
       }
     } catch (error) {
       console.error("Failed to update favorite status:", error);
     }
   };
 
+  useEffect(() => {
+    const fetchUsers = async () => {
+      const users = await getUsers(currentPage);
+      const favorite = await getFavorite();
+
+      if (users) {
+        const updatedUsers = users.map((user: any) => ({
+          ...user,
+          isFavorite: favorite.includes(user.id),
+        }));
+
+        setUserData(updatedUsers);
+      }
+    };
+
+    fetchUsers();
+  }, [currentPage, inputValue, activeTab]);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [inputValue, activeTab]);
+
   return (
     <div>
       <div className={styles.head}>
-        <Header count={usersMockData.length} />
+        <Header count={userData.length} />
         <hr />
         <Tabs
           onSearch={onsearch}
           setActiveTab={setActiveTab}
-          users={usersMockData}
+          users={userData}
         />
         <UserList
-          users={usersMockData}
-          fav={toggleFav}
+          users={userData}
+          Favorite={toggleFav}
           currentPage={currentPage}
           totalPages={totalPages}
           setCurrentPage={setCurrentPage}
-          del={deleteicon}
+          Delete={deleteicon}
         />
       </div>
     </div>

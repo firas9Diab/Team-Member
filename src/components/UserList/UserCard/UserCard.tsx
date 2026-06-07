@@ -6,18 +6,19 @@ import deleteIcon from "../../../assets/delete.svg";
 import { useNavigate } from "react-router-dom";
 const UserCard = ({
   user,
-  fav,
-  del,
+  Favorite,
+  Delete,
 }: {
   user: UserData;
-  fav: Function;
-  del: Function;
+  Favorite: (id: string) => void;
+  Delete: (id: string) => void;
 }) => {
   const navigate = useNavigate();
 
   const handleCardClick = () => {
     navigate(`/UpdateUser/${user.id}`);
   };
+
   return (
     <>
       <div className={styles.cardItems} onClick={handleCardClick}>
@@ -25,7 +26,7 @@ const UserCard = ({
           <button
             className={styles.delete}
             onClick={() => {
-              del(user.id);
+              Delete(user.id);
             }}
           >
             <img src={deleteIcon} />
@@ -34,7 +35,7 @@ const UserCard = ({
           <button
             className={styles.icon}
             onClick={() => {
-              fav(user.id);
+              Favorite(user.id);
             }}
           >
             <img src={user.isFavorite ? starLight : star} />

@@ -5,20 +5,21 @@ import styles from "./UserList.module.scss";
 import UserCard from "./UserCard/UserCard";
 import { useNavigate } from "react-router-dom";
 import Popup from "../Popup/Popup";
+
 const UserList = ({
   users,
-  fav,
+  Favorite,
   currentPage,
   totalPages,
-  del,
+  Delete,
   setCurrentPage,
 }: {
   users: UserData[];
-  fav: Function;
+  Favorite: (id: string) => void;
   currentPage: number;
   totalPages: number;
   setCurrentPage: Dispatch<SetStateAction<number>>;
-  del: Function;
+  Delete: (id: string) => void;
 }) => {
   const [selectedUserId, setSelectedUserId] = useState<string | null>(null);
   const [showPopup, setShowPopup] = useState(false);
@@ -31,11 +32,12 @@ const UserList = ({
 
   const confirmDelete = () => {
     if (selectedUserId) {
-      del(selectedUserId);
+      Delete(selectedUserId);
     }
     setSelectedUserId(null);
     setShowPopup(false);
   };
+
   return (
     <>
       <div>
@@ -55,7 +57,11 @@ const UserList = ({
             return (
               <div>
                 <div key={user.id}>
-                  <UserCard user={user} fav={fav} del={handleDeleteClick} />
+                  <UserCard
+                    user={user}
+                    Favorite={Favorite}
+                    Delete={handleDeleteClick}
+                  />
                 </div>
               </div>
             );

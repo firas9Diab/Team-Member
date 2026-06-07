@@ -1,26 +1,36 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from "./AddUser.module.scss";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import edit from "../../Assets/edit.svg";
-import userp from "../../Assets/userp.svg";
+import userPurple from "../../Assets/userPurple.svg";
 
 const AddUser = () => {
   const [fullName, setFullName] = useState("");
   const [jobTitle, setJobTitle] = useState("");
   const [status, setStatus] = useState("");
-  const [previewUrl, setPreviewUrl] = useState("");
   const [file, setFile] = useState<File | null>(null);
+
   const navigate = useNavigate();
+
   const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const previewUrl = file ? URL.createObjectURL(file) : "";
 
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile = e.target.files?.[0];
     if (!selectedFile) return;
 
     setFile(selectedFile);
-    setPreviewUrl(URL.createObjectURL(selectedFile));
   };
+
+  useEffect(() => {
+    return () => {
+      if (previewUrl) {
+        URL.revokeObjectURL(previewUrl);
+      }
+    };
+  }, [previewUrl]);
 
   const save = async () => {
     try {
@@ -72,7 +82,7 @@ const AddUser = () => {
         <form className={styles.form}>
           <div className={styles.avatarContainer}>
             <img
-              src={previewUrl || userp}
+              src={previewUrl || userPurple}
               alt="Avatar"
               className={styles.avatar}
             />

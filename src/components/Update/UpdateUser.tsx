@@ -1,10 +1,10 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import styles from "./UpdateUser.module.scss";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useParams } from "react-router";
 import edit from "../../Assets/edit.svg";
-import userp from "../../Assets/userp.svg";
+import userPurple from "../../Assets/userPurple.svg";
 
 const UpdateUser = () => {
   const [fullName, setFullName] = useState("");
@@ -17,11 +17,10 @@ const UpdateUser = () => {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const { id } = useParams();
 
-  useEffect(() => {
-    if (id) {
-      getId();
-    }
-  }, [id]);
+  const previewUrl = useMemo(() => {
+    if (!file) return null;
+    return URL.createObjectURL(file);
+  }, [file]);
 
   const getId = async () => {
     try {
@@ -49,8 +48,6 @@ const UpdateUser = () => {
     const selectedFile = e.target.files?.[0];
     if (!selectedFile) return;
     setFile(selectedFile);
-
-    setAvatarUrl(URL.createObjectURL(selectedFile));
   };
 
   const Save = async () => {
@@ -104,6 +101,12 @@ const UpdateUser = () => {
     }
   };
 
+  useEffect(() => {
+    if (id) {
+      getId();
+    }
+  }, [id]);
+
   return (
     <div>
       <div className={styles.fullForm}>
@@ -112,7 +115,7 @@ const UpdateUser = () => {
           <form className={styles.form} onSubmit={(e) => e.preventDefault()}>
             <div className={styles.avatarContainer}>
               <img
-                src={avatarUrl || userp}
+                src={previewUrl || avatarUrl || userPurple}
                 alt="Avatar"
                 className={styles.avatar}
               />

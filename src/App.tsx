@@ -6,7 +6,6 @@ import Login from "./components/Login/Login";
 import UpdateUser from "./components/Update/UpdateUser";
 import AddUser from "./components/Add/AddUser";
 import ProtectedRoute from "./ProtectedRoute";
-// import Item from "./components/Item/Item";
 
 const App = () => {
   return (
@@ -21,7 +20,6 @@ const App = () => {
             </ProtectedRoute>
           }
         />
-        {/* <Route path="/item/:id" element={<Item />} /> */}
         <Route path="/login" element={<Login />} />
         <Route path="/Sign" element={<Sign />} />
         <Route
