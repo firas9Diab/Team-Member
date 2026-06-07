@@ -155,3 +155,11 @@
   color: red;
   font-size: small;
 }
+.activeButton {
+  background-color: rgb(114, 179, 233);
+  cursor: pointer;
+}
+button:disabled {
+  background-color: rgb(174, 212, 243);
+  cursor: not-allowed;
+}

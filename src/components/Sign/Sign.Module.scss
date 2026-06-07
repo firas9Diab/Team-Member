@@ -135,3 +135,8 @@
   color: red;
   font-size: small;
 }
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}

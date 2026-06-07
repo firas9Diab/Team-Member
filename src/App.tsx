@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import Home from "./components/Home/Home";
 import Sign from "./components/Sign/Sign";
@@ -8,9 +8,14 @@ import AddUser from "./components/Add/AddUser";
 import ProtectedRoute from "./ProtectedRoute";
 
 const App = () => {
+  const location = useLocation();
+
+  const hideNavbar =
+    location.pathname === "/login" || location.pathname === "/Sign";
+
   return (
     <div>
-      <Navbar />
+      {!hideNavbar && <Navbar />}
       <Routes>
         <Route
           path="/"

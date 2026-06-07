@@ -21,22 +21,7 @@ const UserList = ({
   setCurrentPage: Dispatch<SetStateAction<number>>;
   handleDeleteUser: (id: string) => void;
 }) => {
-  const [selectedUserId, setSelectedUserId] = useState<string | null>(null);
-  const [showPopup, setShowPopup] = useState(false);
   const navigate = useNavigate();
-
-  const handleDeleteClick = (id: string) => {
-    setSelectedUserId(id);
-    setShowPopup(true);
-  };
-
-  const confirmDelete = () => {
-    if (selectedUserId) {
-      handleDeleteUser(selectedUserId);
-    }
-    setSelectedUserId(null);
-    setShowPopup(false);
-  };
 
   return (
     <>
@@ -60,7 +45,7 @@ const UserList = ({
                   <UserCard
                     user={user}
                     handleToggleFav={handleToggleFav}
-                    handleDeleteUser={handleDeleteClick}
+                    handleDeleteUser={handleDeleteUser}
                   />
                 </div>
               </div>
@@ -90,16 +75,6 @@ const UserList = ({
           Next
         </button>
       </div>
-
-      {showPopup && (
-        <Popup
-          handleDeleteTrue={confirmDelete}
-          handleCancel={() => {
-            setShowPopup(false);
-            setSelectedUserId(null);
-          }}
-        />
-      )}
     </>
   );
 };

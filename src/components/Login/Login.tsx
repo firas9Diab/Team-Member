@@ -13,6 +13,8 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState("password");
   const [error, setError] = useState("");
 
+  const isFormValid = email.trim() && password.trim();
+
   function showpassword() {
     setShowPassword(showPassword === "password" ? "text" : "password");
   }
@@ -75,7 +77,12 @@ const Login = () => {
             </div>
             <div className={styles.error}>{error ? <p>{error}</p> : ""}</div>
           </div>
-          <button type="button" className={styles.button} onClick={login}>
+          <button
+            type="button"
+            className={`${styles.button} ${isFormValid ? styles.activeButton : ""}`}
+            disabled={!isFormValid}
+            onClick={login}
+          >
             {" "}
             Sign In{" "}
           </button>

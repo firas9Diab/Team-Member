@@ -4,6 +4,7 @@ import Header from "../Header/Header";
 import Tabs from "../Tabs/Tabs";
 import UserList from "../UserList/UserList";
 import axios from "axios";
+import Popup from "../Popup/Popup";
 
 export interface UserData {
   id: string;
@@ -20,6 +21,22 @@ const Home = () => {
   const [inputValue, setInputValue] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+  const [selectedUserId, setSelectedUserId] = useState<string | null>(null);
+  const [showPopup, setShowPopup] = useState(false);
+
+  const handleDeleteClick = (id: string) => {
+    setSelectedUserId(id);
+    setShowPopup(true);
+  };
+
+  const confirmDelete = async () => {
+    if (selectedUserId) {
+      await handleDeleteUser(selectedUserId);
+    }
+
+    setSelectedUserId(null);
+    setShowPopup(false);
+  };
 
   function onsearch(input: string) {
     setInputValue(input);
@@ -170,9 +187,18 @@ const Home = () => {
           currentPage={currentPage}
           totalPages={totalPages}
           setCurrentPage={setCurrentPage}
-          handleDeleteUser={handleDeleteUser}
+          handleDeleteUser={handleDeleteClick}
         />
       </div>
+      {showPopup && (
+        <Popup
+          handleDeleteTrue={confirmDelete}
+          handleCancel={() => {
+            setShowPopup(false);
+            setSelectedUserId(null);
+          }}
+        />
+      )}
     </div>
   );
 };

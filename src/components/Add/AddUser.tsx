@@ -24,14 +24,6 @@ const AddUser = () => {
     setFile(selectedFile);
   };
 
-  useEffect(() => {
-    return () => {
-      if (previewUrl) {
-        URL.revokeObjectURL(previewUrl);
-      }
-    };
-  }, [previewUrl]);
-
   const save = async () => {
     try {
       const token = localStorage.getItem("token");
@@ -74,6 +66,14 @@ const AddUser = () => {
       console.log("FULL ERROR:", error);
     }
   };
+
+  useEffect(() => {
+    return () => {
+      if (previewUrl) {
+        URL.revokeObjectURL(previewUrl);
+      }
+    };
+  }, [previewUrl]);
 
   return (
     <div className={styles.fullForm}>

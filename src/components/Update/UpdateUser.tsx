@@ -17,10 +17,7 @@ const UpdateUser = () => {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const { id } = useParams();
 
-  const previewUrl = useMemo(() => {
-    if (!file) return null;
-    return URL.createObjectURL(file);
-  }, [file]);
+  const previewUrl = file ? URL.createObjectURL(file) : "";
 
   const getId = async () => {
     try {
@@ -37,7 +34,7 @@ const UpdateUser = () => {
       const data = response.data;
       setFullName(data.fullName);
       setJobTitle(data.jobTitle);
-      setStatus(data.status);
+      setStatus(data.status.toLowerCase());
       setAvatarUrl(data.avatarUrl);
     } catch (error) {
       console.log(error);
@@ -106,6 +103,14 @@ const UpdateUser = () => {
       getId();
     }
   }, [id]);
+
+  useEffect(() => {
+    return () => {
+      if (previewUrl) {
+        URL.revokeObjectURL(previewUrl);
+      }
+    };
+  }, [previewUrl]);
 
   return (
     <div>
