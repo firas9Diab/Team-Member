@@ -2,7 +2,7 @@ import styles from "./UserList.module.scss";
 import UserCard from "./UserCard/UserCard";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import Modal from "../Model/Modal";
+import Modal from "../Modal/Modal";
 
 interface User {
   id: number;
