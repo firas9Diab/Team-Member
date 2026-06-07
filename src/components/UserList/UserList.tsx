@@ -1,10 +1,8 @@
-import { useState } from "react";
 import { type Dispatch, type SetStateAction } from "react";
 import type { UserData } from "../Home/Home";
 import styles from "./UserList.module.scss";
 import UserCard from "./UserCard/UserCard";
 import { useNavigate } from "react-router-dom";
-import Popup from "../Popup/Popup";
 
 const UserList = ({
   users,
@@ -36,25 +34,18 @@ const UserList = ({
           Add User
         </button>
       </div>
-      {users.length !== 0 ? (
-        <div className={styles.card}>
-          {users.map((user) => {
-            return (
-              <div>
-                <div key={user.id}>
-                  <UserCard
-                    user={user}
-                    handleToggleFav={handleToggleFav}
-                    handleDeleteUser={handleDeleteUser}
-                  />
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      ) : (
-        "No users found"
-      )}
+      <div className={styles.card}>
+        {users.map((user) => (
+          <UserCard
+            key={user.id}
+            user={user}
+            handleToggleFav={handleToggleFav}
+            handleDeleteUser={handleDeleteUser}
+          />
+        ))}
+      </div>
+
+      {!users.length && "No users found"}
 
       <div className={styles.pages}>
         <button
