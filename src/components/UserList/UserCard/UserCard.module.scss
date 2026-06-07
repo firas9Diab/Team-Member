@@ -3,9 +3,11 @@
 .star
 {
     display: flex;
-    flex-direction: row-reverse;
+    justify-content: space-between;
 
 }
+
+
 .starbutton
 {
 border: none;
@@ -14,6 +16,8 @@ border: none;
 }
 .image
 {
+  min-width: 150px;
+  min-height: 150px;
     border-radius: 999px;
 }
 .active

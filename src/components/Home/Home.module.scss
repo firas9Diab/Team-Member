@@ -43,7 +43,8 @@ display: flex;
   display: flex;
   flex-direction: row;
   gap: 12px;
-}
+
+ }
 
 .link {
      color: rgb(0, 0, 0);
@@ -160,4 +161,43 @@ text-align: center;
 .card
 {
       margin-top: 30px;
+}
+
+
+
+
+@media(max-width:800px)
+{
+.main
+{
+   min-width: 65%;
+}
+.container2{
+  flex-wrap: wrap;
+
+}
+
+}
+@media(min-width:768px) and (max-width:1024px) {
+ .main{
+
+     min-width: 65%;
+
+ }
+
+ .container2{
+  flex-wrap: wrap;
+
+}
+
+}
+
+@media(min-width:1024px)
+{
+.main{
+
+     min-width: 65%;
+
+}
+
 }

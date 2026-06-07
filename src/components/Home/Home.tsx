@@ -68,7 +68,7 @@ const Home = () => {
     fetchUsers(currentPage, selectedFilter, search);
   }, [currentPage, selectedFilter, search]);
   return (
-    <>
+    <div>
       <Header count={users.length} />
 
       <div className={styles.main}>
@@ -83,8 +83,7 @@ const Home = () => {
         </div>
 
         <div className={styles.container3}>
-          <UserList users={users}   fetchUsers={() => fetchUsers(currentPage, selectedFilter, search)}
- />
+          <UserList users={users}   fetchUsers={() => fetchUsers(currentPage,selectedFilter,search) }  />
         </div>
         <div className={styles.container4}>
           <ul className={styles.list}>
@@ -109,7 +108,7 @@ const Home = () => {
           </ul>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

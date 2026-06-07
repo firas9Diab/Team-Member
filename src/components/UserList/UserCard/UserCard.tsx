@@ -3,7 +3,7 @@ import fav from "../../../../Icons/star-svgrepo-com.svg";
 import favLight from "../../../../Icons/star-light-svgrepo-com.svg";
 import { useState } from "react";
 import axios from "axios";
-
+import deleteicon from "../../../../Icons/delete-user-svgrepo-com.svg";
 interface User {
   id: number;
   name: string;
@@ -16,11 +16,15 @@ interface User {
 type UserCardProps = {
   person: User;
   fetchUsers: () => void | Promise<void>;
+  setisModelOpen:(model:boolean)=>void;
+    setId:(id:number)=>void;
+
 };
 
-const UserCard = ({ person, fetchUsers }: UserCardProps) => {
-  const [loading, setLoading] = useState<boolean>(false);
+const UserCard = ({ person, fetchUsers,setisModelOpen,setId }: UserCardProps) => {
+ 
 
+  const [loading, setLoading] = useState<boolean>(false);
   const handleToggleFavorite = async (id: number, isFavorite: boolean) => {
     try {
       setLoading(true);
@@ -56,9 +60,35 @@ const UserCard = ({ person, fetchUsers }: UserCardProps) => {
   return (
     <>
       <div className={styles.star}>
+      <div
+  
+  onClick={(e) => {
+    e.stopPropagation();
+    setId(person.id);
+    setisModelOpen(true);
+  }}
+>
+  <img src={deleteicon} alt="delete" />
+</div>
+           <div
+        onClick={(e) => {        
+
+          setisModelOpen(true);
+          
+          e.stopPropagation();
+          // e.nativeEvent.stopImmediatePropagation();
+         }}
+        className={styles.deleteUser}
+      >{}
+       
+      </div>
         <button
           className={styles.starbutton}
-          onClick={() => handleToggleFavorite(person.id, person.isFavorite)}
+          onClick={(e) => {
+            handleToggleFavorite(person.id, person.isFavorite);
+            e.stopPropagation();
+            // e.nativeEvent.stopImmediatePropagation();
+          }}
           disabled={loading}
         >
           <img src={person.isFavorite ? fav : favLight} alt="favorite" />

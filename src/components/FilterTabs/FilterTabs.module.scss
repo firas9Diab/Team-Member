@@ -34,3 +34,26 @@
   font-weight: 500;
   transition: 0.2s;
 }
+
+@media(max-width:800px)
+{
+  .list {
+ 
+  flex-wrap: wrap;
+}
+}
+@media(min-width:768px) and (max-width:1024px) {
+
+ 
+  .list {
+ 
+  flex-wrap: wrap;
+}
+
+}
+
+@media(min-width:1024px)
+{
+
+
+}
