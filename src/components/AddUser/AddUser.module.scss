@@ -109,3 +109,24 @@ select {
   font-weight: bold;
   cursor: pointer;
 }
+
+.imagefield
+{
+position: relative;
+width: 150px;
+  height: 150px;
+}
+.image
+{
+  width: 150px;
+  height: 150px;
+  border-radius: 999px;
+}
+.editicon
+{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+   width: 30px;
+  height: 30px;
+}

@@ -1,8 +1,6 @@
 import styles from "./UserCard.module.scss";
 import fav from "../../../../Icons/star-svgrepo-com.svg";
 import favLight from "../../../../Icons/star-light-svgrepo-com.svg";
-import { useState } from "react";
-import axios from "axios";
 import deleteicon from "../../../../Icons/delete-user-svgrepo-com.svg";
 interface User {
   id: number;
@@ -15,73 +13,44 @@ interface User {
 
 type UserCardProps = {
   person: User;
-  fetchUsers: () => void | Promise<void>;
-  setisModelOpen:(model:boolean)=>void;
-    setId:(id:number)=>void;
 
+  setisModelOpen: (model: boolean) => void;
+  setId: (id: number) => void;
+  handleToggleFavorite: (id: number, isFavorite: boolean) => void;
+  loading: boolean;
+  
 };
 
-const UserCard = ({ person, fetchUsers,setisModelOpen,setId }: UserCardProps) => {
- 
+const UserCard = ({ person, setisModelOpen, setId, handleToggleFavorite, loading }: UserCardProps) => {
 
-  const [loading, setLoading] = useState<boolean>(false);
-  const handleToggleFavorite = async (id: number, isFavorite: boolean) => {
-    try {
-      setLoading(true);
 
-      const token = localStorage.getItem("token");
 
-      if (!isFavorite) {
-        await axios.post(
-          `http://localhost:3000/users/me/favorites/${id}`,
-          {},
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          },
-        );
-      } else {
-        await axios.delete(`http://localhost:3000/users/me/favorites/${id}`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-      }
-
-      await fetchUsers();
-    } catch (error) {
-      console.error("Favorite error:", error);
-    } finally {
-      setLoading(false);
-    }
-  };
 
   return (
     <>
       <div className={styles.star}>
-      <div
-  
-  onClick={(e) => {
-    e.stopPropagation();
-    setId(person.id);
-    setisModelOpen(true);
-  }}
->
-  <img src={deleteicon} alt="delete" />
-</div>
-           <div
-        onClick={(e) => {        
+        <div
 
-          setisModelOpen(true);
-          
-          e.stopPropagation();
-          // e.nativeEvent.stopImmediatePropagation();
-         }}
-        className={styles.deleteUser}
-      >{}
-       
-      </div>
+          onClick={(e) => {
+            e.stopPropagation();
+            setId(person.id);
+            setisModelOpen(true);
+          }}
+        >
+          <img src={deleteicon} alt="delete" />
+        </div>
+        <div
+          onClick={(e) => {
+
+            setisModelOpen(true);
+
+            e.stopPropagation();
+            // e.nativeEvent.stopImmediatePropagation();
+          }}
+          className={styles.deleteUser}
+        >
+
+        </div>
         <button
           className={styles.starbutton}
           onClick={(e) => {

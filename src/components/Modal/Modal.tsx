@@ -1,36 +1,14 @@
-import { useState } from "react";
 import styles from "./Modal.module.scss";
-import axios from "axios";
 
 interface Props {
   setisModelOpen: (model: boolean) => void;
-  fetchUsers: () => void | Promise<void>;
+  handleDelete: (id: number) => void | Promise<void>;
   deletedperson: number;
+  error:string;
+
 }
 
-const Modal = ({ setisModelOpen, fetchUsers, deletedperson }: Props) => {
-  const [error, setError] = useState("");
-
-  const handleDelete = async () => {
-    try {
-      const token = localStorage.getItem("token");
-
-      await axios.delete(
-        `http://localhost:3000/team-members/${deletedperson}`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-
-      await fetchUsers();
-      setisModelOpen(false);
-    } catch (err: any) {
-      setError(err.response?.data?.message || "Failed to delete user");
-    }
-  };
-
+const Modal = ({ setisModelOpen, handleDelete, deletedperson,error}: Props) => {
   return (
     <div className={styles.popup}>
       <button
@@ -45,10 +23,9 @@ const Modal = ({ setisModelOpen, fetchUsers, deletedperson }: Props) => {
         <h1>Do you want to delete this user?</h1>
       </div>
 
-      {error && <p className={styles.error}>{error}</p>}
 
       <div className={styles.pubuttoncontainer}>
-        <button type="button" onClick={handleDelete}>
+        <button type="button" onClick={() => { handleDelete(deletedperson)}}>
           Yes, delete.
         </button>
 
@@ -56,6 +33,8 @@ const Modal = ({ setisModelOpen, fetchUsers, deletedperson }: Props) => {
           No, thank you.
         </button>
       </div>
+            {error && <p className={styles.error}>{error}</p>}
+
     </div>
   );
 };

@@ -15,22 +15,32 @@ interface User {
 
 type UserListProps = {
   users: User[];
-  fetchUsers: () => void | Promise<void>;
+
+  handleDelete: (id: number) => void | Promise<void>;
+  handleToggleFavorite: (id: number, isFavorite: boolean) => void | Promise<void>;
+  setisModelOpen: (isModelOpen: boolean) => void;
+  isModelOpen: boolean;
+  loading: boolean;
+  error: string;
+ 
 };
 
-const UserList = ({ users, fetchUsers }: UserListProps) => {
+const UserList = ({ users, handleToggleFavorite, handleDelete, setisModelOpen, isModelOpen, loading, error }: UserListProps) => {
   const navigate = useNavigate();
 
-  const [ismodelopen, setisModelOpen] = useState(false);
+
   const [id, setId] = useState<number | null>(null);
 
   return (
     <div className={styles.cardBoard}>
-      {ismodelopen && id !== null && (
+      {isModelOpen && id !== null && (
         <Modal
           setisModelOpen={setisModelOpen}
-          fetchUsers={fetchUsers}
+
+          handleDelete={handleDelete}
           deletedperson={id}
+          error={error}
+        
         />
       )}
 
@@ -42,9 +52,12 @@ const UserList = ({ users, fetchUsers }: UserListProps) => {
         >
           <UserCard
             person={person}
-            fetchUsers={fetchUsers}
+
             setisModelOpen={setisModelOpen}
             setId={setId}
+            handleToggleFavorite={handleToggleFavorite}
+            loading={loading}
+
           />
         </div>
       ))}

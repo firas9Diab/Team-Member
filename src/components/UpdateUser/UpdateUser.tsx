@@ -8,18 +8,13 @@ const UpdateUser = () => {
   const navigate = useNavigate();
   const params = useParams();
   const ref = useRef<HTMLInputElement | null>(null);
-  console.log("Params:", typeof params.personId, params.personId);
   const personId = Number(params.personId);
   const id = personId;
-
   const [avatarFile, setAvatarFile] = useState<File | null>(null);
-  const [oldAvatarValue, setOldAvatarValue] = useState("");
-
   const [avatarValue, setAvatarValue] = useState("");
   const [nameValue, setNameValue] = useState("");
   const [roleValue, setRoleValue] = useState("");
   const [statusValue, setStatusValue] = useState("active");
-
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
@@ -40,7 +35,6 @@ const UpdateUser = () => {
       setRoleValue(response.data.jobTitle);
       setStatusValue(response.data.status.toLowerCase());
       setAvatarValue(response.data.avatarUrl);
-      setOldAvatarValue(response.data.avatarUrl)
     } catch (err: any) {
       setError(err.response?.data?.message || "Failed to load user");
     }
@@ -81,10 +75,6 @@ const UpdateUser = () => {
 
       const finalAvatarUrl = await uploadImage();
 
-
-
-
-
       await axios.patch(
         `http://localhost:3000/team-members/${id}`,
         {
@@ -115,7 +105,7 @@ const UpdateUser = () => {
       <h1>Update User Team Member</h1>
 
       <div className={styles.imagefield}>
-        <img className={styles.image} src={avatarValue} alt="Avatar" />
+        <img className={styles.image} src={avatarFile === null ? avatarValue : URL.createObjectURL(avatarFile)} alt="Avatar" />
         <img className={styles.editicon}
           onClick={() => ref.current?.click()}
           src={editIcon} alt="Avatar" />
@@ -126,17 +116,15 @@ const UpdateUser = () => {
           type="file"
           accept="image/*"
           onChange={(e) => {
-  const file = e.target.files?.[0];
+            const file = e.target.files?.[0];
 
-  if (!file) {
-    setAvatarFile(null);
-    setAvatarValue(oldAvatarValue);
-    return;
-  }
+            if (!file) {
+              setAvatarFile(null);
+              return;
+            }
 
-  setAvatarFile(file);
-  setAvatarValue(URL.createObjectURL(file));
-}}
+            setAvatarFile(file);
+          }}
         />
       </div>
 
@@ -175,7 +163,7 @@ const UpdateUser = () => {
         {loading ? "Updating..." : "Update User"}
       </button>
 
-      <div>Back to <b onClick={()=>navigate("/")} className={styles.homenav}>Home</b></div>
+      <div>Back to <b onClick={() => navigate("/")} className={styles.homenav}>Home</b></div>
     </div>
   );
 };

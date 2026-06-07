@@ -1,21 +1,21 @@
 import styles from "./AddUser.module.scss";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import editIcon from "../../../Icons/edit-button-svgrepo-com.svg"
 
 const AddUser = () => {
   const navigation = useNavigate();
-
   const [nameValue, setNameValue] = useState<string>("");
   const [roleValue, setRoleValue] = useState<string>("");
   const [statusValue, setStatusValue] = useState<string>("inactive");
-  const [avatarValue, setAvatarValue] = useState<string>("");
-
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
+  const [avatarFile, setAvatarFile] = useState<File | null>(null);
 
+  const ref = useRef<HTMLInputElement | null>(null);
   const handleSubmit = async () => {
-    if (!nameValue || !roleValue || !avatarValue) {
+    if (!nameValue || !roleValue || !avatarFile) {
       setError("All fields are required");
       return;
     }
@@ -25,6 +25,7 @@ const AddUser = () => {
       setError("");
 
       const token = localStorage.getItem("token");
+      const finalAvatarUrl = await uploadImage();
 
       await axios.post(
         "http://localhost:3000/team-members",
@@ -32,7 +33,7 @@ const AddUser = () => {
           fullName: nameValue,
           jobTitle: roleValue,
           status: statusValue.toUpperCase(),
-          avatarUrl: avatarValue,
+          avatarUrl: finalAvatarUrl,
         },
         {
           headers: {
@@ -48,11 +49,41 @@ const AddUser = () => {
       setLoading(false);
     }
   };
+ const uploadImage = async (): Promise<string> => {
+    if (!avatarFile) {
+      return "";
+    }
+
+    const formData = new FormData();
+    formData.append("file", avatarFile);
+
+    const response = await axios.post(
+      "http://localhost:3000/upload",
+      formData,
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      }
+    );
+    return response.data.url;
+  }
 
   return (
     <div className={styles.container}>
       <h1>Add New Team Member</h1>
+      {avatarFile === null ? "" : (<>
+          <div className={styles.imagefield}>
+        <img className={styles.image} src={URL.createObjectURL(avatarFile)} alt={()=>null} />
+        <img className={styles.editicon}
+          onClick={() => ref.current?.click()}
+          src={editIcon} alt={()=>null} />
 
+      </div>
+      
+      
+      </>)}
+  
       <div className={styles.field}>
         <label>Full Name</label>
         <input
@@ -81,10 +112,23 @@ const AddUser = () => {
       </div>
 
       <div className={styles.field}>
-        <label>Avatar URL</label>
+        <label>Avatar</label>
+
         <input
-          value={avatarValue}
-          onChange={(e) => setAvatarValue(e.target.value)}
+
+          ref={ref}
+          type="file"
+          accept="image/*"
+          onChange={(e) => {
+            const file = e.target.files?.[0];
+
+            if (!file) {
+              setAvatarFile(null);
+              return;
+            }
+
+            setAvatarFile(file);
+          }}
         />
       </div>
 
