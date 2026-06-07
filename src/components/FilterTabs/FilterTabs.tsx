@@ -4,7 +4,6 @@ import styles from "./FilterTabs.module.scss";
 type FilterTabsProps = {
   selectedFilter: string;
   setSelectedFilter: (value: string) => void;
-
   allCount: number;
 };
 

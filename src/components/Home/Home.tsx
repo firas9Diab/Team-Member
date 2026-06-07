@@ -18,6 +18,13 @@ const Home = () => {
   const [users, setUsers] = useState<User[]>([]);
   const [totalPages, setTotalPages] = useState<number>(1);
   const [currentPage, setcurrentPage] = useState<number>(1);
+  const [isModelOpen, setisModelOpen] = useState(false);
+  const [selectedFilter, setSelectedFilter] = useState<string>("All");
+  const [search, setSearch] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string>("")
+
+
 
   const fetchUsers = async (
     page: number = 1,
@@ -57,8 +64,57 @@ const Home = () => {
     setTotalPages(response.data.meta.totalPages);
   };
 
-  const [selectedFilter, setSelectedFilter] = useState<string>("All");
-  const [search, setSearch] = useState<string>("");
+
+  const handleDelete = async (deletedperson: number) => {
+    try {
+      const token = localStorage.getItem("token");
+
+      await axios.delete(
+        `http://localhost:3000/team-members/${deletedperson}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      await fetchUsers(currentPage, selectedFilter, search);
+      setisModelOpen(false);
+    } catch (err: any) {
+      setError(err.response?.data?.message || "Failed to delete user");
+    }
+  };
+  const handleToggleFavorite = async (id: number, isFavorite: boolean) => {
+    try {
+      setLoading(true);
+
+      const token = localStorage.getItem("token");
+
+      if (!isFavorite) {
+        await axios.post(
+          `http://localhost:3000/users/me/favorites/${id}`,
+          {},
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          },
+        );
+      } else {
+        await axios.delete(`http://localhost:3000/users/me/favorites/${id}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+      }
+
+      await fetchUsers();
+    } catch (error) {
+      console.error("Favorite error:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
     setcurrentPage(1);
@@ -67,6 +123,7 @@ const Home = () => {
   useEffect(() => {
     fetchUsers(currentPage, selectedFilter, search);
   }, [currentPage, selectedFilter, search]);
+
   return (
     <div>
       <Header count={users.length} />
@@ -83,7 +140,7 @@ const Home = () => {
         </div>
 
         <div className={styles.container3}>
-          <UserList users={users}   fetchUsers={() => fetchUsers(currentPage,selectedFilter,search) }  />
+          <UserList users={users} handleToggleFavorite={handleToggleFavorite} handleDelete={handleDelete} setisModelOpen={setisModelOpen} isModelOpen={isModelOpen} loading={loading} error={error} />
         </div>
         <div className={styles.container4}>
           <ul className={styles.list}>
