@@ -109,7 +109,7 @@ const Home = () => {
 
 const onConfirm=(changeid:boolean)=>{
   setIsModelOpen(true);
-  if(changeid===true)
+  if(changeid)
   handleDelete(deletedUserById);
 }
 const onClose=()=>{
