@@ -74,10 +74,10 @@ const AddUser = () => {
       <h1>Add New Team Member</h1>
       {avatarFile === null ? "" : (<>
           <div className={styles.imagefield}>
-        <img className={styles.image} src={URL.createObjectURL(avatarFile)} alt={()=>null} />
+        <img className={styles.image} src={URL.createObjectURL(avatarFile)} alt="" />
         <img className={styles.editicon}
           onClick={() => ref.current?.click()}
-          src={editIcon} alt={()=>null} />
+          src={editIcon} alt="" />
 
       </div>
       
@@ -137,6 +137,8 @@ const AddUser = () => {
       <button onClick={handleSubmit} disabled={loading}>
         {loading ? "Creating..." : "Create User"}
       </button>
+            <div>Back to <b onClick={() => navigation("/")} className={styles.homenav}>Home</b></div>
+
     </div>
   );
 };
