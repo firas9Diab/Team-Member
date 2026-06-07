@@ -21,8 +21,8 @@ type UserListProps = {
   loading: boolean;
   error: string;
   setdeletedUserById: (deletedUserById: number | null) => void;
-  onConfirm:(changeid:boolean)=>void;
-onClose:()=>void;
+  onConfirm: (changeid: boolean) => void;
+  onClose: () => void;
 };
 
 const UserList = ({
@@ -33,20 +33,13 @@ const UserList = ({
   loading,
   setdeletedUserById,
   onConfirm,
-onClose
-
+  onClose,
 }: UserListProps) => {
   const navigate = useNavigate();
 
-
   return (
     <div className={styles.cardBoard}>
-      {isModelOpen  && (
-        <Modal
-          onConfirm={onConfirm}
-          onClose={onClose}
-        />
-      )}
+      {isModelOpen && <Modal onConfirm={onConfirm} onClose={onClose} />}
 
       {users.map((person) => (
         <div
@@ -56,8 +49,6 @@ onClose
         >
           <UserCard
             person={person}
-            setIsModelOpen={setIsModelOpen}
-            
             handleToggleFavorite={handleToggleFavorite}
             loading={loading}
             setdeletedUserById={setdeletedUserById}

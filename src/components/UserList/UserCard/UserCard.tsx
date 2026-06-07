@@ -14,12 +14,10 @@ interface User {
 type UserCardProps = {
   person: User;
 
- 
   handleToggleFavorite: (id: number, isFavorite: boolean) => void;
   loading: boolean;
-      setdeletedUserById: (id: number) => void;
-  onConfirm:(changeid:boolean)=>void;
-
+  setdeletedUserById: (id: number) => void;
+  onConfirm: (changeid: boolean) => void;
 };
 
 const UserCard = ({
@@ -27,9 +25,8 @@ const UserCard = ({
 
   handleToggleFavorite,
   loading,
-    setdeletedUserById,
-    onConfirm
-
+  setdeletedUserById,
+  onConfirm,
 }: UserCardProps) => {
   return (
     <>
@@ -38,12 +35,12 @@ const UserCard = ({
           onClick={(e) => {
             e.stopPropagation();
             setdeletedUserById(person.id);
-onConfirm(false);
+            onConfirm(false);
           }}
         >
           <img src={deleteicon} alt="delete" />
         </div>
-       
+
         <button
           className={styles.starbutton}
           onClick={(e) => {

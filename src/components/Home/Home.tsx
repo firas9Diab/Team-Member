@@ -107,16 +107,14 @@ const Home = () => {
     }
   };
 
-const onConfirm=(changeid:boolean)=>{
-  setIsModelOpen(true);
-  if(changeid)
-  handleDelete(deletedUserById);
-}
-const onClose=()=>{
-  setIsModelOpen(false);
-        fetchUsers(currentPage, selectedFilter, search);
-
-}
+  const onConfirm = (changeid: boolean) => {
+    setIsModelOpen(true);
+    if (changeid) handleDelete(deletedUserById);
+  };
+  const onClose = () => {
+    setIsModelOpen(false);
+    fetchUsers(currentPage, selectedFilter, search);
+  };
 
   useEffect(() => {
     setcurrentPage(1);

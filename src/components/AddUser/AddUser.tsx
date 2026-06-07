@@ -65,7 +65,7 @@ const AddUser = () => {
     return response.data.url;
   };
 
- const changeAvatarFile = (e) => {
+  const changeAvatarFile = (e) => {
     const file = e.target.files?.[0];
 
     if (!file) {
@@ -75,7 +75,6 @@ const AddUser = () => {
 
     setAvatarFile(file);
   };
-
 
   return (
     <div className={styles.container}>
@@ -94,13 +93,7 @@ const AddUser = () => {
           alt=""
         />
 
-        <input
-          hidden
-          ref={ref}
-          type="file"
-          accept="image/*"
-          onChange={changeAvatarFile}
-        />
+        <input hidden ref={ref} type="file" accept="image/*" onChange={changeAvatarFile} />
       </div>
 
       <div className={styles.field}>

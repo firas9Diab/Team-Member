@@ -1,8 +1,8 @@
 import styles from "./Modal.module.scss";
 
 interface Props {
-onConfirm:(changeid:boolean)=>void;
-onClose:()=>void;
+  onConfirm: (changeid: boolean) => void;
+  onClose: () => void;
 }
 
 const Modal = ({ onConfirm, onClose }: Props) => {
@@ -17,19 +17,14 @@ const Modal = ({ onConfirm, onClose }: Props) => {
       </div>
 
       <div className={styles.pubuttoncontainer}>
-        <button
-          type="button"
-          onClick= {()=>onConfirm(true)}
-          className={styles.buttons}
-        >
+        <button type="button" onClick={() => onConfirm(true)} className={styles.buttons}>
           Yes, delete.
         </button>
 
-        <button type="button" onClick={onClose}   className={styles.buttons}>
+        <button type="button" onClick={onClose} className={styles.buttons}>
           No, thank you.
         </button>
       </div>
-      
     </div>
   );
 };

@@ -127,18 +127,18 @@ select {
 .homenav {
   color: #6d4eff;
 }
-.updateusers
-{
-   color: white;
-    border: 1px solid #e5e7eb;
-    border-radius: 12px;
-    display: inline-block;
-    padding: 8px 20px;
-    background-color: #838383;;
-    border-radius: 6px;
-    text-decoration: none;
-    font-weight: 500;
-    transition: background-color 0.2s;
-    &:hover {
+.updateusers {
+  color: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  display: inline-block;
+  padding: 8px 20px;
+  background-color: #838383;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.2s;
+  &:hover {
     background-color: #535bf2;
-}}
+  }
+}
