@@ -7,7 +7,7 @@
 
   border: 1px solid #011627;
   border-radius: 0.3em;
-  box-shadow: -2px 5px 5px #e71d36;
+  box-shadow: -2px 5px 5px #535bf2;
 
   background-color: #fdfffc;
 
@@ -41,3 +41,18 @@
   gap: 20px;
   padding-bottom: 20px;
 }
+.buttons
+{
+      color: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    display: inline-block;
+    padding: 8px 20px;
+    background-color: #838383;;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.2s;
+    &:hover {
+    background-color: #535bf2;
+}}

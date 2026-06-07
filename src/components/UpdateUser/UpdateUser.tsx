@@ -37,10 +37,6 @@ const UpdateUser = () => {
     }
   };
 
-  useEffect(() => {
-    fetchUserById();
-  }, [id]);
-
   const uploadImage = async (): Promise<string> => {
     if (!avatarFile) {
       return avatarValue;
@@ -91,6 +87,20 @@ const UpdateUser = () => {
     }
   };
 
+  const changeAvatarFile = (e) => {
+    const file = e.target.files?.[0];
+
+    if (!file) {
+      setAvatarFile(null);
+      return;
+    }
+
+    setAvatarFile(file);
+  };
+
+  useEffect(() => {
+    fetchUserById();
+  }, [id]);
   return (
     <div className={styles.container}>
       <h1>Update User Team Member</h1>
@@ -98,7 +108,7 @@ const UpdateUser = () => {
       <div className={styles.imagefield}>
         <img
           className={styles.image}
-          src={avatarFile === null ? avatarValue : URL.createObjectURL(avatarFile)}
+          src={!avatarFile ? avatarValue : URL.createObjectURL(avatarFile)}
           alt="Avatar"
         />
         <img
@@ -108,22 +118,7 @@ const UpdateUser = () => {
           alt="Avatar"
         />
 
-        <input
-          hidden
-          ref={ref}
-          type="file"
-          accept="image/*"
-          onChange={(e) => {
-            const file = e.target.files?.[0];
-
-            if (!file) {
-              setAvatarFile(null);
-              return;
-            }
-
-            setAvatarFile(file);
-          }}
-        />
+        <input hidden ref={ref} type="file" accept="image/*" onChange={changeAvatarFile} />
       </div>
 
       <div className={styles.field}>
@@ -146,12 +141,12 @@ const UpdateUser = () => {
 
       {error && <p className={styles.error}>{error}</p>}
 
-      <button onClick={handleUpdateUser} disabled={loading}>
+      <button onClick={handleUpdateUser} disabled={loading} className={styles.updateusers}>
         {loading ? "Updating..." : "Update User"}
       </button>
 
       <div>
-        Back to{" "}
+        Back to
         <b onClick={() => navigate("/")} className={styles.homenav}>
           Home
         </b>

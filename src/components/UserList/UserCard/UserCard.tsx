@@ -14,18 +14,22 @@ interface User {
 type UserCardProps = {
   person: User;
 
-  setisModelOpen: (model: boolean) => void;
-  setId: (id: number) => void;
+ 
   handleToggleFavorite: (id: number, isFavorite: boolean) => void;
   loading: boolean;
+      setdeletedUserById: (id: number) => void;
+  onConfirm:(changeid:boolean)=>void;
+
 };
 
 const UserCard = ({
   person,
-  setisModelOpen,
-  setId,
+
   handleToggleFavorite,
   loading,
+    setdeletedUserById,
+    onConfirm
+
 }: UserCardProps) => {
   return (
     <>
@@ -33,27 +37,18 @@ const UserCard = ({
         <div
           onClick={(e) => {
             e.stopPropagation();
-            setId(person.id);
-            setisModelOpen(true);
+            setdeletedUserById(person.id);
+onConfirm(false);
           }}
         >
           <img src={deleteicon} alt="delete" />
         </div>
-        <div
-          onClick={(e) => {
-            setisModelOpen(true);
-
-            e.stopPropagation();
-            // e.nativeEvent.stopImmediatePropagation();
-          }}
-          className={styles.deleteUser}
-        ></div>
+       
         <button
           className={styles.starbutton}
           onClick={(e) => {
             handleToggleFavorite(person.id, person.isFavorite);
             e.stopPropagation();
-            // e.nativeEvent.stopImmediatePropagation();
           }}
           disabled={loading}
         >

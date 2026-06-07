@@ -1,16 +1,14 @@
 import styles from "./Modal.module.scss";
 
 interface Props {
-  setisModelOpen: (model: boolean) => void;
-  handleDelete: (id: number) => void | Promise<void>;
-  deletedperson: number;
-  error: string;
+onConfirm:(changeid:boolean)=>void;
+onClose:()=>void;
 }
 
-const Modal = ({ setisModelOpen, handleDelete, deletedperson, error }: Props) => {
+const Modal = ({ onConfirm, onClose }: Props) => {
   return (
     <div className={styles.popup}>
-      <button type="button" className={styles.popupx} onClick={() => setisModelOpen(false)}>
+      <button type="button" className={styles.popupx} onClick={onClose}>
         X
       </button>
 
@@ -21,18 +19,17 @@ const Modal = ({ setisModelOpen, handleDelete, deletedperson, error }: Props) =>
       <div className={styles.pubuttoncontainer}>
         <button
           type="button"
-          onClick={() => {
-            handleDelete(deletedperson);
-          }}
+          onClick= {()=>onConfirm(true)}
+          className={styles.buttons}
         >
           Yes, delete.
         </button>
 
-        <button type="button" onClick={() => setisModelOpen(false)}>
+        <button type="button" onClick={onClose}   className={styles.buttons}>
           No, thank you.
         </button>
       </div>
-      {error && <p className={styles.error}>{error}</p>}
+      
     </div>
   );
 };

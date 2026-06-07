@@ -1,7 +1,6 @@
 import styles from "./UserList.module.scss";
 import UserCard from "./UserCard/UserCard";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
 import Modal from "../Modal/Modal";
 
 interface User {
@@ -16,35 +15,36 @@ interface User {
 type UserListProps = {
   users: User[];
 
-  handleDelete: (id: number) => void | Promise<void>;
   handleToggleFavorite: (id: number, isFavorite: boolean) => void | Promise<void>;
-  setisModelOpen: (isModelOpen: boolean) => void;
+  setIsModelOpen: (isModelOpen: boolean) => void;
   isModelOpen: boolean;
   loading: boolean;
   error: string;
+  setdeletedUserById: (deletedUserById: number | null) => void;
+  onConfirm:(changeid:boolean)=>void;
+onClose:()=>void;
 };
 
 const UserList = ({
   users,
   handleToggleFavorite,
-  handleDelete,
-  setisModelOpen,
+  setIsModelOpen,
   isModelOpen,
   loading,
-  error,
+  setdeletedUserById,
+  onConfirm,
+onClose
+
 }: UserListProps) => {
   const navigate = useNavigate();
 
-  const [id, setId] = useState<number | null>(null);
 
   return (
     <div className={styles.cardBoard}>
-      {isModelOpen && id !== null && (
+      {isModelOpen  && (
         <Modal
-          setisModelOpen={setisModelOpen}
-          handleDelete={handleDelete}
-          deletedperson={id}
-          error={error}
+          onConfirm={onConfirm}
+          onClose={onClose}
         />
       )}
 
@@ -56,10 +56,12 @@ const UserList = ({
         >
           <UserCard
             person={person}
-            setisModelOpen={setisModelOpen}
-            setId={setId}
+            setIsModelOpen={setIsModelOpen}
+            
             handleToggleFavorite={handleToggleFavorite}
             loading={loading}
+            setdeletedUserById={setdeletedUserById}
+            onConfirm={onConfirm}
           />
         </div>
       ))}

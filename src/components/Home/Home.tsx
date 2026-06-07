@@ -15,10 +15,11 @@ interface User {
 }
 
 const Home = () => {
+  const [deletedUserById, setdeletedUserById] = useState<number | null>(null);
   const [users, setUsers] = useState<User[]>([]);
   const [totalPages, setTotalPages] = useState<number>(1);
   const [currentPage, setcurrentPage] = useState<number>(1);
-  const [isModelOpen, setisModelOpen] = useState(false);
+  const [isModelOpen, setIsModelOpen] = useState(false);
   const [selectedFilter, setSelectedFilter] = useState<string>("All");
   const [search, setSearch] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
@@ -57,22 +58,23 @@ const Home = () => {
     setTotalPages(response.data.meta.totalPages);
   };
 
-  const handleDelete = async (deletedperson: number) => {
+  const handleDelete = async (deletedUserById: number) => {
     try {
       const token = localStorage.getItem("token");
 
-      await axios.delete(`http://localhost:3000/team-members/${deletedperson}`, {
+      await axios.delete(`http://localhost:3000/team-members/${deletedUserById}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
 
       await fetchUsers(currentPage, selectedFilter, search);
-      setisModelOpen(false);
+      setIsModelOpen(false);
     } catch (err: any) {
       setError(err.response?.data?.message || "Failed to delete user");
     }
   };
+
   const handleToggleFavorite = async (id: number, isFavorite: boolean) => {
     try {
       setLoading(true);
@@ -105,6 +107,17 @@ const Home = () => {
     }
   };
 
+const onConfirm=(changeid:boolean)=>{
+  setIsModelOpen(true);
+  if(changeid===true)
+  handleDelete(deletedUserById);
+}
+const onClose=()=>{
+  setIsModelOpen(false);
+        fetchUsers(currentPage, selectedFilter, search);
+
+}
+
   useEffect(() => {
     setcurrentPage(1);
   }, [selectedFilter, search]);
@@ -132,11 +145,13 @@ const Home = () => {
           <UserList
             users={users}
             handleToggleFavorite={handleToggleFavorite}
-            handleDelete={handleDelete}
-            setisModelOpen={setisModelOpen}
+            setIsModelOpen={setIsModelOpen}
             isModelOpen={isModelOpen}
             loading={loading}
             error={error}
+            setdeletedUserById={setdeletedUserById}
+            onConfirm={onConfirm}
+            onClose={onClose}
           />
         </div>
         <div className={styles.container4}>

@@ -3,7 +3,7 @@ import { useRef, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import editIcon from "../../../Icons/edit-button-svgrepo-com.svg";
-
+import UsersIcon from "../../../Icons/UsersIcon.png";
 const AddUser = () => {
   const navigation = useNavigate();
   const [nameValue, setNameValue] = useState<string>("");
@@ -12,8 +12,8 @@ const AddUser = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
   const [avatarFile, setAvatarFile] = useState<File | null>(null);
-
   const ref = useRef<HTMLInputElement | null>(null);
+
   const handleSubmit = async () => {
     if (!nameValue || !roleValue || !avatarFile) {
       setError("All fields are required");
@@ -65,24 +65,43 @@ const AddUser = () => {
     return response.data.url;
   };
 
+ const changeAvatarFile = (e) => {
+    const file = e.target.files?.[0];
+
+    if (!file) {
+      setAvatarFile(null);
+      return;
+    }
+
+    setAvatarFile(file);
+  };
+
+
   return (
     <div className={styles.container}>
       <h1>Add New Team Member</h1>
-      {avatarFile === null ? (
-        ""
-      ) : (
-        <>
-          <div className={styles.imagefield}>
-            <img className={styles.image} src={URL.createObjectURL(avatarFile)} alt="" />
-            <img
-              className={styles.editicon}
-              onClick={() => ref.current?.click()}
-              src={editIcon}
-              alt=""
-            />
-          </div>
-        </>
-      )}
+
+      <div className={styles.imagefield}>
+        <img
+          className={styles.image}
+          src={!avatarFile ? UsersIcon : URL.createObjectURL(avatarFile)}
+          alt=""
+        />
+        <img
+          className={styles.editicon}
+          onClick={() => ref.current?.click()}
+          src={editIcon}
+          alt=""
+        />
+
+        <input
+          hidden
+          ref={ref}
+          type="file"
+          accept="image/*"
+          onChange={changeAvatarFile}
+        />
+      </div>
 
       <div className={styles.field}>
         <label>Full Name</label>
@@ -102,29 +121,9 @@ const AddUser = () => {
         </select>
       </div>
 
-      <div className={styles.field}>
-        <label>Avatar</label>
-
-        <input
-          ref={ref}
-          type="file"
-          accept="image/*"
-          onChange={(e) => {
-            const file = e.target.files?.[0];
-
-            if (!file) {
-              setAvatarFile(null);
-              return;
-            }
-
-            setAvatarFile(file);
-          }}
-        />
-      </div>
-
       {error && <p className={styles.error}>{error}</p>}
 
-      <button onClick={handleSubmit} disabled={loading}>
+      <button onClick={handleSubmit} disabled={loading} className={styles.createuser}>
         {loading ? "Creating..." : "Create User"}
       </button>
       <div>
