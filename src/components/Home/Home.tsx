@@ -78,7 +78,6 @@ const Home = () => {
     }
   };
 
-
   const getFavorite = async () => {
     const token = localStorage.getItem("token");
     const response = await axios.get("http://localhost:3000/users/me", {
@@ -153,7 +152,6 @@ const Home = () => {
       console.error("Failed to update favorite status:", error);
     }
   };
- 
 
   return (
     <div>

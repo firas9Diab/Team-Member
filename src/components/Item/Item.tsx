@@ -1,5 +1,5 @@
-import { useParams, useNavigate } from 'react-router-dom';
-import styles from './Item.module.scss';
+import { useParams, useNavigate } from "react-router-dom";
+import styles from "./Item.module.scss";
 
 const Item = () => {
   const { id } = useParams<{ id: string }>();
@@ -11,7 +11,7 @@ const Item = () => {
       <p className={styles.detail}>
         Viewing item with ID: <span className={styles.id}>{id}</span>
       </p>
-      <button className={styles.back} onClick={() => navigate('/')}>
+      <button className={styles.back} onClick={() => navigate("/")}>
         ← Back to Home
       </button>
     </div>

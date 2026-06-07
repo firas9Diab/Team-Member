@@ -13,7 +13,6 @@ const UserCard = ({
   fav: Function;
   del: Function;
 }) => {
-  // const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
 
   const handleCardClick = () => {

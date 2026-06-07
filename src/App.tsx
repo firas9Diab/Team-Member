@@ -9,23 +9,37 @@ import ProtectedRoute from "./ProtectedRoute";
 // import Item from "./components/Item/Item";
 
 const App = () => {
- 
   return (
     <div>
-       <Navbar />
+      <Navbar />
       <Routes>
-        <Route path="/" element={    <ProtectedRoute>
-            <Home />
-          </ProtectedRoute>} />
+        <Route
+          path="/"
+          element={
+            <ProtectedRoute>
+              <Home />
+            </ProtectedRoute>
+          }
+        />
         {/* <Route path="/item/:id" element={<Item />} /> */}
         <Route path="/login" element={<Login />} />
         <Route path="/Sign" element={<Sign />} />
-        <Route path="/UpdateUser/:id" element={ <ProtectedRoute>
-      <UpdateUser />
-    </ProtectedRoute>} />
-        <Route path="/AddUser" element={ <ProtectedRoute>
-      <AddUser />
-    </ProtectedRoute>} />
+        <Route
+          path="/UpdateUser/:id"
+          element={
+            <ProtectedRoute>
+              <UpdateUser />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/AddUser"
+          element={
+            <ProtectedRoute>
+              <AddUser />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </div>
   );
