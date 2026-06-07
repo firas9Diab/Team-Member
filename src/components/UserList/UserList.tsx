@@ -1,8 +1,10 @@
-import React, { type Dispatch, type SetStateAction } from "react";
+import { useState } from "react";
+import { type Dispatch, type SetStateAction } from "react";
 import type { UserData } from "../Home/Home";
 import styles from "./UserList.module.scss";
 import UserCard from "./UserCard/UserCard";
 import { useNavigate } from "react-router-dom";
+import Popup from "../Popup/Popup";
 const UserList = ({
   users,
   fav,
@@ -18,8 +20,22 @@ const UserList = ({
   setCurrentPage: Dispatch<SetStateAction<number>>;
   del: Function;
 }) => {
+  const [selectedUserId, setSelectedUserId] = useState<string | null>(null);
+  const [showPopup, setShowPopup] = useState(false);
   const navigate = useNavigate();
 
+  const handleDeleteClick = (id: string) => {
+    setSelectedUserId(id);
+    setShowPopup(true);
+  };
+
+  const confirmDelete = () => {
+    if (selectedUserId) {
+      del(selectedUserId);
+    }
+    setSelectedUserId(null);
+    setShowPopup(false);
+  };
   return (
     <>
       <div>
@@ -39,7 +55,7 @@ const UserList = ({
             return (
               <div>
                 <div key={user.id}>
-                  <UserCard user={user} fav={fav} del={del} />
+                  <UserCard user={user} fav={fav} del={handleDeleteClick} />
                 </div>
               </div>
             );
@@ -68,6 +84,16 @@ const UserList = ({
           Next
         </button>
       </div>
+
+      {showPopup && (
+        <Popup
+          handleDeleteTrue={confirmDelete}
+          handleCancel={() => {
+            setShowPopup(false);
+            setSelectedUserId(null);
+          }}
+        />
+      )}
     </>
   );
 };

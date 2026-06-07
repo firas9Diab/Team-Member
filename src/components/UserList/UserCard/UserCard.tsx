@@ -1,7 +1,5 @@
-import React, { useState } from "react";
 import styles from "./UserCard.module.scss";
 import type { UserData } from "../../Home/Home";
-import Popup from "../../Popup/Popup";
 import starLight from "../../../assets/starLight.svg";
 import star from "../../../assets/star.svg";
 import deleteIcon from "../../../assets/delete.svg";
@@ -15,7 +13,7 @@ const UserCard = ({
   fav: Function;
   del: Function;
 }) => {
-  const [showModal, setShowModal] = useState(false);
+  // const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
 
   const handleCardClick = () => {
@@ -28,22 +26,12 @@ const UserCard = ({
           <button
             className={styles.delete}
             onClick={() => {
-              setShowModal(true);
+              del(user.id);
             }}
           >
             <img src={deleteIcon} />
           </button>
-          {showModal ? (
-            <Popup
-              handleDeleteTrue={() => {
-                del(user.id);
-                setShowModal(false);
-              }}
-              handleCancel={() => setShowModal(false)}
-            />
-          ) : (
-            ""
-          )}
+
           <button
             className={styles.icon}
             onClick={() => {
@@ -53,7 +41,7 @@ const UserCard = ({
             <img src={user.isFavorite ? starLight : star} />
           </button>
         </div>
-        <img src={user.avatar}  className={styles.avatar} />
+        <img src={user.avatar} className={styles.avatar} />
         <h1>{user.name}</h1>
         <p>{user.role}</p>
         <div

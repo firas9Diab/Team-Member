@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import styles from "./Sign.module.scss";
 import { useNavigate } from "react-router-dom";
 import UsersIcon from "../../assets/UsersIcon.svg";

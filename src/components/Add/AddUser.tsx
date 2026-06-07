@@ -9,55 +9,57 @@ const AddUser = () => {
   const [fullName, setFullName] = useState("");
   const [jobTitle, setJobTitle] = useState("");
   const [status, setStatus] = useState("");
-  const [avatarUrl, setAvatarUrl] = useState("");
   const [previewUrl, setPreviewUrl] = useState("");
+  const [file, setFile] = useState<File | null>(null);
   const navigate = useNavigate();
   const fileInputRef = useRef<HTMLInputElement>(null);
-  const addUser = async (
-    fullName: string,
-    jobTitle: string,
-    status: string,
-    avatarUrl: string,
-  ) => {
-    try {
-      const token = localStorage.getItem("token");
-      await axios.post(
-        "http://localhost:3000/team-members",
-        { fullName, jobTitle, status: status.trim().toUpperCase(), avatarUrl },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        },
-      );
-      navigate("/");
-    } catch (error: any) {
-      console.log("FULL ERROR:", error);
-    }
-  };
 
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile = e.target.files?.[0];
     if (!selectedFile) return;
+
+    setFile(selectedFile);
     setPreviewUrl(URL.createObjectURL(selectedFile));
+  };
+
+  const save = async () => {
     try {
       const token = localStorage.getItem("token");
-      const formData = new FormData();
+      let uploadedAvatarUrl = "";
+      if (file) {
+        const formData = new FormData();
 
-      formData.append("file", selectedFile);
+        formData.append("file", file);
 
-      const response = await axios.post(
-        "http://localhost:3000/upload",
-        formData,
+        const response = await axios.post(
+          "http://localhost:3000/upload",
+          formData,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+              "Content-Type": "multipart/form-data",
+            },
+          },
+        );
+        uploadedAvatarUrl = response.data.url;
+      }
+
+      await axios.post(
+        "http://localhost:3000/team-members",
+        {
+          fullName,
+          jobTitle,
+          status: status.trim().toUpperCase(),
+          avatarUrl: uploadedAvatarUrl,
+        },
         {
           headers: {
             Authorization: `Bearer ${token}`,
-            "Content-Type": "multipart/form-data",
           },
         },
       );
-      console.log(response.data.url);
-      setAvatarUrl(response.data.url);
+
+      navigate("/");
     } catch (error: any) {
       console.log("FULL ERROR:", error);
     }
@@ -68,19 +70,19 @@ const AddUser = () => {
       <div className={styles.allForm}>
         <h1>Add User</h1>
         <form className={styles.form}>
-     <div className={styles.avatarContainer}>
-          <img
-            src={previewUrl || avatarUrl || userp}
-            alt="Avatar"
-            className={styles.avatar}
-          />
-          <button
-            type="button"
-            className={styles.editAvatar}
-            onClick={() => fileInputRef.current?.click()}
-          >
-            <img src={edit} alt="edit" />
-          </button>
+          <div className={styles.avatarContainer}>
+            <img
+              src={previewUrl || userp}
+              alt="Avatar"
+              className={styles.avatar}
+            />
+            <button
+              type="button"
+              className={styles.editAvatar}
+              onClick={() => fileInputRef.current?.click()}
+            >
+              <img src={edit} alt="edit" />
+            </button>
           </div>
           <input
             type="file"
@@ -96,7 +98,11 @@ const AddUser = () => {
             onChange={(e) => setFullName(e.target.value)}
           />
           <label>jobTitle</label>
-          <input type="text" value={jobTitle} onChange={(e) => setJobTitle(e.target.value)} />
+          <input
+            type="text"
+            value={jobTitle}
+            onChange={(e) => setJobTitle(e.target.value)}
+          />
           <label>status</label>
           <select
             className={styles.select}
@@ -107,26 +113,19 @@ const AddUser = () => {
             <option value="active">active</option>
             <option value="inactive">inactive</option>
           </select>
-
         </form>
         <div className={styles.buttons}>
-        <button
-          type="button"
-          className={styles.formButton}
-          onClick={() => {
-            addUser(fullName, jobTitle, status, avatarUrl);
-          }}
-        >
-          save
-        </button>
-        <button
-              type="button"
-              onClick={() => navigate("/")}
-              className={styles.formButton}
-            >
-              Cancel
-            </button>
-            </div>
+          <button type="button" className={styles.formButton} onClick={save}>
+            save
+          </button>
+          <button
+            type="button"
+            onClick={() => navigate("/")}
+            className={styles.formButton}
+          >
+            Cancel
+          </button>
+        </div>
       </div>
     </div>
   );
