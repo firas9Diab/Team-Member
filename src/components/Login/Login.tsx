@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import styles from "./Login.module.scss";
 import { useNavigate } from "react-router-dom";
 import UsersIcon from "../../assets/UsersIcon.svg";
@@ -6,11 +6,15 @@ import email1 from "../../assets/email1.png";
 import password1 from "../../assets/password1.png";
 import EyeIcon from "../../assets/EyeIcon.svg";
 import axios from "axios";
+
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState("password");
   const [error, setError] = useState("");
+
+  const isFormValid = email.trim() && password.trim();
+
   function showpassword() {
     setShowPassword(showPassword === "password" ? "text" : "password");
   }
@@ -31,6 +35,7 @@ const Login = () => {
       setError("Invalid email or password");
     }
   };
+
   return (
     <div className={styles.login}>
       <div className={styles.card}>
@@ -72,7 +77,12 @@ const Login = () => {
             </div>
             <div className={styles.error}>{error ? <p>{error}</p> : ""}</div>
           </div>
-          <button type="button" className={styles.button} onClick={login}>
+          <button
+            type="button"
+            className={`${styles.button} ${isFormValid ? styles.activeButton : ""}`}
+            disabled={!isFormValid}
+            onClick={login}
+          >
             {" "}
             Sign In{" "}
           </button>

@@ -1,29 +1,25 @@
-import React, { useState, type Dispatch, type SetStateAction } from "react";
+import { type Dispatch, type SetStateAction } from "react";
 import type { UserData } from "../Home/Home";
 import styles from "./UserList.module.scss";
-
 import UserCard from "./UserCard/UserCard";
+import { useNavigate } from "react-router-dom";
 
 const UserList = ({
   users,
-  fav,
-  add,
+  handleToggleFav,
   currentPage,
   totalPages,
+  handleDeleteUser,
   setCurrentPage,
 }: {
   users: UserData[];
-  fav: Function;
-  add: Function;
+  handleToggleFav: (id: string) => void;
   currentPage: number;
   totalPages: number;
   setCurrentPage: Dispatch<SetStateAction<number>>;
+  handleDeleteUser: (id: string) => void;
 }) => {
-  const [click, setClick] = useState(false);
-  const [fullName, setFullName] = useState("");
-  const [jobTitle, setJobTitle] = useState("");
-  const [status, setStatus] = useState("");
-  const [avatarUrl, setAvatarUrl] = useState("");
+  const navigate = useNavigate();
 
   return (
     <>
@@ -32,66 +28,24 @@ const UserList = ({
         <button
           className={styles.addButton}
           onClick={() => {
-            !click ? setClick(true) : setClick(false);
+            navigate("/AddUser");
           }}
         >
           Add User
         </button>
-        {click ? (
-          <div className={styles.fullForm}>
-            <form className={styles.form}>
-              <label>fullName</label>
-              <input
-                type="text"
-                onChange={(e) => setFullName(e.target.value)}
-              />
-              <label>jobTitle</label>
-              <input
-                type="text"
-                onChange={(e) => setJobTitle(e.target.value)}
-              />
-              <label>status</label>
-              <select onChange={(e) => setStatus(e.target.value)}>
-                <option>select</option>
-                <option>active</option>
-                <option>inactive</option>
-              </select>
-
-              <label>AvatarUrl</label>
-              <input
-                type="text"
-                onChange={(e) => setAvatarUrl(e.target.value)}
-              />
-            </form>
-            <button
-              type="button"
-              className={styles.formButton}
-              onClick={() => {
-                (add(fullName, jobTitle, status, avatarUrl), setClick(false));
-              }}
-            >
-              save
-            </button>
-          </div>
-        ) : (
-          ""
-        )}
       </div>
-      {users.length !== 0 ? (
-        <div className={styles.card}>
-          {users.map((user) => {
-            return (
-              <div>
-                <div key={user.id}>
-                  <UserCard user={user} fav={fav} />
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      ) : (
-        "No users found"
-      )}
+      <div className={styles.card}>
+        {users.map((user) => (
+          <UserCard
+            key={user.id}
+            user={user}
+            handleToggleFav={handleToggleFav}
+            handleDeleteUser={handleDeleteUser}
+          />
+        ))}
+      </div>
+
+      {!users.length && "No users found"}
 
       <div className={styles.pages}>
         <button

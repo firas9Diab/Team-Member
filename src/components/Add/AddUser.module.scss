@@ -1,0 +1,94 @@
+.addButton {
+  border-radius: 10px;
+  border: 1px solid rgba(182, 178, 178, 0.3);
+  padding: 18px 50px;
+  background-color: rgb(132, 0, 255);
+  color: white;
+  margin: 10px 30px;
+  cursor: pointer;
+}
+
+.form {
+  margin: 10px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  text-align: center;
+
+  input {
+    border-radius: 10px;
+    border: 1px solid rgba(182, 178, 178, 0.3);
+    padding: 5px 5px;
+  }
+  label {
+    align-items: center;
+  }
+}
+
+.fullForm {
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .formButton {
+    border-radius: 10px;
+    border: 1px solid rgba(182, 178, 178, 0.3);
+    width: 60px;
+    height: 30px;
+    background-color: rgb(132, 0, 255);
+    color: white;
+  }
+}
+select {
+  border-radius: 10px;
+  border: 1px solid rgba(182, 178, 178, 0.3);
+  padding: 5px 5px;
+}
+
+.allForm {
+  border-radius: 10px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  text-align: center;
+  width: 300px;
+  min-height: 500px;
+}
+.select {
+  width: 178px;
+}
+.avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.avatarContainer {
+  position: relative;
+  width: 120px;
+  height: 120px;
+}
+.editAvatar {
+  position: absolute;
+  bottom: -10px;
+  right: -20px;
+  width: 32px;
+  height: 32px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.buttons {
+  display: flex;
+  gap: 10px;
+}

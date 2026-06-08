@@ -4,6 +4,8 @@ import Header from "../Header/Header";
 import Tabs from "../Tabs/Tabs";
 import UserList from "../UserList/UserList";
 import axios from "axios";
+import Popup from "../Popup/Popup";
+
 export interface UserData {
   id: string;
   name: string;
@@ -14,35 +16,31 @@ export interface UserData {
 }
 
 const Home = () => {
-  const [usersMockData, setUsersMockData] = useState<UserData[]>([]);
+  const [userData, setUserData] = useState<UserData[]>([]);
   const [activeTab, setActiveTab] = useState("all");
   const [inputValue, setInputValue] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+  const [selectedUserId, setSelectedUserId] = useState<string | null>(null);
+  const [showPopup, setShowPopup] = useState(false);
+
+  const handleDeleteClick = (id: string) => {
+    setSelectedUserId(id);
+    setShowPopup(true);
+  };
+
+  const confirmDelete = async () => {
+    if (selectedUserId) {
+      await handleDeleteUser(selectedUserId);
+    }
+
+    setSelectedUserId(null);
+    setShowPopup(false);
+  };
+
   function onsearch(input: string) {
     setInputValue(input);
   }
-
-  useEffect(() => {
-    const fetchUsers = async () => {
-      const users = await getUsers(currentPage);
-      const favorite = await getFavorite();
-
-      if (users) {
-        const updatedUsers = users.map((user: any) => ({
-          ...user,
-          isFavorite: favorite.includes(user.id),
-        }));
-
-        setUsersMockData(updatedUsers);
-      }
-    };
-
-    fetchUsers();
-  }, [currentPage, inputValue, activeTab]);
-  useEffect(() => {
-    setCurrentPage(1);
-  }, [inputValue, activeTab]);
 
   const getUsers = async (page: number) => {
     try {
@@ -76,55 +74,6 @@ const Home = () => {
     }
   };
 
-  const addUser = async (
-    fullName: string,
-    jobTitle: string,
-    status: string,
-    avatarUrl: string,
-  ) => {
-    try {
-      const token = localStorage.getItem("token");
-      const response = await axios.post(
-        "http://localhost:3000/team-members",
-        { fullName, jobTitle, status: status.trim().toUpperCase(), avatarUrl },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        },
-      );
-      console.log("RESPONSE:", response.data);
-
-      const user = response.data?.data ?? response.data;
-      const newUser = {
-        id: String(user.id),
-        name: user.fullName,
-        role: user.jobTitle,
-        status: user.status.toLowerCase(),
-        isFavorite: user.isFavorite ?? false,
-        avatar: user.avatarUrl,
-      };
-      if (currentPage === totalPages) {
-        setUsersMockData((prev) => [...prev, newUser]);
-      } else {
-        setCurrentPage(totalPages);
-      }
-      //return;
-      const users = await getUsers(currentPage);
-      const favorite = await getFavorite();
-
-      if (users) {
-        const updatedUsers = users.map((user: any) => ({
-          ...user,
-          isFavorite: favorite.includes(user.id),
-        }));
-        setUsersMockData(updatedUsers);
-      }
-    } catch (error: any) {
-      console.log("FULL ERROR:", error);
-    }
-  };
-
   const getFavorite = async () => {
     const token = localStorage.getItem("token");
     const response = await axios.get("http://localhost:3000/users/me", {
@@ -136,7 +85,7 @@ const Home = () => {
   };
 
   const toggleFav = async (id: string) => {
-    const fav = usersMockData.find((user) => user.id === id);
+    const fav = userData.find((user) => user.id === id);
     if (!fav) return;
 
     const isCurrentlyFavorite = fav.isFavorite;
@@ -169,32 +118,87 @@ const Home = () => {
           ...user,
           isFavorite: favorite.includes(user.id),
         }));
-        setUsersMockData(updatedUsers);
+        setUserData(updatedUsers);
       }
     } catch (error) {
       console.error("Failed to update favorite status:", error);
     }
   };
 
+  const handleDeleteUser = async (id: string) => {
+    const token = localStorage.getItem("token");
+
+    try {
+      await axios.delete(`http://localhost:3000/team-members/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      const users = await getUsers(currentPage);
+      const favorite = await getFavorite();
+
+      if (users) {
+        const updatedUsers = users.map((user: any) => ({
+          ...user,
+          isFavorite: favorite.includes(user.id),
+        }));
+        setUserData(updatedUsers);
+      }
+    } catch (error) {
+      console.error("Failed to update favorite status:", error);
+    }
+  };
+
+  const fetchUsers = async () => {
+    const users = await getUsers(currentPage);
+    const favorite = await getFavorite();
+
+    if (users) {
+      const updatedUsers = users.map((user: any) => ({
+        ...user,
+        isFavorite: favorite.includes(user.id),
+      }));
+
+      setUserData(updatedUsers);
+    }
+  };
+
+  useEffect(() => {
+    fetchUsers();
+  }, [currentPage, inputValue, activeTab]);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [inputValue, activeTab]);
+
   return (
     <div>
       <div className={styles.head}>
-        <Header count={usersMockData.length} />
+        <Header count={userData.length} />
         <hr />
         <Tabs
           onSearch={onsearch}
           setActiveTab={setActiveTab}
-          users={usersMockData}
+          users={userData}
         />
         <UserList
-          users={usersMockData}
-          fav={toggleFav}
-          add={addUser}
+          users={userData}
+          handleToggleFav={toggleFav}
           currentPage={currentPage}
           totalPages={totalPages}
           setCurrentPage={setCurrentPage}
+          handleDeleteUser={handleDeleteClick}
         />
       </div>
+      {showPopup && (
+        <Popup
+          handleDeleteTrue={confirmDelete}
+          handleCancel={() => {
+            setShowPopup(false);
+            setSelectedUserId(null);
+          }}
+        />
+      )}
     </div>
   );
 };

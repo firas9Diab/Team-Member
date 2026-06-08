@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import styles from "./Sign.module.scss";
 import { useNavigate } from "react-router-dom";
 import UsersIcon from "../../assets/UsersIcon.svg";
@@ -49,6 +49,8 @@ const Sign = () => {
     setShowConfirm(showConfirm === "password" ? "text" : "password");
   }
 
+  const isFormValid =
+    name.trim() && email.trim() && password.trim() && confirm.trim();
   return (
     <div className={styles.sign}>
       <div className={styles.card}>
@@ -130,6 +132,7 @@ const Sign = () => {
           <div className={styles.falseValue}>{error ? <p>{error}</p> : ""}</div>
           <button
             type="button"
+            disabled={!isFormValid}
             className={styles.button}
             onClick={() => {
               signUp();

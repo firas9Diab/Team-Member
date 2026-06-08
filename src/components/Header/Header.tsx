@@ -1,6 +1,6 @@
-import React, { useState } from "react";
 import styles from "./Header.module.scss";
 import UsersIcon from "../../assets/UsersIcon.svg";
+
 const Header = ({ count }: { count: number }) => {
   return (
     <div>

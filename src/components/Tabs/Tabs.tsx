@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import styles from "./Tabs.module.scss";
 import type { UserData } from "../Home/Home";
 import searchIcon from "../../assets/searchIcon.svg";

@@ -1,0 +1,54 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.modal_box {
+  background-color: #ffffff;
+  padding: 24px;
+  border-radius: 8px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  width: 300px;
+
+  p {
+    margin: 20px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #413f3f;
+  }
+
+  button {
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    margin: 6px;
+  }
+
+  .modal_buttonCancel {
+    background-color: #f3f4f6;
+    color: #4b5563;
+  }
+
+  .modal_buttoDelete {
+    background-color: #fc3333;
+    color: #ffffff;
+  }
+}
+.modal_buttoDelete:hover {
+  background-color: #b30303;
+}
+.modal_buttonCancel:hover {
+  background-color: #e5e7eb;
+}
