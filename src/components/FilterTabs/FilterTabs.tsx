@@ -4,7 +4,6 @@ import styles from "./FilterTabs.module.scss";
 type FilterTabsProps = {
   selectedFilter: string;
   setSelectedFilter: (value: string) => void;
-
   allCount: number;
 };
 
@@ -15,6 +14,7 @@ const FilterTabs = ({
   allCount,
 }: FilterTabsProps) => {
   const navigate = useNavigate();
+  const token = localStorage.getItem("token");
 
   const items: string[] = ["All", "Favorites", "Active", "Inactive"];
 
@@ -26,6 +26,18 @@ const FilterTabs = ({
 
   return (
     <ul className={styles.list}>
+      <li>
+        <button
+          type="button"
+          onClick={() => {
+            localStorage.removeItem("token");
+            navigate("/Login");
+          }}
+          className={styles.link}
+        >
+          {!token ? "Log in" : "sign out"}
+        </button>
+      </li>
       <li>
         <button onClick={() => navigate("/AddUser")} className={styles.link}>
           Add User

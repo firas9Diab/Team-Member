@@ -7,18 +7,17 @@
   margin: auto;
   text-align: center;
   border: 2px solid black;
-  
+
   padding: 25px;
- 
+
   display: flex;
   flex-direction: column;
   border: 1px solid #e5e7eb;
   border-radius: 12px;
   gap: 15px;
 }
-.errormessage
-{
-  color: "red" 
+.errormessage {
+  color: "red";
 }
 .signin {
   gap: 10px;
@@ -27,7 +26,7 @@
 }
 .email {
   text-align: left;
-  
+
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
@@ -41,16 +40,14 @@
   flex-direction: column;
 }
 .passwordtext {
-   
   border: none;
   align-items: center;
- 
+
   padding: 5px 10px;
   background: white;
 }
-.passwordtext:focus
-{
-   outline: none;
+.passwordtext:focus {
+  outline: none;
 }
 .emailtext {
   align-items: center;
@@ -61,14 +58,13 @@
   padding: 5px 10px;
   background: white;
 }
-.emailtext:focus
-{
-   outline: none;
+.emailtext:focus {
+  outline: none;
 }
 
 .header {
   justify-content: center;
-  
+
   align-items: center;
 
   display: flex;
@@ -84,7 +80,7 @@
   border: none;
 
   align-items: center;
-  
+
   cursor: pointer;
 }
 .signinbutton {
@@ -94,7 +90,7 @@
   padding: 12px;
   width: 100%;
 
-  border: none; 
+  border: none;
   border-radius: 10px;
 
   font-size: 16px;
@@ -114,7 +110,6 @@
   width: 20px;
 }
 .emailfield {
- 
   display: flex;
   align-items: center;
   align-items: center;
@@ -128,18 +123,16 @@
   display: flex;
 }
 
-.signup
-{align-items: center;
-      gap: 5px;
-    display: flex;
+.signup {
+  align-items: center;
+  gap: 5px;
+  display: flex;
 }
-.go_to_signup
-{
-  
- font-size: medium;
-    background-color: transparent;
-    border: none;
-    color: #6d4eff;
-    text-decoration: none;
-    font-weight: bold;
+.go_to_signup {
+  font-size: medium;
+  background-color: transparent;
+  border: none;
+  color: #6d4eff;
+  text-decoration: none;
+  font-weight: bold;
 }
