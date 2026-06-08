@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styles from "./Tabs.module.scss";
-import type { UserData } from "../Home/Home";
+import type { UserData } from "../../useHomeHook";
 import searchIcon from "../../assets/searchIcon.svg";
 
 const Tabs = ({

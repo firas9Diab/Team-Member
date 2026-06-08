@@ -3,26 +3,21 @@ import { useEffect, useState } from "react";
 import Header from "../Header/Header";
 import Tabs from "../Tabs/Tabs";
 import UserList from "../UserList/UserList";
-import axios from "axios";
 import Popup from "../Popup/Popup";
-
-export interface UserData {
-  id: string;
-  name: string;
-  role: string;
-  status: string;
-  isFavorite: boolean;
-  avatar: string;
-}
+import useHomeHook from "../../useHomeHook";
 
 const Home = () => {
-  const [userData, setUserData] = useState<UserData[]>([]);
   const [activeTab, setActiveTab] = useState("all");
   const [inputValue, setInputValue] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1);
   const [selectedUserId, setSelectedUserId] = useState<string | null>(null);
   const [showPopup, setShowPopup] = useState(false);
+
+  const { userData, totalPages, toggleFav, handleDeleteUser } = useHomeHook(
+    activeTab,
+    inputValue,
+    currentPage,
+  );
 
   const handleDeleteClick = (id: string) => {
     setSelectedUserId(id);
@@ -41,131 +36,6 @@ const Home = () => {
   function onsearch(input: string) {
     setInputValue(input);
   }
-
-  const getUsers = async (page: number) => {
-    try {
-      const token = localStorage.getItem("token");
-      let url = `http://localhost:3000/team-members?page=${page}&limit=8&search=${inputValue}`;
-      if (activeTab === "active" || activeTab === "inactive") {
-        url += `&status=${activeTab.toUpperCase()}`;
-      } else if (activeTab === "favorites") {
-        url += `&favoritesOnly=true`;
-      }
-      const response = await axios.get(url, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      if (response.data && response.data.meta) {
-        setTotalPages(response.data.meta.totalPages);
-      }
-      const users = response.data.data.map((user: any) => ({
-        id: String(user.id),
-        name: user.fullName,
-        role: user.jobTitle,
-        status: user.status.toLowerCase(),
-        isFavorite: user.isFavorite,
-        avatar: user.avatarUrl,
-      }));
-
-      return users;
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const getFavorite = async () => {
-    const token = localStorage.getItem("token");
-    const response = await axios.get("http://localhost:3000/users/me", {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-    return response.data.favorites.map((fav: any) => String(fav.id));
-  };
-
-  const toggleFav = async (id: string) => {
-    const fav = userData.find((user) => user.id === id);
-    if (!fav) return;
-
-    const isCurrentlyFavorite = fav.isFavorite;
-    const token = localStorage.getItem("token");
-
-    try {
-      if (!isCurrentlyFavorite) {
-        await axios.post(
-          `http://localhost:3000/users/me/favorites/${id}`,
-          {},
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          },
-        );
-      } else {
-        await axios.delete(`http://localhost:3000/users/me/favorites/${id}`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-      }
-
-      const users = await getUsers(currentPage);
-      const favorite = await getFavorite();
-
-      if (users) {
-        const updatedUsers = users.map((user: any) => ({
-          ...user,
-          isFavorite: favorite.includes(user.id),
-        }));
-        setUserData(updatedUsers);
-      }
-    } catch (error) {
-      console.error("Failed to update favorite status:", error);
-    }
-  };
-
-  const handleDeleteUser = async (id: string) => {
-    const token = localStorage.getItem("token");
-
-    try {
-      await axios.delete(`http://localhost:3000/team-members/${id}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      const users = await getUsers(currentPage);
-      const favorite = await getFavorite();
-
-      if (users) {
-        const updatedUsers = users.map((user: any) => ({
-          ...user,
-          isFavorite: favorite.includes(user.id),
-        }));
-        setUserData(updatedUsers);
-      }
-    } catch (error) {
-      console.error("Failed to update favorite status:", error);
-    }
-  };
-
-  const fetchUsers = async () => {
-    const users = await getUsers(currentPage);
-    const favorite = await getFavorite();
-
-    if (users) {
-      const updatedUsers = users.map((user: any) => ({
-        ...user,
-        isFavorite: favorite.includes(user.id),
-      }));
-
-      setUserData(updatedUsers);
-    }
-  };
-
-  useEffect(() => {
-    fetchUsers();
-  }, [currentPage, inputValue, activeTab]);
 
   useEffect(() => {
     setCurrentPage(1);

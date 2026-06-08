@@ -1,5 +1,5 @@
 import { type Dispatch, type SetStateAction } from "react";
-import type { UserData } from "../Home/Home";
+import type { UserData } from "../../useHomeHook";
 import styles from "./UserList.module.scss";
 import UserCard from "./UserCard/UserCard";
 import { useNavigate } from "react-router-dom";

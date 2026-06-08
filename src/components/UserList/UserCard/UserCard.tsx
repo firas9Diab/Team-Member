@@ -1,5 +1,5 @@
 import styles from "./UserCard.module.scss";
-import type { UserData } from "../../Home/Home";
+import type { UserData } from "../../../useHomeHook";
 import starLight from "../../../assets/starLight.svg";
 import star from "../../../assets/star.svg";
 import deleteIcon from "../../../assets/delete.svg";
