@@ -3,16 +3,13 @@ import starLight from "../../../assets/starLight.svg";
 import star from "../../../assets/star.svg";
 import deleteIcon from "../../../assets/delete.svg";
 import { useNavigate } from "react-router-dom";
-import type { UserData } from "../../../interface";
+import type { IUserCardProps } from "../../../interface";
+
 const UserCard = ({
   user,
   handleToggleFav,
   handleDeleteUser,
-}: {
-  user: UserData;
-  handleToggleFav: (id: string) => void;
-  handleDeleteUser: (id: string) => void;
-}) => {
+}: IUserCardProps) => {
   const navigate = useNavigate();
 
   const handleCardClick = () => {

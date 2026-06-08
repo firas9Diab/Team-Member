@@ -1,3 +1,4 @@
+import type { Dispatch, SetStateAction } from "react";
 export interface UserData {
   id: string;
   name: string;
@@ -24,4 +25,30 @@ export interface IUserDTO {
 
 export interface IFavoriteDTO {
   id: number;
+}
+
+export interface IUserListProps {
+  users: UserData[];
+  handleToggleFav: (id: string) => void;
+  currentPage: number;
+  totalPages: number;
+  setCurrentPage: Dispatch<SetStateAction<number>>;
+  handleDeleteUser: (id: string) => void;
+}
+
+export interface IUserCardProps {
+  user: UserData;
+  handleToggleFav: (id: string) => void;
+  handleDeleteUser: (id: string) => void;
+}
+
+export interface IUpdateUserPayload {
+  fullName: string;
+  jobTitle: string;
+  status: string;
+  avatarUrl: string;
+}
+
+export interface IUploadResponse {
+  url: string;
 }

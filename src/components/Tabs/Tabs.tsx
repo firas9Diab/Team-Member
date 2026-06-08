@@ -1,7 +1,6 @@
 import { useState } from "react";
 import styles from "./Tabs.module.scss";
 import searchIcon from "../../assets/searchIcon.svg";
-import type { UserData } from "../../interface";
 import type { ITabs } from "../../interface";
 
 const Tabs = ({ onSearch, setActiveTab, users }: ITabs) => {
