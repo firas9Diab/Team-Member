@@ -1,22 +1,15 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import type { UserData } from "./interface";
 
-export interface UserData {
-  id: string;
-  name: string;
-  role: string;
-  status: string;
-  isFavorite: boolean;
-  avatar: string;
-}
-
-const useHomeHook = (
-  activeTab: string,
-  inputValue: string,
-  currentPage: number,
-) => {
+const useHomeHook = () => {
   const [userData, setUserData] = useState<UserData[]>([]);
   const [totalPages, setTotalPages] = useState(1);
+  const [activeTab, setActiveTab] = useState("all");
+  const [inputValue, setInputValue] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const [selectedUserId, setSelectedUserId] = useState<string | null>(null);
+  const [showPopup, setShowPopup] = useState(false);
 
   const getUsers = async (page: number) => {
     try {
@@ -127,15 +120,50 @@ const useHomeHook = (
     }
   };
 
+  const handleDeleteClick = (id: string) => {
+    setSelectedUserId(id);
+    setShowPopup(true);
+  };
+
+  const confirmDelete = async () => {
+    if (selectedUserId) {
+      await handleDeleteUser(selectedUserId);
+    }
+
+    setSelectedUserId(null);
+    setShowPopup(false);
+  };
+
+  function onsearch(input: string) {
+    setInputValue(input);
+  }
+
   useEffect(() => {
     refreshUsers();
   }, [currentPage, inputValue, activeTab]);
 
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [inputValue, activeTab]);
+
   return {
     userData,
     totalPages,
+    activeTab,
+    setActiveTab,
+    inputValue,
+    setInputValue,
+    currentPage,
+    setCurrentPage,
+    selectedUserId,
+    setSelectedUserId,
+    showPopup,
+    setShowPopup,
     toggleFav,
     handleDeleteUser,
+    handleDeleteClick,
+    confirmDelete,
+    onsearch,
   };
 };
 

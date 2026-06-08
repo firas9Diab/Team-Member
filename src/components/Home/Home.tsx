@@ -1,5 +1,4 @@
 import styles from "./Home.module.scss";
-import { useEffect, useState } from "react";
 import Header from "../Header/Header";
 import Tabs from "../Tabs/Tabs";
 import UserList from "../UserList/UserList";
@@ -7,39 +6,20 @@ import Popup from "../Popup/Popup";
 import useHomeHook from "../../useHomeHook";
 
 const Home = () => {
-  const [activeTab, setActiveTab] = useState("all");
-  const [inputValue, setInputValue] = useState("");
-  const [currentPage, setCurrentPage] = useState(1);
-  const [selectedUserId, setSelectedUserId] = useState<string | null>(null);
-  const [showPopup, setShowPopup] = useState(false);
-
-  const { userData, totalPages, toggleFav, handleDeleteUser } = useHomeHook(
-    activeTab,
-    inputValue,
+  const {
+    userData,
+    totalPages,
+    toggleFav,
+    handleDeleteClick,
+    confirmDelete,
+    onsearch,
+    setActiveTab,
     currentPage,
-  );
-
-  const handleDeleteClick = (id: string) => {
-    setSelectedUserId(id);
-    setShowPopup(true);
-  };
-
-  const confirmDelete = async () => {
-    if (selectedUserId) {
-      await handleDeleteUser(selectedUserId);
-    }
-
-    setSelectedUserId(null);
-    setShowPopup(false);
-  };
-
-  function onsearch(input: string) {
-    setInputValue(input);
-  }
-
-  useEffect(() => {
-    setCurrentPage(1);
-  }, [inputValue, activeTab]);
+    setCurrentPage,
+    setSelectedUserId,
+    showPopup,
+    setShowPopup,
+  } = useHomeHook();
 
   return (
     <div>

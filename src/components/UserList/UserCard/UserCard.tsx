@@ -1,9 +1,9 @@
 import styles from "./UserCard.module.scss";
-import type { UserData } from "../../../useHomeHook";
 import starLight from "../../../assets/starLight.svg";
 import star from "../../../assets/star.svg";
 import deleteIcon from "../../../assets/delete.svg";
 import { useNavigate } from "react-router-dom";
+import type { UserData } from "../../../interface";
 const UserCard = ({
   user,
   handleToggleFav,
