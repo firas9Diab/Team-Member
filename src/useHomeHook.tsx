@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import type { UserData } from "./interface";
+import type { UserData, IUserDTO, IFavoriteDTO } from "./interface";
 
 const useHomeHook = () => {
   const [userData, setUserData] = useState<UserData[]>([]);
@@ -11,7 +11,7 @@ const useHomeHook = () => {
   const [selectedUserId, setSelectedUserId] = useState<string | null>(null);
   const [showPopup, setShowPopup] = useState(false);
 
-  const getUsers = async (page: number) => {
+  const getUsers = async (page: number): Promise<UserData[]> => {
     try {
       const token = localStorage.getItem("token");
       let url = `http://localhost:3000/team-members?page=${page}&limit=8&search=${inputValue}`;
@@ -28,7 +28,7 @@ const useHomeHook = () => {
       if (response.data && response.data.meta) {
         setTotalPages(response.data.meta.totalPages);
       }
-      const users = response.data.data.map((user: any) => ({
+      const users = response.data.data.map((user: IUserDTO) => ({
         id: String(user.id),
         name: user.fullName,
         role: user.jobTitle,
@@ -52,7 +52,7 @@ const useHomeHook = () => {
           Authorization: `Bearer ${token}`,
         },
       });
-      return response.data.favorites.map((fav: any) => String(fav.id));
+      return response.data.favorites.map((fav: IFavoriteDTO) => String(fav.id));
     } catch (error) {
       console.log(error);
       return [];
@@ -111,7 +111,7 @@ const useHomeHook = () => {
     const favorite = await getFavorite();
 
     if (users) {
-      const updatedUsers = users.map((user: any) => ({
+      const updatedUsers = users.map((user) => ({
         ...user,
         isFavorite: favorite.includes(user.id),
       }));

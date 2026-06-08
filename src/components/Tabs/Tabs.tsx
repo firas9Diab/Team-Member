@@ -2,16 +2,9 @@ import { useState } from "react";
 import styles from "./Tabs.module.scss";
 import searchIcon from "../../assets/searchIcon.svg";
 import type { UserData } from "../../interface";
+import type { ITabs } from "../../interface";
 
-const Tabs = ({
-  onSearch,
-  setActiveTab,
-  users,
-}: {
-  onSearch: (value: string) => void;
-  setActiveTab: (value: string) => void;
-  users: UserData[];
-}) => {
+const Tabs = ({ onSearch, setActiveTab, users }: ITabs) => {
   const [click, setClick] = useState(1);
 
   const favorite2 = users.filter((user) => user.isFavorite).length;
