@@ -1,5 +1,5 @@
 import styles from "./Modal.module.scss";
-import type {ModalProps} from "../Home/Logic/interface"
+import type { ModalProps } from "../Home/Logic/interface";
 
 const Modal = ({ changeModal }: ModalProps) => {
   return (

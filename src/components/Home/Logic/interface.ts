@@ -1,4 +1,3 @@
-
 export interface User {
   id: number;
   name: string;
@@ -17,15 +16,13 @@ export interface IUserDTO {
   avatarUrl: string;
 }
 
-
-export interface FilterTabsProps{
+export interface FilterTabsProps {
   selectedFilter: string;
   setSelectedFilter: (value: string) => void;
   allCount: number;
 }
 
-
-export interface HeaderProps{
+export interface HeaderProps {
   count: number;
 }
 
@@ -33,26 +30,24 @@ export interface ModalProps {
   changeModal: (id: number | null, confirmDelete: boolean) => void;
 }
 
-
-export interface SearchProps{
+export interface SearchProps {
   search: string;
   setSearch: (value: string) => void;
-};
+}
 
-
-export interface UserCardProps{
+export interface UserCardProps {
   person: User;
 
   handleToggleFavorite: (id: number, isFavorite: boolean) => void;
   loading: boolean;
   changeModal: (id: number | null, confirmDelete: boolean) => void;
-};
+}
 
-export interface UserListProps{
+export interface UserListProps {
   users: User[];
 
   handleToggleFavorite: (id: number, isFavorite: boolean) => void | Promise<void>;
   loading: boolean;
   changeModal: (id: number | null, confirmDelete: boolean) => void;
   navigate: (n: string) => void;
-};
+}

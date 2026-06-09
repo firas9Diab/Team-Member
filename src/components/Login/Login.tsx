@@ -13,7 +13,7 @@ const Login = () => {
   const [emailValue, setEmailValue] = useState<string>("");
   const [passwordValue, setPasswordValue] = useState<string>("");
   const [error, setError] = useState<string>("");
-  
+
   const handleLogin = async () => {
     try {
       const response = await axios.post("http://localhost:3000/auth/login", {

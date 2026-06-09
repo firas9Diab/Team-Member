@@ -1,6 +1,6 @@
 import searchIcon from "../../../Icons/searchIcon.svg";
 import styles from "./SearchInput.module.scss";
-import type {SearchProps} from "../Home/Logic/interface"
+import type { SearchProps } from "../Home/Logic/interface";
 
 const SearchInput = ({ search, setSearch }: SearchProps) => {
   return (

@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import styles from "./FilterTabs.module.scss";
-import type {FilterTabsProps} from "../Home/Logic/interface"
+import type { FilterTabsProps } from "../Home/Logic/interface";
 
 const FilterTabs = ({
   selectedFilter,
