@@ -2,22 +2,8 @@ import styles from "./UserCard.module.scss";
 import fav from "../../../../Icons/star-svgrepo-com.svg";
 import favLight from "../../../../Icons/star-light-svgrepo-com.svg";
 import deleteicon from "../../../../Icons/delete-user-svgrepo-com.svg";
-interface User {
-  id: number;
-  name: string;
-  role: string;
-  status: string;
-  isFavorite: boolean;
-  avatar: string;
-}
+import type {UserCardProps} from "../../Home/Logic/interface"
 
-type UserCardProps = {
-  person: User;
-
-  handleToggleFavorite: (id: number, isFavorite: boolean) => void;
-  loading: boolean;
-  changeModal: (id: number | null, confirmDelete: boolean) => void;
-};
 
 const UserCard = ({
   person,

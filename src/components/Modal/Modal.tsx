@@ -1,10 +1,7 @@
 import styles from "./Modal.module.scss";
+import type {ModalProps} from "../Home/Logic/interface"
 
-interface Props {
-  changeModal: (id: number | null, confirmDelete: boolean) => void;
-}
-
-const Modal = ({ changeModal }: Props) => {
+const Modal = ({ changeModal }: ModalProps) => {
   return (
     <div className={styles.popup}>
       <button type="button" className={styles.popupx} onClick={() => changeModal(null, false)}>

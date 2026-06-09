@@ -1,14 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-interface User {
-  id: number;
-  name: string;
-  role: string;
-  status: string;
-  isFavorite: boolean;
-  avatar: string;
-}
+import type { User, IUserDTO } from "./interface";
 
 const useHome = () => {
   const navigate = useNavigate();
@@ -22,6 +15,7 @@ const useHome = () => {
   const [isModelOpen, setIsModelOpen] = useState(false);
   const [SelectedUserById, setSelectedUserById] = useState<number | null>(null);
   const [error, setError] = useState("");
+
   const fetchUsers = async (
     page: number = 1,
     filter: string = selectedFilter,
@@ -42,7 +36,7 @@ const useHome = () => {
       },
     });
 
-    const mapped = response.data.data.map((user: any) => ({
+    const mapped = response.data.data.map((user: IUserDTO) => ({
       id: user.id,
       name: user.fullName,
       role: user.jobTitle,
@@ -67,8 +61,14 @@ const useHome = () => {
 
       await fetchUsers(currentPage, selectedFilter, search);
       setIsModelOpen(false);
-    } catch (err: any) {
-      setError(err.response?.data?.message || "Failed to delete user");
+    } catch (err) {
+      if (axios.isAxiosError(err)) {
+        setError(err.response?.data?.message || "Failed to delete user");
+      } else if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError("Failed to delete user");
+      }
     }
   };
 
