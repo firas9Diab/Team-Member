@@ -1,8 +1,7 @@
-import { type Dispatch, type SetStateAction } from "react";
-import type { UserData } from "../Home/Home";
 import styles from "./UserList.module.scss";
 import UserCard from "./UserCard/UserCard";
 import { useNavigate } from "react-router-dom";
+import type { IUserListProps } from "../../interface";
 
 const UserList = ({
   users,
@@ -11,14 +10,7 @@ const UserList = ({
   totalPages,
   handleDeleteUser,
   setCurrentPage,
-}: {
-  users: UserData[];
-  handleToggleFav: (id: string) => void;
-  currentPage: number;
-  totalPages: number;
-  setCurrentPage: Dispatch<SetStateAction<number>>;
-  handleDeleteUser: (id: string) => void;
-}) => {
+}: IUserListProps) => {
   const navigate = useNavigate();
 
   return (

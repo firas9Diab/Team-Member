@@ -27,7 +27,7 @@ const AddUser = () => {
   const save = async () => {
     try {
       const token = localStorage.getItem("token");
-      let uploadedAvatarUrl = "";
+      let uploadedAvatarUrl = userPurple;
       if (file) {
         const formData = new FormData();
 

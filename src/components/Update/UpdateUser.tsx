@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from "./UpdateUser.module.scss";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
