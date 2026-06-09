@@ -4,6 +4,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import editIcon from "../../../Icons/edit-button-svgrepo-com.svg";
 import UsersIcon from "../../../Icons/UsersIcon.png";
+
 const AddUser = () => {
   const navigation = useNavigate();
   const [nameValue, setNameValue] = useState<string>("");

@@ -6,12 +6,14 @@ import email from "../../../public/email.svg";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
+
 const Login = () => {
   const navigation = useNavigate();
   const [visiblePassword, SetvisiblePassword] = useState<string>("password");
   const [emailValue, setEmailValue] = useState<string>("");
   const [passwordValue, setPasswordValue] = useState<string>("");
   const [error, setError] = useState<string>("");
+
   const handleLogin = async () => {
     try {
       const response = await axios.post("http://localhost:3000/auth/login", {

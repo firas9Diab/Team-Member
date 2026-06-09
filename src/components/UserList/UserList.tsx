@@ -1,22 +1,8 @@
 import styles from "./UserList.module.scss";
 import UserCard from "./UserCard/UserCard";
-interface User {
-  id: number;
-  name: string;
-  role: string;
-  status: string;
-  isFavorite: boolean;
-  avatar: string;
-}
+import type {UserListProps} from "../Home/Logic/interface"
 
-type UserListProps = {
-  users: User[];
 
-  handleToggleFavorite: (id: number, isFavorite: boolean) => void | Promise<void>;
-  loading: boolean;
-  changeModal: (id: number | null, confirmDelete: boolean) => void;
-  navigate: (n: string) => void;
-};
 
 const UserList = ({
   users,
