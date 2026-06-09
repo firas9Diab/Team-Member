@@ -1,0 +1,172 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.sign {
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  padding: 20px;
+  background-color: #ececec;
+  width: 100%;
+}
+
+.blueBackground {
+  background-color: #5a6afa;
+  flex: 1.5;
+  max-width: 900px;
+  width: 100%;
+  height: 90vh;
+  border-radius: 36px;
+  margin-bottom: 50px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 550px;
+}
+
+.create {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  gap: 10px;
+  max-width: 500px;
+
+  h1 {
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 100%;
+  }
+  p {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 100%;
+    color: #716868;
+    text-align: center;
+  }
+}
+
+.form {
+  background-color: #ffffff;
+  border: 1px solid rgba(197, 197, 197, 0.3);
+  border-radius: 36px;
+  padding: 40px;
+  box-shadow: 10px 10px 10px rgb(160, 159, 159, 0.3);
+  width: 100%;
+  max-width: 500px;
+  gap: 26px;
+  display: flex;
+  flex-direction: column;
+}
+
+.email {
+  border: 1px solid #7d7d7d;
+  border-radius: 15px;
+  width: 100%;
+  overflow: hidden;
+  padding: 0 15px;
+}
+
+input {
+  border: none;
+  outline: none;
+  text-align: start;
+  font-weight: 500;
+  color: #2d2d2d;
+  height: 40px;
+  width: 100%;
+}
+
+.button {
+  background-color: #5a6afa;
+  color: white;
+  border-radius: 15px;
+  border: 1px solid #7d7d7d;
+  padding: 7px 30px;
+}
+.falseValue {
+  color: rgb(236, 7, 7);
+  font-size: small;
+}
+.google {
+  background-color: #ffffff;
+  border: 1px solid #232323;
+  position: relative;
+  padding: 0px 24px;
+  border-radius: 5px;
+  width: 100%;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  justify-content: center;
+  color: black;
+  font-weight: 600;
+
+  img {
+    width: 27px;
+    height: 30px;
+    object-fit: contain;
+    position: absolute;
+    left: 24px;
+  }
+}
+
+.account {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  font-weight: 500;
+
+  p {
+    color: #000000;
+    font-size: 16px;
+  }
+  button {
+    color: #1045ff;
+    border: none;
+    background-color: white;
+  }
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+  .sign {
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px 15px;
+  }
+
+  .blueBackground {
+    display: none;
+  }
+
+  .card {
+    max-width: 100%;
+  }
+
+  .form {
+    padding: 30px 20px;
+  }
+
+  .create h1 {
+    font-size: 28px;
+  }
+}
