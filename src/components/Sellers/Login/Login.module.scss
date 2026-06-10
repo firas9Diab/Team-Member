@@ -1,0 +1,179 @@
+.signupbody {
+  background-color: #ececec;
+  font-family: "Outfit";
+}
+.signupcard {
+  padding: 30px 30px;
+  padding-left: 85px;
+  align-items: center;
+  text-align: center;
+  border: 2px solid black;
+  padding-right: 29px;
+  display: flex;
+  border: 1px solid #e5e7eb;
+  border-radius: 15px;
+  gap: 65px;
+  justify-content: center;
+}
+.signuptext {
+  font-family: "Outfit";
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.signupfield {
+  height: 481px;
+  width: 533px;
+  background-color: #ffffff;
+  align-items: center;
+  text-align: center;
+  padding: 60px 33px 36px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #e5e7eb;
+  border-radius: 15px;
+  gap: 26px;
+}
+.signupdesc {
+  gap: 10px;
+  display: flex;
+  flex-direction: column;
+}
+.emailfield {
+  width: 100%;
+  display: flex;
+  align-items: center;
+
+  border: 1px solid #7d7d7d;
+  border-radius: 15px;
+  padding: 15px 35px;
+  background: white;
+}
+.passwordfieldtext {
+  font-family: "Outfit";
+  font-weight: 900;
+  width: 100%;
+  display: flex;
+}
+
+.passwordfield {
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #7d7d7d;
+  border-radius: 15px;
+  padding: 15px 35px;
+  background: white;
+  display: flex;
+}
+.email {
+  text-align: left;
+  width: 100%;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+.password {
+  width: 100%;
+  text-align: left;
+
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+.passwordtext {
+  font-family: "Outfit";
+  border: none;
+  align-items: center;
+  width: 100%;
+  padding: 5px 10px;
+  background: white;
+  font-weight: 900;
+}
+.passwordtext:focus {
+  outline: none;
+}
+.emailtext {
+  font-weight: 900;
+  align-items: center;
+  width: 100%;
+  border: none;
+  border-radius: 0px;
+
+  padding: 5px 10px;
+  background: white;
+}
+.emailtext:focus {
+  outline: none;
+}
+
+.signinbutton {
+  background: #5a6afa;
+  color: white;
+  font-family: "Outfit";
+  padding: 12px;
+  width: 100%;
+
+  border: none;
+  border-radius: 10px;
+
+  font-size: 16px;
+  font-weight: 500;
+}
+.signinbutton:hover {
+  background-color: #3145f5;
+}
+.buttonfield {
+  display: flex;
+  padding-bottom: 0px;
+  width: 100%;
+  border-top: 1px solid black;
+  padding-top: 20px;
+  flex-direction: column;
+  gap: 16px;
+}
+.googleimage {
+  width: 30px;
+  height: 30px;
+}
+.signinwaybutton {
+  font-family: "Outfit";
+  background: #ffffff;
+  color: rgb(0, 0, 0);
+  padding: 15px;
+  width: 100%;
+
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 500;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  border-width: 1px;
+}
+.textfield {
+  justify-content: space-between;
+  display: flex;
+  font-family: "Outfit";
+  width: 100%;
+  font-weight: 600;
+}
+.card {
+  width: 100%;
+  height: 967px;
+  background-color: #5a6afa;
+
+  border-radius: 36px;
+}
+.gotosignup {
+  color: #5a6afa;
+}
+.eyes {
+  background: transparent;
+  border: none;
+  align-items: center;
+  cursor: pointer;
+}
