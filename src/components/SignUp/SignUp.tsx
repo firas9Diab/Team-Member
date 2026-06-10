@@ -1,50 +1,20 @@
-import { useState } from "react";
 import styles from "./SignUp.module.scss";
-import { useNavigate } from "react-router-dom";
 import Google from "../../Assets/Google.svg";
-import axios from "axios";
+import useSignUp from "../Hooks/useSignUp";
 
 const Sign = () => {
-  const [password, setPassword] = useState("");
-  const [email, setEmail] = useState("");
-  const [fullName, setFullName] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [phone, setPhone] = useState("");
-  const [showMassage, setShowMassage] = useState("");
-  const [error, setError] = useState("");
-
-  const signUp = async () => {
-    if (password === confirmPassword) {
-      setShowMassage("");
-
-      try {
-        const response = await axios.post("http://localhost:3000/auth/signup", {
-          fullName,
-          email,
-          password,
-          confirmPassword,
-          phone,
-        });
-        if (response.data.data.accessToken) {
-          localStorage.setItem("token", response.data.data.accessToken);
-          navigate("/");
-        }
-      } catch (error: any) {
-        console.log(error.response?.data);
-        setError(error.response?.data?.message || "Error occurred");
-      }
-    } else {
-      setShowMassage("Passwords do not match");
-    }
-  };
-  const navigate = useNavigate();
-
-  const isFormValid =
-    fullName.trim() !== "" &&
-    email.trim() !== "" &&
-    password.trim() !== "" &&
-    confirmPassword.trim() !== "" &&
-    phone.trim() !== "";
+  const {
+    handleEmailChange,
+    handlePasswordChange,
+    handleFullNameChange,
+    handleConfirmPasswordChange,
+    handlePhoneChange,
+    showMessage,
+    error,
+    signUp,
+    isFormValid,
+    navigate,
+  } = useSignUp();
 
   return (
     <div className={styles.sign}>
@@ -59,14 +29,14 @@ const Sign = () => {
             <input
               type="text"
               placeholder="Full name"
-              onChange={(e) => setFullName(e.target.value)}
+              onChange={(e) => handleFullNameChange(e.target.value)}
             />
           </div>
           <div className={styles.email}>
             <input
               type="text"
               placeholder="Email"
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) => handleEmailChange(e.target.value)}
               required
             />
           </div>
@@ -75,7 +45,7 @@ const Sign = () => {
             <input
               type="password"
               placeholder="Password"
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={(e) => handlePasswordChange(e.target.value)}
               required
             />
           </div>
@@ -84,7 +54,7 @@ const Sign = () => {
             <input
               type="password"
               placeholder="Confirm Password"
-              onChange={(e) => setConfirmPassword(e.target.value)}
+              onChange={(e) => handleConfirmPasswordChange(e.target.value)}
               required
             />
           </div>
@@ -93,11 +63,11 @@ const Sign = () => {
             <input
               type="text"
               placeholder="Phone Number"
-              onChange={(e) => setPhone(e.target.value)}
+              onChange={(e) => handlePhoneChange(e.target.value)}
               required
             />
           </div>
-          {showMassage && <p className={styles.falseValue}>{showMassage}</p>}
+          {showMessage && <p className={styles.falseValue}>{showMessage}</p>}
 
           {error && (
             <div className={styles.falseValue}>
@@ -109,9 +79,7 @@ const Sign = () => {
             type="button"
             disabled={!isFormValid}
             className={styles.button}
-            onClick={() => {
-              signUp();
-            }}
+            onClick={signUp}
           >
             Sign up
           </button>

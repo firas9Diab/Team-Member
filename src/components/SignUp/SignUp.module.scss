@@ -96,11 +96,14 @@ input {
   border-radius: 15px;
   border: 1px solid #7d7d7d;
   padding: 7px 30px;
+  width: 100%;
 }
+
 .falseValue {
   color: rgb(236, 7, 7);
   font-size: small;
 }
+
 .google {
   background-color: #ffffff;
   border: 1px solid #232323;
@@ -168,5 +171,11 @@ button:disabled {
 
   .create h1 {
     font-size: 28px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .blueBackground {
+    height: 70vh;
   }
 }

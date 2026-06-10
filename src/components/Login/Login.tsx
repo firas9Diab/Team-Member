@@ -1,31 +1,16 @@
-import { useState } from "react";
 import styles from "./Login.module.scss";
-import { useNavigate } from "react-router-dom";
 import Google from "../../Assets/Google.svg";
-import axios from "axios";
+import useLogin from "../Hooks/useLogin";
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-
-  const isFormValid = email.trim() && password.trim();
-
-  const navigate = useNavigate();
-  const login = async () => {
-    try {
-      const response = await axios.post("http://localhost:3000/Auth/login", {
-        email,
-        password,
-      });
-      if (response.data.data.accessToken) {
-        localStorage.setItem("token", response.data.data.accessToken);
-        navigate("/");
-      }
-    } catch (error) {
-      setError("Invalid email or password");
-    }
-  };
+  const {
+    handleEmailChange,
+    handlePasswordChange,
+    error,
+    login,
+    isFormValid,
+    navigate,
+  } = useLogin();
 
   return (
     <div className={styles.login}>
@@ -39,7 +24,7 @@ const Login = () => {
             <input
               type="email"
               placeholder="Email"
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) => handleEmailChange(e.target.value)}
               required
             />
           </div>
@@ -48,7 +33,7 @@ const Login = () => {
               <input
                 type="password"
                 placeholder="Password"
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={(e) => handlePasswordChange(e.target.value)}
                 required
               />
             </div>
@@ -74,7 +59,7 @@ const Login = () => {
             <button className={styles.forget}>Forgot password?</button>
             <div className={styles.account}>
               <p>Need a Account?</p>
-              <button onClick={() => navigate("/Sign")}>Sign up</button>
+              <button onClick={() => navigate("/sign")}>Sign up</button>
             </div>
           </div>
         </div>

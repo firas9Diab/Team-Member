@@ -163,3 +163,28 @@ button:disabled {
   background-color: #ccc;
   cursor: not-allowed;
 }
+
+@media (max-width: 768px) {
+  .login {
+    flex-direction: column;
+    padding: 20px 15px;
+  }
+
+  .blueBackground {
+    display: none;
+  }
+
+  .form {
+    padding: 30px 20px;
+  }
+
+  .accountContainer {
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .welcome h1 {
+    font-size: 28px;
+  }
+}
