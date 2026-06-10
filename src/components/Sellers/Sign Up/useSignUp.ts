@@ -70,10 +70,10 @@ const useSignUp = () => {
   const handleVisiblePasswordChange = () => {
     setVisiblePassword(!visiblePassword);
   };
-    const handleVisiblePasswordConfirmChange = () => {
+  const handleVisiblePasswordConfirmChange = () => {
     setVisiblePasswordConfirm(!visiblePasswordConfirm);
   };
-  
+
   return {
     password,
     handlePasswordChange,

@@ -164,7 +164,7 @@
 @media (max-width: 768px) {
   .signupcard {
     padding: 30px 30px;
-    padding-left: 85px;
+    
     align-items: center;
     text-align: center;
     border: 2px solid black;
@@ -185,12 +185,20 @@
     flex-direction: column;
   }
   .signupfield {
-    width: 250px;
+    width: 280px;
   }
   .signupdesc {
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
+  }
+  .emailfield
+  {
+    padding: 5px 5px;
+  }
+  .passwordfield
+  {
+    padding: 5px 5px;
   }
 }
