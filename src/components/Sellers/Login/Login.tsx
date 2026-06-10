@@ -14,7 +14,7 @@ const Login = () => {
     handleSignIn,
     navigation,
     visiblePassword,
-    setvisiblePassword,
+    handleVisiblePasswordChange,
   } = useLogin();
 
   return (
@@ -55,8 +55,8 @@ const Login = () => {
                     />
                   </div>
                   <button
-                    onClick={() => {
-                      setvisiblePassword(!visiblePassword);
+                    onClick={(e) => {
+                      handleVisiblePasswordChange(e);
                     }}
                     className={styles.eyes}
                   >

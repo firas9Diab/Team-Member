@@ -7,7 +7,7 @@ const useLogin = () => {
 
   const [password, setPassword] = useState<string>("");
 
-  const [visiblePassword, setvisiblePassword] = useState<boolean>(false);
+  const [visiblePassword, setVisiblePassword] = useState<boolean>(false);
 
   const [errormessage, seterrormessage] = useState<string>("");
   const [emailValue, setEmailValue] = useState<string>("");
@@ -42,7 +42,11 @@ const useLogin = () => {
   const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value);
   };
-
+  
+  const handleVisiblePasswordChange = () => {
+    setVisiblePassword(!visiblePassword);
+  };
+  
   return {
     password,
     handlePasswordChange,
@@ -52,7 +56,7 @@ const useLogin = () => {
     handleSignIn,
     navigation,
     visiblePassword,
-    setvisiblePassword,
+    handleVisiblePasswordChange,
   };
 };
 
