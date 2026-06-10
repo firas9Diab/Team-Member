@@ -55,8 +55,8 @@ const Login = () => {
                     />
                   </div>
                   <button
-                    onClick={(e) => {
-                      handleVisiblePasswordChange(e);
+                    onClick={() => {
+                      handleVisiblePasswordChange();
                     }}
                     className={styles.eyes}
                   >
