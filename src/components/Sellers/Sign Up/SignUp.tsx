@@ -140,7 +140,7 @@ const SignUp = () => {
               </button>
               <div className={styles.buttonfield}>
                 <button onClick={() => {}} className={styles.signinwaybutton}>
-                  <img src={googlelogo} alt="" className={styles.googleimage} />
+                  <img src={googlelogo} alt="" />
                   <b>Continue with Google</b>
                   <div></div>
                 </button>

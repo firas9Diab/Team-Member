@@ -2,12 +2,10 @@
   background-color: #ececec;
 }
 .signupcard {
-  padding: 30px 30px;
-  padding-left: 85px;
+  padding: 30px;
   align-items: center;
   text-align: center;
   border: 2px solid black;
-  padding-right: 29px;
   display: flex;
   border: 1px solid #e5e7eb;
   border-radius: 15px;
@@ -129,10 +127,6 @@
   flex-direction: column;
   gap: 16px;
 }
-.googleimage {
-  width: 30px;
-  height: 30px;
-}
 .signinwaybutton {
   background: #ffffff;
   color: rgb(0, 0, 0);
@@ -191,12 +185,10 @@
     flex-direction: column;
     align-items: center;
   }
-  .emailfield
-  {
+  .emailfield {
     padding: 5px 5px;
   }
-  .passwordfield
-  {
+  .passwordfield {
     padding: 5px 5px;
   }
 }
