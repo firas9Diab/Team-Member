@@ -6,17 +6,17 @@ const useSignUp = () => {
   const navigation = useNavigate();
   const [password, setPassword] = useState<string>("");
   const [confirmPassword, setconfirmPassword] = useState<string>("");
-  const [visiblePassword, setvisiblePassword] = useState<boolean>(false);
-  const [visiblepasswordConfirm, setvisiblepasswordConfirm] =
+  const [visiblePassword, setVisiblePassword] = useState<boolean>(false);
+  const [visiblePasswordConfirm, setVisiblePasswordConfirm] =
     useState<boolean>(false);
-  const [errormessage, seterrormessage] = useState<string>("");
+  const [errorMessage, setErrorMssage] = useState<string>("");
   const [fullName, setFullName] = useState<string>("");
   const [emailValue, setEmailValue] = useState<string>("");
   const [phoneValue, setphoneValue] = useState<string>("");
 
   const handleSignup = async () => {
     if (password !== confirmPassword) {
-      seterrormessage("Passwords do not match");
+      setErrorMssage("Passwords do not match");
       return;
     }
 
@@ -29,39 +29,68 @@ const useSignUp = () => {
         phone: phoneValue,
       });
 
-      seterrormessage("Account created successfully");
+      setErrorMssage("Account created successfully");
 
       localStorage.setItem("token", response.data.accessToken);
 
-      navigation("/Login");
+      navigation("/Sellers/Login");
     } catch (error: unknown) {
       if (axios.isAxiosError(error)) {
-        seterrormessage(error.response?.data?.errors[0] || "Signup failed");
+        setErrorMssage(error.response?.data?.errors[0] || "Signup failed");
       } else if (error instanceof Error) {
-        seterrormessage(error.message);
+        setErrorMssage(error.message);
       } else {
-        seterrormessage("Signup failed");
+        setErrorMssage("Signup failed");
       }
     }
   };
 
+  const handleFullNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFullName(e.target.value);
+  };
+
+  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setEmailValue(e.target.value);
+  };
+
+  const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setPassword(e.target.value);
+  };
+
+  const handleConfirmPasswordChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+  ) => {
+    setconfirmPassword(e.target.value);
+  };
+
+  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setphoneValue(e.target.value);
+  };
+
+  const handleVisiblePasswordChange = () => {
+    setVisiblePassword(!visiblePassword);
+  };
+    const handleVisiblePasswordConfirmChange = () => {
+    setVisiblePasswordConfirm(!visiblePasswordConfirm);
+  };
+  
   return {
     password,
-    setPassword,
+    handlePasswordChange,
     confirmPassword,
-    setconfirmPassword,
+    handleConfirmPasswordChange,
     visiblePassword,
-    setvisiblePassword,
-    visiblepasswordConfirm,
-    setvisiblepasswordConfirm,
-    errormessage,
-    seterrormessage,
+    handleVisiblePasswordChange,
+    visiblePasswordConfirm,
+    handleVisiblePasswordConfirmChange,
+    errorMessage,
+    setErrorMssage,
     fullName,
-    setFullName,
+    handleFullNameChange,
     emailValue,
-    setEmailValue,
+    handleEmailChange,
     phoneValue,
-    setphoneValue,
+    handlePhoneChange,
     handleSignup,
     navigation,
   };

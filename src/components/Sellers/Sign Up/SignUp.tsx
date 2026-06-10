@@ -2,24 +2,25 @@ import styles from "../Sign Up/SignUp.module.scss";
 import googlelogo from "../../../../public/Icons/google-logo.png";
 import useSignUp from "./useSignUp";
 import eyeIcon from "../../../../public/Icons/EyeIcon.svg";
+import "../../../font.css";
 
 const SignUp = () => {
   const {
     password,
-    setPassword,
+    handlePasswordChange,
     confirmPassword,
-    setconfirmPassword,
+    handleConfirmPasswordChange,
     visiblePassword,
-    setvisiblePassword,
-    visiblepasswordConfirm,
-    setvisiblepasswordConfirm,
-    errormessage,
+    handleVisiblePasswordChange,
+    visiblePasswordConfirm,
+    handleVisiblePasswordConfirmChange,
+    errorMessage,
     fullName,
-    setFullName,
+    handleFullNameChange,
     emailValue,
-    setEmailValue,
+    handleEmailChange,
     phoneValue,
-    setphoneValue,
+    handlePhoneChange,
     handleSignup,
     navigation,
   } = useSignUp();
@@ -29,7 +30,7 @@ const SignUp = () => {
         <div className={styles.signupcard}>
           <div className={styles.signupdesc}>
             <div className={styles.signuptext}>
-              <h2>Become a Seller</h2>
+              <h1>Become a Seller</h1>
               <p>Shop Smarter, Shop Easier: Your One-Stop </p>
             </div>
 
@@ -39,7 +40,7 @@ const SignUp = () => {
                   <div></div>
                   <input
                     value={fullName}
-                    onChange={(e) => setFullName(e.target.value)}
+                    onChange={(e) => handleFullNameChange(e)}
                     type="text"
                     className={styles.emailtext}
                     placeholder="Full name"
@@ -53,7 +54,7 @@ const SignUp = () => {
                   <img alt="" />
                   <input
                     value={emailValue}
-                    onChange={(e) => setEmailValue(e.target.value)}
+                    onChange={(e) => handleEmailChange(e)}
                     type="email"
                     className={styles.emailtext}
                     placeholder="Email"
@@ -67,7 +68,7 @@ const SignUp = () => {
                     <img alt="" className={styles.icons} />
                     <input
                       value={password}
-                      onChange={(e) => setPassword(e.target.value)}
+                      onChange={(e) => handlePasswordChange(e)}
                       type={visiblePassword ? "text" : "password"}
                       className={styles.passwordtext}
                       placeholder="Password"
@@ -76,7 +77,7 @@ const SignUp = () => {
                   </div>
                   <button
                     onClick={() => {
-                      setvisiblePassword(!visiblePassword);
+                      handleVisiblePasswordChange();
                     }}
                     className={styles.eyes}
                   >
@@ -90,8 +91,8 @@ const SignUp = () => {
                     <img alt="" className={styles.icons} />
                     <input
                       value={confirmPassword}
-                      onChange={(e) => setconfirmPassword(e.target.value)}
-                      type={visiblepasswordConfirm ? "text" : "password"}
+                      onChange={(e) => handleConfirmPasswordChange(e)}
+                      type={visiblePasswordConfirm ? "text" : "password"}
                       className={styles.passwordtext}
                       placeholder="Confirm your password"
                       required
@@ -99,7 +100,7 @@ const SignUp = () => {
                   </div>
                   <button
                     onClick={() => {
-                      setvisiblepasswordConfirm(!visiblepasswordConfirm);
+                      handleVisiblePasswordConfirmChange();
                     }}
                     className={styles.eyes}
                   >
@@ -112,7 +113,7 @@ const SignUp = () => {
                   <img alt="" />
                   <input
                     value={phoneValue}
-                    onChange={(e) => setphoneValue(e.target.value)}
+                    onChange={(e) => handlePhoneChange(e)}
                     type="text"
                     className={styles.emailtext}
                     placeholder="Phone Number"
@@ -121,12 +122,12 @@ const SignUp = () => {
                 </div>
                 <p
                   className={
-                    errormessage === "Password is Match"
+                    errorMessage === "Password is Match"
                       ? styles.match
                       : styles.notmatch
                   }
                 >
-                  {errormessage}
+                  {errorMessage}
                 </p>
               </div>
               <button

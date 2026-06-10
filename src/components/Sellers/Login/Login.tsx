@@ -2,18 +2,19 @@ import styles from "../Login/Login.module.scss";
 import useLogin from "./useLogin";
 import googlelogo from "../../../../public/Icons/google-logo.png";
 import eyeIcon from "../../../../public/Icons/EyeIcon.svg";
+import "../../../font.css";
 
 const Login = () => {
   const {
     password,
-    setPassword,
+    handlePasswordChange,
     errormessage,
     emailValue,
-    setEmailValue,
+    handleEmailChange,
     handleSignIn,
     navigation,
-      visiblePassword,
-    setvisiblePassword
+    visiblePassword,
+    setvisiblePassword,
   } = useLogin();
 
   return (
@@ -22,7 +23,7 @@ const Login = () => {
         <div className={styles.signupcard}>
           <div className={styles.signupdesc}>
             <div className={styles.signuptext}>
-              <h2>Login to Your Seller Account</h2>
+              <h1>Login to Your Seller Account</h1>
               <p>Shop Smarter, Shop Easier: Your One-Stop Online Marketplace</p>
             </div>
 
@@ -32,7 +33,7 @@ const Login = () => {
                   <img alt="" />
                   <input
                     value={emailValue}
-                    onChange={(e) => setEmailValue(e.target.value)}
+                    onChange={(e) => handleEmailChange(e)}
                     type="email"
                     className={styles.emailtext}
                     placeholder="Email"
@@ -46,19 +47,20 @@ const Login = () => {
                     <img alt="" className={styles.icons} />
                     <input
                       value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                      type={visiblePassword?"text":"password"}
+                      onChange={(e) => handlePasswordChange(e)}
+                      type={visiblePassword ? "text" : "password"}
                       className={styles.passwordtext}
                       placeholder="Password"
                       required
                     />
                   </div>
-                  <button 
-                  onClick={() => {
+                  <button
+                    onClick={() => {
                       setvisiblePassword(!visiblePassword);
                     }}
-                  className={styles.eyes}>
-                      <img src={eyeIcon} alt="" />
+                    className={styles.eyes}
+                  >
+                    <img src={eyeIcon} alt="" />
                   </button>
                 </div>
               </div>
@@ -95,9 +97,6 @@ const Login = () => {
             </div>
           </div>
 
-          {
-            //--------------
-          }
           <div className={styles.card}></div>
         </div>
       </div>

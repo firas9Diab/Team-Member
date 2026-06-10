@@ -1,6 +1,5 @@
 .signupbody {
   background-color: #ececec;
-  font-family: "Outfit";
 }
 .signupcard {
   padding: 30px 30px;
@@ -16,7 +15,6 @@
   justify-content: center;
 }
 .signuptext {
-  font-family: "Outfit";
   display: flex;
   flex-direction: column;
   gap: 4px;
@@ -30,7 +28,7 @@
   padding: 60px 33px 36px;
   display: flex;
   flex-direction: column;
-  border: 1px solid #7D7D7D;
+  border: 1px solid #7d7d7d;
   border-radius: 15px;
   gap: 26px;
 }
@@ -43,15 +41,13 @@
   width: 100%;
   display: flex;
   align-items: center;
-
-  border: 1px solid #7D7D7D;
+  border: 1px solid #7d7d7d;
   border-radius: 15px;
   padding: 15px 35px;
   background: white;
 }
 .passwordfieldtext {
-  font-family: "Outfit";
-   font-weight: 900;
+  font-weight: 900;
   width: 100%;
   display: flex;
 }
@@ -62,11 +58,10 @@
   cursor: pointer;
 }
 .passwordfield {
-    
   width: 100%;
   justify-content: space-between;
   align-items: center;
-  border: 1px solid #7D7D7D;
+  border: 1px solid #7d7d7d;
   border-radius: 15px;
   padding: 15px 35px;
   background: white;
@@ -83,14 +78,12 @@
 .password {
   width: 100%;
   text-align: left;
-
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
   flex-direction: column;
 }
 .passwordtext {
-  font-family: "Outfit";
   border: none;
   align-items: center;
   width: 100%;
@@ -107,7 +100,6 @@
   width: 100%;
   border: none;
   border-radius: 0px;
-
   padding: 5px 10px;
   background: white;
 }
@@ -118,13 +110,10 @@
 .signinbutton {
   background: #5a6afa;
   color: white;
-  font-family: "Outfit";
   padding: 12px;
   width: 100%;
-
   border: none;
   border-radius: 10px;
-
   font-size: 16px;
   font-weight: 500;
 }
@@ -145,12 +134,10 @@
   height: 30px;
 }
 .signinwaybutton {
-  font-family: "Outfit";
   background: #ffffff;
   color: rgb(0, 0, 0);
   padding: 15px;
   width: 100%;
-
   border-radius: 5px;
   font-size: 16px;
   font-weight: 500;
@@ -161,7 +148,6 @@
   border-width: 1px;
 }
 .textfield {
-  font-family: "Outfit";
   width: 100%;
   text-align: right;
   font-weight: 600;
@@ -170,10 +156,41 @@
   width: 100%;
   height: 967px;
   background-color: #5a6afa;
-
   border-radius: 36px;
 }
-.gotosignin
-{
-   color: #5a6afa;
+.gotosignin {
+  color: #5a6afa;
+}
+@media (max-width: 768px) {
+  .signupcard {
+    padding: 30px 30px;
+    padding-left: 85px;
+    align-items: center;
+    text-align: center;
+    border: 2px solid black;
+    padding-right: 29px;
+    display: flex;
+    border: 1px solid #e5e7eb;
+    border-radius: 15px;
+    gap: 65px;
+    justify-content: center;
+    flex-direction: column;
+  }
+}
+@media (max-width: 550px) {
+  .signupcard {
+    display: flex;
+
+    justify-content: center;
+    flex-direction: column;
+  }
+  .signupfield {
+    width: 250px;
+  }
+  .signupdesc {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
 }

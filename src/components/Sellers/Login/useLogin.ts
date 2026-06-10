@@ -34,16 +34,25 @@ const useLogin = () => {
       }
     }
   };
+
+  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setEmailValue(e.target.value);
+  };
+
+  const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setPassword(e.target.value);
+  };
+
   return {
     password,
-    setPassword,
+    handlePasswordChange,
     errormessage,
     emailValue,
-    setEmailValue,
+    handleEmailChange,
     handleSignIn,
     navigation,
     visiblePassword,
-    setvisiblePassword
+    setvisiblePassword,
   };
 };
 
