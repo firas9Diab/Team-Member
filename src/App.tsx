@@ -1,9 +1,9 @@
 import { Routes, Route } from "react-router-dom";
 import Home from "./components/Home/Home";
 import Item from "./components/Item/Item";
-import NavBarRoute from "./NavBarRoute";
 import SignUp from "./components/User/Sign Up/SignUp";
 import Login from "./components/User/Login/Login";
+import ProtectedRoute from "./ProtectedRoute";
 
 const App = () => {
   return (
@@ -12,17 +12,17 @@ const App = () => {
         <Route
           path="/"
           element={
-            <NavBarRoute>
+            <ProtectedRoute>
               <Home />
-            </NavBarRoute>
+            </ProtectedRoute>
           }
         />
         <Route
           path="/item/:id"
           element={
-            <NavBarRoute>
+            <ProtectedRoute>
               <Item />
-            </NavBarRoute>
+            </ProtectedRoute>
           }
         />
         <Route path="/User/SignUp" element={<SignUp />} />
