@@ -11,6 +11,15 @@ const useSignUp = () => {
   const [showMessage, setShowMessage] = useState("");
   const [error, setError] = useState("");
 
+  const navigate = useNavigate();
+
+  const isFormValid =
+    fullName.trim() !== "" &&
+    email.trim() !== "" &&
+    password.trim() !== "" &&
+    confirmPassword.trim() !== "" &&
+    phone.trim() !== "";
+
   const handleEmailChange = (value: string) => {
     setEmail(value);
   };
@@ -55,14 +64,6 @@ const useSignUp = () => {
       setShowMessage("Passwords do not match");
     }
   };
-  const navigate = useNavigate();
-
-  const isFormValid =
-    fullName.trim() !== "" &&
-    email.trim() !== "" &&
-    password.trim() !== "" &&
-    confirmPassword.trim() !== "" &&
-    phone.trim() !== "";
 
   return {
     handleEmailChange,

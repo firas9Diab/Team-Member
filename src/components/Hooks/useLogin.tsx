@@ -7,6 +7,10 @@ const useLogin = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
+  const isFormValid = email.trim() && password.trim();
+
+  const navigate = useNavigate();
+
   const handleEmailChange = (value: string) => {
     setEmail(value);
   };
@@ -15,9 +19,6 @@ const useLogin = () => {
     setPassword(value);
   };
 
-  const isFormValid = email.trim() && password.trim();
-
-  const navigate = useNavigate();
   const login = async () => {
     try {
       const response = await axios.post("http://localhost:3000/auth/login", {
