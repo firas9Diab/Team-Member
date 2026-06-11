@@ -42,11 +42,11 @@ const useLogin = () => {
   const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value);
   };
-  
+
   const handleVisiblePasswordChange = () => {
     setVisiblePassword(!visiblePassword);
   };
-  
+
   return {
     password,
     handlePasswordChange,
