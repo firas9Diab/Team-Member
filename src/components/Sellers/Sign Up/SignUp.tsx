@@ -2,7 +2,6 @@ import styles from "../Sign Up/SignUp.module.scss";
 import googlelogo from "../../../../public/Icons/google-logo.svg";
 import useSignUp from "./useSignUp";
 import eyeIcon from "../../../../public/Icons/EyeIcon.svg";
-import "../../../font.css";
 
 const SignUp = () => {
   const {

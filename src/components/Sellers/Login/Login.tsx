@@ -2,7 +2,6 @@ import styles from "../Login/Login.module.scss";
 import useLogin from "./useLogin";
 import googlelogo from "../../../../public/Icons/google-logo.svg";
 import eyeIcon from "../../../../public/Icons/EyeIcon.svg";
-import "../../../font.css";
 
 const Login = () => {
   const {
