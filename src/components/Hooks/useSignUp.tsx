@@ -45,7 +45,7 @@ const useSignUp = () => {
       setShowMessage("");
 
       try {
-        const response = await axios.post("http://localhost:3000/auth/signup", {
+        const response = await axios.post("http://localhost:3000/Auth/signup", {
           fullName,
           email,
           password,
