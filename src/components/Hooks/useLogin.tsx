@@ -20,7 +20,7 @@ const useLogin = () => {
   const navigate = useNavigate();
   const login = async () => {
     try {
-      const response = await axios.post("http://localhost:3000/auth/login", {
+      const response = await axios.post("http://localhost:3000/Auth/login", {
         email,
         password,
       });

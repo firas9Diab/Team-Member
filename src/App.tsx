@@ -1,10 +1,12 @@
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import Home from "./components/Home/Home";
-import Item from "./components/Item/Item";
 import SignUp from "./components/SignUp/SignUp";
 import Login from "./components/Login/Login";
 import { useLocation } from "react-router-dom";
+import ProtectedRoute from "./ProtectedRoutes";
+import Settings from "./components/Settings/Settings";
+
 const App = () => {
   const location = useLocation();
 
@@ -15,8 +17,22 @@ const App = () => {
     <div>
       {!hideNavbar && <Navbar />}
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/item/:id" element={<Item />} />
+        <Route
+          path="/"
+          element={
+            <ProtectedRoute>
+              <Home />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/settings"
+          element={
+            <ProtectedRoute>
+              <Settings />
+            </ProtectedRoute>
+          }
+        />
         <Route path="/sign" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
       </Routes>
