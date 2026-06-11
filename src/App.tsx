@@ -1,19 +1,32 @@
 import { Routes, Route } from "react-router-dom";
 import Home from "./components/Home/Home";
 import Item from "./components/Item/Item";
-import SignUp from "./components/Sellers/Sign Up/SignUp";
-import Login from "./components/Sellers/Login/Login";
-import Navbar from "./components/Navbar/Navbar";
+import NavBarRoute from "./NavBarRoute";
+import SignUp from "./components/User/Sign Up/SignUp";
+import Login from "./components/User/Login/Login";
 
 const App = () => {
   return (
     <div>
-      <Navbar />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/item/:id" element={<Item />} />
-        <Route path="/Sellers/SignUp" element={<SignUp />} />
-        <Route path="/Sellers/Login" element={<Login />} />
+        <Route
+          path="/"
+          element={
+            <NavBarRoute>
+              <Home />
+            </NavBarRoute>
+          }
+        />
+        <Route
+          path="/item/:id"
+          element={
+            <NavBarRoute>
+              <Item />
+            </NavBarRoute>
+          }
+        />
+        <Route path="/User/SignUp" element={<SignUp />} />
+        <Route path="/User/Login" element={<Login />} />
       </Routes>
     </div>
   );

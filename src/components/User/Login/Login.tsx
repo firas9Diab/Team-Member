@@ -22,7 +22,7 @@ const Login = () => {
         <div className={styles.signupcard}>
           <div className={styles.signupdesc}>
             <div className={styles.signuptext}>
-              <h1>Login to Your Seller Account</h1>
+              <h1>Welcome back</h1>
               <p>Shop Smarter, Shop Easier: Your One-Stop Online Marketplace</p>
             </div>
 
@@ -84,7 +84,7 @@ const Login = () => {
                     Need a Account?{" "}
                     <span
                       onClick={() => {
-                        navigation("/Sellers/SignUp");
+                        navigation("/User/SignUp");
                       }}
                       className={styles.gotosignup}
                     >
