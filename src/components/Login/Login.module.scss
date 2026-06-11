@@ -81,12 +81,6 @@ input {
   height: 40px;
   width: 100%;
 }
-
-.error {
-  color: rgb(236, 7, 7);
-  font-size: small;
-}
-
 .button {
   background-color: #5a6afa;
   color: white;
@@ -137,7 +131,6 @@ input {
   display: flex;
   justify-content: center;
   gap: 6px;
-  font-weight: 500;
 
   p {
     color: #000000;
@@ -148,6 +141,8 @@ input {
     color: #1045ff;
     border: none;
     background-color: white;
+    font-size: 16px;
+    font-weight: 500;
   }
 }
 
@@ -179,4 +174,10 @@ button:disabled {
   .welcome h1 {
     font-size: 28px;
   }
+}
+
+.errorMessage {
+  color: red;
+  font-size: 14px;
+  margin-top: 15px;
 }
