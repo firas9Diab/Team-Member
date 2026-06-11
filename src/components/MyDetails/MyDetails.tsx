@@ -12,13 +12,8 @@ const MyDetails = () => {
     handleEmailChange,
     handlePhoneChange,
     handleDateOfBirthChange,
-    handleMyDetails,
     handleUpdateDetails,
   } = useMyDetails();
-
-  useEffect(() => {
-    handleMyDetails();
-  }, []);
 
   return (
     <div className={styles.container}>

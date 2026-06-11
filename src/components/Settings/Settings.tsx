@@ -3,6 +3,7 @@ import MyDetails from "../MyDetails/MyDetails";
 import Address from "../Address/Address";
 import Password from "../Password/Password";
 import styles from "./Settings.module.scss";
+import classNames from "classnames";
 
 const Settings = () => {
   const [activeTab, setActiveTab] = useState("myDetails");
@@ -15,30 +16,31 @@ const Settings = () => {
         <div className={styles.content}>
           <div className={styles.sidebar}>
             <button
-              className={
-                activeTab === "myDetails" ? styles.active : styles.inactive
-              }
+              className={classNames({
+                [styles.active]: activeTab === "myDetails",
+                [styles.inactive]: activeTab !== "myDetails",
+              })}
               onClick={() => setActiveTab("myDetails")}
             >
               My Details
             </button>
             <button
-              className={
-                activeTab === "Address" ? styles.active : styles.inactive
-              }
+              className={classNames({
+                [styles.active]: activeTab === "Address",
+                [styles.inactive]: activeTab !== "Address",
+              })}
               onClick={() => setActiveTab("Address")}
             >
-              {" "}
-              Address{" "}
+              Address
             </button>
             <button
-              className={
-                activeTab === "Password" ? styles.active : styles.inactive
-              }
+              className={classNames({
+                [styles.active]: activeTab === "Password",
+                [styles.inactive]: activeTab !== "Password",
+              })}
               onClick={() => setActiveTab("Password")}
             >
-              {" "}
-              Password{" "}
+              Password
             </button>
           </div>
           <div className={styles.main}>

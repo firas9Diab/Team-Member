@@ -1,6 +1,7 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import moment from "moment";
+import Swal from "sweetalert2";
 
 const useMyDetails = () => {
   const [fullName, setFullName] = useState("");
@@ -24,7 +25,7 @@ const useMyDetails = () => {
     setDateOfBirth(value);
   };
 
-  const handleMyDetails = async () => {
+  const fetchUserDetails = async () => {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.get("http://localhost:3000/users/me", {
@@ -56,12 +57,20 @@ const useMyDetails = () => {
           headers: { Authorization: `Bearer ${token}` },
         },
       );
-      console.log(response.data);
-      alert("Details updated successfully!");
+
+      Swal.fire({
+        icon: "success",
+        title: "Details updated successfully!",
+      });
     } catch (error) {
       console.log(error);
     }
   };
+
+  useEffect(() => {
+    fetchUserDetails();
+  }, []);
+
   return {
     fullName,
     email,
@@ -71,7 +80,7 @@ const useMyDetails = () => {
     handleEmailChange,
     handlePhoneChange,
     handleDateOfBirthChange,
-    handleMyDetails,
+    fetchUserDetails,
     handleUpdateDetails,
   };
 };
