@@ -45,7 +45,7 @@ const useSignUp = () => {
       setShowMessage("");
 
       try {
-        const response = await axios.post("http://localhost:3000/auth/signup", {
+        const response = await axios.post("http://localhost:3000/Auth/signup", {
           fullName,
           email,
           password,
@@ -58,7 +58,7 @@ const useSignUp = () => {
         }
       } catch (error: any) {
         console.log(error.response?.data);
-        setError(error.response?.data?.errors || "Error occurred");
+        setError(error.response?.data?.message || "Error occurred");
       }
     } else {
       setShowMessage("Passwords do not match");
