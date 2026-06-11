@@ -37,7 +37,9 @@ const Login = () => {
                 required
               />
             </div>
-            <div className={styles.error}>{error ? <p>{error}</p> : ""}</div>
+            <div>
+              {error ? <p className={styles.errorMessage}>{error}</p> : ""}
+            </div>
           </div>
           <button
             type="button"
