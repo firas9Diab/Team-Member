@@ -49,3 +49,22 @@ p {
     cursor: pointer;
   }
 }
+
+@media (max-width: 768px) {
+  .container {
+    padding: 20px;
+  }
+
+  .content {
+    padding: 10px;
+    gap: 25px;
+  }
+
+  .form {
+    width: 100%;
+  }
+
+  p {
+    font-size: 15px;
+  }
+}

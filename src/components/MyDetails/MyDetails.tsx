@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import useMyDetails from "../Hooks/useMyDetails";
 import styles from "./MyDetails.module.scss";
 

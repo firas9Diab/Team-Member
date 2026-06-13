@@ -22,6 +22,7 @@ const Login = () => {
         <div className={styles.form}>
           <div className={styles.email}>
             <input
+              className={styles.input}
               type="email"
               placeholder="Email"
               onChange={(e) => handleEmailChange(e.target.value)}
@@ -31,6 +32,7 @@ const Login = () => {
           <div>
             <div className={styles.email}>
               <input
+                className={styles.input}
                 type="password"
                 placeholder="Password"
                 onChange={(e) => handlePasswordChange(e.target.value)}
