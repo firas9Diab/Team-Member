@@ -11,19 +11,6 @@ const useAddressForm = ({ initialData, mode, onSubmit }: IAddressForm) => {
   const [alternativeMobileNumber, setAlternativeMobileNumber] = useState("");
   const [pincode, setPincode] = useState("");
 
-  useEffect(() => {
-    if (mode === "edit" && initialData) {
-      setName(initialData.name);
-      setFlatHouseBuilding(initialData.flatHouseBuilding);
-      setCity(initialData.city);
-      setState(initialData.state);
-      setCountry(initialData.country);
-      setMobileNumber(initialData.mobileNumber);
-      setAlternativeMobileNumber(initialData.alternativeMobileNumber || "");
-      setPincode(initialData.pincode);
-    }
-  }, [mode, initialData]);
-
   const handleNameChange = (value: string) => setName(value);
   const handleBuildingChange = (value: string) => setFlatHouseBuilding(value);
   const handleCityChange = (value: string) => setCity(value);
@@ -62,6 +49,19 @@ const useAddressForm = ({ initialData, mode, onSubmit }: IAddressForm) => {
       } as AddressType);
     }
   };
+
+  useEffect(() => {
+    if (mode === "edit" && initialData) {
+      setName(initialData.name);
+      setFlatHouseBuilding(initialData.flatHouseBuilding);
+      setCity(initialData.city);
+      setState(initialData.state);
+      setCountry(initialData.country);
+      setMobileNumber(initialData.mobileNumber);
+      setAlternativeMobileNumber(initialData.alternativeMobileNumber || "");
+      setPincode(initialData.pincode);
+    }
+  }, [mode, initialData]);
 
   return {
     name,
