@@ -52,3 +52,35 @@
   border-radius: 19px;
   padding: 20px;
 }
+
+@media (max-width: 768px) {
+  .container {
+    padding: 20px;
+  }
+
+  .container h1 {
+    font-size: 32px;
+  }
+
+  .content {
+    flex-direction: column;
+    gap: 20px;
+    padding: 10px;
+  }
+
+  .sidebar {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .active,
+  .inactive {
+    font-size: 16px;
+    padding: 8px 12px;
+  }
+
+  .main {
+    padding: 15px;
+  }
+}
