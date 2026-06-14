@@ -17,6 +17,7 @@ const MyDetails = () => {
   return (
     <div className={styles.container}>
       <div className={styles.content}>
+        
         <p>
           Update your personal details quickly and conveniently right
           here.Whether you've got a new address, phone number, or just want to
