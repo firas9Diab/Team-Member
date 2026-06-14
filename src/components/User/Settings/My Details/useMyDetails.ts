@@ -9,26 +9,19 @@ const useMyDetails = () => {
   const [dateofBirth, setDateofBirth] = useState<string>("");
   const [error, setError] = useState<string>("");
 
-  const handleNameChange = (
-    e: React.ChangeEvent<HTMLInputElement, HTMLInputElement>,
-  ) => {
-    setName(e.target.value);
-  };
-  const handleEmailChange = (
-    e: React.ChangeEvent<HTMLInputElement, HTMLInputElement>,
-  ) => {
-    setEmail(e.target.value);
-  };
-  const handlePhoneChange = (
-    e: React.ChangeEvent<HTMLInputElement, HTMLInputElement>,
-  ) => {
-    setPhone(e.target.value);
-  };
-  const handleDateOfBirthChange = (
-    e: React.ChangeEvent<HTMLInputElement, HTMLInputElement>,
-  ) => {
-    setDateofBirth(e.target.value);
-  };
+const handleDataChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const { name, value } = e.target;
+  if (name === "name") {
+    setName(value);
+  } else if (name === "email") {
+    setEmail(value);
+  } else if (name === "phone") {
+    setPhone(value);
+  } else if (name === "dateOfBirth") {
+    setDateofBirth(value);
+  }
+};
+
   const fetchUserById = async () => {
     try {
       const token = localStorage.getItem("token");
@@ -78,13 +71,10 @@ const useMyDetails = () => {
   return {
     ref,
     name,
-    handleNameChange,
     email,
-    handleEmailChange,
     phone,
-    handlePhoneChange,
     dateofBirth,
-    handleDateOfBirthChange,
+    handleDataChange,
     error,
     handleUpdateuser,
   };

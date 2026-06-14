@@ -6,13 +6,10 @@ const MyDetails = () => {
   const {
     ref,
     name,
-    handleNameChange,
+    handleDataChange,
     email,
-    handleEmailChange,
     phone,
-    handlePhoneChange,
     dateofBirth,
-    handleDateOfBirthChange,
     error,
     handleUpdateuser,
   } = useMyDetails();
@@ -39,9 +36,10 @@ const MyDetails = () => {
             <div className={styles.inputfields}>
               <label>Name</label>
               <input
+                name="name"
                 type="text"
                 value={name}
-                onChange={(e) => handleNameChange(e)}
+                onChange={handleDataChange}
                 className={styles.inputfield}
                 placeholder="Nandhu Santhosh"
               />
@@ -52,7 +50,7 @@ const MyDetails = () => {
                 disabled
                 type="text"
                 value={email}
-                onChange={(e) => handleEmailChange(e)}
+                onChange={handleDataChange}
                 className={styles.inputfield}
                 placeholder="nandhusanthosh@gmail.com"
               />
@@ -60,9 +58,10 @@ const MyDetails = () => {
             <div className={styles.inputfields}>
               Phone
               <input
+                name="phone"
                 type="text"
                 value={phone}
-                onChange={(e) => handlePhoneChange(e)}
+                onChange={handleDataChange}
                 className={styles.inputfield}
                 placeholder="6238973581"
               />
@@ -71,10 +70,10 @@ const MyDetails = () => {
               Date of Birth{" "}
               <div className={styles.inputfield}>
                 <input
+                  name="dateOfBirth"
                   ref={ref}
                   value={dateofBirth}
-                  onChange={(e) => handleDateOfBirthChange(e)}
-                  id="dateOfBirth"
+                  onChange={handleDataChange}
                   type="date"
                   className={styles.inputfielddate}
                 />

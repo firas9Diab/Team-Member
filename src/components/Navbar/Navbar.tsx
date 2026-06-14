@@ -20,7 +20,7 @@ const navigation = useNavigate()
     localStorage.removeItem("token");
     navigation("/User/Login")
   };
-  const gotosettings =() =>{
+  const goToSettings =() =>{
     navigation("/User/MyDetails")
   }
 
@@ -41,8 +41,8 @@ const navigation = useNavigate()
 
         {menuOpen && (
           <ul className={styles.dropdown}>
-            <li className={styles.dropdownItem} onClick={() => gotosettings()}>Profile</li>
-            <li className={styles.dropdownItem} onClick={() => goToSignOut()}>
+            <li className={styles.dropdownItem} onClick={goToSettings}>Profile</li>
+            <li className={styles.dropdownItem} onClick={goToSignOut}>
               Logout
             </li>
           </ul>
