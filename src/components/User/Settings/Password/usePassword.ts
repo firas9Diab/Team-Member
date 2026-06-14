@@ -11,10 +11,10 @@ const usePassword = () => {
   const [visibleNewPasswordConfirm, setVisibleNewPasswordConfirm] =
     useState<boolean>(false);
 
-
-  const handleVisibleChange = ( field: "oldPassword" | "newPassword" | "confirmNewPassword") =>
-  {
-     switch (field) {
+  const handleVisibleChange = (
+    field: "oldPassword" | "newPassword" | "confirmNewPassword",
+  ) => {
+    switch (field) {
       case "oldPassword":
         setVisibleOldPassword(!visibleOldPassword);
         break;
@@ -30,8 +30,7 @@ const usePassword = () => {
       default:
         break;
     }
-
-  }
+  };
 
   const handleDataChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     switch (e.target.name) {
@@ -85,7 +84,7 @@ const usePassword = () => {
         },
       );
 
-      setError("Password updated successfully!");
+      alert("Password updated successfully!");
 
       setOldPassword("");
       setNewPassword("");
@@ -95,7 +94,8 @@ const usePassword = () => {
     }
   };
 
-  return {visibleOldPassword,
+  return {
+    visibleOldPassword,
     visibleNewPassword,
     visibleNewPasswordConfirm,
     oldPassword,
@@ -104,7 +104,7 @@ const usePassword = () => {
     error,
     handleDataChange,
     handleUpdatePassword,
-    handleVisibleChange
+    handleVisibleChange,
   };
 };
 

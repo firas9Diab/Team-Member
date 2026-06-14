@@ -3,7 +3,8 @@ import usePassword from "./usePassword";
 import eyeIcon from "../../../../../public/Icons/EyeIcon.svg";
 
 const Password = () => {
-  const {visibleOldPassword,
+  const {
+    visibleOldPassword,
     visibleNewPassword,
     visibleNewPasswordConfirm,
     oldPassword,
@@ -12,7 +13,7 @@ const Password = () => {
     error,
     handleDataChange,
     handleUpdatePassword,
-    handleVisibleChange
+    handleVisibleChange,
   } = usePassword();
 
   return (
@@ -30,12 +31,16 @@ const Password = () => {
           <div className={styles.inputfield}>
             <input
               name="oldPassword"
-              type={visibleOldPassword?"text":"password"}
+              type={visibleOldPassword ? "text" : "password"}
               value={oldPassword}
               onChange={handleDataChange}
               className={styles.passwordfield}
             />
-            <img onClick={()=>handleVisibleChange("oldPassword")} src={eyeIcon} alt="" />
+            <img
+              onClick={() => handleVisibleChange("oldPassword")}
+              src={eyeIcon}
+              alt=""
+            />
           </div>
         </div>
         <div className={styles.inputfields}>
@@ -43,12 +48,16 @@ const Password = () => {
           <div className={styles.inputfield}>
             <input
               name="newPassword"
-                      type={visibleNewPassword?"text":"password"}
+              type={visibleNewPassword ? "text" : "password"}
               value={newPassword}
               onChange={handleDataChange}
               className={styles.passwordfield}
             />
-            <img  onClick={()=>handleVisibleChange("newPassword")} src={eyeIcon} alt="" />
+            <img
+              onClick={() => handleVisibleChange("newPassword")}
+              src={eyeIcon}
+              alt=""
+            />
           </div>
         </div>
         <div className={styles.inputfields}>
@@ -56,12 +65,16 @@ const Password = () => {
           <div className={styles.inputfield}>
             <input
               name="confirmNewPassword"
-                       type={visibleNewPasswordConfirm?"text":"password"}
+              type={visibleNewPasswordConfirm ? "text" : "password"}
               value={confirmNewPassword}
               onChange={handleDataChange}
               className={styles.passwordfield}
             />
-            <img  onClick={()=>handleVisibleChange("confirmNewPassword")} src={eyeIcon} alt="" />
+            <img
+              onClick={() => handleVisibleChange("confirmNewPassword")}
+              src={eyeIcon}
+              alt=""
+            />
           </div>
 
           {error}
