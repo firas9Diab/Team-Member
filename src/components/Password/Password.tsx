@@ -10,6 +10,7 @@ const Password = () => {
     handleNewPasswordChange,
     handleConfirmPasswordChange,
     handleUpdatePassword,
+    showMessage,
   } = usePassword();
 
   return (
@@ -34,6 +35,7 @@ const Password = () => {
           value={confirmNewPassword}
           onChange={(e) => handleConfirmPasswordChange(e.target.value)}
         />
+        {showMessage && <p className={styles.falseValue}>{showMessage}</p>}
 
         <button
           type="button"

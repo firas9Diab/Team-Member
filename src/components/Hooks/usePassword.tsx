@@ -6,6 +6,7 @@ const usePassword = () => {
   const [oldPassword, setOldPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmNewPassword, setConfirmNewPassword] = useState("");
+  const [showMessage, setShowMessage] = useState("");
 
   const handleOldPasswordChange = (value: string) => {
     setOldPassword(value);
@@ -20,32 +21,38 @@ const usePassword = () => {
   };
 
   const handleUpdatePassword = async () => {
-    try {
-      const token = localStorage.getItem("token");
-      await axios.patch(
-        "http://localhost:3000/users/me/password",
-        {
-          oldPassword,
-          newPassword,
-          confirmNewPassword,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
-          },
-        },
-      );
-      setOldPassword("");
-      setNewPassword("");
-      setConfirmNewPassword("");
+    if (newPassword === confirmNewPassword) {
+      setShowMessage("");
 
-      Swal.fire({
-        icon: "success",
-        title: "Details updated successfully!",
-      });
-    } catch (error) {
-      console.log(error);
+      try {
+        const token = localStorage.getItem("token");
+        await axios.patch(
+          "http://localhost:3000/users/me/password",
+          {
+            oldPassword,
+            newPassword,
+            confirmNewPassword,
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+              "Content-Type": "application/json",
+            },
+          },
+        );
+        setOldPassword("");
+        setNewPassword("");
+        setConfirmNewPassword("");
+
+        Swal.fire({
+          icon: "success",
+          title: "Details updated successfully!",
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      setShowMessage("Passwords do not match");
     }
   };
 
@@ -57,6 +64,7 @@ const usePassword = () => {
     handleNewPasswordChange,
     handleConfirmPasswordChange,
     handleUpdatePassword,
+    showMessage,
   };
 };
 
