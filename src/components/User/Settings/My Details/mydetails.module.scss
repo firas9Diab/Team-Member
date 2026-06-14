@@ -1,90 +1,11 @@
-.settingspage {
-  padding: 47px 130px 72px;
-  height: 905px;
-}
-.title {
-  height: 77px;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 41px;
-  line-height: 52px;
-  color: #000000;
-  padding-bottom: 23px;
-  border-bottom: 1px solid #757575;
-}
-.settingsnavbar {
-  gap: 26px;
-  padding-top: 47px;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 23px;
-  color: rgba(0, 0, 0, 0.6);
-  display: flex;
-  flex-direction: column;
-}
 .settingswork {
   margin-top: 85px;
-  height: 765px;
+  min-height: 765px;
   background: #f5f5f5;
   border-radius: 19px;
-  padding-top: 35px;
-  padding-right: 72px;
-  padding-left: 51px;
+  padding: 35px 72px 40px 51px;
 }
-.flexrowsettings {
-  display: flex;
-  gap: 182px;
-}
-.settingsnavbarbold
-{
-  font-weight: 900;
-}
-.settingsinputfields {
-  display: flex;
-  flex-direction: column;
-  width: 543px;
-  height: 438px;
-  padding-top: 45px;
-  gap: 26px;
-}
-.inputfields {
-  display: flex;
-  flex-direction: column;
-}
-.inputfield {
-  display: flex;
-  width: 543px;
-  height: 46px;
-  box-sizing: border-box;
-  padding: 11px 21px 12px;
-  background: #ffffff;
-  border: 1px solid #cacaca;
-  border-radius: 9px;
-}
-.inputfielddate {
-  width: 518px;
 
-  box-sizing: border-box;
-
-  background: #ffffff;
-  border: none;
-}
-.inputfieldbutton {
-  box-sizing: border-box;
-  background: #5a6afa;
-  border: 1px solid #cacaca;
-  border-radius: 9px;
-  padding: 17px 217px;
-  font-style: normal;
-  font-weight: 700;
-  font-size: 12px;
-  line-height: 20px;
-  color: #ffffff;
-  &:hover {
-    background: #0a20e7;
-  }
-}
 .settingsworkparegraph {
   height: 60px;
   font-style: normal;
@@ -93,75 +14,121 @@
   line-height: 20px;
   color: #4f4f4f;
 }
+
+.settingsinputfields {
+  display: flex;
+  flex-direction: column;
+  width: 543px;
+  height: 438px;
+  padding-top: 45px;
+  gap: 26px;
+}
+
+.inputfields {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.inputfield {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 46px;
+  box-sizing: border-box;
+  padding: 11px 21px 12px;
+  background: #ffffff;
+  border: 1px solid #cacaca;
+  border-radius: 9px;
+}
+
+.inputfielddate {
+  width: 100%;
+  box-sizing: border-box;
+  background: #ffffff;
+  border: none;
+  outline: none;
+}
+
 .inputfielddate::-webkit-calendar-picker-indicator {
   opacity: 0;
   cursor: pointer;
   display: none;
 }
-@media (min-width: 768px) and (max-width: 1024px) {
-  .settingswork {
-    margin-top: 0;
-  }
-  .settingsnavbar {
-    flex-direction: row;
-  }
-  .flexrowsettings {
-    flex-direction: column;
-    gap: 40px;
-  }
-  .inputfield {
-    width: 330px;
-  }
-  .inputfieldbutton {
-    width: 330px;
-    padding: 17px 100px;
-  }
-  .settingsinputfields
-  {
-    width: auto;
+
+.inputfield img {
+  cursor: pointer;
+}
+
+.inputfieldbutton {
+  width: 100%;
+  box-sizing: border-box;
+  background: #5a6afa;
+  border: 1px solid #cacaca;
+  border-radius: 9px;
+  padding: 17px 0;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 20px;
+  color: #ffffff;
+  cursor: pointer;
+
+  &:hover {
+    background: #0a20e7;
   }
 }
 
-@media (max-width: 768px) {
+@media (min-width: 768px) and (max-width: 1024px) {
   .settingswork {
     margin-top: 0;
+    min-height: auto;
+    padding: 35px 40px;
   }
-  .settingsnavbar {
-    flex-direction: row;
+
+  .settingsworkparegraph {
+    height: auto;
   }
-  .flexrowsettings {
-    flex-direction: column;
-    gap: 40px;
+
+  .settingsinputfields {
+    width: 100%;
+    height: auto;
   }
-  .inputfield {
-    width: 330px;
+}
+
+@media (max-width: 767px) {
+  .settingswork {
+    margin-top: 0;
+    min-height: auto;
+    padding: 28px 24px;
   }
-  .inputfieldbutton {
-    width: 330px;
-    padding: 17px 100px;
+
+  .settingsworkparegraph {
+    height: auto;
+    font-size: 15px;
+    line-height: 22px;
   }
-    .settingsinputfields
-  {
-    width: auto;
+
+  .settingsinputfields {
+    width: 100%;
+    height: auto;
+    padding-top: 32px;
+    gap: 22px;
   }
 }
 
 @media (max-width: 414px) {
-  .settingspage {
-    padding: 47px 50px 72px;
+  .settingswork {
+    padding: 24px 16px;
   }
+
   .settingsworkparegraph {
-    height: auto;
+    font-size: 14px;
+    line-height: 21px;
   }
-  .inputfield {
-    width: 225px;
-  }
-  .inputfieldbutton {
-    width: 225px;
-    padding: 17px 50px;
-  }
-    .settingsinputfields
-  {
-    width: auto;
+
+  .settingsinputfields {
+    padding-top: 28px;
+    gap: 20px;
   }
 }

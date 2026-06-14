@@ -9,18 +9,30 @@ const useMyDetails = () => {
   const [dateofBirth, setDateofBirth] = useState<string>("");
   const [error, setError] = useState<string>("");
 
-const handleDataChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-  const { name, value } = e.target;
-  if (name === "name") {
-    setName(value);
-  } else if (name === "email") {
-    setEmail(value);
-  } else if (name === "phone") {
-    setPhone(value);
-  } else if (name === "dateOfBirth") {
-    setDateofBirth(value);
-  }
-};
+  const handleDataChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+
+    switch (name) {
+      case "name":
+        setName(value);
+        break;
+
+      case "email":
+        setEmail(value);
+        break;
+
+      case "phone":
+        setPhone(value);
+        break;
+
+      case "dateOfBirth":
+        setDateofBirth(value);
+        break;
+
+      default:
+        break;
+    }
+  };
 
   const fetchUserById = async () => {
     try {
