@@ -46,7 +46,7 @@ const useMyDetails = () => {
   const handleUpdateDetails = async () => {
     try {
       const token = localStorage.getItem("token");
-      const response = await axios.patch(
+      await axios.patch(
         "http://localhost:3000/users/me",
         {
           fullName,

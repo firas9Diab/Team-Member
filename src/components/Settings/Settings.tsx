@@ -1,9 +1,9 @@
 import { useState } from "react";
 import MyDetails from "../MyDetails/MyDetails";
-import Address from "../Address/Address";
 import Password from "../Password/Password";
 import styles from "./Settings.module.scss";
 import classNames from "classnames";
+import Address from "../Address/Address";
 
 const Settings = () => {
   const [activeTab, setActiveTab] = useState("myDetails");

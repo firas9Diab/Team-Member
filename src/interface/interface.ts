@@ -1,4 +1,4 @@
-export interface Address {
+export interface AddressType {
   id: number;
   name: string;
   flatHouseBuilding: string;
@@ -10,3 +10,10 @@ export interface Address {
   pincode: string;
   isDefault?: boolean;
 }
+
+ export interface IAddressForm{
+   mode: "add" | "edit";
+  initialData?: AddressType;
+  onSubmit: (data: AddressType) => void;
+  onCancel: () => void;
+ }
