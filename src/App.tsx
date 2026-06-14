@@ -4,7 +4,7 @@ import Item from "./components/Item/Item";
 import SignUp from "./components/User/Sign Up/SignUp";
 import Login from "./components/User/Login/Login";
 import ProtectedRoute from "./ProtectedRoute";
-import MyDetails from "./components/User/Settings/My Details/MyDetails";
+import MyDetails from "./components/User/Settings/My Details/mydetails";
 
 const App = () => {
   return (
