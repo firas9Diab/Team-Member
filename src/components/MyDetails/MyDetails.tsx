@@ -34,10 +34,10 @@ const MyDetails = () => {
           <label>Email</label>
           <input
             type="email"
+            disabled
             placeholder="nandhusanthosh@gmail.com"
             value={email}
             onChange={(e) => handleEmailChange(e.target.value)}
-            disabled
           />
           <label>Phone</label>
           <input
