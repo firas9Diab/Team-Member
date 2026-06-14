@@ -11,7 +11,6 @@ const Password = () => {
     handleConfirmPasswordChange,
     handleUpdatePassword,
     showMessage,
-    error,
   } = usePassword();
 
   return (

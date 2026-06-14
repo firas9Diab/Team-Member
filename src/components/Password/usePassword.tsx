@@ -1,14 +1,13 @@
 import axios from "axios";
 import { useState } from "react";
 import Swal from "sweetalert2";
-import requestBuilder from "../requestBuilder";
+import requestBuilder from "../utility/requestBuilder";
 
 const usePassword = () => {
   const [oldPassword, setOldPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmNewPassword, setConfirmNewPassword] = useState("");
   const [showMessage, setShowMessage] = useState("");
-  const [error, setError] = useState("");
 
   const handleOldPasswordChange = (value: string) => {
     setOldPassword(value);
@@ -34,11 +33,16 @@ const usePassword = () => {
     }
 
     try {
-      await requestBuilder("PATCH", "http://localhost:3000/users/me/password", {
-        oldPassword,
-        newPassword,
-        confirmNewPassword,
+      await requestBuilder({
+        url: "http://localhost:3000/users/me/password",
+        method: "PATCH",
+        data: {
+          oldPassword,
+          newPassword,
+          confirmNewPassword,
+        },
       });
+
       setOldPassword("");
       setNewPassword("");
       setConfirmNewPassword("");
@@ -64,7 +68,6 @@ const usePassword = () => {
     handleConfirmPasswordChange,
     handleUpdatePassword,
     showMessage,
-    error,
   };
 };
 

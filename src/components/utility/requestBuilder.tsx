@@ -1,6 +1,7 @@
 import axios from "axios";
+import type { RequestBuilderProps } from "../../interface/interface";
 
-const requestBuilder = async (method: string, url: string, data?: object) => {
+const requestBuilder = async ({ url, method, data }: RequestBuilderProps) => {
   const token = localStorage.getItem("token");
 
   return axios({
