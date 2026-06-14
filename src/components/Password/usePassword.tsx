@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import Swal from "sweetalert2";
-
+import requestBuilder from "../utility/‎src/components/utility/requestBuilder";
 const usePassword = () => {
   const [oldPassword, setOldPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
@@ -33,21 +33,15 @@ const usePassword = () => {
     }
 
     try {
-      const token = localStorage.getItem("token");
-      const response = await axios.patch(
-        "http://localhost:3000/users/me/password",
-        {
+      await requestBuilder({
+        url: "http://localhost:3000/users/me/password",
+        method: "PATCH",
+        data: {
           oldPassword,
           newPassword,
           confirmNewPassword,
         },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
-          },
-        },
-      );
+      });
       setOldPassword("");
       setNewPassword("");
       setConfirmNewPassword("");
