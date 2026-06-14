@@ -16,6 +16,10 @@ const Navbar = () => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  const goToSignOut = () => {
+    localStorage.removeItem("token");
+  };
+  
   return (
     <nav className={styles.navbar}>
       <Link to="/" className={styles.brand}>
@@ -34,10 +38,9 @@ const Navbar = () => {
         {menuOpen && (
           <ul className={styles.dropdown}>
             <li className={styles.dropdownItem}>Profile</li>
-            <li className={styles.dropdownItem}
-            onClick={()=>{
-              localStorage.removeItem("token")
-            }}>Logout</li>
+            <li className={styles.dropdownItem} onClick={() => goToSignOut()}>
+              Logout
+            </li>
           </ul>
         )}
       </div>
