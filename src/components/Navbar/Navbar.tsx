@@ -1,6 +1,6 @@
-import { useState, useRef, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import styles from './Navbar.module.scss';
+import { useState, useRef, useEffect } from "react";
+import { Link } from "react-router-dom";
+import styles from "./Navbar.module.scss";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -12,8 +12,8 @@ const Navbar = () => {
         setMenuOpen(false);
       }
     };
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
   return (
@@ -34,7 +34,10 @@ const Navbar = () => {
         {menuOpen && (
           <ul className={styles.dropdown}>
             <li className={styles.dropdownItem}>Profile</li>
-            <li className={styles.dropdownItem}>Logout</li>
+            <li className={styles.dropdownItem}
+            onClick={()=>{
+              localStorage.removeItem("token")
+            }}>Logout</li>
           </ul>
         )}
       </div>

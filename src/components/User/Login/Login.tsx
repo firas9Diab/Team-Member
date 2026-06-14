@@ -70,7 +70,7 @@ const Login = () => {
                 }}
                 className={styles.signinbutton}
               >
-                Create Account
+                Login
               </button>
               <div className={styles.buttonfield}>
                 <button onClick={() => {}} className={styles.signinwaybutton}>

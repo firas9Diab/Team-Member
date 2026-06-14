@@ -8,15 +8,15 @@ const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
 
   useEffect(() => {
     if (!token) {
-      navigate("/");
+      navigate("/User/Login");
     }
   }, [token, navigate]);
 
   return (
-    <>
+    <div>
       <Navbar />
       {children}
-    </>
+    </div>
   );
 };
 
