@@ -1,4 +1,4 @@
-import axios, { AxiosError } from "axios";
+import axios from "axios";
 import { useState } from "react";
 import Swal from "sweetalert2";
 
@@ -22,46 +22,48 @@ const usePassword = () => {
   };
 
   const handleUpdatePassword = async () => {
-    if (newPassword === confirmNewPassword) {
-      setShowMessage("");
-      setError("");
-      try {
-        const token = localStorage.getItem("token");
-        const response = await axios.patch(
-          "http://localhost:3000/users/me/password",
-          {
-            oldPassword,
-            newPassword,
-            confirmNewPassword,
-          },
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-              "Content-Type": "application/json",
-            },
-          },
-        );
-        setOldPassword("");
-        setNewPassword("");
-        setConfirmNewPassword("");
+    setShowMessage("");
+    if (newPassword !== confirmNewPassword) {
+      setShowMessage("Passwords do not match");
+      return;
+    }
+    if (newPassword.length < 8) {
+      setShowMessage("Password must be longer than or equal to 8 characters ");
+      return;
+    }
 
-        Swal.fire({
-          icon: "success",
-          title: "Details updated successfully!",
-        });
-      } catch (error) {
-        if (axios.isAxiosError(error)) {
-          const errors = error.response?.data?.errors;
+    try {
+      const token = localStorage.getItem("token");
+      const response = await axios.patch(
+        "http://localhost:3000/users/me/password",
+        {
+          oldPassword,
+          newPassword,
+          confirmNewPassword,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        },
+      );
+      setOldPassword("");
+      setNewPassword("");
+      setConfirmNewPassword("");
 
-          if (errors?.length) {
-            setShowMessage(errors.join(", "));
-          } else {
-            setShowMessage(error.response?.data?.message);
-          }
-        }
-      }
+      Swal.fire({
+        icon: "success",
+        title: "Details updated successfully!",
+      });
+    } catch (error: any) {
+      setShowMessage(
+        error.response?.data?.errors?.join(", ") ||
+          error.response?.data?.message,
+      );
     }
   };
+
   return {
     oldPassword,
     newPassword,
