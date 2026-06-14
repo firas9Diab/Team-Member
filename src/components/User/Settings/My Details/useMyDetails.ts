@@ -1,0 +1,95 @@
+import axios from "axios";
+import React, { useEffect, useRef, useState } from "react";
+
+const useMyDetails = () => {
+  const ref = useRef<HTMLInputElement | null>(null);
+  const [name, setName] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [phone, setPhone] = useState<string>("");
+  const [dateofBirth, setDateofBirth] = useState<string>("");
+  const [error, setError] = useState<string>("");
+
+  const handleDataChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+
+    switch (name) {
+      case "name":
+        setName(value);
+        break;
+
+      case "email":
+        setEmail(value);
+        break;
+
+      case "phone":
+        setPhone(value);
+        break;
+
+      case "dateOfBirth":
+        setDateofBirth(value);
+        break;
+
+      default:
+        break;
+    }
+  };
+
+  const fetchUserById = async () => {
+    try {
+      const token = localStorage.getItem("token");
+
+      const response = await axios.get(`http://localhost:3000/auth/me`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setName(response.data.data.fullName);
+      setEmail(response.data.data.email);
+      setPhone(response.data.data.phone);
+      setDateofBirth(response.data.data.dateOfBirth.slice(0, 10));
+      console.log(response.data.data);
+    } catch (err: any) {
+      setError(err.response?.data?.message || "Failed to load user");
+    }
+  };
+
+  const handleUpdateuser = async () => {
+    try {
+      const token = localStorage.getItem("token");
+
+      await axios.patch(
+        "http://localhost:3000/users/me",
+        {
+          fullName: name,
+          phone: phone,
+          dateOfBirth: dateofBirth,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
+      );
+      alert("Updated Successfull!");
+    } catch (err: any) {
+      setError(err.response?.data?.message || "Failed to update user");
+    }
+  };
+
+  useEffect(() => {
+    fetchUserById();
+  }, []);
+
+  return {
+    ref,
+    name,
+    email,
+    phone,
+    dateofBirth,
+    handleDataChange,
+    error,
+    handleUpdateuser,
+  };
+};
+
+export default useMyDetails;

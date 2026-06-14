@@ -1,0 +1,98 @@
+.settingspage {
+  padding: 47px 130px 72px;
+  min-height: 905px;
+}
+
+.title {
+  height: 77px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 41px;
+  line-height: 52px;
+  color: #000000;
+  padding-bottom: 23px;
+  border-bottom: 1px solid #757575;
+}
+
+.flexrowsettings {
+  display: flex;
+  gap: 182px;
+}
+
+.settingsnavbar {
+  gap: 26px;
+  padding-top: 47px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 23px;
+  color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+}
+
+.settingsnavbar nav {
+  cursor: pointer;
+}
+
+.settingsnavbarbold {
+  font-weight: 900;
+  color: #000000;
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .settingspage {
+    padding: 40px 60px 60px;
+    min-height: auto;
+  }
+
+  .settingsnavbar {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .flexrowsettings {
+    flex-direction: column;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 767px) {
+  .settingspage {
+    padding: 32px 24px 50px;
+    min-height: auto;
+  }
+
+  .title {
+    height: auto;
+    font-size: 32px;
+    line-height: 40px;
+  }
+
+  .settingsnavbar {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 18px;
+  }
+
+  .flexrowsettings {
+    flex-direction: column;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 414px) {
+  .settingspage {
+    padding: 28px 16px 40px;
+  }
+
+  .title {
+    font-size: 28px;
+    line-height: 36px;
+  }
+
+  .settingsnavbar {
+    font-size: 15px;
+    gap: 14px;
+  }
+}

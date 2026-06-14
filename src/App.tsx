@@ -4,6 +4,7 @@ import Item from "./components/Item/Item";
 import SignUp from "./components/User/Sign Up/SignUp";
 import Login from "./components/User/Login/Login";
 import ProtectedRoute from "./ProtectedRoute";
+import Settings from "./components/User/Settings/Settings";
 
 const App = () => {
   return (
@@ -22,6 +23,14 @@ const App = () => {
           element={
             <ProtectedRoute>
               <Item />
+            </ProtectedRoute>
+          }
+        />
+         <Route
+          path="/User/Settings"
+          element={
+            <ProtectedRoute>
+              <Settings />
             </ProtectedRoute>
           }
         />

@@ -19,18 +19,30 @@ const useLogin = () => {
         password: password,
       });
 
-      seterrormessage("Account created successfully");
+      const token = response.data.data.accessToken;
 
-      localStorage.setItem("token", response.data.accessToken);
+      const userId = response.data.data.user.id;
 
-      navigation("/");
+      if (!token) {
+        seterrormessage("Token not found in response");
+        return;
+      }
+
+      if (!userId) {
+        seterrormessage("User id not found in response");
+        return;
+      }
+
+      localStorage.setItem("token", token);
+
+      navigation(`/`);
     } catch (error: unknown) {
       if (axios.isAxiosError(error)) {
-        seterrormessage(error.response?.data?.message || "Signup failed");
+        seterrormessage(error.response?.data?.message || "Login failed");
       } else if (error instanceof Error) {
         seterrormessage(error.message);
       } else {
-        seterrormessage("Signup failed");
+        seterrormessage("Login failed");
       }
     }
   };
