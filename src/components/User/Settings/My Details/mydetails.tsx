@@ -2,7 +2,7 @@ import styles from "./mydetails.module.scss";
 import date from "../../../../../public/Icons/date.svg";
 import useMyDetails from "./useMyDetails";
 
-const mydetails = () => {
+const MyDetails = () => {
   const {
     ref,
     name,
@@ -99,4 +99,4 @@ const mydetails = () => {
   );
 };
 
-export default mydetails;
+export default MyDetails;
