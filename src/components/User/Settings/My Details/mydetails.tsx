@@ -1,8 +1,8 @@
-import styles from "../Settings/Settings.module.scss";
-import date from "../../../../public/Icons/date.svg";
-import useSettings from "./useSettings";
+import styles from "./mydetails.module.scss";
+import date from "../../../../../public/Icons/date.svg";
+import useMyDetails from "./useMyDetails";
 
-const Settings = () => {
+const mydetails = () => {
   const {
     ref,
     name,
@@ -15,7 +15,7 @@ const Settings = () => {
     handleDateOfBirthChange,
     error,
     handleUpdateuser,
-  } = useSettings();
+  } = useMyDetails();
 
   return (
     <div className={styles.settingspage}>
@@ -88,9 +88,7 @@ const Settings = () => {
             </div>
             <button
               className={styles.inputfieldbutton}
-              onClick={() => {
-                handleUpdateuser();
-              }}
+              onClick={handleUpdateuser}
             >
               Update Details
             </button>
@@ -101,4 +99,4 @@ const Settings = () => {
   );
 };
 
-export default Settings;
+export default mydetails;

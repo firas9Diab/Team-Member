@@ -119,6 +119,10 @@
     width: 330px;
     padding: 17px 100px;
   }
+  .settingsinputfields
+  {
+    width: auto;
+  }
 }
 
 @media (max-width: 768px) {
@@ -139,6 +143,10 @@
     width: 330px;
     padding: 17px 100px;
   }
+    .settingsinputfields
+  {
+    width: auto;
+  }
 }
 
 @media (max-width: 414px) {
@@ -154,5 +162,9 @@
   .inputfieldbutton {
     width: 225px;
     padding: 17px 50px;
+  }
+    .settingsinputfields
+  {
+    width: auto;
   }
 }

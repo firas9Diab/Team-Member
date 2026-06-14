@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
 
-const useSettings = () => {
+const useMyDetails = () => {
   const ref = useRef<HTMLInputElement | null>(null);
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
@@ -48,10 +48,6 @@ const useSettings = () => {
     }
   };
 
-  useEffect(() => {
-    fetchUserById();
-  }, []);
-
   const handleUpdateuser = async () => {
     try {
       const token = localStorage.getItem("token");
@@ -69,11 +65,16 @@ const useSettings = () => {
           },
         },
       );
-      setError("Updated Successfull!");
+      alert("Updated Successfull!");
     } catch (err: any) {
       setError(err.response?.data?.message || "Failed to update user");
     }
   };
+
+  useEffect(() => {
+    fetchUserById();
+  }, []);
+
   return {
     ref,
     name,
@@ -89,4 +90,4 @@ const useSettings = () => {
   };
 };
 
-export default useSettings;
+export default useMyDetails;

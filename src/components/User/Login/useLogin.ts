@@ -19,8 +19,6 @@ const useLogin = () => {
         password: password,
       });
 
-      console.log("LOGIN RESPONSE:", response.data);
-
       const token = response.data.data.accessToken;
 
       const userId = response.data.data.user.id;

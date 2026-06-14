@@ -4,7 +4,7 @@ import Item from "./components/Item/Item";
 import SignUp from "./components/User/Sign Up/SignUp";
 import Login from "./components/User/Login/Login";
 import ProtectedRoute from "./ProtectedRoute";
-import Settings from "./components/User/Settings/Settings";
+import MyDetails from "./components/User/Settings/My Details/mydetails";
 
 const App = () => {
   return (
@@ -27,10 +27,10 @@ const App = () => {
           }
         />
          <Route
-          path="/User/Settings"
+          path="/User/MyDetails"
           element={
             <ProtectedRoute>
-              <Settings />
+              <MyDetails />
             </ProtectedRoute>
           }
         />

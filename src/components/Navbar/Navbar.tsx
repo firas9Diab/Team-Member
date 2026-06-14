@@ -21,8 +21,9 @@ const navigation = useNavigate()
     navigation("/User/Login")
   };
   const gotosettings =() =>{
-    navigation("/User/Settings")
+    navigation("/User/MyDetails")
   }
+
   return (
     <nav className={styles.navbar}>
       <Link to="/" className={styles.brand}>
