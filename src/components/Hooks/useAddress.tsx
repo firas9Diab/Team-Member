@@ -1,12 +1,14 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import type Address from "../Address/Address";
+import type { AddressType } from "../../interface/interface";
 
 const useAddress = () => {
-  const [addresses, setAddresses] = useState<Address[]>([]);
+  const [addresses, setAddresses] = useState<AddressType[]>([]);
 
   const [mode, setMode] = useState<"list" | "add" | "edit">("list");
-  const [selectedAddress, setSelectedAddress] = useState<Address | undefined>();
+  const [selectedAddress, setSelectedAddress] = useState<
+    AddressType | undefined
+  >();
 
   const fetchUserAddress = async () => {
     try {
@@ -24,7 +26,7 @@ const useAddress = () => {
     }
   };
 
-  const handleAddAddress = async (data: Address) => {
+  const handleAddAddress = async (data: AddressType) => {
     const token = localStorage.getItem("token");
     try {
       const response = await axios.post(
@@ -45,7 +47,7 @@ const useAddress = () => {
     }
   };
 
-  const handleEditAddress = async (data: Address) => {
+  const handleEditAddress = async (data: AddressType) => {
     const token = localStorage.getItem("token");
 
     const { id, ...cleanData } = data;

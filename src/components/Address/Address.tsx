@@ -1,7 +1,5 @@
 import styles from "./Address.module.scss";
-import addAddressimg from "../../Assets/addAddressimg.svg";
 import AddressForm from "../AddressForm/AddressForm";
-import type { Address } from "../../types/types";
 import useAddress from "../Hooks/useAddress";
 
 const Address = () => {
@@ -86,7 +84,7 @@ const Address = () => {
 
       <div className={styles.container}>
         <button className={styles.button} onClick={() => setMode("add")}>
-          <img src={addAddressimg} alt="Add Address" />
+          +
         </button>
       </div>
     </>

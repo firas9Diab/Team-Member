@@ -1,75 +1,37 @@
-import { useEffect, useState } from "react";
-import type { Address } from "../../types/types";
 import styles from "./AddressForm.module.scss";
+import useAddressForm from "../Hooks/useAddressForm";
+import type { IAddressForm } from "../../interface/interface";
 
-type Props = {
-  mode: "add" | "edit";
-  initialData?: Address;
-  onSubmit: (data: Address) => void;
-  onCancel: () => void;
-};
-
-const AddressForm = ({ mode, initialData, onSubmit, onCancel }: Props) => {
-  const [name, setName] = useState("");
-  const [flatHouseBuilding, setFlatHouseBuilding] = useState("");
-  const [city, setCity] = useState("");
-  const [state, setState] = useState("");
-  const [country, setCountry] = useState("");
-  const [mobileNumber, setMobileNumber] = useState("");
-  const [alternativeMobileNumber, setAlternativeMobileNumber] = useState("");
-  const [pincode, setPincode] = useState("");
-
-  useEffect(() => {
-    if (mode === "edit" && initialData) {
-      setName(initialData.name);
-      setFlatHouseBuilding(initialData.flatHouseBuilding);
-      setCity(initialData.city);
-      setState(initialData.state);
-      setCountry(initialData.country);
-      setMobileNumber(initialData.mobileNumber);
-      setAlternativeMobileNumber(initialData.alternativeMobileNumber || "");
-      setPincode(initialData.pincode);
-    }
-  }, [mode, initialData]);
-
-  const handleNameChange = (value: string) => setName(value);
-  const handleBuildingChange = (value: string) => setFlatHouseBuilding(value);
-  const handleCityChange = (value: string) => setCity(value);
-  const handleStateChange = (value: string) => setState(value);
-  const handleCountryChange = (value: string) => setCountry(value);
-  const handleMobileChange = (value: string) => setMobileNumber(value);
-  const handleAlternativeChange = (value: string) =>
-    setAlternativeMobileNumber(value);
-  const handlePinCodeChange = (value: string) => setPincode(value);
-
-  const handleSubmit = () => {
-    if (mode === "edit" && initialData) {
-      onSubmit({
-        id: initialData.id,
-        name,
-        flatHouseBuilding,
-        city,
-        state,
-        country,
-        mobileNumber,
-        alternativeMobileNumber,
-        pincode,
-        isDefault: initialData.isDefault ?? false,
-      });
-    } else {
-      onSubmit({
-        name,
-        flatHouseBuilding,
-        city,
-        state,
-        country,
-        mobileNumber,
-        alternativeMobileNumber,
-        pincode,
-        isDefault: false,
-      } as any);
-    }
-  };
+const AddressForm = ({
+  mode,
+  initialData,
+  onSubmit,
+  onCancel,
+}: IAddressForm) => {
+  const {
+    name,
+    alternativeMobileNumber,
+    flatHouseBuilding,
+    city,
+    state,
+    country,
+    mobileNumber,
+    pincode,
+    handleNameChange,
+    handleAlternativeChange,
+    handleBuildingChange,
+    handleCityChange,
+    handleCountryChange,
+    handleMobileChange,
+    handlePinCodeChange,
+    handleStateChange,
+    handleSubmit,
+  } = useAddressForm({
+    initialData,
+    mode,
+    onSubmit,
+    onCancel,
+  });
 
   return (
     <div className={styles.add}>
