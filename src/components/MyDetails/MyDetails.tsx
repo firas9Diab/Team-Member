@@ -38,7 +38,6 @@ const MyDetails = () => {
             disabled
             value={email}
             onChange={(e) => handleEmailChange(e.target.value)}
-            disabled
           />
           <label>Phone</label>
           <input
