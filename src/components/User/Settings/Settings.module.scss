@@ -4,7 +4,6 @@
 }
 .title {
   height: 77px;
-
   font-family: "Outfit";
   font-style: normal;
   font-weight: 500;
@@ -28,7 +27,6 @@
 }
 .settingswork {
   margin-top: 85px;
-
   height: 765px;
   background: #f5f5f5;
   border-radius: 19px;
@@ -39,6 +37,10 @@
 .flexrowsettings {
   display: flex;
   gap: 182px;
+}
+.settingsnavbarbold
+{
+  font-weight: 900;
 }
 .settingsinputfields {
   display: flex;

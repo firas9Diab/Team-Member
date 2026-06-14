@@ -22,7 +22,7 @@ const Settings = () => {
       <p className={styles.title}>Settings</p>
       <div className={styles.flexrowsettings}>
         <aside className={styles.settingsnavbar}>
-          <nav>My Details</nav>
+          <nav className={styles.settingsnavbarbold}>My Details</nav>
           <nav>Address</nav>
           <nav>Password</nav>
         </aside>
