@@ -37,7 +37,7 @@ const useLogin = () => {
 
       localStorage.setItem("token", token);
 
-      navigation(`/User/Settings`);
+      navigation(`/`);
     } catch (error: unknown) {
       if (axios.isAxiosError(error)) {
         seterrormessage(error.response?.data?.message || "Login failed");

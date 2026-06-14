@@ -1,11 +1,11 @@
 import { useState, useRef, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styles from "./Navbar.module.scss";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
-
+const navigation = useNavigate()
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
@@ -18,8 +18,11 @@ const Navbar = () => {
 
   const goToSignOut = () => {
     localStorage.removeItem("token");
+    navigation("/User/Login")
   };
-  
+  const gotosettings =() =>{
+    navigation("/User/Settings")
+  }
   return (
     <nav className={styles.navbar}>
       <Link to="/" className={styles.brand}>
@@ -37,7 +40,7 @@ const Navbar = () => {
 
         {menuOpen && (
           <ul className={styles.dropdown}>
-            <li className={styles.dropdownItem}>Profile</li>
+            <li className={styles.dropdownItem} onClick={() => gotosettings()}>Profile</li>
             <li className={styles.dropdownItem} onClick={() => goToSignOut()}>
               Logout
             </li>
