@@ -7,6 +7,7 @@ const usePassword = () => {
   const [newPassword, setNewPassword] = useState("");
   const [confirmNewPassword, setConfirmNewPassword] = useState("");
   const [showMessage, setShowMessage] = useState("");
+  const [error, setError] = useState("");
 
   const handleOldPasswordChange = (value: string) => {
     setOldPassword(value);
@@ -23,10 +24,10 @@ const usePassword = () => {
   const handleUpdatePassword = async () => {
     if (newPassword === confirmNewPassword) {
       setShowMessage("");
-
+      setError("");
       try {
         const token = localStorage.getItem("token");
-        await axios.patch(
+        const response = await axios.patch(
           "http://localhost:3000/users/me/password",
           {
             oldPassword,
@@ -48,8 +49,9 @@ const usePassword = () => {
           icon: "success",
           title: "Details updated successfully!",
         });
-      } catch (error) {
-        console.log(error);
+      } catch (error: any) {
+        console.log(error.response?.data);
+        setError(error.response?.data?.message);
       }
     } else {
       setShowMessage("Passwords do not match");
@@ -65,6 +67,7 @@ const usePassword = () => {
     handleConfirmPasswordChange,
     handleUpdatePassword,
     showMessage,
+    error,
   };
 };
 

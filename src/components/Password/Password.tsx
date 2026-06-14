@@ -11,6 +11,7 @@ const Password = () => {
     handleConfirmPasswordChange,
     handleUpdatePassword,
     showMessage,
+    error,
   } = usePassword();
 
   return (
@@ -37,6 +38,7 @@ const Password = () => {
         />
         {showMessage && <p className={styles.falseValue}>{showMessage}</p>}
 
+        {error && <p className={styles.falseValue}>{error}</p>}
         <button
           type="button"
           onClick={handleUpdatePassword}
