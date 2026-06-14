@@ -21,7 +21,7 @@ const navigation = useNavigate()
     navigation("/User/Login")
   };
   const goToSettings =() =>{
-    navigation("/User/MyDetails")
+    navigation("/User/Settings")
   }
 
   return (
