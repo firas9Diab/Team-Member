@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import { useState } from "react";
 import Swal from "sweetalert2";
 
@@ -49,15 +49,19 @@ const usePassword = () => {
           icon: "success",
           title: "Details updated successfully!",
         });
-      } catch (error: any) {
-        console.log(error.response?.data);
-        setError(error.response?.data?.message);
+      } catch (error) {
+        if (axios.isAxiosError(error)) {
+          const errors = error.response?.data?.errors;
+
+          if (errors?.length) {
+            setShowMessage(errors.join(", "));
+          } else {
+            setShowMessage(error.response?.data?.message);
+          }
+        }
       }
-    } else {
-      setShowMessage("Passwords do not match");
     }
   };
-
   return {
     oldPassword,
     newPassword,

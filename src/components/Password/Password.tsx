@@ -1,4 +1,4 @@
-import usePassword from "../Hooks/usePassword";
+import usePassword from "./usePassword";
 import styles from "./Password.module.scss";
 
 const Password = () => {
