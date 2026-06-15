@@ -47,46 +47,58 @@ const AddressForm = ({
           <input
             value={name}
             onChange={(e) => handleNameChange(e.target.value)}
+            required
           />
+
           <label>Country/Region</label>
           <input
             value={country}
             placeholder="India"
             onChange={(e) => handleCountryChange(e.target.value)}
+            required
           />
           <label>Flat, House no., Building, Company, Apartment</label>
           <input
             value={flatHouseBuilding}
             onChange={(e) => handleBuildingChange(e.target.value)}
+            required
           />
           <label>Mobile Number</label>
           <input
             value={mobileNumber}
+            type="number"
             onChange={(e) => handleMobileChange(e.target.value)}
+            required
           />
           <label>Alternative Mobile Number</label>
           <input
             value={alternativeMobileNumber}
+            type="number"
             onChange={(e) => handleAlternativeChange(e.target.value)}
+            required
           />
           <label>Pincode</label>
           <input
             value={pincode}
+            type="number"
             placeholder="6 digits [0-9] PIN code"
             onChange={(e) => handlePinCodeChange(e.target.value)}
+            required
           />
           <label>City</label>
           <input
             value={city}
             onChange={(e) => handleCityChange(e.target.value)}
+            required
           />
           <label>State</label>
           <input
             value={state}
             onChange={(e) => handleStateChange(e.target.value)}
+            required
           />
 
-          <button className={styles.save} onClick={handleSubmit}>
+          <button type="button" className={styles.save} onClick={handleSubmit}>
             {mode === "add" ? "Add New Address" : "Save Changes"}
           </button>
 

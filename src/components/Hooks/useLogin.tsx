@@ -1,6 +1,6 @@
-import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import requestBuilder from "../utility/requestBuilder";
 
 const useLogin = () => {
   const [email, setEmail] = useState("");
@@ -21,10 +21,15 @@ const useLogin = () => {
 
   const login = async () => {
     try {
-      const response = await axios.post("http://localhost:3000/Auth/login", {
-        email,
-        password,
+      const response = await requestBuilder({
+        url: "http://localhost:3000/auth/login",
+        method: "POST",
+        data: {
+          email,
+          password,
+        },
       });
+
       if (response.data.data.accessToken) {
         localStorage.setItem("token", response.data.data.accessToken);
         navigate("/");

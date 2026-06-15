@@ -61,7 +61,7 @@ const Sign = () => {
 
           <div className={styles.email}>
             <input
-              type="text"
+              type="number"
               placeholder="Phone Number"
               onChange={(e) => handlePhoneChange(e.target.value)}
               required
