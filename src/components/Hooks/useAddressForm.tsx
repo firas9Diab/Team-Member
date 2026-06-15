@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import type { AddressType, IAddressForm } from "../../interface/interface";
+import Swal from "sweetalert2";
 
 const useAddressForm = ({ initialData, mode, onSubmit }: IAddressForm) => {
   const [name, setName] = useState("");
@@ -22,6 +23,23 @@ const useAddressForm = ({ initialData, mode, onSubmit }: IAddressForm) => {
   const handlePinCodeChange = (value: string) => setPincode(value);
 
   const handleSubmit = () => {
+    if (
+      !name ||
+      !country ||
+      !flatHouseBuilding ||
+      !mobileNumber ||
+      !pincode ||
+      !city ||
+      !state
+    ) {
+      Swal.fire({
+        icon: "info",
+        title: "Please fill all required fields",
+      });
+
+      return;
+    }
+
     if (mode === "edit" && initialData) {
       onSubmit({
         id: initialData.id,

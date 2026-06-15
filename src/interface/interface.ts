@@ -11,9 +11,15 @@ export interface AddressType {
   isDefault?: boolean;
 }
 
- export interface IAddressForm{
-   mode: "add" | "edit";
+export interface IAddressForm {
+  mode: "add" | "edit";
   initialData?: AddressType;
   onSubmit: (data: AddressType) => void;
   onCancel: () => void;
- }
+}
+
+export interface RequestBuilderProps {
+  url: string;
+  method: "GET" | "POST" | "PATCH" | "PUT" | "DELETE";
+  data?: object;
+}

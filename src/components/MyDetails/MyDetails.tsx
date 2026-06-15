@@ -41,7 +41,7 @@ const MyDetails = () => {
           />
           <label>Phone</label>
           <input
-            type="tel"
+            type="number"
             placeholder="6238973581"
             value={phone}
             onChange={(e) => handlePhoneChange(e.target.value)}
