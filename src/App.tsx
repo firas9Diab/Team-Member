@@ -6,6 +6,7 @@ import Login from "./components/Login/Login";
 import { useLocation } from "react-router-dom";
 import ProtectedRoute from "./ProtectedRoutes";
 import Settings from "./components/Settings/Settings";
+import Categories from "./components/Categories/Categories";
 
 const App = () => {
   const location = useLocation();
@@ -30,6 +31,14 @@ const App = () => {
           element={
             <ProtectedRoute>
               <Settings />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/categories"
+          element={
+            <ProtectedRoute>
+              <Categories />
             </ProtectedRoute>
           }
         />
