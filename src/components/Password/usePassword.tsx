@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import Swal from "sweetalert2";
-import requestBuilder from "../utility/‎src/components/utility/requestBuilder";
+import requestBuilder from "../utility/requestBuilder";
 const usePassword = () => {
   const [oldPassword, setOldPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");

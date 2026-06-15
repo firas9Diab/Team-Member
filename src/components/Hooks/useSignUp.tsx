@@ -1,6 +1,6 @@
 import { useState } from "react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import requestBuilder from "../utility/requestBuilder";
 
 const useSignUp = () => {
   const [password, setPassword] = useState("");
@@ -45,13 +45,18 @@ const useSignUp = () => {
       setShowMessage("");
 
       try {
-        const response = await axios.post("http://localhost:3000/Auth/signup", {
-          fullName,
-          email,
-          password,
-          confirmPassword,
-          phone,
+        const response = await requestBuilder({
+          url: "http://localhost:3000/auth/signup",
+          method: "POST",
+          data: {
+            fullName,
+            email,
+            password,
+            confirmPassword,
+            phone,
+          },
         });
+
         if (response.data.data.accessToken) {
           localStorage.setItem("token", response.data.data.accessToken);
           navigate("/");

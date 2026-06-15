@@ -2,12 +2,16 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import moment from "moment";
 import Swal from "sweetalert2";
+import requestBuilder from "../utility/requestBuilder";
 
 const useMyDetails = () => {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [dateOfBirth, setDateOfBirth] = useState("");
+  const [initialFullName, setInitialFullName] = useState("");
+  const [initialPhone, setInitialPhone] = useState("");
+  const [initialDateOfBirth, setInitialDateOfBirth] = useState("");
 
   const handleNameChange = (value: string) => {
     setFullName(value);
@@ -27,43 +31,54 @@ const useMyDetails = () => {
 
   const fetchUserDetails = async () => {
     try {
-      const token = localStorage.getItem("token");
-      const response = await axios.get("http://localhost:3000/users/me", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+      const response = await requestBuilder({
+        url: "http://localhost:3000/users/me",
+        method: "GET",
       });
+
       const user = response.data.data;
       setFullName(user.fullName);
       setEmail(user.email);
       setPhone(user.phone);
       setDateOfBirth(moment(user.dateOfBirth).format("YYYY-MM-DD"));
+
+      setInitialFullName(user.fullName);
+      setInitialPhone(user.phone);
+      setInitialDateOfBirth(moment(user.dateOfBirth).format("YYYY-MM-DD"));
     } catch (error) {
       console.log(error);
     }
   };
 
   const handleUpdateDetails = async () => {
+    if (
+      fullName === initialFullName &&
+      phone === initialPhone &&
+      dateOfBirth === initialDateOfBirth
+    ) {
+      Swal.fire({
+        icon: "error",
+        title: "No changes made",
+      });
+      return;
+    }
     try {
-      const token = localStorage.getItem("token");
-      await axios.patch(
-        "http://localhost:3000/users/me",
-        {
+      await requestBuilder({
+        url: "http://localhost:3000/users/me",
+        method: "PATCH",
+        data: {
           fullName,
           phone,
           dateOfBirth,
         },
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        },
-      );
+      });
 
       Swal.fire({
         icon: "success",
         title: "Details updated successfully!",
       });
-    } catch (error) {
-      console.log(error);
+    } catch (error: any) {
+      console.log(error.response.data.message);
     }
   };
 

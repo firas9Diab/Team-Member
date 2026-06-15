@@ -1,6 +1,6 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import type { AddressType } from "../../interface/interface";
+import requestBuilder from "../utility/requestBuilder";
 
 const useAddress = () => {
   const [addresses, setAddresses] = useState<AddressType[]>([]);
@@ -12,12 +12,9 @@ const useAddress = () => {
 
   const fetchUserAddress = async () => {
     try {
-      const token = localStorage.getItem("token");
-
-      const response = await axios.get("http://localhost:3000/addresses", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+      const response = await requestBuilder({
+        url: "http://localhost:3000/addresses",
+        method: "GET",
       });
 
       setAddresses(response.data.data);
@@ -27,18 +24,12 @@ const useAddress = () => {
   };
 
   const handleAddAddress = async (data: AddressType) => {
-    const token = localStorage.getItem("token");
     try {
-      const response = await axios.post(
-        "http://localhost:3000/addresses",
-        data,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
-          },
-        },
-      );
+      const response = await requestBuilder({
+        url: "http://localhost:3000/addresses",
+        method: "POST",
+        data: data,
+      });
 
       setAddresses((prev) => [...prev, response.data.data]);
       setMode("list");
@@ -48,16 +39,13 @@ const useAddress = () => {
   };
 
   const handleEditAddress = async (data: AddressType) => {
-    const token = localStorage.getItem("token");
-
     const { id, ...cleanData } = data;
 
     try {
-      await axios.patch(`http://localhost:3000/addresses/${id}`, cleanData, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
+      await requestBuilder({
+        url: `http://localhost:3000/addresses/${id}`,
+        method: "PATCH",
+        data: cleanData,
       });
 
       fetchUserAddress();
@@ -69,14 +57,12 @@ const useAddress = () => {
   };
 
   const handleDelete = async (id: number) => {
-    const token = localStorage.getItem("token");
     try {
-      await axios.delete(`http://localhost:3000/addresses/${id}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
+      await requestBuilder({
+        url: `http://localhost:3000/addresses/${id}`,
+        method: "DELETE",
       });
+
       fetchUserAddress();
     } catch (error) {
       console.log(error);
