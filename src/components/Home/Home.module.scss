@@ -1,31 +1,27 @@
-.container {
-  padding: 22px;
-}
-
-.title {
-  font-size: 32px;
-  margin-bottom: 24px;
-}
-
-.list {
-  list-style: none;
-  padding: 0;
+.main {
+  background-color: #f7f7f7;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
 }
 
-.link {
-  display: inline-block;
-  padding: 8px 20px;
-  background-color: #646cff;
-  color: #fff;
-  border-radius: 6px;
-  text-decoration: none;
+.mainTexts {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 8%;
+}
+.text {
+  font-style: medium;
+  font-size: 22px;
   font-weight: 500;
-  transition: background-color 0.2s;
+  color: #888888;
+}
 
-  &:hover {
-    background-color: #535bf2;
-  }
+.mainText {
+  font-style: bold;
+  font-size: 60px;
+  font-weight: 700;
+  color: #000000;
 }
