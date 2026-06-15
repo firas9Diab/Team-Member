@@ -1,95 +1,82 @@
 .settingswork {
+  width: 100%;
   gap: 25px;
   margin-top: 85px;
   min-height: 765px;
   background: #f5f5f5;
   border-radius: 19px;
-  padding: 35px 72px 40px 51px;
+  padding: 35px 280px 40px 51px;
   display: flex;
   flex-direction: column;
 }
 
-.settingsworkparegraph {
-  height: 60px;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 20px;
-  color: #4f4f4f;
-}
-
-.settingsinputfields {
+.settingscards {
   display: flex;
   flex-direction: column;
-  width: 543px;
-  height: 438px;
-  padding-top: 45px;
-  gap: 26px;
+  gap: 25px;
 }
-
-.inputfields {
+.settingscard {
   display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.inputfield {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  height: 46px;
-  box-sizing: border-box;
-  padding: 11px 21px 12px;
+  padding-top: 15px;
+  min-width: 100%;
   background: #ffffff;
-  border: 1px solid #cacaca;
-  border-radius: 9px;
-}
+  border: 1px solid #a8a8a8;
+  border-radius: 25px;
+  flex-direction: column;
 
-.inputfielddate {
-  width: 100%;
+  .cardinfo {
+    display: flex;
+    flex-direction: column;
+    gap: 38px;
+    padding-top: 15px;
+    padding-left: 24px;
+    padding-bottom: 25px;
+  }
+}
+.cardaddaddresses {
   box-sizing: border-box;
+  width: 150px;
+  height: 150px;
   background: #ffffff;
-  border: none;
-  outline: none;
+  border: 1px dashed #a8a8a8;
+  border-radius: 25px;
 }
-
-.inputfielddate::-webkit-calendar-picker-indicator {
-  opacity: 0;
-  cursor: pointer;
-  display: none;
+.cardtitle {
+  padding-left: 25px;
+  min-width: 100%;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #000000;
 }
-
-.inputfield img {
-  cursor: pointer;
-}
-.passwordfield {
-  outline: none;
-  border: none;
-  align-items: center;
-  width: 100%;
-  padding: 5px 10px;
-  background: white;
-  font-weight: 900;
-}
-.inputfieldbutton {
-  width: 100%;
-  box-sizing: border-box;
-  background: #5a6afa;
-  border: 1px solid #cacaca;
-  border-radius: 9px;
-  padding: 17px 0;
-  font-style: normal;
-  font-weight: 700;
-  font-size: 12px;
-  line-height: 20px;
-  color: #ffffff;
-  cursor: pointer;
-
-  &:hover {
-    background: #0a20e7;
+.cardbuttons {
+  display: flex;
+  gap: 15px;
+  .cardbutton {
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 23px;
+    color: #5a6afa;
   }
 }
 
+@media (max-width: 414px) {
+  .settingswork {
+    padding: 24px 16px;
+  }
+
+  .settingsworkparegraph {
+    font-size: 14px;
+    line-height: 21px;
+  }
+
+  .settingsinputfields {
+    padding-top: 28px;
+    gap: 20px;
+  }
+}
 @media (min-width: 768px) and (max-width: 1024px) {
   .settingswork {
     margin-top: 0;
@@ -125,36 +112,5 @@
     height: auto;
     padding-top: 32px;
     gap: 22px;
-  }
-}
-.settingscard {
-  display: flex;
-  padding-top: 15px;
-  min-width: 545px;
-  height: 292px;
-  background: #ffffff;
-  border: 1px solid #a8a8a8;
-  border-radius: 25px;
-  flex-direction: column;
-}
-.cardtitle {
-  padding-left: 25px;
-  min-width: 545px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid #000000;
-}
-@media (max-width: 414px) {
-  .settingswork {
-    padding: 24px 16px;
-  }
-
-  .settingsworkparegraph {
-    font-size: 14px;
-    line-height: 21px;
-  }
-
-  .settingsinputfields {
-    padding-top: 28px;
-    gap: 20px;
   }
 }

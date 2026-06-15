@@ -1,0 +1,106 @@
+.settingsinputfields {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 543px;
+  gap: 26px;
+}
+
+.inputfields {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #000000;
+}
+
+.inputfield {
+  width: 100%;
+  min-height: 46px;
+  box-sizing: border-box;
+  padding: 11px 21px 12px;
+  background: #ffffff;
+  border: 1px solid #cacaca;
+  border-radius: 9px;
+  outline: none;
+}
+
+.inputfield:focus {
+  border-color: #5a6afa;
+}
+
+.inputfieldbutton {
+  width: 100%;
+  box-sizing: border-box;
+  background: #5a6afa;
+  border: 1px solid #cacaca;
+  border-radius: 9px;
+  padding: 17px 0;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 20px;
+  color: #ffffff;
+  cursor: pointer;
+
+  &:hover {
+    background: #0a20e7;
+  }
+}
+
+.error {
+  color: red;
+  font-size: 14px;
+  margin: 0;
+}
+
+@media (max-width: 1024px) {
+  .settingswork {
+    min-height: auto;
+    padding: 35px 40px;
+  }
+
+  .settingsinputfields {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 767px) {
+  .settingswork {
+    padding: 28px 24px;
+    border-radius: 16px;
+  }
+
+  .settingsinputfields {
+    width: 100%;
+    max-width: 100%;
+    gap: 22px;
+  }
+
+  .inputfield {
+    min-height: 44px;
+    padding: 10px 16px;
+  }
+
+  .inputfieldbutton {
+    padding: 16px 0;
+  }
+}
+
+@media (max-width: 414px) {
+  .settingswork {
+    padding: 24px 16px;
+  }
+
+  .settingsinputfields {
+    gap: 20px;
+  }
+
+  .inputfield {
+    padding: 10px 14px;
+  }
+
+  .inputfieldbutton {
+    padding: 15px 0;
+  }
+}
