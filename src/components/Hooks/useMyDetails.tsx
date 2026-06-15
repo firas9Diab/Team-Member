@@ -62,6 +62,15 @@ const useMyDetails = () => {
       });
       return;
     }
+    if (!fullName || !phone || !dateOfBirth) {
+      Swal.fire({
+        icon: "info",
+        title: "Please fill all required fields",
+      });
+
+      return;
+    }
+
     try {
       await requestBuilder({
         url: "http://localhost:3000/users/me",
