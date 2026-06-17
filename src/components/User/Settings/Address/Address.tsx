@@ -1,7 +1,43 @@
-import React from 'react'
-const Address = () => {
-  return (<></>
-  )
-}
+import AddressForm from "./Address Form/AddressForm";
+import styles from "./Address.module.scss";
+import useAddress from "./useAddress";
+import ViewAddresses from "./View Addresses/ViewAddresses";
 
-export default Address
+const Address = () => {
+  const {
+    addresses,
+    mode,
+    setMode,
+    selectedAddress,
+    setSelectedAddress,
+    handleDeleteAddresses,
+  } = useAddress();
+
+  return (
+    <div className={styles.settingswork}>
+      <h1>
+        {mode === "view"
+          ? "Your Addresses"
+          : mode === "Edit"
+            ? "Your Addresses / Edit Address"
+            : mode === "Add"
+              ? "Your Addresses / Add Address"
+              : ""}
+      </h1>
+
+      <div className={styles.settingscards}>
+        {mode === "view" && (
+        <ViewAddresses addresses={addresses} setSelectedAddress={setSelectedAddress} handleDeleteAddresses={handleDeleteAddresses} setMode={setMode} />
+        )}
+
+        {mode === "Edit" && (
+          <AddressForm address={selectedAddress} mode="Edit" />
+        )}
+
+        {mode === "Add" && <AddressForm address={null} mode="Add" />}
+      </div>
+    </div>
+  );
+};
+
+export default Address;

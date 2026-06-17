@@ -26,7 +26,7 @@ const App = () => {
             </ProtectedRoute>
           }
         />
-         <Route
+        <Route
           path="/User/Settings"
           element={
             <ProtectedRoute>
@@ -34,6 +34,7 @@ const App = () => {
             </ProtectedRoute>
           }
         />
+
         <Route path="/User/SignUp" element={<SignUp />} />
         <Route path="/User/Login" element={<Login />} />
       </Routes>
