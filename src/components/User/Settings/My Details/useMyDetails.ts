@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
+import Swal from "sweetalert2";
 
 const useMyDetails = () => {
   const ref = useRef<HTMLInputElement | null>(null);
@@ -70,7 +71,12 @@ const useMyDetails = () => {
           },
         },
       );
-      alert("Updated Successfull!");
+
+      Swal.fire({
+        title: "Updated Successfull!",
+        icon: "success",
+        draggable: true,
+      });
     } catch (err: any) {
       setError(err.response?.data?.message || "Failed to update user");
     }

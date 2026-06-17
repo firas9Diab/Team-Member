@@ -1,19 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-
-interface Address {
-  id: number;
-  name: string;
-  country: string;
-  flatHouseBuilding: string;
-  mobileNumber: string;
-  alternativeMobileNumber: string;
-  pincode: string;
-  city: string;
-  state: string;
-  isDefault: boolean;
-}
-
+import type { Address } from "../../../interface";
+import Swal from "sweetalert2/dist/sweetalert2.js";
+import "sweetalert2/src/sweetalert2.scss";
 const useAddress = () => {
   const [addresses, setAddresses] = useState<Address[]>([]);
   const [error, setError] = useState<string>("");
@@ -41,31 +30,47 @@ const useAddress = () => {
     }
   };
   const handleDeleteAddresses = async (address: Address) => {
-    const isConfirmed = window.confirm(
-      "Are you sure you want to delete this address?",
-    );
-
-    if (!isConfirmed) {
-      return;
-    }
-
     try {
       setLoading(true);
       setError("");
 
       const token = localStorage.getItem("token");
 
-      await axios.delete(`http://localhost:3000/addresses/${address.id}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const swalWithBootstrapButtons = Swal.mixin({});
+      swalWithBootstrapButtons
+        .fire({
+          title: "Are you sure?",
+          text: "You won't be able to revert this!",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonText: "Yes, delete it!",
+          cancelButtonText: "No, cancel!",
+          reverseButtons: true,
+        })
+        .then((result) => {
+          if (result.isConfirmed) {
+            swalWithBootstrapButtons.fire({
+              title: "Deleted!",
+              text: "Address deleted successfully!",
+              icon: "success",
+            });
 
-      alert("Address deleted successfully!");
+            axios.delete(`http://localhost:3000/addresses/${address.id}`, {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            });
 
-      await handleGetAddresses();
-      setMode("view");
-      setSelectedAddress(null);
+            handleGetAddresses();
+            setMode("view");
+            setSelectedAddress(null);
+          } else if (result.dismiss === Swal.DismissReason.cancel)
+            swalWithBootstrapButtons.fire({
+              title: "Cancelled",
+              text: "Address Not deleted",
+              icon: "error",
+            });
+        });
     } catch (err: any) {
       setError(err.response?.data?.message || "Failed to delete address");
     } finally {

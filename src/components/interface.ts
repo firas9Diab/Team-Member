@@ -17,3 +17,9 @@ export type AddressFormProps = {
   address: Address | null;
   mode: Mode;
 };
+export type AddressView = {
+  addresses:Address[];
+  setSelectedAddress:(addresses:Address|null)=>void;
+setMode:(mode:string)=>void;
+handleDeleteAddresses:(addresses:Address)=>void;
+}

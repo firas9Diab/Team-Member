@@ -1,4 +1,5 @@
 import axios from "axios";
+import Swal from "sweetalert2";
 import { useEffect, useState } from "react";
 import type { ChangeEvent } from "react";
 import type { Address, Mode } from "../../../../interface";
@@ -56,19 +57,6 @@ const useAddressForm = (Address: Address | null, mode: Mode) => {
     }
   };
 
-  useEffect(() => {
-    if (mode === "Edit" && Address) {
-      setName(Address.name);
-      setFlatHouseBuilding(Address.flatHouseBuilding);
-      setCity(Address.city);
-      setState(Address.state);
-      setCountry(Address.country);
-      setMobileNumber(Address.mobileNumber);
-      setAlternativeMobileNumber(Address.alternativeMobileNumber || "");
-      setPincode(Address.pincode);
-    }
-  }, [mode, Address]);
-
   const handleSubmitAddress = async () => {
     try {
       const token = localStorage.getItem("token");
@@ -93,7 +81,11 @@ const useAddressForm = (Address: Address | null, mode: Mode) => {
           },
         );
 
-        alert("Address added successfully!");
+        Swal.fire({
+          title: "Address added successfully!",
+          icon: "success",
+          draggable: true,
+        });
       } else {
         if (!Address) {
           setError("Address not found");
@@ -119,12 +111,29 @@ const useAddressForm = (Address: Address | null, mode: Mode) => {
           },
         );
 
-        alert("Address updated successfully!");
+        Swal.fire({
+          title: "Address updated successfully!",
+          icon: "success",
+          draggable: true,
+        });
       }
     } catch (err: any) {
       setError(err.response?.data?.message || "Failed to save Address");
     }
   };
+
+  useEffect(() => {
+    if (mode === "Edit" && Address) {
+      setName(Address.name);
+      setFlatHouseBuilding(Address.flatHouseBuilding);
+      setCity(Address.city);
+      setState(Address.state);
+      setCountry(Address.country);
+      setMobileNumber(Address.mobileNumber);
+      setAlternativeMobileNumber(Address.alternativeMobileNumber || "");
+      setPincode(Address.pincode);
+    }
+  }, [mode, Address]);
 
   return {
     name,
