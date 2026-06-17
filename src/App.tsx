@@ -7,6 +7,7 @@ import { useLocation } from "react-router-dom";
 import ProtectedRoute from "./ProtectedRoutes";
 import Settings from "./components/Settings/Settings";
 import Categories from "./components/Categories/Categories";
+import Footer from "./components/Footer/Footer";
 
 const App = () => {
   const location = useLocation();
@@ -42,6 +43,15 @@ const App = () => {
             </ProtectedRoute>
           }
         />
+        <Route
+          path="/categories"
+          element={
+            <ProtectedRoute>
+              <Footer />
+            </ProtectedRoute>
+          }
+        />
+
         <Route path="/sign" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
       </Routes>

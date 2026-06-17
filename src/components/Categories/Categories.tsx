@@ -1,31 +1,9 @@
-import { useEffect, useState } from "react";
-import requestBuilder from "../utility/requestBuilder";
 import styles from "./Categories.module.scss";
 import lines from "../../Assets/lines.svg";
+import useCategories from "./useCategories";
 
-interface categories {
-  id: number;
-  name: string;
-  slug: string;
-}
 const Categories = () => {
-  const [categories, setCategories] = useState<categories[]>([]);
-
-  const handleCategories = async () => {
-    try {
-      const response = await requestBuilder({
-        url: "http://localhost:3000/categories",
-        method: "GET",
-      });
-      console.log(response.data);
-      setCategories(response.data.data);
-    } catch (error) {}
-  };
-
-  useEffect(() => {
-    handleCategories();
-  }, []);
-
+  const { categories } = useCategories();
   return (
     <>
       <div className={styles.line}>
