@@ -1,5 +1,6 @@
-import axios from "axios";
 import React, { useState } from "react";
+import RequestBuilder from "../../../services/RequestBuilder";
+import axios from "axios";
 
 const usePassword = () => {
   const [oldPassword, setOldPassword] = useState<string>("");
@@ -68,22 +69,17 @@ const usePassword = () => {
     }
 
     try {
-      const token = localStorage.getItem("token");
-
-      await axios.patch(
-        "http://localhost:3000/users/me/password",
-        {
-          oldPassword,
-          newPassword,
-          confirmNewPassword,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
+      await axios(
+        RequestBuilder({
+          url: "/users/me/password",
+          method: "PATCH",
+          data: {
+            oldPassword,
+            newPassword,
+            confirmNewPassword,
           },
-        },
+        }),
       );
-
       alert("Password updated successfully!");
 
       setOldPassword("");

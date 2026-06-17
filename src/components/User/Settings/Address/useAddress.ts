@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import type { Address } from "../../../interface";
 import Swal from "sweetalert2/dist/sweetalert2.js";
 import "sweetalert2/src/sweetalert2.scss";
+import RequestBuilder from "../../../services/RequestBuilder";
 
 const useAddress = () => {
   const [addresses, setAddresses] = useState<Address[]>([]);
@@ -15,15 +16,9 @@ const useAddress = () => {
     try {
       setLoading(true);
       setError("");
-
-      const token = localStorage.getItem("token");
-
-      const response = await axios.get("http://localhost:3000/addresses", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-
+      const response = await axios(
+        RequestBuilder({ url: "/addresses", method: "GET" }),
+      );
       setAddresses(response.data.data);
     } catch (err: any) {
       setError(err.response?.data?.message || "Failed to load addresses");
@@ -37,8 +32,6 @@ const useAddress = () => {
       setLoading(true);
       setError("");
 
-      const token = localStorage.getItem("token");
-
       const swalWithBootstrapButtons = Swal.mixin({});
       swalWithBootstrapButtons
         .fire({
@@ -50,7 +43,7 @@ const useAddress = () => {
           cancelButtonText: "No, cancel!",
           reverseButtons: true,
         })
-        .then((result) => {
+        .then(async (result) => {
           if (result.isConfirmed) {
             swalWithBootstrapButtons.fire({
               title: "Deleted!",
@@ -58,13 +51,13 @@ const useAddress = () => {
               icon: "success",
             });
 
-            axios.delete(`http://localhost:3000/addresses/${address.id}`, {
-              headers: {
-                Authorization: `Bearer ${token}`,
-              },
-            });
-
-            handleGetAddresses();
+            await axios(
+              RequestBuilder({
+                url: `/addresses/${address.id}`,
+                method: "DELETE",
+              }),
+            );
+            await handleGetAddresses();
             setMode("view");
             setSelectedAddress(null);
           } else if (result.dismiss === Swal.DismissReason.cancel)
@@ -94,6 +87,7 @@ const useAddress = () => {
     selectedAddress,
     setSelectedAddress,
     handleDeleteAddresses,
+    handleGetAddresses,
   };
 };
 

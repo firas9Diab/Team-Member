@@ -10,7 +10,7 @@ const Address = () => {
     setMode,
     selectedAddress,
     setSelectedAddress,
-    handleDeleteAddresses,
+    handleDeleteAddresses,handleGetAddresses
   } = useAddress();
 
   return (
@@ -30,11 +30,11 @@ const Address = () => {
         <ViewAddresses addresses={addresses} setSelectedAddress={setSelectedAddress} handleDeleteAddresses={handleDeleteAddresses} setMode={setMode} />
         )}
 
-        {mode === "Edit" && (
-          <AddressForm address={selectedAddress} mode="Edit" />
+        {mode === "Edit" && selectedAddress && (
+          <AddressForm address={selectedAddress} mode="Edit" setMode={setMode} handleGetAddresses={handleGetAddresses}/>
         )}
 
-        {mode === "Add" && <AddressForm address={null} mode="Add" />}
+        {mode === "Add" && <AddressForm address={selectedAddress!} mode="Add" setMode={setMode} handleGetAddresses={handleGetAddresses}/>}
       </div>
     </div>
   );

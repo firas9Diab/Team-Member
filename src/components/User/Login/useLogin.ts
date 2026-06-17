@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import RequestBuilder from "../../services/RequestBuilder";
 
 const useLogin = () => {
   const navigation = useNavigate();
@@ -11,11 +12,16 @@ const useLogin = () => {
 
   const handleSignIn = async () => {
     try {
-      const response = await axios.post("http://localhost:3000/auth/login", {
-        email: emailValue,
-        password: password,
-      });
-
+      const response = await axios(
+        RequestBuilder({
+          url: "/auth/login",
+          method: "POST",
+          data: {
+            email: emailValue,
+            password: password,
+          },
+        }),
+      );
       const token = response.data.data.accessToken;
 
       const userId = response.data.data.user.id;

@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
 import Swal from "sweetalert2";
+import RequestBuilder from "../../../services/RequestBuilder";
 
 const useMyDetails = () => {
   const ref = useRef<HTMLInputElement | null>(null);
@@ -37,13 +38,12 @@ const useMyDetails = () => {
 
   const fetchUserById = async () => {
     try {
-      const token = localStorage.getItem("token");
-
-      const response = await axios.get(`http://localhost:3000/auth/me`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await axios(
+        RequestBuilder({
+          url: "/auth/me",
+          method: "GET",
+        }),
+      );
       setName(response.data.data.fullName);
       setEmail(response.data.data.email);
       setPhone(response.data.data.phone);
@@ -56,20 +56,12 @@ const useMyDetails = () => {
 
   const handleUpdateuser = async () => {
     try {
-      const token = localStorage.getItem("token");
-
-      await axios.patch(
-        "http://localhost:3000/users/me",
-        {
-          fullName: name,
-          phone: phone,
-          dateOfBirth: dateofBirth,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        },
+      await axios(
+        RequestBuilder({
+          url: "/users/me",
+          method: "PATCH",
+          data: { fullName: name, phone: phone, dateOfBirth: dateofBirth },
+        }),
       );
 
       Swal.fire({

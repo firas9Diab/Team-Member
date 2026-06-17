@@ -13,14 +13,21 @@ export interface Address {
 
 export type Mode = "Add" | "Edit";
 
-export type AddressFormProps = {
-  address: Address | null;
+export type IAddressForm = {
+  address: Address;
   mode: Mode;
+  setMode: (mode: string) => void;
+  handleGetAddresses: () => void;
 };
 
-export type  IViewAddresses = {
+export type IViewAddresses = {
   addresses: Address[];
   setSelectedAddress: (addresses: Address | null) => void;
   setMode: (mode: string) => void;
   handleDeleteAddresses: (addresses: Address) => void;
+};
+export type IRequestBuilder = {
+  url: string;
+  method: string;
+  data?: unknown;
 };

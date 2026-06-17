@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import RequestBuilder from "../../services/RequestBuilder";
 
 const useSignUp = () => {
   const navigation = useNavigate();
@@ -21,13 +22,19 @@ const useSignUp = () => {
     }
 
     try {
-      const response = await axios.post("http://localhost:3000/auth/signup", {
-        fullName,
-        email: emailValue,
-        password,
-        confirmPassword,
-        phone: phoneValue,
-      });
+      const response = await axios(
+        RequestBuilder({
+          url: "/users/me/password",
+          method: "POST",
+          data: {
+            fullName,
+            email: emailValue,
+            password,
+            confirmPassword,
+            phone: phoneValue,
+          },
+        }),
+      );
 
       setErrorMssage("Account created successfully");
 
