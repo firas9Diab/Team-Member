@@ -3,12 +3,14 @@ import { useEffect, useState } from "react";
 import type { Address } from "../../../interface";
 import Swal from "sweetalert2/dist/sweetalert2.js";
 import "sweetalert2/src/sweetalert2.scss";
+
 const useAddress = () => {
   const [addresses, setAddresses] = useState<Address[]>([]);
   const [error, setError] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
   const [mode, setMode] = useState<string>("view");
   const [selectedAddress, setSelectedAddress] = useState<Address | null>(null);
+
   const handleGetAddresses = async () => {
     try {
       setLoading(true);
@@ -29,6 +31,7 @@ const useAddress = () => {
       setLoading(false);
     }
   };
+
   const handleDeleteAddresses = async (address: Address) => {
     try {
       setLoading(true);

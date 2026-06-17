@@ -1,7 +1,7 @@
-import type { AddressView } from "../../../../interface";
+import type {  IViewAddresses } from "../../../../interface";
 import styles from "../View Addresses/ViewAddresses.module.scss"
 
-const ViewAddresses = ({ addresses,setSelectedAddress,handleDeleteAddresses,setMode }: AddressView) => {
+const ViewAddresses = ({ addresses,setSelectedAddress,handleDeleteAddresses,setMode }:  IViewAddresses) => {
 
   return (
     <>
@@ -75,4 +75,4 @@ const ViewAddresses = ({ addresses,setSelectedAddress,handleDeleteAddresses,setM
   )
 }
 
-export default ViewAddresses
+export default ViewAddresses;
