@@ -6,6 +6,9 @@ import Login from "./components/Login/Login";
 import { useLocation } from "react-router-dom";
 import ProtectedRoute from "./ProtectedRoutes";
 import Settings from "./components/Settings/Settings";
+import Categories from "./components/Categories/Categories";
+import Footer from "./components/Footer/Footer";
+import ItemCards from "./components/ItemCards/ItemCards";
 
 const App = () => {
   const location = useLocation();
@@ -33,6 +36,33 @@ const App = () => {
             </ProtectedRoute>
           }
         />
+        <Route
+          path="/categories"
+          element={
+            <ProtectedRoute>
+              <Categories categories={[]} />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/categories"
+          element={
+            <ProtectedRoute>
+              <ItemCards todaysDeals={[]} moreItems={[]} />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/categories"
+          element={
+            <ProtectedRoute>
+              <Footer />
+            </ProtectedRoute>
+          }
+        />
+
         <Route path="/sign" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
       </Routes>

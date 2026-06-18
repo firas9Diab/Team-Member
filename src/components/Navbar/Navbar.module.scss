@@ -4,69 +4,107 @@
   justify-content: space-between;
   padding: 0 24px;
   height: 60px;
-  background-color: #1a1a2e;
+  background-color: #ffffff;
+  border: 1px solid #6666664d;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
-.brand {
-  font-size: 18px;
-  font-weight: 600;
-  color: #fff;
-  text-decoration: none;
-
-  &:hover {
-    color: #646cff;
-  }
-}
-
-.userMenu {
-  position: relative;
-}
-
-.iconBtn {
+.items {
   display: flex;
+  flex-direction: row;
+  gap: 40px;
+  margin: 10px;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
-  border: none;
-  border-radius: 50%;
-  background-color: #2a2a4a;
-  cursor: pointer;
-  transition: background-color 0.2s;
+  width: 100%;
+}
+
+.brand {
+  font-size: 20px;
+  font-weight: 700;
+  font-style: bold;
+  color: #000000;
+  text-decoration: none;
+  margin-right: 30px;
 
   &:hover {
-    background-color: #646cff;
+    color: #646cff;
   }
 }
 
-.userIcon {
-  width: 30px;
-  height: 30px;
+.search {
+  width: 50%;
+  border-radius: 15px;
+  border: 1px solid #8b8b8b;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 20px;
+  padding: 0 12px;
+
+  input {
+    border: none;
+    width: 50%;
+  }
 }
 
-.dropdown {
-  position: absolute;
-  top: 52px;
-  right: 0;
-  min-width: 140px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-  list-style: none;
-  padding: 8px 0;
-  z-index: 100;
+.rightItems {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: center;
+}
+.rightLink {
+  font-weight: 600;
+  font-style: "SemiBold";
+  font-size: 18px;
+  color: #000000;
+  text-decoration: none;
 }
 
-.dropdownItem {
-  padding: 10px 16px;
-  font-size: 14px;
-  color: #213547;
-  cursor: pointer;
-  transition: background-color 0.15s;
+.profile {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: center;
+  margin: 20px;
+}
 
-  &:hover {
-    background-color: #f0f0ff;
-    color: #646cff;
+@media (max-width: 768px) {
+  .navbar {
+    height: auto;
+    padding: 10px;
+  }
+
+  .items {
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  .brand {
+    margin-right: 0;
+    font-size: 18px;
+  }
+
+  .search {
+    width: 100%;
+    margin: 10px 0;
+  }
+
+  .search input {
+    width: 100%;
+  }
+
+  .rightItems {
+    gap: 10px;
+  }
+
+  .rightLink {
+    font-size: 14px;
+  }
+
+  .profile {
+    margin: 0;
+    gap: 10px;
   }
 }

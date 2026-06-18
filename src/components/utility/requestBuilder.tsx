@@ -4,7 +4,7 @@ import type { RequestBuilderProps } from "../../interface/interface";
 const requestBuilder = async ({ url, method, data }: RequestBuilderProps) => {
   const token = localStorage.getItem("token");
 
-  return axios({
+  const response = await axios({
     method,
     url,
     data,
@@ -13,6 +13,7 @@ const requestBuilder = async ({ url, method, data }: RequestBuilderProps) => {
       "Content-Type": "application/json",
     },
   });
+  return response.data;
 };
 
 export default requestBuilder;
