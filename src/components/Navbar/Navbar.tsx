@@ -1,9 +1,12 @@
 import { Link } from "react-router-dom";
 import styles from "./Navbar.module.scss";
 import useNavbar from "../Hooks/useNavbar";
-import search from "../../Assets/search.svg";
+import searchsvg from "../../Assets/searchsvg.svg";
+import { useState } from "react";
+import Products from "../Products/Products";
+import type { NavbarProps } from "../../interface/interface";
 
-const Navbar = () => {
+const Navbar = ({ search, setSearch }: NavbarProps) => {
   const { handleProfile, handleLogout } = useNavbar();
 
   return (
@@ -14,8 +17,15 @@ const Navbar = () => {
         </Link>
 
         <div className={styles.search}>
-          <img src={search} alt="search" />
-          <input type="text" placeholder="Search Products Here" />
+          <img src={searchsvg} alt="search" />
+          <input
+            type="text"
+            placeholder="Search Products Here"
+            value={search}
+            onChange={(e) => {
+              setSearch(e.target.value);
+            }}
+          />
         </div>
 
         <div className={styles.rightItems}>

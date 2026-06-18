@@ -64,3 +64,21 @@ export interface moreItems{
  export interface CategoriesProps {
   categories: Categories[];
 };
+
+export interface productItems{
+  id: number,
+  title: string,
+  slug: string,
+  price: number,
+  oldPrice: number,
+  discountPercent: number,
+  ratingAverage: number,
+  ratingCount: number,
+  image: string,
+
+}
+
+export interface NavbarProps {
+  search: string;
+  setSearch: React.Dispatch<React.SetStateAction<string>>;
+}

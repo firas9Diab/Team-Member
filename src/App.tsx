@@ -9,6 +9,8 @@ import Settings from "./components/Settings/Settings";
 import Categories from "./components/Categories/Categories";
 import Footer from "./components/Footer/Footer";
 import ItemCards from "./components/ItemCards/ItemCards";
+import Products from "./components/Products/Products";
+import type { SetStateAction } from "react";
 
 const App = () => {
   const location = useLocation();
@@ -18,7 +20,6 @@ const App = () => {
 
   return (
     <div>
-      {!hideNavbar && <Navbar />}
       <Routes>
         <Route
           path="/"
@@ -46,7 +47,7 @@ const App = () => {
         />
 
         <Route
-          path="/categories"
+          path="/ItemCards"
           element={
             <ProtectedRoute>
               <ItemCards todaysDeals={[]} moreItems={[]} />
@@ -55,7 +56,16 @@ const App = () => {
         />
 
         <Route
-          path="/categories"
+          path="/Products"
+          element={
+            <ProtectedRoute>
+              <Products search={""} />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/Footer"
           element={
             <ProtectedRoute>
               <Footer />

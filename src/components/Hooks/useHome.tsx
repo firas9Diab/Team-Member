@@ -8,6 +8,7 @@ const useHome = () => {
   const [todaysDeals, setTodaysDeals] = useState<TodaysDeals[]>([]);
   const [moreItems, setMoreItems] = useState<moreItems[]>([]);
   const [categories, setCategories] = useState<Categories[]>([]);
+  const [search, setSearch] = useState("");
 
   const getUsers = async () => {
     try {
@@ -47,6 +48,8 @@ const useHome = () => {
     todaysDeals,
     moreItems,
     categories,
+    search,
+    setSearch,
   };
 };
 
