@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import requestBuilder from "../utility/requestBuilder";
 import type { moreItems, TodaysDeals } from "../../interface/interface";
-import type { ICategories } from "../../interface/interface";
+import type { Categories } from "../../interface/interface";
 
 const useHome = () => {
   const [userData, setUserData] = useState("");
   const [todaysDeals, setTodaysDeals] = useState<TodaysDeals[]>([]);
   const [moreItems, setMoreItems] = useState<moreItems[]>([]);
-  const [categories, setCategories] = useState<ICategories[]>([]);
+  const [categories, setCategories] = useState<Categories[]>([]);
 
   const getUsers = async () => {
     try {
