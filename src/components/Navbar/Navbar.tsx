@@ -1,58 +1,45 @@
-import { useState, useRef, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import styles from "./Navbar.module.scss";
+import useNavbar from "../Hooks/useNavbar";
+import search from "../../Assets/search.svg";
 
 const Navbar = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const menuRef = useRef<HTMLDivElement>(null);
-  const navigate = useNavigate();
-
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    setMenuOpen(false);
-    navigate("/login");
-  };
-
-  const handleProfile = () => {
-    setMenuOpen(false);
-    navigate("/settings");
-  };
-
-  useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
-      if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
-        setMenuOpen(false);
-      }
-    };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
+  const { handleProfile, handleLogout } = useNavbar();
 
   return (
     <nav className={styles.navbar}>
-      <Link to="/" className={styles.brand}>
-        Home
-      </Link>
+      <div className={styles.items}>
+        <Link to="/" className={styles.brand}>
+          CRIO
+        </Link>
 
-      <div className={styles.userMenu} ref={menuRef}>
-        <button
-          className={styles.iconBtn}
-          onClick={() => setMenuOpen((prev) => !prev)}
-          aria-label="User menu"
-        >
-          <img src="/user.svg" alt="User" className={styles.userIcon} />
-        </button>
+        <div className={styles.search}>
+          <img src={search} alt="search" />
+          <input type="text" placeholder="Search Products Here" />
+        </div>
 
-        {menuOpen && (
-          <ul className={styles.dropdown}>
-            <li className={styles.dropdownItem} onClick={handleProfile}>
+        <div className={styles.rightItems}>
+          <Link to="/" className={styles.rightLink}>
+            Orders
+          </Link>
+          <div className={styles.profile}>
+            <Link
+              to="/settings"
+              className={styles.rightLink}
+              onClick={handleProfile}
+            >
               Profile
-            </li>
-            <li className={styles.dropdownItem} onClick={handleLogout}>
+            </Link>
+            <p>|</p>
+            <Link
+              to="/login"
+              className={styles.rightLink}
+              onClick={handleLogout}
+            >
               Logout
-            </li>
-          </ul>
-        )}
+            </Link>
+          </div>
+        </div>
       </div>
     </nav>
   );

@@ -23,3 +23,44 @@ export interface RequestBuilderProps {
   method: "GET" | "POST" | "PATCH" | "PUT" | "DELETE";
   data?: object;
 }
+
+export interface Categories {
+  id: number;
+  name: string;
+  slug: string;
+}
+
+export interface TodaysDeals{
+  id: number,
+  title: string,
+  slug: string,
+  price: number,
+  oldPrice: null,
+  discountPercent: null,
+  ratingAverage: number,
+  ratingCount: number,
+  image: string
+}
+
+export interface moreItems{
+  id: number,
+  title: string,
+  slug: string,
+  price: number,
+  oldPrice: number,
+  discountPercent: null,
+  ratingAverage: number,
+  ratingCount: number,
+  image: string
+}
+
+ export interface ItemCardProps {
+  todaysDeals: TodaysDeals[];
+  moreItems: moreItems[];
+}
+
+
+
+ export interface CategoriesProps {
+  categories: Categories[];
+};
