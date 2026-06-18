@@ -1,4 +1,3 @@
-import axios from "axios";
 import Swal from "sweetalert2";
 import { useEffect, useState } from "react";
 import type { ChangeEvent } from "react";
@@ -81,8 +80,6 @@ const useAddressForm = ({
           },
         });
 
-      
-
         await Swal.fire({
           title: "Address added successfully!",
           icon: "success",
@@ -96,7 +93,7 @@ const useAddressForm = ({
           return;
         }
 
-         await RequestBuilder({
+        await RequestBuilder({
           url: `/addresses/${address.id}`,
           method: "PATCH",
           data: {
@@ -110,8 +107,6 @@ const useAddressForm = ({
             state,
           },
         });
-
-       
 
         await Swal.fire({
           title: "Address updated successfully!",

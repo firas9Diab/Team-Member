@@ -22,8 +22,8 @@ const useSignUp = () => {
     }
 
     try {
-      const config = await RequestBuilder({
-        url: "/users/me/password",
+      const response = await RequestBuilder({
+        url: "/auth/signup",
         method: "POST",
         data: {
           fullName,
@@ -34,12 +34,13 @@ const useSignUp = () => {
         },
       });
 
-      const response = await axios(config);
-
       setErrorMssage("Account created successfully");
 
-      localStorage.setItem("token", response.data.accessToken);
+      const token = response.data?.accessToken;
 
+      if (token) {
+        localStorage.setItem("token", token);
+      }
       navigation("/Sellers/Login");
     } catch (error: unknown) {
       if (axios.isAxiosError(error)) {

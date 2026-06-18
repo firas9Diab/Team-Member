@@ -1,10 +1,11 @@
 import axios from "axios";
 import { useState } from "react";
+import type { ChangeEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import RequestBuilder from "../../services/RequestBuilder";
 
 const useLogin = () => {
-  const navigation = useNavigate();
+  const navigate = useNavigate();
   const [password, setPassword] = useState<string>("");
   const [visiblePassword, setVisiblePassword] = useState<boolean>(false);
   const [errormessage, seterrormessage] = useState<string>("");
@@ -12,7 +13,9 @@ const useLogin = () => {
 
   const handleSignIn = async () => {
     try {
-      const requestConfig = await RequestBuilder({
+      seterrormessage("");
+
+      const response = await RequestBuilder({
         url: "/auth/login",
         method: "POST",
         data: {
@@ -21,10 +24,8 @@ const useLogin = () => {
         },
       });
 
-      const response = await axios(requestConfig);
-      const token = response.data.data.accessToken;
-
-      const userId = response.data.data.user.id;
+      const token = response.data.accessToken;
+      const userId = response.data.user.id;
 
       if (!token) {
         seterrormessage("Token not found in response");
@@ -37,8 +38,9 @@ const useLogin = () => {
       }
 
       localStorage.setItem("token", token);
+      localStorage.setItem("userId", String(userId));
 
-      navigation(`/`);
+      navigate("/");
     } catch (error: unknown) {
       if (axios.isAxiosError(error)) {
         seterrormessage(error.response?.data?.message || "Login failed");
@@ -50,16 +52,16 @@ const useLogin = () => {
     }
   };
 
-  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleEmailChange = (e: ChangeEvent<HTMLInputElement>) => {
     setEmailValue(e.target.value);
   };
 
-  const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handlePasswordChange = (e: ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value);
   };
 
   const handleVisiblePasswordChange = () => {
-    setVisiblePassword(!visiblePassword);
+    setVisiblePassword((prev) => !prev);
   };
 
   return {
@@ -69,7 +71,7 @@ const useLogin = () => {
     emailValue,
     handleEmailChange,
     handleSignIn,
-    navigation,
+    navigate,
     visiblePassword,
     handleVisiblePasswordChange,
   };

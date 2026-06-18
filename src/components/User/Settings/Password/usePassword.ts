@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import RequestBuilder from "../../../services/RequestBuilder";
-import axios from "axios";
 
 const usePassword = () => {
   const [oldPassword, setOldPassword] = useState<string>("");
@@ -69,7 +68,7 @@ const usePassword = () => {
     }
 
     try {
-      const requestConfig = await RequestBuilder({
+      await RequestBuilder({
         url: "/users/me/password",
         method: "PATCH",
         data: {
@@ -78,8 +77,6 @@ const usePassword = () => {
           confirmNewPassword,
         },
       });
-
-      await axios(requestConfig);
       alert("Password updated successfully!");
 
       setOldPassword("");
