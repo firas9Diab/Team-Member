@@ -8,7 +8,7 @@ import ProtectedRoute from "./ProtectedRoutes";
 import Settings from "./components/Settings/Settings";
 import Categories from "./components/Categories/Categories";
 import Footer from "./components/Footer/Footer";
-import ItemCard from "./components/ItemCard/ItemCard";
+import ItemCards from "./components/ItemCards/ItemCards";
 
 const App = () => {
   const location = useLocation();
@@ -49,7 +49,7 @@ const App = () => {
           path="/categories"
           element={
             <ProtectedRoute>
-              <ItemCard todaysDeals={[]} moreItems={[]} />
+              <ItemCards todaysDeals={[]} moreItems={[]} />
             </ProtectedRoute>
           }
         />

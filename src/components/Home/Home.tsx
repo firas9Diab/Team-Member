@@ -4,7 +4,7 @@ import styles from "./Home.module.scss";
 import sony from "../../Assets/sony.png";
 import watch from "../../Assets/watch.png";
 import Footer from "../Footer/Footer";
-import ItemCard from "../ItemCard/ItemCard";
+import ItemCards from "../ItemCards/ItemCards";
 
 const Home = () => {
   const { todaysDeals, moreItems, categories } = useHome();
@@ -27,7 +27,7 @@ const Home = () => {
           <h1>Today’s </h1>
           <h1 className={styles.underline}>Deals</h1>
         </div>
-        <ItemCard todaysDeals={todaysDeals} moreItems={moreItems} />
+        <ItemCards todaysDeals={todaysDeals} moreItems={moreItems} />
       </div>
 
       <div className={styles.section5}>

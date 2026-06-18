@@ -6,52 +6,6 @@
   margin-left: 5%;
 }
 
-.deals {
-  border-radius: 21px;
-  padding: 12px;
-  background-color: #d9d9d9;
-  max-width: 259px;
-  max-height: 398px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  margin: 20px;
-
-  img {
-    max-width: 240px;
-    max-height: 254px;
-    object-fit: contain;
-  }
-
-  p {
-    font-weight: 500;
-    font-size: 16px;
-    color: #000000;
-  }
-}
-
-.bottom {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-
-  p {
-    text-decoration: line-through;
-    font-weight: 700;
-    font-size: 19px;
-    color: #000000;
-  }
-
-  button {
-    background-color: #7d7d7d;
-    border: none;
-    border-radius: 14px;
-    padding: 15px;
-    color: white;
-  }
-}
-
 .section4 {
   background-color: #f0f0f0;
 }
