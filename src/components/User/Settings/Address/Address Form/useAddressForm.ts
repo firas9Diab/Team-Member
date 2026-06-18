@@ -1,6 +1,5 @@
 import Swal from "sweetalert2";
-import { useEffect, useState } from "react";
-import type { ChangeEvent } from "react";
+import { useEffect, useState, type ChangeEvent } from "react";
 import type { IAddressForm } from "../../../../interface";
 import RequestBuilder from "../../../../services/RequestBuilder";
 

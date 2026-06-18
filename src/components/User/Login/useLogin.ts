@@ -1,6 +1,5 @@
 import axios from "axios";
-import { useState } from "react";
-import type { ChangeEvent } from "react";
+import { useState, type ChangeEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import RequestBuilder from "../../services/RequestBuilder";
 
