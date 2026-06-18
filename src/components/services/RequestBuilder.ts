@@ -1,21 +1,20 @@
-import type { AxiosRequestConfig } from "axios";
+import axios from "axios";
 import type { IRequestBuilder } from "../interface";
 
-const RequestBuilder = ({
-  url,
-  method,
-  data,
-}: IRequestBuilder): AxiosRequestConfig => {
+const RequestBuilder = async ({ url, method, data }: IRequestBuilder) => {
   const token = localStorage.getItem("token");
 
-  return {
+  const response = await axios({
     url: `http://localhost:3000${url}`,
     method,
     data,
     headers: {
       Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
     },
-  };
+  });
+
+  return response.data;
 };
 
 export default RequestBuilder;

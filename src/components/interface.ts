@@ -14,7 +14,7 @@ export interface Address {
 export type Mode = "Add" | "Edit";
 
 export type IAddressForm = {
-  address: Address;
+  address: Address|null;
   mode: Mode;
   setMode: (mode: string) => void;
   handleGetAddresses: () => void;
@@ -26,8 +26,11 @@ export type IViewAddresses = {
   setMode: (mode: string) => void;
   handleDeleteAddresses: (addresses: Address) => void;
 };
+
+export type MethodType = "GET" | "POST" | "PATCH" | "DELETE";
+
 export type IRequestBuilder = {
   url: string;
-  method: string;
+  method?: MethodType;
   data?: unknown;
 };

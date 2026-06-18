@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import type { Address } from "../../../interface";
 import Swal from "sweetalert2/dist/sweetalert2.js";
@@ -16,10 +15,13 @@ const useAddress = () => {
     try {
       setLoading(true);
       setError("");
-      const response = await axios(
-        RequestBuilder({ url: "/addresses", method: "GET" }),
-      );
-      setAddresses(response.data.data);
+
+      const response = await RequestBuilder({
+        url: "/addresses",
+        method: "GET",
+      });
+
+      setAddresses(response.data);
     } catch (err: any) {
       setError(err.response?.data?.message || "Failed to load addresses");
     } finally {
@@ -28,45 +30,48 @@ const useAddress = () => {
   };
 
   const handleDeleteAddresses = async (address: Address) => {
+    const result = await Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Yes, delete it!",
+      cancelButtonText: "No, cancel!",
+      reverseButtons: true,
+    });
+
+    if (result.dismiss === Swal.DismissReason.cancel) {
+      await Swal.fire({
+        title: "Cancelled",
+        text: "Address not deleted",
+        icon: "error",
+      });
+
+      return;
+    }
+
+    if (!result.isConfirmed) {
+      return;
+    }
+
     try {
       setLoading(true);
       setError("");
 
-      const swalWithBootstrapButtons = Swal.mixin({});
-      swalWithBootstrapButtons
-        .fire({
-          title: "Are you sure?",
-          text: "You won't be able to revert this!",
-          icon: "warning",
-          showCancelButton: true,
-          confirmButtonText: "Yes, delete it!",
-          cancelButtonText: "No, cancel!",
-          reverseButtons: true,
-        })
-        .then(async (result) => {
-          if (result.isConfirmed) {
-            swalWithBootstrapButtons.fire({
-              title: "Deleted!",
-              text: "Address deleted successfully!",
-              icon: "success",
-            });
+      await RequestBuilder({
+        url: `/addresses/${address.id}`,
+        method: "DELETE",
+      });
 
-            await axios(
-              RequestBuilder({
-                url: `/addresses/${address.id}`,
-                method: "DELETE",
-              }),
-            );
-            await handleGetAddresses();
-            setMode("view");
-            setSelectedAddress(null);
-          } else if (result.dismiss === Swal.DismissReason.cancel)
-            swalWithBootstrapButtons.fire({
-              title: "Cancelled",
-              text: "Address Not deleted",
-              icon: "error",
-            });
-        });
+      await Swal.fire({
+        title: "Deleted!",
+        text: "Address deleted successfully!",
+        icon: "success",
+      });
+      setMode("view");
+      await handleGetAddresses();
+
+      setSelectedAddress(null);
     } catch (err: any) {
       setError(err.response?.data?.message || "Failed to delete address");
     } finally {

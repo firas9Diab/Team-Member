@@ -66,22 +66,22 @@ const useAddressForm = ({
   const handleSubmitAddress = async () => {
     try {
       if (mode === "Add") {
-        await axios(
-          RequestBuilder({
-            url: "/addresses",
-            method: "POST",
-            data: {
-              name,
-              country,
-              flatHouseBuilding,
-              mobileNumber,
-              alternativeMobileNumber,
-              pincode,
-              city,
-              state,
-            },
-          }),
-        );
+        await RequestBuilder({
+          url: "/addresses",
+          method: "POST",
+          data: {
+            name,
+            country,
+            flatHouseBuilding,
+            mobileNumber,
+            alternativeMobileNumber,
+            pincode,
+            city,
+            state,
+          },
+        });
+
+      
 
         await Swal.fire({
           title: "Address added successfully!",
@@ -96,22 +96,22 @@ const useAddressForm = ({
           return;
         }
 
-        await axios(
-          RequestBuilder({
-            url: `/addresses/${address.id}`,
-            method: "PATCH",
-            data: {
-              name,
-              country,
-              flatHouseBuilding,
-              mobileNumber,
-              alternativeMobileNumber,
-              pincode,
-              city,
-              state,
-            },
-          }),
-        );
+         await RequestBuilder({
+          url: `/addresses/${address.id}`,
+          method: "PATCH",
+          data: {
+            name,
+            country,
+            flatHouseBuilding,
+            mobileNumber,
+            alternativeMobileNumber,
+            pincode,
+            city,
+            state,
+          },
+        });
+
+       
 
         await Swal.fire({
           title: "Address updated successfully!",

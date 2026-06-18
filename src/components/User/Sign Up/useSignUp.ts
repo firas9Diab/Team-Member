@@ -22,19 +22,19 @@ const useSignUp = () => {
     }
 
     try {
-      const response = await axios(
-        RequestBuilder({
-          url: "/users/me/password",
-          method: "POST",
-          data: {
-            fullName,
-            email: emailValue,
-            password,
-            confirmPassword,
-            phone: phoneValue,
-          },
-        }),
-      );
+      const config = await RequestBuilder({
+        url: "/users/me/password",
+        method: "POST",
+        data: {
+          fullName,
+          email: emailValue,
+          password,
+          confirmPassword,
+          phone: phoneValue,
+        },
+      });
+
+      const response = await axios(config);
 
       setErrorMssage("Account created successfully");
 

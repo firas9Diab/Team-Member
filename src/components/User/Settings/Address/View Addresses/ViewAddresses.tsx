@@ -1,3 +1,4 @@
+import React from "react";
 import type {  IViewAddresses } from "../../../../interface";
 import styles from "../View Addresses/ViewAddresses.module.scss"
 

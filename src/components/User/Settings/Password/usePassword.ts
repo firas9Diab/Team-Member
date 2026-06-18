@@ -69,17 +69,17 @@ const usePassword = () => {
     }
 
     try {
-      await axios(
-        RequestBuilder({
-          url: "/users/me/password",
-          method: "PATCH",
-          data: {
-            oldPassword,
-            newPassword,
-            confirmNewPassword,
-          },
-        }),
-      );
+      const requestConfig = await RequestBuilder({
+        url: "/users/me/password",
+        method: "PATCH",
+        data: {
+          oldPassword,
+          newPassword,
+          confirmNewPassword,
+        },
+      });
+
+      await axios(requestConfig);
       alert("Password updated successfully!");
 
       setOldPassword("");

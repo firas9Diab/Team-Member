@@ -1,10 +1,10 @@
-import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
 import Swal from "sweetalert2";
 import RequestBuilder from "../../../services/RequestBuilder";
 
 const useMyDetails = () => {
   const ref = useRef<HTMLInputElement | null>(null);
+
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [phone, setPhone] = useState<string>("");
@@ -38,17 +38,19 @@ const useMyDetails = () => {
 
   const fetchUserById = async () => {
     try {
-      const response = await axios(
-        RequestBuilder({
-          url: "/auth/me",
-          method: "GET",
-        }),
-      );
-      setName(response.data.data.fullName);
-      setEmail(response.data.data.email);
-      setPhone(response.data.data.phone);
-      setDateofBirth(response.data.data.dateOfBirth.slice(0, 10));
-      console.log(response.data.data);
+      setError("");
+
+      const response = await RequestBuilder({
+        url: "/auth/me",
+        method: "GET",
+      });
+
+      setName(response.data.fullName);
+      setEmail(response.data.email);
+      setPhone(response.data.phone);
+
+      const dateFromApi = response.data.dateOfBirth;
+      setDateofBirth(dateFromApi ? dateFromApi.slice(0, 10) : "");
     } catch (err: any) {
       setError(err.response?.data?.message || "Failed to load user");
     }
@@ -56,18 +58,21 @@ const useMyDetails = () => {
 
   const handleUpdateuser = async () => {
     try {
-      await axios(
-        RequestBuilder({
-          url: "/users/me",
-          method: "PATCH",
-          data: { fullName: name, phone: phone, dateOfBirth: dateofBirth },
-        }),
-      );
+      setError("");
+
+      await RequestBuilder({
+        url: "/users/me",
+        method: "PATCH",
+        data: {
+          fullName: name,
+          phone,
+          dateOfBirth: dateofBirth,
+        },
+      });
 
       Swal.fire({
-        title: "Updated Successfull!",
+        title: "Updated Successfully!",
         icon: "success",
-        draggable: true,
       });
     } catch (err: any) {
       setError(err.response?.data?.message || "Failed to update user");
@@ -84,8 +89,8 @@ const useMyDetails = () => {
     email,
     phone,
     dateofBirth,
-    handleDataChange,
     error,
+    handleDataChange,
     handleUpdateuser,
   };
 };

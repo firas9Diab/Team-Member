@@ -10,7 +10,8 @@ const Address = () => {
     setMode,
     selectedAddress,
     setSelectedAddress,
-    handleDeleteAddresses,handleGetAddresses
+    handleDeleteAddresses,
+    handleGetAddresses,
   } = useAddress();
 
   return (
@@ -27,14 +28,31 @@ const Address = () => {
 
       <div className={styles.settingscards}>
         {mode === "view" && (
-        <ViewAddresses addresses={addresses} setSelectedAddress={setSelectedAddress} handleDeleteAddresses={handleDeleteAddresses} setMode={setMode} />
+          <ViewAddresses
+            addresses={addresses ?? []}
+            setSelectedAddress={setSelectedAddress}
+            handleDeleteAddresses={handleDeleteAddresses}
+            setMode={setMode}
+          />
         )}
 
         {mode === "Edit" && selectedAddress && (
-          <AddressForm address={selectedAddress} mode="Edit" setMode={setMode} handleGetAddresses={handleGetAddresses}/>
+          <AddressForm
+            address={selectedAddress}
+            mode="Edit"
+            setMode={setMode}
+            handleGetAddresses={handleGetAddresses}
+          />
         )}
 
-        {mode === "Add" && <AddressForm address={selectedAddress!} mode="Add" setMode={setMode} handleGetAddresses={handleGetAddresses}/>}
+        {mode === "Add" && (
+          <AddressForm
+            address={null}
+            mode="Add"
+            setMode={setMode}
+            handleGetAddresses={handleGetAddresses}
+          />
+        )}
       </div>
     </div>
   );

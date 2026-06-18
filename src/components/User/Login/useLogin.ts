@@ -12,16 +12,16 @@ const useLogin = () => {
 
   const handleSignIn = async () => {
     try {
-      const response = await axios(
-        RequestBuilder({
-          url: "/auth/login",
-          method: "POST",
-          data: {
-            email: emailValue,
-            password: password,
-          },
-        }),
-      );
+      const requestConfig = await RequestBuilder({
+        url: "/auth/login",
+        method: "POST",
+        data: {
+          email: emailValue,
+          password,
+        },
+      });
+
+      const response = await axios(requestConfig);
       const token = response.data.data.accessToken;
 
       const userId = response.data.data.user.id;
