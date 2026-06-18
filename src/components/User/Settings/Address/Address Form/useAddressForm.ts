@@ -1,10 +1,14 @@
-import axios from "axios";
 import Swal from "sweetalert2";
-import { useEffect, useState } from "react";
-import type { ChangeEvent } from "react";
-import type { Address, Mode } from "../../../../interface";
+import { useEffect, useState, type ChangeEvent } from "react";
+import type { IAddressForm } from "../../../../interface";
+import RequestBuilder from "../../../../services/RequestBuilder";
 
-const useAddressForm = (Address: Address | null, mode: Mode) => {
+const useAddressForm = ({
+  address,
+  mode,
+  setMode,
+  handleGetAddresses,
+}: IAddressForm) => {
   const [name, setName] = useState<string>("");
   const [flatHouseBuilding, setFlatHouseBuilding] = useState<string>("");
   const [city, setCity] = useState<string>("");
@@ -59,12 +63,11 @@ const useAddressForm = (Address: Address | null, mode: Mode) => {
 
   const handleSubmitAddress = async () => {
     try {
-      const token = localStorage.getItem("token");
-
       if (mode === "Add") {
-        await axios.post(
-          "http://localhost:3000/addresses",
-          {
+        await RequestBuilder({
+          url: "/addresses",
+          method: "POST",
+          data: {
             name,
             country,
             flatHouseBuilding,
@@ -74,27 +77,25 @@ const useAddressForm = (Address: Address | null, mode: Mode) => {
             city,
             state,
           },
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          },
-        );
+        });
 
-        Swal.fire({
+        await Swal.fire({
           title: "Address added successfully!",
           icon: "success",
           draggable: true,
         });
+        await handleGetAddresses();
+        setMode("view");
       } else {
-        if (!Address) {
+        if (!address) {
           setError("Address not found");
           return;
         }
 
-        await axios.patch(
-          `http://localhost:3000/addresses/${Address.id}`,
-          {
+        await RequestBuilder({
+          url: `/addresses/${address.id}`,
+          method: "PATCH",
+          data: {
             name,
             country,
             flatHouseBuilding,
@@ -104,18 +105,15 @@ const useAddressForm = (Address: Address | null, mode: Mode) => {
             city,
             state,
           },
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          },
-        );
+        });
 
-        Swal.fire({
+        await Swal.fire({
           title: "Address updated successfully!",
           icon: "success",
           draggable: true,
         });
+        await handleGetAddresses();
+        setMode("view");
       }
     } catch (err: any) {
       setError(err.response?.data?.message || "Failed to save Address");
@@ -123,17 +121,17 @@ const useAddressForm = (Address: Address | null, mode: Mode) => {
   };
 
   useEffect(() => {
-    if (mode === "Edit" && Address) {
-      setName(Address.name);
-      setFlatHouseBuilding(Address.flatHouseBuilding);
-      setCity(Address.city);
-      setState(Address.state);
-      setCountry(Address.country);
-      setMobileNumber(Address.mobileNumber);
-      setAlternativeMobileNumber(Address.alternativeMobileNumber || "");
-      setPincode(Address.pincode);
+    if (mode === "Edit" && address) {
+      setName(address.name);
+      setFlatHouseBuilding(address.flatHouseBuilding);
+      setCity(address.city);
+      setState(address.state);
+      setCountry(address.country);
+      setMobileNumber(address.mobileNumber);
+      setAlternativeMobileNumber(address.alternativeMobileNumber || "");
+      setPincode(address.pincode);
     }
-  }, [mode, Address]);
+  }, [mode, address]);
 
   return {
     name,
