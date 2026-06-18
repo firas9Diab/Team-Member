@@ -61,3 +61,30 @@
     color: #000000;
   }
 }
+
+@media (max-width: 768px) {
+  .title {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    margin: 5%;
+  }
+
+  .texts {
+    flex-direction: column;
+    gap: 15px;
+    margin: 5%;
+  }
+
+  .bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+    margin: 5%;
+  }
+
+  .bottomIcons {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+}

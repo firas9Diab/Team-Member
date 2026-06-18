@@ -30,7 +30,7 @@ export interface ICategories {
   slug: string;
 }
 
-export interface TodaysDeals{
+export interface ITodaysDeals{
   id: number,
   title: string,
   slug: string,
@@ -42,7 +42,7 @@ export interface TodaysDeals{
   image: string
 }
 
-export interface moreItems{
+export interface ImoreItems{
   id: number,
   title: string,
   slug: string,
@@ -52,4 +52,9 @@ export interface moreItems{
   ratingAverage: number,
   ratingCount: number,
   image: string
+}
+
+ export interface ItemCardProps {
+  todaysDeals: ITodaysDeals[];
+  moreItems: ImoreItems[];
 }

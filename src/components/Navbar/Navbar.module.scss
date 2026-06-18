@@ -69,3 +69,42 @@
   align-items: center;
   margin: 20px;
 }
+
+@media (max-width: 768px) {
+  .navbar {
+    height: auto;
+    padding: 10px;
+  }
+
+  .items {
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  .brand {
+    margin-right: 0;
+    font-size: 18px;
+  }
+
+  .search {
+    width: 100%;
+    margin: 10px 0;
+  }
+
+  .search input {
+    width: 100%;
+  }
+
+  .rightItems {
+    gap: 10px;
+  }
+
+  .rightLink {
+    font-size: 14px;
+  }
+
+  .profile {
+    margin: 0;
+    gap: 10px;
+  }
+}

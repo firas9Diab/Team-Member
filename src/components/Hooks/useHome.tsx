@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
 import requestBuilder from "../utility/requestBuilder";
-import type { TodaysDeals } from "../../interface/interface";
+import type { ImoreItems, ITodaysDeals } from "../../interface/interface";
+import type { ICategories } from "../../interface/interface";
 
 const useHome = () => {
   const [userData, setUserData] = useState("");
-  const [todaysDeals, setTodaysDeals] = useState<TodaysDeals[]>([]);
-  const [moreItems, setMoreItems] = useState<TodaysDeals[]>([]);
+  const [todaysDeals, setTodaysDeals] = useState<ITodaysDeals[]>([]);
+  const [moreItems, setMoreItems] = useState<ImoreItems[]>([]);
+  const [categories, setCategories] = useState<ICategories[]>([]);
 
   const getUsers = async () => {
     try {
@@ -14,7 +16,7 @@ const useHome = () => {
         method: "GET",
       });
 
-      setUserData(response.data.data);
+      setUserData(response.data);
     } catch (error) {
       console.error("Error fetching user data:", error);
     }
@@ -26,8 +28,7 @@ const useHome = () => {
         url: "http://localhost:3000/home",
         method: "GET",
       });
-      console.log(response.data.data.todayDeals);
-      setTodaysDeals(response.data.data.todayDeals);
+      setTodaysDeals(response.data.todayDeals);
     } catch (error) {
       console.error(error);
     }
@@ -39,10 +40,21 @@ const useHome = () => {
         url: "http://localhost:3000/home",
         method: "GET",
       });
-      console.log(response.data.data.moreItemsToConsider);
-      setMoreItems(response.data.data.moreItemsToConsider);
+      setMoreItems(response.data.moreItemsToConsider);
     } catch (error) {
       console.error(error);
+    }
+  };
+
+  const handleCategories = async () => {
+    try {
+      const response = await requestBuilder({
+        url: "http://localhost:3000/categories",
+        method: "GET",
+      });
+      setCategories(response.data);
+    } catch (error) {
+      console.log(error);
     }
   };
 
@@ -50,6 +62,7 @@ const useHome = () => {
     getUsers();
     getTodaysDeals();
     getMoreItems();
+    handleCategories();
   }, []);
 
   return {
@@ -57,6 +70,7 @@ const useHome = () => {
     getUsers,
     todaysDeals,
     moreItems,
+    categories,
   };
 };
 
