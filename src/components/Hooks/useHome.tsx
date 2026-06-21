@@ -8,9 +8,11 @@ const useHome = ({ search }: { search: string }) => {
   const [todaysDeals, setTodaysDeals] = useState<ProductDto[]>([]);
   const [moreItems, setMoreItems] = useState<ProductDto[]>([]);
   const [categories, setCategories] = useState<Categories[]>([]);
-  const [selectedCategories, setSelectedCategories] = useState(Number);
+  const [selectedCategories, setSelectedCategories] = useState<
+    number | undefined
+  >(undefined);
 
-  const showSearch = search || selectedCategories > 0;
+  const showSearch = search || (selectedCategories ?? 0) > 0;
 
   const handleCategorychange = (value: number) => {
     setSelectedCategories(value);

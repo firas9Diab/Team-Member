@@ -35,8 +35,8 @@ export interface ProductDto{
   title: string,
   slug: string,
   price: number,
-  oldPrice?:number ,
-  discountPercent?: number,
+  oldPrice: number | null;
+  discountPercent: number | null;
   ratingAverage: number,
   ratingCount: number,
   image: string
@@ -57,7 +57,7 @@ export interface ProductDto{
 
  export interface IProductItems{
   search: string;
-  selectedCategories: number;
+  selectedCategories: number| undefined;
   categories :Categories[];
   handleCategorychange:(arg0: number)=>void;
  }
@@ -72,3 +72,7 @@ export interface INavbar {
 export interface  ICard{
  Product :ProductDto;
 };
+
+export interface IHome{
+  search:string;
+}

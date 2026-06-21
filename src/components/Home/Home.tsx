@@ -6,8 +6,9 @@ import watch from "../../Assets/watch.png";
 import Footer from "../Footer/Footer";
 import ItemCards from "../ItemCards/ItemCards";
 import Products from "../Products/Products";
+import type { IHome } from "../../interface/interface";
 
-const Home = ({ search }: { search: string }) => {
+const Home = ({ search }: IHome) => {
   const {
     todaysDeals,
     moreItems,

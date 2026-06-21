@@ -7,7 +7,7 @@ const useProducts = ({
   selectedCategories,
 }: {
   search: string;
-  selectedCategories: number;
+  selectedCategories: number | undefined;
 }) => {
   const [products, setProducts] = useState<ProductDto[]>([]);
   const [page, setPage] = useState(1);
