@@ -1,20 +1,18 @@
-import type { productItems } from "../../interface/interface";
+import type {
+  productItems,
+  productItemsProps,
+} from "../../interface/interface";
 import styles from "./Products.module.scss";
 import useProducts from "./useProducts";
-import useHome from "../Hooks/useHome";
 import Categories from "../Categories/Categories";
+import Card from "../ItemCards/Card/Card";
 
 const Products = ({
   search,
   selectedCategories,
   setSelectedCategories,
-}: {
-  search: string;
-  selectedCategories: number;
-  setSelectedCategories: React.Dispatch<React.SetStateAction<number>>;
-}) => {
-  const { categories } = useHome();
-
+  categories,
+}: productItemsProps) => {
   const { products, page, setPage, totalPages } = useProducts({
     search,
     selectedCategories,
@@ -28,16 +26,7 @@ const Products = ({
       />
       <div className={styles.card}>
         {products.map((product: productItems) => {
-          return (
-            <div className={styles.deals}>
-              <img src={product.image} alt=" deals image " />
-              <p>{product.title}</p>
-              <div className={styles.bottom}>
-                <p>₹{product.price}</p>
-                <button> Buy Now !</button>
-              </div>
-            </div>
-          );
+          return <Card item={product} />;
         })}
       </div>
       <div className={styles.pagination}>

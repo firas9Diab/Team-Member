@@ -1,8 +1,12 @@
-import type { moreItems, TodaysDeals } from "../../../interface/interface";
+import type {
+  moreItems,
+  productItems,
+  TodaysDeals,
+} from "../../../interface/interface";
 import styles from "./Card.module.scss";
 
 type CardProps = {
-  item: TodaysDeals | moreItems;
+  item: TodaysDeals | moreItems | productItems;
 };
 
 const Card = ({ item }: CardProps) => {

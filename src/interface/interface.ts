@@ -66,6 +66,13 @@ export interface moreItems{
   setSelectedCategories :React.Dispatch<React.SetStateAction<number>>;
 };
 
+ export interface productItemsProps{
+  search: string;
+  selectedCategories: number;
+  setSelectedCategories: React.Dispatch<React.SetStateAction<number>>;
+  categories :Categories[];
+ }
+
 export interface productItems{
   id: number,
   title: string,
