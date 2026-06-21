@@ -2,8 +2,17 @@ import type { productItems } from "../../interface/interface";
 import styles from "./Products.module.scss";
 import useProducts from "./useProducts";
 
-const Products = ({ search }: { search: string }) => {
-  const { products, page, setPage, totalPages } = useProducts({ search });
+const Products = ({
+  search,
+  selectedCategories,
+}: {
+  search: string;
+  selectedCategories: number;
+}) => {
+  const { products, page, setPage, totalPages } = useProducts({
+    search,
+    selectedCategories,
+  });
 
   return (
     <>

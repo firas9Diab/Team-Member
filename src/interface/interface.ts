@@ -63,6 +63,7 @@ export interface moreItems{
 
  export interface CategoriesProps {
   categories: Categories[];
+  setSelectedCategories :React.Dispatch<React.SetStateAction<number>>;
 };
 
 export interface productItems{

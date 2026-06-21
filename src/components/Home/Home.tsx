@@ -9,12 +9,26 @@ import Navbar from "../Navbar/Navbar";
 import Products from "../Products/Products";
 
 const Home = () => {
-  const { todaysDeals, moreItems, categories, search, setSearch } = useHome();
+  const {
+    todaysDeals,
+    moreItems,
+    categories,
+    search,
+    setSearch,
+    selectedCategories,
+    setSelectedCategories,
+  } = useHome();
   return (
     <>
       <Navbar search={search} setSearch={setSearch} />
       {search ? (
-        <Products search={search} />
+        <div>
+          <Categories
+            categories={categories}
+            setSelectedCategories={setSelectedCategories}
+          />
+          <Products search={search} selectedCategories={selectedCategories} />
+        </div>
       ) : (
         <>
           <div className={styles.main}>
@@ -27,7 +41,10 @@ const Home = () => {
               <p className={styles.text}>Limited Time Offer! Up to 50% OFF!</p>
             </div>
           </div>
-          <Categories categories={categories} />
+          <Categories
+            categories={categories}
+            setSelectedCategories={setSelectedCategories}
+          />
 
           <div className={styles.section3}>
             <div className={styles.title}>

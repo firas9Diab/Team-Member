@@ -9,6 +9,7 @@ const useHome = () => {
   const [moreItems, setMoreItems] = useState<moreItems[]>([]);
   const [categories, setCategories] = useState<Categories[]>([]);
   const [search, setSearch] = useState("");
+  const [selectedCategories, setSelectedCategories] = useState(Number);
 
   const getUsers = async () => {
     try {
@@ -50,6 +51,8 @@ const useHome = () => {
     categories,
     search,
     setSearch,
+    setSelectedCategories,
+    selectedCategories,
   };
 };
 
