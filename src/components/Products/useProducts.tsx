@@ -15,8 +15,13 @@ const useProducts = ({
 
   const handleGetProducts = async () => {
     try {
+      let url = `http://localhost:3000/products?search=${search}&page=${page}&limit=8`;
+
+      if (selectedCategories) {
+        url += `&categoryId=${selectedCategories}`;
+      }
       const response = await requestBuilder({
-        url: `http://localhost:3000/products?search=${search}&page=${page}&limit=8&categoryId=${selectedCategories}`,
+        url,
         method: "GET",
       });
       setProducts(response.data.items);
