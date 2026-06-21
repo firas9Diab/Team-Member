@@ -1,13 +1,13 @@
-.container{
+.container {
   display: flex;
   flex-direction: column;
-overflow-x: hidden;
+  overflow-x: hidden;
 }
 .container1 {
   background: #f7f7f7;
   padding-bottom: 150px;
   padding-top: 100px;
-  padding-left: 180px;
+  padding-left: 128px;
 
   .h1container1 {
     font-family: "Outfit";
@@ -37,10 +37,7 @@ overflow-x: hidden;
   display: flex;
   flex-direction: row;
   justify-content: center;
-  padding-top: 100px;
-  padding-left: 43px;
-  padding-bottom: 50px;
-  padding-right: 50px;
+  padding: 44px 50px 50px 43px;
   gap: 46px;
   background-color: #e6e5e5;
   .inner {
@@ -77,9 +74,8 @@ overflow-x: hidden;
   width: 320px;
 }
 @media (max-width: 768px) {
-  .sonyimage
-  {
-    width:100%
+  .sonyimage {
+    width: 100%;
   }
   .container1 {
     padding: 60px 20px 90px;
@@ -94,7 +90,6 @@ overflow-x: hidden;
       line-height: 24px;
     }
   }
-  
 
   .container5 {
     flex-direction: column;
@@ -129,9 +124,8 @@ overflow-x: hidden;
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {
-    .sonyimage
-  {
-    width:100%
+  .sonyimage {
+    width: 100%;
   }
   .container1 {
     padding: 80px 60px 120px;

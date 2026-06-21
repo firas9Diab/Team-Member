@@ -1,6 +1,6 @@
 import styles from "./Navbar.module.scss";
 import useNavbar from "./useNavbar";
-import Search from "../../../public/Icons/Search.svg"
+import Search from "../../../public/Icons/Search.svg";
 
 const Navbar = () => {
   const {
@@ -17,9 +17,9 @@ const Navbar = () => {
 
   return (
     <div className={styles.header}>
-      <div className={styles.logoheader}
-      onClick={goToHome}
-      >CRIO</div>
+      <div className={styles.logoheader} onClick={goToHome}>
+        CRIO
+      </div>
 
       <div className={styles.searchinput}>
         <button className={styles.button}>

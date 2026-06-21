@@ -46,8 +46,8 @@ interface TodaysDeals {
   title: string;
   slug: string;
   price: number;
-  oldPrice: null;
-  discountPercent: null;
+  oldPrice: number | null;
+  discountPercent: number | null;
   ratingAverage: number;
   ratingCount: number;
   image: string;

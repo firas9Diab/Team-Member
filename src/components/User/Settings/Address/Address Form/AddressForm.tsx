@@ -2,7 +2,12 @@ import styles from "./AddressForm.module.scss";
 import useAddressForm from "./useAddressForm";
 import type { IAddressForm } from "../../../../interface";
 
-const AddressForm = ({ address, mode,setMode,handleGetAddresses }: IAddressForm) => {
+const AddressForm = ({
+  address,
+  mode,
+  setMode,
+  handleGetAddresses,
+}: IAddressForm) => {
   const {
     handleDataChange,
     handleSubmitAddress,
@@ -15,7 +20,7 @@ const AddressForm = ({ address, mode,setMode,handleGetAddresses }: IAddressForm)
     city,
     state,
     error,
-  } = useAddressForm({address, mode,setMode,handleGetAddresses});
+  } = useAddressForm({ address, mode, setMode, handleGetAddresses });
 
   return (
     <div className={styles.settingsworkform}>

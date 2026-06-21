@@ -12,7 +12,6 @@ const useHome = () => {
       method: "GET",
     });
 
-    console.log(response.data);
     setCategories(response.data.categories);
     setTodayDeals(response.data.todayDeals);
     setMoreItemsToConsider(response.data.moreItemsToConsider);

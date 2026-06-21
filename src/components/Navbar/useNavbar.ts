@@ -18,7 +18,6 @@ const useNavbar = () => {
     navigation("/");
   };
 
-
   const goToSettings = () => {
     setMenuOpen(false);
     navigation("/User/Settings");
