@@ -1,14 +1,21 @@
 import styles from "./Categories.module.scss";
 import lines from "../../Assets/lines.svg";
-import type { CategoriesProps } from "../../interface/interface";
+import type { ICategories } from "../../interface/interface";
 
-const Categories = ({ categories }: CategoriesProps) => {
+const Categories = ({ categories, handleCategorychange }: ICategories) => {
   return (
     <>
       <div className={styles.line}>
         {categories.map((category) => (
           <div key={category.id} className={styles.categories}>
-            <button className={styles.buttons}>category {category.id}</button>
+            <button
+              className={styles.buttons}
+              onClick={() => {
+                handleCategorychange(category.id);
+              }}
+            >
+              category {category.id}
+            </button>
           </div>
         ))}
         <img src={lines} alt="lines" />

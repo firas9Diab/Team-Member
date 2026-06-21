@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
 import styles from "./Navbar.module.scss";
 import useNavbar from "../Hooks/useNavbar";
-import search from "../../Assets/search.svg";
+import searchsvg from "../../Assets/searchsvg.svg";
+import type { INavbar } from "../../interface/interface";
 
-const Navbar = () => {
+const Navbar = ({ search, handleSearchChange }: INavbar) => {
   const { handleProfile, handleLogout } = useNavbar();
 
   return (
@@ -14,8 +15,15 @@ const Navbar = () => {
         </Link>
 
         <div className={styles.search}>
-          <img src={search} alt="search" />
-          <input type="text" placeholder="Search Products Here" />
+          <img src={searchsvg} alt="search" />
+          <input
+            type="text"
+            placeholder="Search Products Here"
+            value={search}
+            onChange={(e) => {
+              handleSearchChange(e.target.value);
+            }}
+          />
         </div>
 
         <div className={styles.rightItems}>

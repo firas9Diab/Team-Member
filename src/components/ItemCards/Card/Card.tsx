@@ -1,18 +1,14 @@
-import type { moreItems, TodaysDeals } from "../../../interface/interface";
+import type { ICard } from "../../../interface/interface";
 import styles from "./Card.module.scss";
 
-type CardProps = {
-  item: TodaysDeals | moreItems;
-};
-
-const Card = ({ item }: CardProps) => {
+const Card = ({ Product }: ICard) => {
   return (
     <>
       <div className={styles.deals}>
-        <img src={item.image} alt=" deals image " />
-        <p>{item.title}</p>
+        <img src={Product.image} alt=" deals image " />
+        <p>{Product.title}</p>
         <div className={styles.bottom}>
-          <p>₹{item.price}</p>
+          <p>₹{Product.price}</p>
           <button> Buy Now !</button>
         </div>
       </div>

@@ -1,7 +1,7 @@
 import axios from "axios";
-import type { RequestBuilderProps } from "../../interface/interface";
+import type { IRequestBuilder } from "../../interface/interface";
 
-const requestBuilder = async ({ url, method, data }: RequestBuilderProps) => {
+const requestBuilder = async ({ url, method, data }: IRequestBuilder) => {
   const token = localStorage.getItem("token");
 
   const response = await axios({
