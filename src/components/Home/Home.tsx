@@ -17,9 +17,13 @@ const Home = ({ search }: { search: string }) => {
   } = useHome();
   return (
     <>
-      {search ? (
+      {search || selectedCategories > 0 ? (
         <div>
-          <Products search={search} selectedCategories={selectedCategories} />
+          <Products
+            search={search}
+            selectedCategories={selectedCategories}
+            setSelectedCategories={setSelectedCategories}
+          />
         </div>
       ) : (
         <>

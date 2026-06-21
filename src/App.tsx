@@ -5,10 +5,7 @@ import Login from "./components/Login/Login";
 import { useLocation } from "react-router-dom";
 import ProtectedRoute from "./ProtectedRoutes";
 import Settings from "./components/Settings/Settings";
-import Categories from "./components/Categories/Categories";
-import ItemCards from "./components/ItemCards/ItemCards";
-import Products from "./components/Products/Products";
-import { useState, type SetStateAction } from "react";
+import { useState } from "react";
 import Navbar from "./components/Navbar/Navbar";
 
 const App = () => {
@@ -36,37 +33,6 @@ const App = () => {
           element={
             <ProtectedRoute>
               <Settings />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/categories"
-          element={
-            <ProtectedRoute>
-              <Categories
-                categories={[]}
-                setSelectedCategories={function (
-                  value: SetStateAction<number>,
-                ): void {
-                  throw new Error("Function not implemented.");
-                }}
-              />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/ItemCards"
-          element={
-            <ProtectedRoute>
-              <ItemCards todaysDeals={[]} moreItems={[]} />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/Products/:categoryId"
-          element={
-            <ProtectedRoute>
-              <Products search={search} selectedCategories={0} />
             </ProtectedRoute>
           }
         />

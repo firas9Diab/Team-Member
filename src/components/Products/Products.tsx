@@ -1,4 +1,3 @@
-import { useParams } from "react-router-dom";
 import type { productItems } from "../../interface/interface";
 import styles from "./Products.module.scss";
 import useProducts from "./useProducts";
@@ -8,24 +7,25 @@ import Categories from "../Categories/Categories";
 const Products = ({
   search,
   selectedCategories,
+  setSelectedCategories,
 }: {
   search: string;
   selectedCategories: number;
+  setSelectedCategories: React.Dispatch<React.SetStateAction<number>>;
 }) => {
-  const { categoryId } = useParams();
-
   const { categories } = useHome();
 
   const { products, page, setPage, totalPages } = useProducts({
     search,
     selectedCategories,
-    categoryId,
   });
 
   return (
     <>
-      <Categories categories={categories} setSelectedCategories={() => {}} />
-
+      <Categories
+        categories={categories}
+        setSelectedCategories={setSelectedCategories}
+      />
       <div className={styles.card}>
         {products.map((product: productItems) => {
           return (
