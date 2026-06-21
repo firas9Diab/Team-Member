@@ -2,9 +2,9 @@ import { Link } from "react-router-dom";
 import styles from "./Navbar.module.scss";
 import useNavbar from "../Hooks/useNavbar";
 import searchsvg from "../../Assets/searchsvg.svg";
-import type { NavbarProps } from "../../interface/interface";
+import type { INavbar } from "../../interface/interface";
 
-const Navbar = ({ search, handleSearchChange }: NavbarProps) => {
+const Navbar = ({ search, handleSearchChange }: INavbar) => {
   const { handleProfile, handleLogout } = useNavbar();
 
   return (

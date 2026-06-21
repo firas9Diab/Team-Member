@@ -1,13 +1,13 @@
-import type { ItemCardProps } from "../../interface/interface";
+import type { IItemCard } from "../../interface/interface";
 import styles from "./ItemCards.module.scss";
 import Card from "./Card/Card";
 
-const ItemCards = ({ TodaysDeals, MoreItems }: ItemCardProps) => {
+const ItemCards = ({ todaysDeals, moreItems }: IItemCard) => {
   return (
     <>
       <div className={styles.line}>
-        {TodaysDeals.map((deal) => (
-          <Card key={deal.id} item={deal} />
+        {todaysDeals.map((product) => (
+          <Card key={product.id} Product={product} />
         ))}
       </div>
 
@@ -17,8 +17,8 @@ const ItemCards = ({ TodaysDeals, MoreItems }: ItemCardProps) => {
           <h1 className={styles.underline}>Consider</h1>
         </div>
         <div className={styles.line}>
-          {MoreItems.map((item) => (
-            <Card key={item.id} item={item} />
+          {moreItems.map((product) => (
+            <Card key={product.id} Product={product} />
           ))}
         </div>
       </div>

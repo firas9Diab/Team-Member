@@ -1,8 +1,8 @@
 import styles from "./Categories.module.scss";
 import lines from "../../Assets/lines.svg";
-import type { CategoriesProps } from "../../interface/interface";
+import type { ICategories } from "../../interface/interface";
 
-const Categories = ({ categories, handleCategorychange }: CategoriesProps) => {
+const Categories = ({ categories, handleCategorychange }: ICategories) => {
   return (
     <>
       <div className={styles.line}>

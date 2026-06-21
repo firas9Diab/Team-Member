@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 import requestBuilder from "../utility/requestBuilder";
-import type { MoreItems, TodaysDeals } from "../../interface/interface";
+import type { ProductDto } from "../../interface/interface";
 import type { Categories } from "../../interface/interface";
 
 const useHome = ({ search }: { search: string }) => {
   const [userData, setUserData] = useState("");
-  const [todaysDeals, setTodaysDeals] = useState<TodaysDeals[]>([]);
-  const [moreItems, setMoreItems] = useState<MoreItems[]>([]);
+  const [todaysDeals, setTodaysDeals] = useState<ProductDto[]>([]);
+  const [moreItems, setMoreItems] = useState<ProductDto[]>([]);
   const [categories, setCategories] = useState<Categories[]>([]);
   const [selectedCategories, setSelectedCategories] = useState(Number);
 
@@ -54,7 +54,6 @@ const useHome = ({ search }: { search: string }) => {
     todaysDeals,
     moreItems,
     categories,
-    setSelectedCategories,
     selectedCategories,
     handleCategorychange,
     showSearch,

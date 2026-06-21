@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import type { ProductItems } from "../../interface/interface";
+import type { ProductDto } from "../../interface/interface";
 import requestBuilder from "../utility/requestBuilder";
 
 const useProducts = ({
@@ -9,7 +9,7 @@ const useProducts = ({
   search: string;
   selectedCategories: number;
 }) => {
-  const [products, setProducts] = useState<ProductItems[]>([]);
+  const [products, setProducts] = useState<ProductDto[]>([]);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
 

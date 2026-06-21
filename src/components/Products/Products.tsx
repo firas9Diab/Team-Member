@@ -1,7 +1,4 @@
-import type {
-  ProductItems,
-  productItemsProps,
-} from "../../interface/interface";
+import type { ProductDto, IProductItems } from "../../interface/interface";
 import styles from "./Products.module.scss";
 import useProducts from "./useProducts";
 import Categories from "../Categories/Categories";
@@ -12,7 +9,7 @@ const Products = ({
   selectedCategories,
   categories,
   handleCategorychange,
-}: productItemsProps) => {
+}: IProductItems) => {
   const { products, page, setPage, totalPages } = useProducts({
     search,
     selectedCategories,
@@ -25,8 +22,8 @@ const Products = ({
         handleCategorychange={handleCategorychange}
       />
       <div className={styles.card}>
-        {products.map((product: ProductItems) => {
-          return <Card item={product} />;
+        {products.map((product: ProductDto) => {
+          return <Card key={product.id} Product={product} />;
         })}
       </div>
       <div className={styles.pagination}>

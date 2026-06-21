@@ -18,7 +18,7 @@ export interface IAddressForm {
   onCancel: () => void;
 }
 
-export interface RequestBuilderProps {
+export interface IRequestBuilder {
   url: string;
   method: "GET" | "POST" | "PATCH" | "PUT" | "DELETE";
   data?: object;
@@ -30,63 +30,45 @@ export interface Categories {
   slug: string;
 }
 
-export interface TodaysDeals{
+export interface ProductDto{
   id: number,
   title: string,
   slug: string,
   price: number,
-  oldPrice: null,
-  discountPercent: null,
+  oldPrice?:number ,
+  discountPercent?: number,
   ratingAverage: number,
   ratingCount: number,
   image: string
 }
 
-export interface MoreItems{
-  id: number,
-  title: string,
-  slug: string,
-  price: number,
-  oldPrice: number,
-  discountPercent: null,
-  ratingAverage: number,
-  ratingCount: number,
-  image: string
-}
 
- export interface ItemCardProps {
-  TodaysDeals: TodaysDeals[];
-  MoreItems: MoreItems[];
+ export interface IItemCard {
+  todaysDeals: ProductDto[];
+  moreItems: ProductDto[];
 }
 
 
 
- export interface CategoriesProps {
+ export interface ICategories {
   categories: Categories[];
   handleCategorychange:(arg0: number)=>void;
   };
 
- export interface productItemsProps{
+ export interface IProductItems{
   search: string;
   selectedCategories: number;
   categories :Categories[];
   handleCategorychange:(arg0: number)=>void;
  }
 
-export interface ProductItems{
-  id: number,
-  title: string,
-  slug: string,
-  price: number,
-  oldPrice: number,
-  discountPercent: number,
-  ratingAverage: number,
-  ratingCount: number,
-  image: string,
 
-}
 
-export interface NavbarProps {
+export interface INavbar {
   search: string;
  handleSearchChange:(arg0: string)=>void;
 }
+
+export interface  ICard{
+ Product :ProductDto;
+};
