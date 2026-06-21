@@ -29,15 +29,23 @@ const Navbar = () => {
 
         {!token ? (
           <div className={styles.authentication}>
-            <span className={styles.clickauth} onClick={goToLogin}>Login In</span>
+            <span className={styles.clickauth} onClick={goToLogin}>
+              Login In
+            </span>
             <span>|</span>
-            <span className={styles.clickauth} onClick={goToSignup}>Sign up</span>
+            <span className={styles.clickauth} onClick={goToSignup}>
+              Sign up
+            </span>
           </div>
         ) : (
           <div className={styles.authentication}>
-            <span className={styles.clickauth} onClick={goToSettings}>Profile</span>
+            <span className={styles.clickauth} onClick={goToSettings}>
+              Profile
+            </span>
             <span>|</span>
-            <span className={styles.clickauth} onClick={goToSignOut}>Logout</span>
+            <span className={styles.clickauth} onClick={goToSignOut}>
+              Logout
+            </span>
           </div>
         )}
       </div>
