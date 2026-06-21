@@ -1,6 +1,9 @@
+import { useParams } from "react-router-dom";
 import type { productItems } from "../../interface/interface";
 import styles from "./Products.module.scss";
 import useProducts from "./useProducts";
+import useHome from "../Hooks/useHome";
+import Categories from "../Categories/Categories";
 
 const Products = ({
   search,
@@ -9,13 +12,20 @@ const Products = ({
   search: string;
   selectedCategories: number;
 }) => {
+  const { categoryId } = useParams();
+
+  const { categories } = useHome();
+
   const { products, page, setPage, totalPages } = useProducts({
     search,
     selectedCategories,
+    categoryId,
   });
 
   return (
     <>
+      <Categories categories={categories} setSelectedCategories={() => {}} />
+
       <div className={styles.card}>
         {products.map((product: productItems) => {
           return (

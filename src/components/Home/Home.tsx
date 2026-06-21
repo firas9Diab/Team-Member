@@ -5,28 +5,20 @@ import sony from "../../Assets/sony.png";
 import watch from "../../Assets/watch.png";
 import Footer from "../Footer/Footer";
 import ItemCards from "../ItemCards/ItemCards";
-import Navbar from "../Navbar/Navbar";
 import Products from "../Products/Products";
 
-const Home = () => {
+const Home = ({ search }: { search: string }) => {
   const {
     todaysDeals,
     moreItems,
     categories,
-    search,
-    setSearch,
     selectedCategories,
     setSelectedCategories,
   } = useHome();
   return (
     <>
-      <Navbar search={search} setSearch={setSearch} />
       {search ? (
         <div>
-          <Categories
-            categories={categories}
-            setSelectedCategories={setSelectedCategories}
-          />
           <Products search={search} selectedCategories={selectedCategories} />
         </div>
       ) : (

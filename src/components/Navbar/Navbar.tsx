@@ -2,8 +2,6 @@ import { Link } from "react-router-dom";
 import styles from "./Navbar.module.scss";
 import useNavbar from "../Hooks/useNavbar";
 import searchsvg from "../../Assets/searchsvg.svg";
-import { useState } from "react";
-import Products from "../Products/Products";
 import type { NavbarProps } from "../../interface/interface";
 
 const Navbar = ({ search, setSearch }: NavbarProps) => {
