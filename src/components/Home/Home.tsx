@@ -1,24 +1,48 @@
-import { Link } from "react-router-dom";
 import styles from "./Home.module.scss";
-import { useState } from "react";
+import Categories from "../Categories/Categories";
+import useHome from "./useHome";
+import ItemCards from "../ItemCards/ItemCards";
+import sony from "../../../public/Icons/sony-ad.svg"
+import bluetoothswitch from "../../../public/Icons/bluetoothswitch.svg"
+import Footer from "../../Footer/Footer";
 
 const Home = () => {
-  const [items] = useState<number[]>([1, 2, 3]);
-
+const {categories,moreItemsToConsider,todayDeals}=useHome();
+  
   return (
-    <div className={styles.container}>
-      <h1 className={styles.title}>Home Page</h1>
-      <ul className={styles.list}>
-        {items.map((id) => (
-          <li key={id}>
-            <Link to={`/item/${id}`} className={styles.link}>
-              View Item {id}
-            </Link>
-          </li>
-        ))}
-      </ul>
+  <div className={styles.container}>
+    <div className={styles.container1}>
+      <p className={styles.pcontainer1}>#Big Fashion Sale</p>
+
+      <h1 className={styles.h1container1}>
+        Limited Time Offer! <br /> Up to 50% OFF!
+      </h1>
+
+      <p className={styles.pcontainer1}>Redefine Your Everyday Style</p>
     </div>
-  );
+
+    <div className={styles.container2}>
+    <Categories categories={categories}/>
+    </div>
+<ItemCards todayDeals={todayDeals} moreItemsToConsider={moreItemsToConsider}/>
+    
+
+    <div className={styles.container5}>
+      <div className={styles.inner}>
+    <img src={sony} alt=""  className={styles.sonyimage}/>
+<div className={styles.bluetoothswitch}>
+    <div>Bluetooth Calling Smartwatch starts at ₹1,999</div>
+    <img src={bluetoothswitch} alt="" className={styles.bluetoothswitchimage}/>
+<div>Shop now</div>
+</div>
+      </div>
+  
+
+    </div>
+
+<Footer/>
+  </div>
+ );
 };
 
 export default Home;

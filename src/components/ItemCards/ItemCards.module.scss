@@ -1,0 +1,93 @@
+.container3 {
+  display: flex;
+  flex-direction: column;
+  padding-top: 100px;
+  padding-left: 180px;
+  padding-bottom: 50px;
+  gap: 46px;
+  background-color: #e6e5e5;
+
+  .title {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 25px;
+    line-height: 30px;
+    color: #000000;
+  }
+}
+
+.container4 {
+  display: flex;
+  flex-direction: column;
+  padding-top: 100px;
+  padding-left: 180px;
+  gap: 46px;
+  padding-bottom: 50px;
+
+  .title {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 25px;
+    line-height: 30px;
+    color: #000000;
+  }
+}
+
+.products {
+  display: flex;
+  flex-direction: row;
+  gap: 49px;
+  overflow-x: scroll;
+}
+
+@media (max-width: 768px) {
+  .container3 {
+    padding: 50px 20px 40px;
+    gap: 30px;
+
+    .title {
+      font-size: 22px;
+      line-height: 28px;
+      text-align: center;
+    }
+  }
+
+  .container4 {
+    padding: 50px 20px 40px;
+    gap: 30px;
+
+    .title {
+      font-size: 22px;
+      line-height: 28px;
+      text-align: center;
+    }
+  }
+
+  .products {
+    gap: 24px;
+    overflow-x: auto;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .container3 {
+    padding-top: 70px;
+    padding-left: 60px;
+    padding-bottom: 50px;
+    gap: 36px;
+  }
+
+  .container4 {
+    padding-top: 70px;
+    padding-left: 60px;
+    padding-bottom: 50px;
+    gap: 36px;
+  }
+
+  .products {
+    gap: 32px;
+    overflow-x: auto;
+  }
+}

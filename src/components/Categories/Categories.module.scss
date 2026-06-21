@@ -1,0 +1,30 @@
+.category {
+  display: flex;
+  width: 124px;
+  height: 39px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 18px;
+  color: #000000;
+  background: #f5f5f5;
+  border-radius: 33px;
+  align-items: center;
+  justify-content: center;
+  border: none;
+}
+
+.categories {
+  justify-content: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  gap: 25px;
+  display: flex;
+  flex-direction: row;
+}
+@media (max-width: 768px) {
+  .categories{
+    flex-wrap: wrap;
+  }
+}

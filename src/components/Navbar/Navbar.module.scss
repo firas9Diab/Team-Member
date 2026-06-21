@@ -1,28 +1,79 @@
-.navbar {
+.main {
+  background-color: #d6d6d6;
+}
+
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-direction: row;
+  box-sizing: border-box;
+  background: #ffffff;
+  padding-top: 15px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid rgba(102, 102, 102, 0.3);
+}
+
+.logoheader {
+  cursor: pointer;
+  font-family: "Outfit";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 25px;
+  color: #000000;
+}
+
+.search {
+  border: none;
+  padding: 10px;
+  flex: 1;
+  font-size: 14px;
+  outline: none;
+}
+
+.button {
+  background: transparent;
+  border: none;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 0 24px;
-  height: 60px;
-  background-color: #1a1a2e;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  justify-content: center;
+  cursor: pointer;
 }
 
-.brand {
-  font-size: 18px;
+.searchinput {
+  width: 48%;
+  display: flex;
+  align-items: center;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 5px 10px;
+  background: white;
+}
+
+.button img {
+  width: 18px;
+  height: 18px;
+}
+
+.navordersandauthentication {
+  font-family: "Outfit";
+  font-style: normal;
   font-weight: 600;
-  color: #fff;
-  text-decoration: none;
-
-  &:hover {
-    color: #646cff;
-  }
+  font-size: 18px;
+  line-height: 23px;
+  align-items: center;
+  color: #000000;
+  display: flex;
+  gap: 43px;
 }
 
-.userMenu {
-  position: relative;
+.authentication {
+  display: flex;
+  gap: 14px;
 }
-
 .iconBtn {
   display: flex;
   align-items: center;
@@ -58,7 +109,7 @@
   z-index: 100;
 }
 
-.dropdownItem {
+.dropdownitem {
   padding: 10px 16px;
   font-size: 14px;
   color: #213547;
@@ -68,5 +119,64 @@
   &:hover {
     background-color: #f0f0ff;
     color: #646cff;
+  }
+}
+
+.usermenu {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .header {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 18px;
+    padding: 15px 20px 24px;
+  }
+
+  .logoheader {
+    width: 100%;
+    text-align: center;
+  }
+
+  .searchinput {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .navordersandauthentication {
+    width: 100%;
+    justify-content: center;
+    gap: 24px;
+    font-size: 16px;
+  }
+
+  .authentication {
+    gap: 10px;
+  }
+
+  .dropdown {
+    top: 48px;
+    right: 50%;
+    transform: translateX(50%);
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .header {
+    justify-content: space-between;
+    gap: 20px;
+    padding: 15px 40px 28px;
+  }
+
+  .searchinput {
+    width: 45%;
+  }
+
+  .navordersandauthentication {
+    gap: 28px;
+    font-size: 17px;
   }
 }
