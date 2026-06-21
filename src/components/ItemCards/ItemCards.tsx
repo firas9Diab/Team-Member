@@ -1,8 +1,8 @@
-import type { ItemProps } from "../interface";
+import type { IItemCards } from "../interface";
 import styles from "./ItemCards.module.scss";
 import Product from "./Product/Product";
 
-const ItemCards = ({ todayDeals, moreItemsToConsider }: ItemProps) => {
+const ItemCards = ({ todayDeals, moreItemsToConsider }: IItemCards) => {
   return (
     <>
       <div className={styles.container3}>

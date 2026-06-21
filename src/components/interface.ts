@@ -65,15 +65,15 @@ export interface MoreItemsToConsider {
   image: string;
 }
 
-export type CategoryProps = {
+export type ICategories = {
   categories: Category[];
 };
 
-export type ItemProps = {
+export type IItemCards = {
   todayDeals: TodaysDeals[];
   moreItemsToConsider: MoreItemsToConsider[];
 };
 
-export type CardProps = {
+export type IProduct = {
   card: MoreItemsToConsider | TodaysDeals;
 };

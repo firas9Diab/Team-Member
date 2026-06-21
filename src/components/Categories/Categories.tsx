@@ -1,8 +1,8 @@
 import chooses from "../../../public/Icons/chooses.svg";
-import type { CategoryProps } from "../interface";
+import type { ICategories } from "../interface";
 import styles from "./Categories.module.scss";
 
-const Categories = ({ categories }: CategoryProps) => {
+const Categories = ({ categories }: ICategories) => {
   return (
     <div className={styles.categories}>
       {categories.map((category) => (
