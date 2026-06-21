@@ -1,5 +1,4 @@
 import { Routes, Route } from "react-router-dom";
-import Navbar from "./components/Navbar/Navbar";
 import Home from "./components/Home/Home";
 import SignUp from "./components/SignUp/SignUp";
 import Login from "./components/Login/Login";
@@ -10,7 +9,6 @@ import Categories from "./components/Categories/Categories";
 import Footer from "./components/Footer/Footer";
 import ItemCards from "./components/ItemCards/ItemCards";
 import Products from "./components/Products/Products";
-import type { SetStateAction } from "react";
 
 const App = () => {
   const location = useLocation();
