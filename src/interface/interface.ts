@@ -18,7 +18,7 @@ export interface IAddressForm {
   onCancel: () => void;
 }
 
-export interface RequestBuilderProps {
+export interface IRequestBuilder {
   url: string;
   method: "GET" | "POST" | "PATCH" | "PUT" | "DELETE";
   data?: object;
@@ -30,37 +30,49 @@ export interface Categories {
   slug: string;
 }
 
-export interface TodaysDeals{
+export interface ProductDto{
   id: number,
   title: string,
   slug: string,
   price: number,
-  oldPrice: null,
-  discountPercent: null,
+  oldPrice: number | null;
+  discountPercent: number | null;
   ratingAverage: number,
   ratingCount: number,
   image: string
 }
 
-export interface moreItems{
-  id: number,
-  title: string,
-  slug: string,
-  price: number,
-  oldPrice: number,
-  discountPercent: null,
-  ratingAverage: number,
-  ratingCount: number,
-  image: string
-}
 
- export interface ItemCardProps {
-  todaysDeals: TodaysDeals[];
-  moreItems: moreItems[];
+ export interface IItemCard {
+  todaysDeals: ProductDto[];
+  moreItems: ProductDto[];
 }
 
 
 
- export interface CategoriesProps {
+ export interface ICategories {
   categories: Categories[];
+  handleCategorychange:(arg0: number)=>void;
+  };
+
+ export interface IProductItems{
+  search: string;
+  selectedCategories: number| undefined;
+  categories :Categories[];
+  handleCategorychange:(arg0: number)=>void;
+ }
+
+
+
+export interface INavbar {
+  search: string;
+ handleSearchChange:(arg0: string)=>void;
+}
+
+export interface  ICard{
+ Product :ProductDto;
 };
+
+export interface IHome{
+  search:string;
+}
