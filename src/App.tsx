@@ -12,12 +12,18 @@ const App = () => {
   const location = useLocation();
   const [search, setSearch] = useState("");
 
+  const handleSearchChange = (value: string) => {
+    setSearch(value);
+  };
+
   const hideNavbar =
     location.pathname === "/sign" || location.pathname === "/login";
 
   return (
     <div>
-      {!hideNavbar && <Navbar search={search} setSearch={setSearch} />}
+      {!hideNavbar && (
+        <Navbar search={search} handleSearchChange={handleSearchChange} />
+      )}
 
       <Routes>
         <Route

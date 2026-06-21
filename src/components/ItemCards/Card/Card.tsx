@@ -1,12 +1,12 @@
 import type {
-  moreItems,
-  productItems,
+  MoreItems,
+  ProductItems,
   TodaysDeals,
 } from "../../../interface/interface";
 import styles from "./Card.module.scss";
 
 type CardProps = {
-  item: TodaysDeals | moreItems | productItems;
+  item: TodaysDeals | MoreItems | ProductItems;
 };
 
 const Card = ({ item }: CardProps) => {

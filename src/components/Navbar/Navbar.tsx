@@ -4,7 +4,7 @@ import useNavbar from "../Hooks/useNavbar";
 import searchsvg from "../../Assets/searchsvg.svg";
 import type { NavbarProps } from "../../interface/interface";
 
-const Navbar = ({ search, setSearch }: NavbarProps) => {
+const Navbar = ({ search, handleSearchChange }: NavbarProps) => {
   const { handleProfile, handleLogout } = useNavbar();
 
   return (
@@ -21,7 +21,7 @@ const Navbar = ({ search, setSearch }: NavbarProps) => {
             placeholder="Search Products Here"
             value={search}
             onChange={(e) => {
-              setSearch(e.target.value);
+              handleSearchChange(e.target.value);
             }}
           />
         </div>

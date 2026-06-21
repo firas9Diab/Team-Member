@@ -1,5 +1,5 @@
 import type {
-  productItems,
+  ProductItems,
   productItemsProps,
 } from "../../interface/interface";
 import styles from "./Products.module.scss";
@@ -10,8 +10,8 @@ import Card from "../ItemCards/Card/Card";
 const Products = ({
   search,
   selectedCategories,
-  setSelectedCategories,
   categories,
+  handleCategorychange,
 }: productItemsProps) => {
   const { products, page, setPage, totalPages } = useProducts({
     search,
@@ -22,10 +22,10 @@ const Products = ({
     <>
       <Categories
         categories={categories}
-        setSelectedCategories={setSelectedCategories}
+        handleCategorychange={handleCategorychange}
       />
       <div className={styles.card}>
-        {products.map((product: productItems) => {
+        {products.map((product: ProductItems) => {
           return <Card item={product} />;
         })}
       </div>

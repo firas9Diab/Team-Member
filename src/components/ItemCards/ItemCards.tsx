@@ -2,11 +2,11 @@ import type { ItemCardProps } from "../../interface/interface";
 import styles from "./ItemCards.module.scss";
 import Card from "./Card/Card";
 
-const ItemCards = ({ todaysDeals, moreItems }: ItemCardProps) => {
+const ItemCards = ({ TodaysDeals, MoreItems }: ItemCardProps) => {
   return (
     <>
       <div className={styles.line}>
-        {todaysDeals.map((deal) => (
+        {TodaysDeals.map((deal) => (
           <Card key={deal.id} item={deal} />
         ))}
       </div>
@@ -17,7 +17,7 @@ const ItemCards = ({ todaysDeals, moreItems }: ItemCardProps) => {
           <h1 className={styles.underline}>Consider</h1>
         </div>
         <div className={styles.line}>
-          {moreItems.map((item) => (
+          {MoreItems.map((item) => (
             <Card key={item.id} item={item} />
           ))}
         </div>

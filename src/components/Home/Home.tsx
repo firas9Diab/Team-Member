@@ -13,19 +13,18 @@ const Home = ({ search }: { search: string }) => {
     moreItems,
     categories,
     selectedCategories,
-    setSelectedCategories,
-  } = useHome();
-
-  const show = search || selectedCategories > 0;
+    showSearch,
+    handleCategorychange,
+  } = useHome({ search });
 
   return (
     <>
-      {show ? (
+      {showSearch ? (
         <div>
           <Products
             search={search}
             selectedCategories={selectedCategories}
-            setSelectedCategories={setSelectedCategories}
+            handleCategorychange={handleCategorychange}
             categories={categories}
           />
         </div>
@@ -43,7 +42,7 @@ const Home = ({ search }: { search: string }) => {
           </div>
           <Categories
             categories={categories}
-            setSelectedCategories={setSelectedCategories}
+            handleCategorychange={handleCategorychange}
           />
 
           <div className={styles.section3}>
@@ -51,7 +50,7 @@ const Home = ({ search }: { search: string }) => {
               <h1>Today’s </h1>
               <h1 className={styles.underline}>Deals</h1>
             </div>
-            <ItemCards todaysDeals={todaysDeals} moreItems={moreItems} />
+            <ItemCards TodaysDeals={todaysDeals} MoreItems={moreItems} />
           </div>
 
           <div className={styles.section5}>

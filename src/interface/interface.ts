@@ -42,7 +42,7 @@ export interface TodaysDeals{
   image: string
 }
 
-export interface moreItems{
+export interface MoreItems{
   id: number,
   title: string,
   slug: string,
@@ -55,25 +55,25 @@ export interface moreItems{
 }
 
  export interface ItemCardProps {
-  todaysDeals: TodaysDeals[];
-  moreItems: moreItems[];
+  TodaysDeals: TodaysDeals[];
+  MoreItems: MoreItems[];
 }
 
 
 
  export interface CategoriesProps {
   categories: Categories[];
-  setSelectedCategories :React.Dispatch<React.SetStateAction<number>>;
-};
+  handleCategorychange:(arg0: number)=>void;
+  };
 
  export interface productItemsProps{
   search: string;
   selectedCategories: number;
-  setSelectedCategories: React.Dispatch<React.SetStateAction<number>>;
   categories :Categories[];
+  handleCategorychange:(arg0: number)=>void;
  }
 
-export interface productItems{
+export interface ProductItems{
   id: number,
   title: string,
   slug: string,
@@ -88,5 +88,5 @@ export interface productItems{
 
 export interface NavbarProps {
   search: string;
-  setSearch: React.Dispatch<React.SetStateAction<string>>;
+ handleSearchChange:(arg0: string)=>void;
 }
