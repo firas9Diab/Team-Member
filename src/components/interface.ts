@@ -41,7 +41,7 @@ type Category = {
   slug: string;
 };
 
-interface TodaysDeals {
+interface ProductDTO {
   id: number;
   title: string;
   slug: string;
@@ -53,27 +53,15 @@ interface TodaysDeals {
   image: string;
 }
 
-export interface MoreItemsToConsider {
-  id: number;
-  title: string;
-  slug: string;
-  price: number;
-  oldPrice: number;
-  discountPercent: null;
-  ratingAverage: number;
-  ratingCount: number;
-  image: string;
-}
-
 export type ICategories = {
   categories: Category[];
 };
 
 export type IItemCards = {
-  todayDeals: TodaysDeals[];
-  moreItemsToConsider: MoreItemsToConsider[];
+  todayDeals: ProductDTO[];
+  moreItemsToConsider: ProductDTO[];
 };
 
 export type IProduct = {
-  card: MoreItemsToConsider | TodaysDeals;
+  card: ProductDTO;
 };

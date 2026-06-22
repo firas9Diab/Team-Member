@@ -5,7 +5,7 @@ import Product from "./Product/Product";
 const ItemCards = ({ todayDeals, moreItemsToConsider }: IItemCards) => {
   return (
     <>
-      <div className={styles.container3}>
+      <div className={styles.todaydealssection}>
         <div className={styles.title}>Today’s Deals</div>
 
         <div className={styles.products}>
@@ -15,7 +15,7 @@ const ItemCards = ({ todayDeals, moreItemsToConsider }: IItemCards) => {
         </div>
       </div>
 
-      <div className={styles.container4}>
+      <div className={styles.moreitemssection}>
         <div className={styles.title}>More Items to Consider</div>
 
         <div className={styles.products}>
