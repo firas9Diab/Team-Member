@@ -4,7 +4,6 @@ import RequestBuilder from "../../../services/RequestBuilder";
 
 const useMyDetails = () => {
   const ref = useRef<HTMLInputElement | null>(null);
-
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [phone, setPhone] = useState<string>("");

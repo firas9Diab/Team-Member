@@ -1,7 +1,7 @@
-.container{
+.container {
   display: flex;
   flex-direction: column;
-overflow-x: hidden;
+  overflow-x: hidden;
 }
 .container1 {
   background: #f7f7f7;
@@ -77,9 +77,8 @@ overflow-x: hidden;
   width: 320px;
 }
 @media (max-width: 768px) {
-  .sonyimage
-  {
-    width:100%
+  .sonyimage {
+    width: 100%;
   }
   .container1 {
     padding: 60px 20px 90px;
@@ -94,7 +93,6 @@ overflow-x: hidden;
       line-height: 24px;
     }
   }
-  
 
   .container5 {
     flex-direction: column;
@@ -129,9 +127,8 @@ overflow-x: hidden;
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {
-    .sonyimage
-  {
-    width:100%
+  .sonyimage {
+    width: 100%;
   }
   .container1 {
     padding: 80px 60px 120px;

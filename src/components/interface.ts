@@ -33,6 +33,7 @@ export type IRequestBuilder = {
   url: string;
   method?: MethodType;
   data?: unknown;
+  params?: unknown;
 };
 
 type Category = {
