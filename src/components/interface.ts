@@ -42,7 +42,7 @@ type Category = {
   slug: string;
 };
 
-interface TodaysDeals {
+interface ProductDTO {
   id: number;
   title: string;
   slug: string;
@@ -54,27 +54,18 @@ interface TodaysDeals {
   image: string;
 }
 
-export interface MoreItemsToConsider {
-  id: number;
-  title: string;
-  slug: string;
-  price: number;
-  oldPrice: number;
-  discountPercent: null;
-  ratingAverage: number;
-  ratingCount: number;
-  image: string;
-}
+
 
 export type CategoryProps = {
   categories: Category[];
+  setCategoryId:(CategoryId:number)=>void;
 };
 
 export type ItemProps = {
-  todayDeals: TodaysDeals[];
-  moreItemsToConsider: MoreItemsToConsider[];
+  todayDeals: ProductDTO[];
+  moreItemsToConsider: ProductDTO[];
 };
 
 export type CardProps = {
-  card: MoreItemsToConsider | TodaysDeals;
+  card: ProductDTO;
 };

@@ -47,11 +47,16 @@ const useHome = () => {
     handleGetProduct();
   }, []);
 
+
+    useEffect(() => {
+    setcurrentPage(1);
+  }, [categoryId, search]);
+
     useEffect(() => {
     handleGetProduct(currentPage, categoryId, search);
   }, [currentPage, categoryId, search]);
 
-  return { categories, moreItemsToConsider, todayDeals };
+  return { categories, moreItemsToConsider, todayDeals,setCategoryId };
 };
 
 export default useHome;

@@ -7,7 +7,7 @@ import bluetoothswitch from "../../../public/Icons/bluetoothswitch.svg";
 import Footer from "../../Footer/Footer";
 
 const Home = () => {
-  const { categories, moreItemsToConsider, todayDeals } = useHome();
+  const { categories, moreItemsToConsider, todayDeals,setCategoryId } = useHome();
 
   return (
     <div className={styles.container}>
@@ -22,7 +22,7 @@ const Home = () => {
       </div>
 
       <div className={styles.container2}>
-        <Categories categories={categories} />
+        <Categories categories={categories} setCategoryId={setCategoryId} />
       </div>
       <ItemCards
         todayDeals={todayDeals}
