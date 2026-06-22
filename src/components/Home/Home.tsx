@@ -39,7 +39,7 @@ const Home = () => {
               alt=""
               className={styles.bluetoothswitchimage}
             />
-            <div>Shop now</div>
+            <div className={styles.shopnow}>Shop now</div>
           </div>
         </div>
       </div>
