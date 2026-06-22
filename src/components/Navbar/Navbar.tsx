@@ -1,25 +1,16 @@
 import styles from "./Navbar.module.scss";
 import useNavbar from "./useNavbar";
-import Search from "../../../public/Icons/Search.svg"
+import Search from "../../../public/Icons/Search.svg";
 
 const Navbar = () => {
-  const {
-    token,
-    goToSignOut,
-    goToSettings,
-    goToSignup,
-    goToLogin,
-    setMenuOpen,
-    goToHome,
-    menuOpen,
-    menuRef,
-  } = useNavbar();
+  const { token, goToSignOut, goToSettings, goToSignup, goToLogin, goToHome } =
+    useNavbar();
 
   return (
     <div className={styles.header}>
-      <div className={styles.logoheader}
-      onClick={goToHome}
-      >CRIO</div>
+      <div className={styles.logoheader} onClick={goToHome}>
+        CRIO
+      </div>
 
       <div className={styles.searchinput}>
         <button className={styles.button}>
@@ -38,31 +29,23 @@ const Navbar = () => {
 
         {!token ? (
           <div className={styles.authentication}>
-            <span onClick={goToSignup}>Sign up</span>
+            <span className={styles.clickauth} onClick={goToLogin}>
+              Login In
+            </span>
             <span>|</span>
-            <span onClick={goToLogin}>Login In</span>
+            <span className={styles.clickauth} onClick={goToSignup}>
+              Sign up
+            </span>
           </div>
         ) : (
-          <div className={styles.usermenu} ref={menuRef}>
-            <button
-              className={styles.iconbtn}
-              onClick={() => setMenuOpen((prev) => !prev)}
-              aria-label="User menu"
-            >
-              <img src="/user.svg" alt="User" className={styles.usericon} />
-            </button>
-
-            {menuOpen && (
-              <ul className={styles.dropdown}>
-                <li className={styles.dropdownitem} onClick={goToSettings}>
-                  Profile
-                </li>
-
-                <li className={styles.dropdownitem} onClick={goToSignOut}>
-                  Logout
-                </li>
-              </ul>
-            )}
+          <div className={styles.authentication}>
+            <span className={styles.clickauth} onClick={goToSettings}>
+              Profile
+            </span>
+            <span>|</span>
+            <span className={styles.clickauth} onClick={goToSignOut}>
+              Logout
+            </span>
           </div>
         )}
       </div>

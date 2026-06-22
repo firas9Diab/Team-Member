@@ -1,26 +1,22 @@
-import styles from "./Product.module.scss"
-import type { CardProps } from '../../interface'
+import styles from "./Product.module.scss";
+import type { IProduct } from "../../interface";
 
-const Product = ({card}:CardProps) => {
+const Product = ({ card }: IProduct) => {
   return (
-   <div key={card.id} className={styles.product}>
-    <img src={card.image} alt="" className={styles.productimage} />
+    <div key={card.id} className={styles.product}>
+      <img src={card.image} alt="" className={styles.productimage} />
 
-    <div className={styles.producttitle}>
-      {card.title}
-    </div>
+      <div className={styles.producttitle}>{card.title}</div>
 
-    <div className={styles.price}>
-      <div className={styles.numberprice}>
-        ₹{card.price}
+      <div className={styles.price}>
+        <div className={styles.numberprice}>₹{card.price}</div>
+
+        <button className={styles.buybutton}>
+          <span>Buy Now!</span>
+        </button>
       </div>
-
-      <button className={styles.buybutton}>
-        <span>Buy Now!</span>
-      </button>
     </div>
-  </div>
-  )
-}
+  );
+};
 
-export default Product
+export default Product;
