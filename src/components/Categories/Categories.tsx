@@ -1,12 +1,19 @@
 import chooses from "../../../public/Icons/chooses.svg";
-import type { CategoryProps } from "../interface";
+import type { ICategories } from "../interface";
 import styles from "./Categories.module.scss";
 
-const Categories = ({ categories,setCategoryId }: CategoryProps) => {
+const Categories = ({ categories, setCategoryId, categoryId }: ICategories) => {
   return (
     <div className={styles.categories}>
       {categories.map((category) => (
-        <button onClick={()=>setCategoryId(Number(category.id))} key={category.id} className={styles.category}>
+        <button
+          key={category.id}
+          onClick={() => setCategoryId(category.id)}
+          disabled={categoryId === category.id}
+          className={
+            categoryId === category.id ? styles.activecategory : styles.category
+          }
+        >
           {category.name}
         </button>
       ))}

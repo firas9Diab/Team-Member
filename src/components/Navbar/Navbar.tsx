@@ -1,8 +1,9 @@
 import styles from "./Navbar.module.scss";
 import useNavbar from "./useNavbar";
 import Search from "../../../public/Icons/Search.svg";
+import type { INavbar } from "../interface";
 
-const Navbar = () => {
+const Navbar = ({ search, setSearch }: INavbar) => {
   const { token, goToSignOut, goToSettings, goToSignup, goToLogin, goToHome } =
     useNavbar();
 
@@ -19,6 +20,8 @@ const Navbar = () => {
 
         <input
           type="text"
+          value={search ?? ""}
+          onChange={(e) => setSearch?.(e.target.value)}
           placeholder="Search Products Here"
           className={styles.search}
         />

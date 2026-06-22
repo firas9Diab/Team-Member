@@ -5,16 +5,18 @@ import SignUp from "./components/User/Sign Up/SignUp";
 import Login from "./components/User/Login/Login";
 import ProtectedRoute from "./ProtectedRoute";
 import Settings from "./components/User/Settings/Settings";
+import { useState } from "react";
 
 const App = () => {
+  const [search, setSearch] = useState("");
   return (
     <div>
       <Routes>
         <Route
           path="/"
           element={
-            <ProtectedRoute>
-              <Home />
+            <ProtectedRoute search={search} setSearch={setSearch}>
+              <Home search={search} />
             </ProtectedRoute>
           }
         />

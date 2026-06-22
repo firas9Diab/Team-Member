@@ -5,9 +5,20 @@ import ItemCards from "../ItemCards/ItemCards";
 import sony from "../../../public/Icons/sony-ad.svg";
 import bluetoothswitch from "../../../public/Icons/bluetoothswitch.svg";
 import Footer from "../../Footer/Footer";
+import type { IHome } from "../interface";
 
-const Home = () => {
-  const { categories, moreItemsToConsider, todayDeals,setCategoryId } = useHome();
+const Home = ({ search }: IHome) => {
+  const {
+    categories,
+    moreItemsToConsider,
+    todayDeals,
+    setSelectedCategoryId,
+    setCurrentPage,
+    currentPage,
+    totalPages,
+    selectedcategoryId,
+    product,
+  } = useHome(search);
 
   return (
     <div className={styles.container}>
@@ -22,11 +33,20 @@ const Home = () => {
       </div>
 
       <div className={styles.container2}>
-        <Categories categories={categories} setCategoryId={setCategoryId} />
+        <Categories
+          categories={categories}
+          setCategoryId={setSelectedCategoryId}
+          categoryId={selectedcategoryId}
+        />
       </div>
       <ItemCards
         todayDeals={todayDeals}
         moreItemsToConsider={moreItemsToConsider}
+        setCurrentPage={setCurrentPage}
+        totalPages={totalPages}
+        currentPage={currentPage}
+        selectedcategoryId={selectedcategoryId}
+        products={product}
       />
 
       <div className={styles.container5}>

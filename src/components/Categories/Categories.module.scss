@@ -13,6 +13,26 @@
   align-items: center;
   justify-content: center;
   border: none;
+
+  &:hover {
+    background: grey;
+  }
+}
+.activecategory {
+  display: flex;
+  width: 124px;
+  height: 39px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 18px;
+  background: grey;
+  color: #f5f5f5;
+  border-radius: 33px;
+  align-items: center;
+  justify-content: center;
+  border: none;
 }
 
 .categories {
@@ -22,9 +42,5 @@
   gap: 25px;
   display: flex;
   flex-direction: row;
-}
-@media (max-width: 768px) {
-  .categories {
-    flex-wrap: wrap;
-  }
+  flex-wrap: wrap;
 }

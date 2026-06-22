@@ -36,36 +36,60 @@ export type IRequestBuilder = {
   params?: unknown;
 };
 
-type Category = {
-  id: string;
+export type Category = {
+  id: number;
   name: string;
   slug: string;
 };
 
-interface ProductDTO {
+export interface ProductCategory {
+  id: number;
+  name: string;
+}
+
+export interface ProductDTO {
   id: number;
   title: string;
   slug: string;
   price: number;
-  oldPrice: null;
-  discountPercent: null;
+  oldPrice: number | null;
+  discountPercent: number | null;
   ratingAverage: number;
   ratingCount: number;
   image: string;
+  category: ProductCategory;
 }
 
-
-
-export type CategoryProps = {
+export type ICategories = {
   categories: Category[];
-  setCategoryId:(CategoryId:number)=>void;
+  setCategoryId: (categoryId: number | null) => void;
+  categoryId: number | null;
 };
 
-export type ItemProps = {
+export type IItemCards = {
   todayDeals: ProductDTO[];
   moreItemsToConsider: ProductDTO[];
+  setCurrentPage: (currentPage: number) => void;
+  totalPages: number;
+  currentPage: number;
+  selectedcategoryId: number | null;
+  products: ProductDTO[];
 };
 
-export type CardProps = {
+export type IProduct = {
   card: ProductDTO;
+};
+
+export type INavbar = {
+  search?: string;
+  setSearch?: React.Dispatch<React.SetStateAction<string>>;
+};
+
+export type IProtectedRoute = {
+  children: React.ReactNode;
+  search?: string;
+  setSearch?: React.Dispatch<React.SetStateAction<string>>;
+};
+export type IHome = {
+  search: string;
 };
