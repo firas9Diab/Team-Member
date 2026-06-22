@@ -1,0 +1,93 @@
+.todaydealssection {
+  display: flex;
+  flex-direction: column;
+  padding-top: 100px;
+  padding-left: 128px;
+  padding-bottom: 50px;
+  gap: 46px;
+  background-color: #e6e5e5;
+
+  .title {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 25px;
+    line-height: 30px;
+    color: #000000;
+  }
+}
+
+.moreitemssection {
+  display: flex;
+  flex-direction: column;
+  padding-top: 100px;
+  padding-left: 128px;
+  gap: 46px;
+  padding-bottom: 50px;
+
+  .title {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 25px;
+    line-height: 30px;
+    color: #000000;
+  }
+}
+
+.products {
+  display: flex;
+  flex-direction: row;
+  gap: 49px;
+  overflow-x: scroll;
+}
+
+@media (max-width: 768px) {
+  .todaydealssection {
+    padding: 50px 20px 40px;
+    gap: 30px;
+
+    .title {
+      font-size: 22px;
+      line-height: 28px;
+      text-align: center;
+    }
+  }
+
+  .moreitemssection {
+    padding: 50px 20px 40px;
+    gap: 30px;
+
+    .title {
+      font-size: 22px;
+      line-height: 28px;
+      text-align: center;
+    }
+  }
+
+  .products {
+    gap: 24px;
+    overflow-x: auto;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .todaydealssection {
+    padding-top: 70px;
+    padding-left: 60px;
+    padding-bottom: 50px;
+    gap: 36px;
+  }
+
+  .moreitemssection {
+    padding-top: 70px;
+    padding-left: 60px;
+    padding-bottom: 50px;
+    gap: 36px;
+  }
+
+  .products {
+    gap: 32px;
+    overflow-x: auto;
+  }
+}

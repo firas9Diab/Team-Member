@@ -1,54 +1,55 @@
-import { useState, useRef, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
 import styles from "./Navbar.module.scss";
+import useNavbar from "./useNavbar";
+import Search from "../../../public/Icons/Search.svg";
 
 const Navbar = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const menuRef = useRef<HTMLDivElement>(null);
-const navigation = useNavigate()
-  useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
-      if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
-        setMenuOpen(false);
-      }
-    };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
-
-  const goToSignOut = () => {
-    localStorage.removeItem("token");
-    navigation("/User/Login")
-  };
-  const goToSettings =() =>{
-    navigation("/User/Settings")
-  }
+  const { token, goToSignOut, goToSettings, goToSignup, goToLogin, goToHome } =
+    useNavbar();
 
   return (
-    <nav className={styles.navbar}>
-      <Link to="/" className={styles.brand}>
-        Home
-      </Link>
+    <div className={styles.header}>
+      <div className={styles.logoheader} onClick={goToHome}>
+        CRIO
+      </div>
 
-      <div className={styles.userMenu} ref={menuRef}>
-        <button
-          className={styles.iconBtn}
-          onClick={() => setMenuOpen((prev) => !prev)}
-          aria-label="User menu"
-        >
-          <img src="/user.svg" alt="User" className={styles.userIcon} />
+      <div className={styles.searchinput}>
+        <button className={styles.button}>
+          <img src={Search} alt="Search" />
         </button>
 
-        {menuOpen && (
-          <ul className={styles.dropdown}>
-            <li className={styles.dropdownItem} onClick={goToSettings}>Profile</li>
-            <li className={styles.dropdownItem} onClick={goToSignOut}>
+        <input
+          type="text"
+          placeholder="Search Products Here"
+          className={styles.search}
+        />
+      </div>
+
+      <div className={styles.navordersandauthentication}>
+        <div className={styles.navorders}>Orders</div>
+
+        {!token ? (
+          <div className={styles.authentication}>
+            <span className={styles.clickauth} onClick={goToLogin}>
+              Login In
+            </span>
+            <span>|</span>
+            <span className={styles.clickauth} onClick={goToSignup}>
+              Sign up
+            </span>
+          </div>
+        ) : (
+          <div className={styles.authentication}>
+            <span className={styles.clickauth} onClick={goToSettings}>
+              Profile
+            </span>
+            <span>|</span>
+            <span className={styles.clickauth} onClick={goToSignOut}>
               Logout
-            </li>
-          </ul>
+            </span>
+          </div>
         )}
       </div>
-    </nav>
+    </div>
   );
 };
 

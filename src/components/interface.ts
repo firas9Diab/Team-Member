@@ -14,7 +14,7 @@ export interface Address {
 export type Mode = "Add" | "Edit";
 
 export type IAddressForm = {
-  address: Address|null;
+  address: Address | null;
   mode: Mode;
   setMode: (mode: string) => void;
   handleGetAddresses: () => void;
@@ -33,4 +33,35 @@ export type IRequestBuilder = {
   url: string;
   method?: MethodType;
   data?: unknown;
+};
+
+type Category = {
+  id: string;
+  name: string;
+  slug: string;
+};
+
+interface ProductDTO {
+  id: number;
+  title: string;
+  slug: string;
+  price: number;
+  oldPrice: number | null;
+  discountPercent: number | null;
+  ratingAverage: number;
+  ratingCount: number;
+  image: string;
+}
+
+export type ICategories = {
+  categories: Category[];
+};
+
+export type IItemCards = {
+  todayDeals: ProductDTO[];
+  moreItemsToConsider: ProductDTO[];
+};
+
+export type IProduct = {
+  card: ProductDTO;
 };

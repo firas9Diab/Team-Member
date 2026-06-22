@@ -1,0 +1,22 @@
+import styles from "./Product.module.scss";
+import type { IProduct } from "../../interface";
+
+const Product = ({ card }: IProduct) => {
+  return (
+    <div key={card.id} className={styles.product}>
+      <img src={card.image} alt="" className={styles.productimage} />
+
+      <div className={styles.producttitle}>{card.title}</div>
+
+      <div className={styles.price}>
+        <div className={styles.numberprice}>₹{card.price}</div>
+
+        <button className={styles.buybutton}>
+          <span>Buy Now!</span>
+        </button>
+      </div>
+    </div>
+  );
+};
+
+export default Product;

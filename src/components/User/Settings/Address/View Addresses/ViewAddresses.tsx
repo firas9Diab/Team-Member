@@ -1,8 +1,12 @@
-import type {  IViewAddresses } from "../../../../interface";
-import styles from "../View Addresses/ViewAddresses.module.scss"
+import type { IViewAddresses } from "../../../../interface";
+import styles from "../View Addresses/ViewAddresses.module.scss";
 
-const ViewAddresses = ({ addresses,setSelectedAddress,handleDeleteAddresses,setMode }:  IViewAddresses) => {
-
+const ViewAddresses = ({
+  addresses,
+  setSelectedAddress,
+  handleDeleteAddresses,
+  setMode,
+}: IViewAddresses) => {
   return (
     <>
       {addresses.length > 0 ? (
@@ -62,17 +66,17 @@ const ViewAddresses = ({ addresses,setSelectedAddress,handleDeleteAddresses,setM
       ) : (
         <span>No addresses found.</span>
       )}
-          <button
-              className={styles.cardaddaddresses}
-              onClick={() => {
-                setSelectedAddress(null);
-                setMode("Add");
-              }}
-            >
-              Add Address
-            </button>
+      <button
+        className={styles.cardaddaddresses}
+        onClick={() => {
+          setSelectedAddress(null);
+          setMode("Add");
+        }}
+      >
+        Add Address
+      </button>
     </>
-  )
-}
+  );
+};
 
 export default ViewAddresses;
