@@ -63,7 +63,6 @@ export interface ProductDto{
  }
 
 
-
 export interface INavbar {
   search: string;
  handleSearchChange:(arg0: string)=>void;
@@ -75,4 +74,57 @@ export interface  ICard{
 
 export interface IHome{
   search:string;
+}
+
+export interface ProductDetailsDto{
+  id: number;
+  title: string;
+  slug: string;
+  brand: string;
+  description: string;
+  price: number;
+  oldPrice: number;
+  discountPercent: number;
+  stock: number;
+  ratingAverage: number;
+  ratingCount: number;
+ images: {
+  id: number;
+  url: string;
+  alt: string;
+  sortOrder: number;
+}[];
+}
+
+export interface ProductReviewsDto {
+  items: {
+    id: number;
+    reviewerName: string;
+    rating: number;
+    title: string;
+    comment: string;
+    isVerified: boolean;
+    createdAt: string;
+  }[];
+
+  summary: {
+    average: number;
+    total: number;
+    breakdown: {
+      1: number;
+      2: number;
+      3: number;
+      4: number;
+      5: number;
+    };
+  };
+
+  pagination: {
+    page: number;
+    limit: number;
+    total: number;
+    totalPages: number;
+  };
+
+
 }
