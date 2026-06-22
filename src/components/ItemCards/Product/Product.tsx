@@ -1,7 +1,7 @@
 import styles from "./Product.module.scss";
-import type { CardProps } from "../../interface";
+import type { IProduct } from "../../interface";
 
-const Product = ({ card }: CardProps) => {
+const Product = ({ card }: IProduct) => {
   return (
     <div key={card.id} className={styles.product}>
       <img src={card.image} alt="" className={styles.productimage} />

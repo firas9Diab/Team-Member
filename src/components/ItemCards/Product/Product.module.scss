@@ -24,13 +24,15 @@
   color: rgba(0, 0, 0, 0.79);
 }
 .productimage {
-  border-radius: 21px;
+  border-top-left-radius: 21px;
+  border-top-right-radius: 21px;
   width: 250px;
   height: 250px;
 }
 
 .producttitle {
   padding-left: 15px;
+  padding-right: 15px;
 }
 
 .buybutton {

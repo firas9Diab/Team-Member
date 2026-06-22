@@ -69,3 +69,34 @@ export type ItemProps = {
 export type CardProps = {
   card: ProductDTO;
 };
+
+type Category = {
+  id: string;
+  name: string;
+  slug: string;
+};
+
+interface ProductDTO {
+  id: number;
+  title: string;
+  slug: string;
+  price: number;
+  oldPrice: number | null;
+  discountPercent: number | null;
+  ratingAverage: number;
+  ratingCount: number;
+  image: string;
+}
+
+export type ICategories = {
+  categories: Category[];
+};
+
+export type IItemCards = {
+  todayDeals: ProductDTO[];
+  moreItemsToConsider: ProductDTO[];
+};
+
+export type IProduct = {
+  card: ProductDTO;
+};
