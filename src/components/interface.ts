@@ -74,6 +74,7 @@ export type IItemCards = {
   currentPage: number;
   selectedcategoryId: number | null;
   products: ProductDTO[];
+  search: string | undefined;
 };
 
 export type IProduct = {

@@ -22,7 +22,7 @@ const Home = ({ search }: IHome) => {
 
   return (
     <div className={styles.container}>
-      {!selectedcategoryId && (
+      {!selectedcategoryId && !search && (
         <div className={styles.container1}>
           <p className={styles.pcontainer1}>#Big Fashion Sale</p>
 
@@ -49,8 +49,9 @@ const Home = ({ search }: IHome) => {
         currentPage={currentPage}
         selectedcategoryId={selectedcategoryId}
         products={product}
+        search={search}
       />
-      {!selectedcategoryId && (
+      {!selectedcategoryId && !search && (
         <div className={styles.container5}>
           <div className={styles.inner}>
             <img src={sony} alt="" className={styles.sonyimage} />

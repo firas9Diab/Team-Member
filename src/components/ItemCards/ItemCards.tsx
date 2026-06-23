@@ -10,18 +10,21 @@ const ItemCards = ({
   currentPage,
   selectedcategoryId,
   products,
+  search,
 }: IItemCards) => {
   return (
     <>
       <div className={styles.todaydealssection}>
-        <div className={styles.title}>Today’s Deals</div>
+        <div className={styles.title}>
+          {!selectedcategoryId && !search ? "Today deals" : ""}
+        </div>
 
         <div
           className={
-            !selectedcategoryId ? styles.scrollproducts : styles.products
+            (!selectedcategoryId && !search) ? styles.scrollproducts : styles.products
           }
         >
-          {!selectedcategoryId
+          {!selectedcategoryId && !search
             ? todayDeals.map((todayDeal) => (
                 <Product key={todayDeal.id} card={todayDeal} />
               ))
@@ -54,7 +57,7 @@ const ItemCards = ({
         </ul>
       </div>
 
-      {!selectedcategoryId && (
+      {!selectedcategoryId && !search && (
         <div className={styles.moreitemssection}>
           <div className={styles.title}>More Items to Consider</div>
 

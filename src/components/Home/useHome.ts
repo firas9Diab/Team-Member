@@ -32,14 +32,14 @@ const useHome = (search: string | undefined) => {
       method: "GET",
       params: {
         search: searchValue || undefined,
-        categoryId,
-        page: page,
+        categoryId: categoryId ?? null,
+        page,
         limit: 5,
       },
     });
 
     const mapped = response.data.items;
-    console.log(mapped);
+
     setProduct(mapped);
     setTotalPages(response.data.pagination.totalPages);
   };
@@ -53,7 +53,9 @@ const useHome = (search: string | undefined) => {
   }, [selectedcategoryId, search]);
 
   useEffect(() => {
-    handleGetProduct(currentPage, selectedcategoryId, search);
+    if (selectedcategoryId === null)
+      handleGetProduct(currentPage, null, search);
+    else handleGetProduct(currentPage, selectedcategoryId, search);
   }, [currentPage, selectedcategoryId, search]);
   return {
     categories,
