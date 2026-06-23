@@ -16,7 +16,7 @@
   border-bottom: 1px solid rgba(102, 102, 102, 0.3);
 }
 
-.logoheader {
+.headerLogo {
   cursor: pointer;
   font-family: "Outfit";
   font-style: normal;
@@ -26,7 +26,7 @@
   color: #000000;
 }
 
-.searchinput {
+.searchBox {
   width: 48%;
   display: flex;
   align-items: center;
@@ -36,7 +36,7 @@
   background: white;
 }
 
-.button {
+.searchButton {
   background: transparent;
   border: none;
   display: flex;
@@ -45,12 +45,12 @@
   cursor: pointer;
 }
 
-.button img {
+.searchButton img {
   width: 18px;
   height: 18px;
 }
 
-.search {
+.searchInput {
   border: none;
   padding: 10px;
   flex: 1;
@@ -58,7 +58,7 @@
   outline: none;
 }
 
-.navordersandauthentication {
+.headerActions {
   font-family: "Outfit";
   font-style: normal;
   font-weight: 600;
@@ -70,67 +70,20 @@
   gap: 43px;
 }
 
-.authentication {
+.authLinks {
   display: flex;
   gap: 14px;
 }
 
-.clickauth {
+.authLink {
   cursor: pointer;
 }
 
-.navorders {
+.ordersLink {
   cursor: pointer;
 }
 
-@media (max-width: 768px) {
-  .header {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 18px;
-    padding: 15px 20px 24px;
-  }
-
-  .logoheader {
-    width: 100%;
-    text-align: center;
-  }
-
-  .searchinput {
-    width: 100%;
-    max-width: 100%;
-  }
-
-  .navordersandauthentication {
-    width: 100%;
-    justify-content: center;
-    gap: 24px;
-    font-size: 16px;
-  }
-
-  .authentication {
-    gap: 10px;
-  }
-}
-
-@media (min-width: 768px) and (max-width: 1024px) {
-  .header {
-    justify-content: space-between;
-    gap: 20px;
-    padding: 15px 40px 28px;
-  }
-
-  .searchinput {
-    width: 45%;
-  }
-
-  .navordersandauthentication {
-    gap: 28px;
-    font-size: 17px;
-  }
-}
-
-.usermenu {
+.userMenu {
   display: flex;
   align-items: center;
   position: relative;
@@ -144,24 +97,24 @@
     padding: 15px 20px 24px;
   }
 
-  .logoheader {
+  .headerLogo {
     width: 100%;
     text-align: center;
   }
 
-  .searchinput {
+  .searchBox {
     width: 100%;
     max-width: 100%;
   }
 
-  .navordersandauthentication {
+  .headerActions {
     width: 100%;
     justify-content: center;
     gap: 24px;
     font-size: 16px;
   }
 
-  .authentication {
+  .authLinks {
     gap: 10px;
   }
 
@@ -179,11 +132,11 @@
     padding: 15px 40px 28px;
   }
 
-  .searchinput {
+  .searchBox {
     width: 45%;
   }
 
-  .navordersandauthentication {
+  .headerActions {
     gap: 28px;
     font-size: 17px;
   }

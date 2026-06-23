@@ -11,7 +11,7 @@ const Categories = ({ categories, setCategoryId, categoryId }: ICategories) => {
           onClick={() => setCategoryId(category.id)}
           disabled={categoryId === category.id}
           className={
-            categoryId === category.id ? styles.activecategory : styles.category
+            categoryId === category.id ? styles.activeCategory : styles.category
           }
         >
           {category.name}
@@ -20,7 +20,7 @@ const Categories = ({ categories, setCategoryId, categoryId }: ICategories) => {
 
       <img
         onClick={() => setCategoryId(null)}
-        className={styles.chooses}
+        className={styles.chooseIcon}
         src={chooses}
         alt=""
       />

@@ -3,13 +3,14 @@
   flex-direction: column;
   overflow-x: hidden;
 }
-.fashinsale {
+
+.fashionSale {
   background: #f7f7f7;
   padding-bottom: 150px;
   padding-top: 100px;
   padding-left: 128px;
 
-  .fashinsaleheader1 {
+  .fashionSaleOffer {
     font-family: "Outfit";
     font-style: normal;
     font-weight: 700;
@@ -19,7 +20,7 @@
     color: #000000;
   }
 
-  .fashinsaleparegraph {
+  .fashionSaleDescription {
     font-family: "Inter";
     font-style: normal;
     font-weight: 500;
@@ -29,7 +30,7 @@
   }
 }
 
-.Categories {
+.categories {
   background: #ffffff;
 }
 
@@ -40,10 +41,12 @@
   padding: 44px 50px 50px 43px;
   gap: 46px;
   background-color: #e6e5e5;
+
   .inner {
     gap: 25px;
     display: flex;
   }
+
   .title {
     font-family: "Inter";
     font-style: normal;
@@ -54,7 +57,7 @@
   }
 }
 
-.bluetoothswitch {
+.bluetoothSwitch {
   width: 356px;
   display: flex;
   flex-direction: column;
@@ -70,22 +73,25 @@
   padding: 20px;
   gap: 36px;
 }
-.bluetoothswitchimage {
+
+.bluetoothSwitchImage {
   width: 320px;
 }
+
 @media (max-width: 768px) {
-  .sonyimage {
+  .sonyImage {
     width: 100%;
   }
-  .fashinsale {
+
+  .fashionSale {
     padding: 60px 20px 90px;
 
-    .fashinsaleheader1 {
+    .fashionSaleOffer {
       font-size: 36px;
       line-height: 46px;
     }
 
-    .fashinsaleparegraph {
+    .fashionSaleDescription {
       font-size: 18px;
       line-height: 24px;
     }
@@ -110,32 +116,33 @@
     }
   }
 
-  .bluetoothswitch {
+  .bluetoothSwitch {
     width: 100%;
     max-width: 356px;
     font-size: 18px;
     line-height: 24px;
   }
 
-  .bluetoothswitchimage {
+  .bluetoothSwitchImage {
     width: 100%;
     max-width: 320px;
   }
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {
-  .sonyimage {
+  .sonyImage {
     width: 100%;
   }
-  .fashinsale {
+
+  .fashionSale {
     padding: 80px 60px 120px;
 
-    .fashinsaleheader1 {
+    .fashionSaleOffer {
       font-size: 48px;
       line-height: 60px;
     }
 
-    .fashinsaleparegraph {
+    .fashionSaleDescription {
       font-size: 20px;
       line-height: 26px;
     }
@@ -152,11 +159,11 @@
     }
   }
 
-  .bluetoothswitch {
+  .bluetoothSwitch {
     width: 320px;
   }
 
-  .bluetoothswitchimage {
+  .bluetoothSwitchImage {
     width: 280px;
   }
 }

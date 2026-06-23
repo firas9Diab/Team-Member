@@ -1,5 +1,5 @@
 export interface Address {
-  id: number;
+  id?: number;
   name: string;
   country: string;
   flatHouseBuilding: string;
@@ -8,38 +8,38 @@ export interface Address {
   pincode: string;
   city: string;
   state: string;
-  isDefault: boolean;
+  isDefault?: boolean;
 }
 
-export type Mode = "Add" | "Edit";
+export type Mode = "Add" | "Edit" | "view";
 
 export type IAddressForm = {
   address: Address | null;
   mode: Mode;
-  setMode: (mode: string) => void;
+  setMode: (mode: Mode) => void;
   handleGetAddresses: () => void;
 };
 
 export type IViewAddresses = {
   addresses: Address[];
-  setSelectedAddress: (addresses: Address | null) => void;
-  setMode: (mode: string) => void;
-  handleDeleteAddresses: (addresses: Address) => void;
+  setSelectedAddress: (address: Address | null) => void;
+  setMode: (mode: Mode) => void;
+  handleDeleteAddresses: (address: Address) => void;
 };
 
 export type MethodType = "GET" | "POST" | "PATCH" | "DELETE";
 
-export type IRequestBuilder = {
-  url: string;
-  method?: MethodType;
-  data?: object[] | undefined;
-  params?: object | undefined;
-};
+type ProductType = "today-deals" | "recommended";
 
-export type Category = {
-  id: number;
-  name: string;
-  slug: string;
+type SortBy = "newest" | "price-low" | "price-high" | "rating";
+
+export type ProductParams = {
+  search?: string;
+  categoryId?: number;
+  type?: ProductType;
+  sortBy?: SortBy;
+  page?: number;
+  limit?: number;
 };
 
 export interface ProductCategory {
@@ -59,6 +59,44 @@ export interface ProductDTO {
   image: string;
   category: ProductCategory;
 }
+interface SignInDTO {
+  email: string;
+  password: string;
+}
+interface SignUpDTO {
+  fullName: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+  phone: string;
+}
+
+type ChangeMyDetailsDTO = {
+  fullName: string;
+  phone: string;
+  dateOfBirth: string;
+};
+export type RequestData =
+  | ProductDTO
+  | ProductDTO[]
+  | Address
+  | Address[]
+  | SignInDTO
+  | SignUpDTO
+  | ChangeMyDetailsDTO;
+
+export type IRequestBuilder = {
+  url: string;
+  method?: MethodType;
+  data?: RequestData;
+  params?: ProductParams | undefined;
+};
+
+export type Category = {
+  id: number;
+  name: string;
+  slug: string;
+};
 
 export type ICategories = {
   categories: Category[];
@@ -72,7 +110,7 @@ export type IItemCards = {
   setCurrentPage: (currentPage: number) => void;
   totalPages: number;
   currentPage: number;
-  selectedcategoryId: number | null;
+  selectedCategoryId: number | null;
   products: ProductDTO[];
   search: string | undefined;
   show: boolean;
@@ -92,6 +130,7 @@ export type IProtectedRoute = {
   search?: string;
   setSearch?: (search: string | undefined) => void;
 };
+
 export type IHome = {
   search: string | undefined;
 };

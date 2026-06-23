@@ -15,7 +15,7 @@ const Address = () => {
   } = useAddress();
 
   return (
-    <div className={styles.settingswork}>
+    <div className={styles.addressCard}>
       <h1>
         {mode === "view"
           ? "Your Addresses"
@@ -26,7 +26,7 @@ const Address = () => {
               : ""}
       </h1>
 
-      <div className={styles.settingscards}>
+      <div className={styles.addressContent}>
         {mode === "view" && (
           <ViewAddresses
             addresses={addresses ?? []}

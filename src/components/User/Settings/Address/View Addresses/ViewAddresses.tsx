@@ -11,12 +11,12 @@ const ViewAddresses = ({
     <>
       {addresses.length > 0 ? (
         addresses.map((address) => (
-          <div key={address.id} className={styles.settingscard}>
+          <div key={address.id} className={styles.addressItem}>
             {address.isDefault && (
-              <span className={styles.cardtitle}>Default</span>
+              <span className={styles.defaultBadge}>Default</span>
             )}
 
-            <div className={styles.cardinfo}>
+            <div className={styles.addressInfo}>
               <div>
                 <b>{address.name}</b>
 
@@ -38,13 +38,13 @@ const ViewAddresses = ({
                 </div>
               </div>
 
-              <div className={styles.cardbuttons}>
+              <div className={styles.addressActions}>
                 <button
                   onClick={() => {
                     setSelectedAddress(address);
                     setMode("Edit");
                   }}
-                  className={styles.cardbutton}
+                  className={styles.addressActionButton}
                 >
                   Edit
                 </button>
@@ -55,7 +55,7 @@ const ViewAddresses = ({
                   onClick={() => {
                     handleDeleteAddresses(address);
                   }}
-                  className={styles.cardbutton}
+                  className={styles.addressActionButton}
                 >
                   Remove
                 </button>
@@ -66,8 +66,9 @@ const ViewAddresses = ({
       ) : (
         <span>No addresses found.</span>
       )}
+
       <button
-        className={styles.cardaddaddresses}
+        className={styles.addAddressButton}
         onClick={() => {
           setSelectedAddress(null);
           setMode("Add");

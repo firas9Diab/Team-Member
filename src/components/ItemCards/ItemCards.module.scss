@@ -1,4 +1,4 @@
-.todaydealssection {
+.todayDealsSection {
   display: flex;
   flex-direction: column;
   padding-top: 100px;
@@ -7,7 +7,7 @@
   gap: 46px;
   background-color: #e6e5e5;
 
-  .title {
+  .sectionTitle {
     font-family: "Inter";
     font-style: normal;
     font-weight: 700;
@@ -16,7 +16,8 @@
     color: #000000;
   }
 }
-.list {
+
+.paginationList {
   list-style: none;
   padding: 0;
   display: flex;
@@ -24,7 +25,8 @@
   gap: 12px;
   justify-content: center;
 }
-.moreitemssection {
+
+.moreItemsSection {
   display: flex;
   flex-direction: column;
   padding-top: 100px;
@@ -32,7 +34,7 @@
   gap: 46px;
   padding-bottom: 50px;
 
-  .title {
+  .sectionTitle {
     font-family: "Inter";
     font-style: normal;
     font-weight: 700;
@@ -42,27 +44,27 @@
   }
 }
 
-.scrollproducts {
+.scrollProducts {
   display: flex;
   flex-direction: row;
   gap: 49px;
   overflow-x: scroll;
 }
-.products {
+
+.productGrid {
   justify-content: center;
   display: flex;
   flex-direction: row;
   gap: 49px;
   flex-wrap: wrap;
 }
-.pagebutton {
+
+.pageButton {
   color: rgb(0, 0, 0);
   border: 1px solid #e5e7eb;
-  border-radius: 12px;
   display: inline-block;
   padding: 8px 20px;
   background-color: #e2dfdf;
-
   border-radius: 6px;
   text-decoration: none;
   font-weight: 500;
@@ -72,14 +74,13 @@
     background-color: #535bf2;
   }
 }
-.activepagebutton {
+
+.activePageButton {
   color: white;
   border: 1px solid #e5e7eb;
-  border-radius: 12px;
   display: inline-block;
   padding: 8px 20px;
   background-color: #535bf2;
-
   border-radius: 6px;
   text-decoration: none;
   font-weight: 500;
@@ -87,57 +88,59 @@
 }
 
 @media (max-width: 768px) {
-  .todaydealssection {
+  .todayDealsSection {
     padding: 50px 20px 40px;
     gap: 30px;
 
-    .title {
+    .sectionTitle {
       font-size: 22px;
       line-height: 28px;
       text-align: center;
     }
   }
 
-  .moreitemssection {
+  .moreItemsSection {
     padding: 50px 20px 40px;
     gap: 30px;
 
-    .title {
+    .sectionTitle {
       font-size: 22px;
       line-height: 28px;
       text-align: center;
     }
   }
 
-  .scrollproducts {
+  .scrollProducts {
     gap: 24px;
     overflow-x: auto;
   }
-  .products {
+
+  .productGrid {
     gap: 24px;
   }
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {
-  .todaydealssection {
+  .todayDealsSection {
     padding-top: 70px;
     padding-left: 60px;
     padding-bottom: 50px;
     gap: 36px;
   }
 
-  .moreitemssection {
+  .moreItemsSection {
     padding-top: 70px;
     padding-left: 60px;
     padding-bottom: 50px;
     gap: 36px;
   }
 
-  .scrollproducts {
+  .scrollProducts {
     gap: 32px;
     overflow-x: auto;
   }
-  .products {
+
+  .productGrid {
     gap: 32px;
   }
 }

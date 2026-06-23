@@ -9,13 +9,14 @@ const Footer = () => {
   return (
     <>
       <div className={styles.footer}>
-        <div className={styles.main}>
-          <div className={styles.title}></div>
+        <div className={styles.footerMain}>
+          <div className={styles.footerHeader}></div>
 
-          <div className={styles.texts}>
-            <div className={styles.textsfirst}>
-              <h3>Cateogry</h3>
-              <ul className={styles.textsul}>
+          <div className={styles.footerLinks}>
+            <div className={styles.footerColumn}>
+              <h3>Category</h3>
+
+              <ul className={styles.footerList}>
                 <li>Mobile and computers</li>
                 <li>TV, Appliances, Electronics</li>
                 <li>Men’s Fashion</li>
@@ -28,9 +29,10 @@ const Footer = () => {
               </ul>
             </div>
 
-            <div className={styles.textsfirst}>
-              <div className={styles.shape}></div>
-              <ul className={styles.textsul}>
+            <div className={styles.footerColumn}>
+              <div className={styles.columnSpacer}></div>
+
+              <ul className={styles.footerList}>
                 <li>Car</li>
                 <li>Motor Bikes</li>
                 <li>Book</li>
@@ -42,9 +44,11 @@ const Footer = () => {
                 <li>Groceries</li>
               </ul>
             </div>
-            <div className={styles.textsfirst}>
-              <div className={styles.shape}></div>
-              <ul className={styles.textsul}>
+
+            <div className={styles.footerColumn}>
+              <div className={styles.columnSpacer}></div>
+
+              <ul className={styles.footerList}>
                 <li>Mobile and computers</li>
                 <li>TV, Appliances, Electronics</li>
                 <li>Men’s Fashion</li>
@@ -57,26 +61,28 @@ const Footer = () => {
               </ul>
             </div>
 
-            <div className={styles.line}></div>
+            <div className={styles.footerDivider}></div>
+
             <h3>Payment Partners</h3>
           </div>
 
-          <div className={styles.bottom}>
-            <div className={styles.bottominner}>
+          <div className={styles.footerBottom}>
+            <div className={styles.footerBottomInner}>
               <div>
                 <p>
                   © 2022 - 2023 FreshCart eCommerce. All rights reserved.
                   Powered by Ecommerce.
                 </p>
               </div>
-              <div className={styles.bottomIcons}>
+
+              <div className={styles.socialLinks}>
                 <p>Lets get social</p>
 
-                <img src={insta} alt={insta} />
-                <img src={facebook} alt={facebook} />
-                <img src={twitter} alt={twitter} />
-                <img src={youtube} alt={youtube} />
-                <img src={linkedin} alt={linkedin} />
+                <img src={insta} alt="Instagram" />
+                <img src={facebook} alt="Facebook" />
+                <img src={twitter} alt="Twitter" />
+                <img src={youtube} alt="YouTube" />
+                <img src={linkedin} alt="LinkedIn" />
               </div>
             </div>
           </div>

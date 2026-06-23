@@ -14,11 +14,13 @@
   justify-content: center;
   border: none;
   cursor: pointer;
+
   &:hover {
     background: grey;
   }
 }
-.activecategory {
+
+.activeCategory {
   display: flex;
   width: 124px;
   height: 39px;
@@ -44,6 +46,7 @@
   flex-direction: row;
   flex-wrap: wrap;
 }
-.chooses {
+
+.chooseIcon {
   cursor: pointer;
 }

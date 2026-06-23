@@ -8,17 +8,17 @@ const ItemCards = ({
   setCurrentPage,
   totalPages,
   currentPage,
-  selectedcategoryId,
+  selectedCategoryId,
   products,
   search,
   show,
 }: IItemCards) => {
   return (
     <>
-      <div className={styles.todaydealssection}>
-        <div className={styles.title}>{show ? "Today deals" : ""}</div>
+      <div className={styles.todayDealsSection}>
+        <div className={styles.sectionTitle}>{show ? "Today deals" : ""}</div>
 
-        <div className={show ? styles.scrollproducts : styles.products}>
+        <div className={show ? styles.scrollProducts : styles.productGrid}>
           {show
             ? todayDeals.map((todayDeal) => (
                 <Product key={todayDeal.id} card={todayDeal} />
@@ -28,8 +28,8 @@ const ItemCards = ({
               ))}
         </div>
 
-        <ul className={styles.list}>
-          {selectedcategoryId || search
+        <ul className={styles.paginationList}>
+          {selectedCategoryId || search
             ? new Array(totalPages).fill(0).map((_, i) => {
                 return (
                   <button
@@ -40,8 +40,8 @@ const ItemCards = ({
                     disabled={currentPage === i + 1}
                     className={
                       currentPage === i + 1
-                        ? styles.activepagebutton
-                        : styles.pagebutton
+                        ? styles.activePageButton
+                        : styles.pageButton
                     }
                   >
                     {i + 1}
@@ -53,10 +53,10 @@ const ItemCards = ({
       </div>
 
       {show && (
-        <div className={styles.moreitemssection}>
-          <div className={styles.title}>More Items to Consider</div>
+        <div className={styles.moreItemsSection}>
+          <div className={styles.sectionTitle}>More Items to Consider</div>
 
-          <div className={styles.scrollproducts}>
+          <div className={styles.scrollProducts}>
             {moreItemsToConsider.map((item) => (
               <Product key={item.id} card={item} />
             ))}

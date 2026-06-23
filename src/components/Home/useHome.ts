@@ -7,7 +7,7 @@ const useHome = (search: string | undefined) => {
   const [moreItemsToConsider, setMoreItemsToConsider] = useState([]);
   const [product, setProduct] = useState([]);
   const [totalPages, setTotalPages] = useState<number>(0);
-  const [selectedcategoryId, setSelectedCategoryId] = useState<number | null>(
+  const [selectedCategoryId, setSelectedCategoryId] = useState<number | null>(
     null,
   );
   const [currentPage, setCurrentPage] = useState<number>(1);
@@ -25,7 +25,7 @@ const useHome = (search: string | undefined) => {
 
   const handleGetProduct = async (
     page: number = 1,
-    categoryId: null | number = selectedcategoryId,
+    categoryId: null | number = selectedCategoryId,
     searchValue: string | undefined = search,
   ) => {
     const response = await RequestBuilder({
@@ -33,7 +33,7 @@ const useHome = (search: string | undefined) => {
       method: "GET",
       params: {
         search: searchValue || undefined,
-        categoryId: categoryId ?? null,
+        categoryId: categoryId ?? undefined,
         page,
         limit: 5,
       },
@@ -51,16 +51,12 @@ const useHome = (search: string | undefined) => {
 
   useEffect(() => {
     setCurrentPage(1);
-    setShow(!selectedcategoryId && !search);
-  }, [selectedcategoryId, search]);
+    setShow(!selectedCategoryId && !search);
+  }, [selectedCategoryId, search]);
 
   useEffect(() => {
-    handleGetProduct(
-      currentPage,
-      selectedcategoryId === null ? null : selectedcategoryId,
-      search,
-    );
-  }, [currentPage, selectedcategoryId, search]);
+    handleGetProduct(currentPage, selectedCategoryId, search);
+  }, [currentPage, selectedCategoryId, search]);
   return {
     categories,
     moreItemsToConsider,
@@ -69,7 +65,7 @@ const useHome = (search: string | undefined) => {
     setCurrentPage,
     currentPage,
     totalPages,
-    selectedcategoryId,
+    selectedCategoryId,
     product,
     show,
   };
