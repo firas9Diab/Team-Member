@@ -54,15 +54,17 @@ const ItemCards = ({
         </ul>
       </div>
 
-      <div className={styles.moreitemssection}>
-        <div className={styles.title}>More Items to Consider</div>
+      {!selectedcategoryId && (
+        <div className={styles.moreitemssection}>
+          <div className={styles.title}>More Items to Consider</div>
 
-        <div className={styles.scrollproducts}>
-          {moreItemsToConsider.map((item) => (
-            <Product card={item} />
-          ))}
+          <div className={styles.scrollproducts}>
+            {moreItemsToConsider.map((item) => (
+              <Product card={item} />
+            ))}
+          </div>
         </div>
-      </div>
+      )}
     </>
   );
 };

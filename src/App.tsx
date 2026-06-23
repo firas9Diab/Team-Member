@@ -15,7 +15,10 @@ const App = () => {
         <Route
           path="/"
           element={
-            <ProtectedRoute search={search} setSearch={setSearch}>
+            <ProtectedRoute
+              search={search}
+              setSearch={(s?: string) => setSearch(s ?? "")}
+            >
               <Home search={search} />
             </ProtectedRoute>
           }

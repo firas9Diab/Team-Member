@@ -82,14 +82,14 @@ export type IProduct = {
 
 export type INavbar = {
   search?: string;
-  setSearch?: React.Dispatch<React.SetStateAction<string>>;
+  setSearch?: (search: string | undefined) => void;
 };
 
 export type IProtectedRoute = {
   children: React.ReactNode;
   search?: string;
-  setSearch?: React.Dispatch<React.SetStateAction<string>>;
+  setSearch?: (search: string | undefined) => void;
 };
 export type IHome = {
-  search: string;
+  search: string | undefined;
 };

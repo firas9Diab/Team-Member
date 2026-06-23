@@ -9,7 +9,12 @@ const Navbar = ({ search, setSearch }: INavbar) => {
 
   return (
     <div className={styles.header}>
-      <div className={styles.logoheader} onClick={goToHome}>
+      <div
+        className={styles.logoheader}
+        onClick={() => {
+          goToHome();
+        }}
+      >
         CRIO
       </div>
 
@@ -21,7 +26,7 @@ const Navbar = ({ search, setSearch }: INavbar) => {
         <input
           type="text"
           value={search ?? ""}
-          onChange={(e) => setSearch?.(e.target.value)}
+          onChange={(e) => setSearch?.(e.target.value ?? "")}
           placeholder="Search Products Here"
           className={styles.search}
         />

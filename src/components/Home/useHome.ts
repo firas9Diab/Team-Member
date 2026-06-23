@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import RequestBuilder from "../services/RequestBuilder";
 
-const useHome = (search: string) => {
+const useHome = (search: string | undefined) => {
   const [categories, setCategories] = useState([]);
   const [todayDeals, setTodayDeals] = useState([]);
   const [moreItemsToConsider, setMoreItemsToConsider] = useState([]);
@@ -25,7 +25,7 @@ const useHome = (search: string) => {
   const handleGetProduct = async (
     page: number = 1,
     categoryId: null | number = selectedcategoryId,
-    searchValue: string = search,
+    searchValue: string | undefined = search,
   ) => {
     const response = await RequestBuilder({
       url: "/products",

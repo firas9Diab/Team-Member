@@ -18,7 +18,12 @@ const Categories = ({ categories, setCategoryId, categoryId }: ICategories) => {
         </button>
       ))}
 
-      <img src={chooses} alt="" />
+      <img
+        onClick={() => setCategoryId(null)}
+        className={styles.chooses}
+        src={chooses}
+        alt=""
+      />
     </div>
   );
 };
