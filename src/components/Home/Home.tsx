@@ -18,11 +18,11 @@ const Home = ({ search }: IHome) => {
     totalPages,
     selectedCategoryId,
     product,
-    show,
+    showContainer,
   } = useHome(search);
   return (
     <div className={styles.containers}>
-      {show && (
+      {showContainer && (
         <div className={styles.fashionSale}>
           <p className={styles.fashionSaleTitle}>#Big Fashion Sale</p>
 
@@ -53,10 +53,10 @@ const Home = ({ search }: IHome) => {
         selectedCategoryId={selectedCategoryId}
         products={product}
         search={search}
-        show={show}
+        showContainer={showContainer}
       />
 
-      {show && (
+      {showContainer && (
         <div className={styles.ads}>
           <div className={styles.inner}>
             <img src={sony} alt="" className={styles.sonyImage} />

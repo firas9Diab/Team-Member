@@ -11,7 +11,7 @@ const useHome = (search: string | undefined) => {
     null,
   );
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const [show, setShow] = useState<boolean>(false);
+  const [showContainer, setShowContainer] = useState<boolean>(false);
 
   const handleGetHome = async () => {
     const response = await RequestBuilder({
@@ -51,7 +51,7 @@ const useHome = (search: string | undefined) => {
 
   useEffect(() => {
     setCurrentPage(1);
-    setShow(!selectedCategoryId && !search);
+    setShowContainer(!selectedCategoryId && !search);
   }, [selectedCategoryId, search]);
 
   useEffect(() => {
@@ -67,7 +67,7 @@ const useHome = (search: string | undefined) => {
     totalPages,
     selectedCategoryId,
     product,
-    show,
+    showContainer,
   };
 };
 

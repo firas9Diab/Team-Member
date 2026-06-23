@@ -11,7 +11,7 @@ const Login = () => {
     emailValue,
     handleEmailChange,
     handleSignIn,
-    navigation,
+    navigate,
     visiblePassword,
     handleVisiblePasswordChange,
   } = useLogin();
@@ -84,7 +84,7 @@ const Login = () => {
                     Need a Account?{" "}
                     <span
                       onClick={() => {
-                        navigation("/User/SignUp");
+                        navigate("/User/SignUp");
                       }}
                       className={styles.gotosignup}
                     >

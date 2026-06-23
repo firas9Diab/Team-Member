@@ -11,15 +11,19 @@ const ItemCards = ({
   selectedCategoryId,
   products,
   search,
-  show,
+  showContainer,
 }: IItemCards) => {
   return (
     <>
       <div className={styles.todayDealsSection}>
-        <div className={styles.sectionTitle}>{show ? "Today deals" : ""}</div>
+        <div className={styles.sectionTitle}>
+          {showContainer ? "Today deals" : ""}
+        </div>
 
-        <div className={show ? styles.scrollProducts : styles.productGrid}>
-          {show
+        <div
+          className={showContainer ? styles.scrollProducts : styles.productGrid}
+        >
+          {showContainer
             ? todayDeals.map((todayDeal) => (
                 <Product key={todayDeal.id} card={todayDeal} />
               ))
@@ -52,7 +56,7 @@ const ItemCards = ({
         </ul>
       </div>
 
-      {show && (
+      {showContainer && (
         <div className={styles.moreItemsSection}>
           <div className={styles.sectionTitle}>More Items to Consider</div>
 

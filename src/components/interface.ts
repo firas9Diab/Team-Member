@@ -11,7 +11,7 @@ export interface Address {
   isDefault?: boolean;
 }
 
-export type Mode = "Add" | "Edit" | "view";
+export type Mode = "Add" | "Edit" | "View";
 
 export type IAddressForm = {
   address: Address | null;
@@ -113,7 +113,7 @@ export type IItemCards = {
   selectedCategoryId: number | null;
   products: ProductDTO[];
   search: string | undefined;
-  show: boolean;
+  showContainer: boolean;
 };
 
 export type IProduct = {

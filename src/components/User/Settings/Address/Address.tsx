@@ -17,7 +17,7 @@ const Address = () => {
   return (
     <div className={styles.addressCard}>
       <h1>
-        {mode === "view"
+        {mode === "View"
           ? "Your Addresses"
           : mode === "Edit"
             ? "Your Addresses / Edit Address"
@@ -27,7 +27,7 @@ const Address = () => {
       </h1>
 
       <div className={styles.addressContent}>
-        {mode === "view" && (
+        {mode === "View" && (
           <ViewAddresses
             addresses={addresses ?? []}
             setSelectedAddress={setSelectedAddress}
