@@ -32,6 +32,8 @@ const ProductDetails = () => {
     postReviews,
     selectedImg,
     handleSelectedImgChange,
+    hoveredStar,
+    setHoveredStar,
   } = useProductDetails();
 
   const getPercentage = (star: 1 | 2 | 3 | 4 | 5) =>
@@ -108,7 +110,11 @@ const ProductDetails = () => {
             </div>
           </div>
           <p className={styles.items}>About this item</p>
-          <p className={styles.about}>{productDetails.aboutThisItem}</p>
+          <ul className={styles.about}>
+            {productDetails.features.map((about) => (
+              <li key={about.id}>{about.text}</li>
+            ))}
+          </ul>
         </div>
 
         <div className={styles.images}>
@@ -195,8 +201,10 @@ const ProductDetails = () => {
                         <img
                           key={star}
                           onClick={() => handleRatingChange(star.toString())}
+                          onMouseEnter={() => setHoveredStar(star)}
+                          onMouseLeave={() => setHoveredStar(0)}
                           className={styles.star}
-                          src={star <= rating ? filled : empty}
+                          src={star <= (hoveredStar || rating) ? filled : empty}
                         />
                       ))}
                     </div>
@@ -228,15 +236,17 @@ const ProductDetails = () => {
                   <img src={profile} alt={profile} />
                   <p>{review.reviewerName}</p>
                 </div>
-                <div className={styles.reviewStars}>
-                  {[1, 2, 3, 4, 5].map((star) => (
-                    <img
-                      key={star}
-                      className={styles.starsImg}
-                      src={star <= Math.round(review.rating) ? filled : empty}
-                      alt="star"
-                    />
-                  ))}
+                <div className={styles.reviewTitle}>
+                  <div className={styles.reviewStars}>
+                    {[1, 2, 3, 4, 5].map((star) => (
+                      <img
+                        key={star}
+                        className={styles.starsImg}
+                        src={star <= Math.round(review.rating) ? filled : empty}
+                        alt="star"
+                      />
+                    ))}
+                  </div>
                   <h3>{review.title}</h3>
                 </div>
                 <p>

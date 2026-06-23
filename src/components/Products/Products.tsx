@@ -22,25 +22,32 @@ const Products = ({
         categories={categories}
         handleCategorychange={handleCategorychange}
       />
-      <div className={styles.card}>
-        {products.map((product: ProductDto) => {
-          return <Card key={product.id} Product={product} />;
-        })}
-      </div>
-      <div className={styles.pagination}>
-        <button
-          disabled={page === 1}
-          onClick={() => setPage((prev) => prev - 1)}
-        >
-          Prev
-        </button>
-        <button
-          disabled={page === totalPages}
-          onClick={() => setPage((prev) => prev + 1)}
-        >
-          Next
-        </button>
-      </div>
+
+      {products.length === 0 ? (
+        <h3 className={styles.empty}>no products</h3>
+      ) : (
+        <div>
+          <div className={styles.card}>
+            {products.map((product: ProductDto) => {
+              return <Card key={product.id} Product={product} />;
+            })}
+          </div>
+          <div className={styles.pagination}>
+            <button
+              disabled={page === 1}
+              onClick={() => setPage((prev) => prev - 1)}
+            >
+              Prev
+            </button>
+            <button
+              disabled={page === totalPages}
+              onClick={() => setPage((prev) => prev + 1)}
+            >
+              Next
+            </button>
+          </div>
+        </div>
+      )}
       <Footer />
     </>
   );

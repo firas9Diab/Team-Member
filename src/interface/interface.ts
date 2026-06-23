@@ -98,7 +98,7 @@ export interface ProductDetailsDto{
 
 features:{
 id: number;
-tet:string;
+text:string;
 }[];
 
 aboutThisItem: string[];

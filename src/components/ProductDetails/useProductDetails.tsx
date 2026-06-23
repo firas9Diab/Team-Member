@@ -17,6 +17,7 @@ const useProductDetails = () => {
   const [comment, setComment] = useState("");
   const [showReviewForm, setShowReviewForm] = useState(false);
   const [selectedImg, setSelectedImg] = useState(0);
+  const [hoveredStar, setHoveredStar] = useState(0);
 
   const { id } = useParams();
 
@@ -107,6 +108,8 @@ const useProductDetails = () => {
     postReviews,
     selectedImg,
     handleSelectedImgChange,
+    hoveredStar,
+    setHoveredStar,
   };
 };
 
