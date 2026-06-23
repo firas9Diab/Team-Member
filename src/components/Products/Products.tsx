@@ -48,7 +48,6 @@ const Products = ({
           </div>
         </div>
       )}
-      <Footer />
     </>
   );
 };

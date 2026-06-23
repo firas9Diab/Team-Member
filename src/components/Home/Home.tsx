@@ -66,8 +66,6 @@ const Home = ({ search }: IHome) => {
               <p>Shop now</p>
             </div>
           </div>
-
-          <Footer />
         </>
       )}
     </>

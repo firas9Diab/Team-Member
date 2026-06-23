@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import type {
   ProductDetailsDto,
-  ProductReviewsDto,
+  ProductReviewDTO,
 } from "../../interface/interface";
 import requestBuilder from "../utility/requestBuilder";
 import { useParams } from "react-router-dom";
@@ -9,7 +9,7 @@ import { useParams } from "react-router-dom";
 const useProductDetails = () => {
   const [productDetails, setProductDetails] =
     useState<ProductDetailsDto | null>(null);
-  const [reviews, setReviews] = useState<ProductReviewsDto | null>(null);
+  const [reviews, setReviews] = useState<ProductReviewDTO[]>([]);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [rating, setRating] = useState<number>(5);
@@ -48,7 +48,6 @@ const useProductDetails = () => {
         method: "GET",
       });
       setProductDetails(response.data);
-      console.log(response.data);
     } catch (error) {
       console.error("Error fetching user data:", error);
     }
@@ -60,8 +59,7 @@ const useProductDetails = () => {
         url: `http://localhost:3000/products/${id}/reviews?page=${page}&limit=10`,
         method: "GET",
       });
-      console.log(response.data);
-      setReviews(response.data);
+      setReviews([response.data]);
       setTotalPages(response.data.pagination.totalPages);
     } catch (error) {
       console.error("Error fetching user data:", error);
@@ -92,6 +90,9 @@ const useProductDetails = () => {
 
   useEffect(() => {
     getProductsDetails();
+  }, [id]);
+
+  useEffect(() => {
     getReviews();
   }, [id, page]);
 

@@ -53,17 +53,12 @@ const App = () => {
             </ProtectedRoute>
           }
         />
-        <Route
-          path="/Footer"
-          element={
-            <ProtectedRoute>
-              <Footer />
-            </ProtectedRoute>
-          }
-        />
+
         <Route path="/sign" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
       </Routes>
+
+      <Footer />
     </div>
   );
 };

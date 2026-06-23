@@ -1,16 +1,9 @@
-import { useState } from "react";
 import type { ICard } from "../../../interface/interface";
 import styles from "./Card.module.scss";
 import { useNavigate } from "react-router-dom";
 
 const Card = ({ Product }: ICard) => {
-  const [productId, setProductId] = useState(0);
-
   const navigate = useNavigate();
-
-  const handleProductIdChange = (value: number) => {
-    setProductId(value);
-  };
 
   return (
     <>

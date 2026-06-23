@@ -89,22 +89,14 @@ export interface ProductDetailsDto{
   ratingAverage: number;
   ratingCount: number;
 
- images: {
-  id: number;
-  url: string;
-  alt: string;
-  sortOrder: number;
-}[];
+images: ProductImage [];
 
-features:{
-id: number;
-text:string;
-}[];
+features:features[];
 
 aboutThisItem: string[];
 }
 
-export interface ProductReviewsDto {
+export interface ProductReviewDTO{
   items: {
     id: number;
     reviewerName: string;
@@ -128,7 +120,18 @@ export interface ProductReviewsDto {
     totalPages: number;
   };
 
+}
 
+interface ProductImage {
+id: number;
+url: string;
+alt: string;
+sortOrder: number;
+}
+
+interface  features{
+  id: number;
+text:string;
 }
 
 export type Star = 1 | 2 | 3 | 4 | 5;
