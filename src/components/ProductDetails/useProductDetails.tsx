@@ -16,6 +16,7 @@ const useProductDetails = () => {
   const [title, setTitle] = useState("");
   const [comment, setComment] = useState("");
   const [showReviewForm, setShowReviewForm] = useState(false);
+  const [selectedImg, setSelectedImg] = useState(0);
 
   const { id } = useParams();
 
@@ -31,6 +32,10 @@ const useProductDetails = () => {
     setComment(value);
   };
 
+  const handleSelectedImgChange = (value: number) => {
+    setSelectedImg(value);
+  };
+
   const getProductsDetails = async () => {
     try {
       const response = await requestBuilder({
@@ -38,6 +43,7 @@ const useProductDetails = () => {
         method: "GET",
       });
       setProductDetails(response.data);
+      console.log(response.data);
     } catch (error) {
       console.error("Error fetching user data:", error);
     }
@@ -49,7 +55,7 @@ const useProductDetails = () => {
         url: `http://localhost:3000/products/${id}/reviews?page=${page}&limit=10`,
         method: "GET",
       });
-
+      console.log(response.data);
       setReviews(response.data);
       setTotalPages(response.data.pagination.totalPages);
     } catch (error) {
@@ -99,6 +105,8 @@ const useProductDetails = () => {
     setShowReviewForm,
     showReviewForm,
     postReviews,
+    selectedImg,
+    handleSelectedImgChange,
   };
 };
 

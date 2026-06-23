@@ -8,6 +8,7 @@ import Settings from "./components/Settings/Settings";
 import { useState } from "react";
 import Navbar from "./components/Navbar/Navbar";
 import ProductDetails from "./components/ProductDetails/ProductDetails";
+import Footer from "./components/Footer/Footer";
 
 const App = () => {
   const location = useLocation();
@@ -49,6 +50,14 @@ const App = () => {
           element={
             <ProtectedRoute>
               <ProductDetails />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/Footer"
+          element={
+            <ProtectedRoute>
+              <Footer />
             </ProtectedRoute>
           }
         />

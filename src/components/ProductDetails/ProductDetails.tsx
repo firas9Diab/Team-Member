@@ -9,12 +9,9 @@ import warranty from "../../Assets/warranty.svg";
 import brand from "../../Assets/brand.svg";
 import delivered from "../../Assets/delivered.svg";
 import payment from "../../Assets/payment.svg";
-import stars5 from "../../Assets/stars5.svg";
-import stars4 from "../../Assets/stars4.svg";
-import stars3 from "../../Assets/stars3.svg";
-import stars2 from "../../Assets/stars2.svg";
-import stars1 from "../../Assets/stars1.svg";
 import profile from "../../Assets/profile.svg";
+import filled from "../../Assets/filled.svg";
+import empty from "../../Assets/empty.svg";
 import moment from "moment";
 
 const ProductDetails = () => {
@@ -33,7 +30,15 @@ const ProductDetails = () => {
     setShowReviewForm,
     showReviewForm,
     postReviews,
+    selectedImg,
+    handleSelectedImgChange,
   } = useProductDetails();
+
+  const getPercentage = (star: 1 | 2 | 3 | 4 | 5) =>
+    ((reviews?.summary.breakdown[star] || 0) / (reviews?.summary.total || 1)) *
+    100;
+
+  const average = reviews?.summary?.average ?? 0;
 
   if (!productDetails || !reviews) {
     return <p>Not Found</p>;
@@ -44,11 +49,23 @@ const ProductDetails = () => {
       <div>
         <div>
           <div className={styles.details}>
+            <div className={styles.small}>
+              {productDetails.images.map((img, index) => (
+                <button onClick={() => handleSelectedImgChange(index)}>
+                  <img
+                    key={img.id}
+                    className={styles.smallImages}
+                    src={img.url}
+                    alt={img.alt}
+                  />
+                </button>
+              ))}
+            </div>
             <div>
               <img
                 className={styles.detailsimg}
-                src={productDetails.images[0]?.url}
-                alt={productDetails.images[0]?.alt}
+                src={productDetails.images[selectedImg]?.url}
+                alt={productDetails.images[selectedImg]?.alt}
               />
             </div>
             <div className={styles.description}>
@@ -58,9 +75,16 @@ const ProductDetails = () => {
                 <p className={styles.ratingAvg}>
                   {productDetails.ratingAverage}
                 </p>
-                <img src={stars} alt="stars" />
+                {[1, 2, 3, 4, 5].map((star) => (
+                  <img
+                    key={star}
+                    className={styles.starsImg}
+                    src={star <= Math.round(average) ? filled : empty}
+                    alt="star"
+                  />
+                ))}
                 <p className={styles.ratingCount}>
-                  {productDetails.ratingCount} ratings
+                  {reviews.items.length} ratings
                 </p>
               </div>
               <hr />
@@ -84,6 +108,7 @@ const ProductDetails = () => {
             </div>
           </div>
           <p className={styles.items}>About this item</p>
+          <p className={styles.about}>{productDetails.aboutThisItem}</p>
         </div>
 
         <div className={styles.images}>
@@ -100,7 +125,18 @@ const ProductDetails = () => {
           <div>
             <div>
               <div className={styles.reviewsStars}>
-                <img src={stars} alt="stars" />
+                {[1, 2, 3, 4, 5].map((star) => (
+                  <img
+                    key={star}
+                    className={styles.starsImg}
+                    src={
+                      star <= Math.round(reviews.summary.average)
+                        ? filled
+                        : empty
+                    }
+                    alt="star"
+                  />
+                ))}
                 <p>{reviews.summary.average} out of 5</p>
               </div>
               <p className={styles.global}>
@@ -110,28 +146,38 @@ const ProductDetails = () => {
             <div className={styles.left}>
               <div className={styles.ratings}>
                 <p>5 star </p>
-                <img src={stars5} alt="stars" />
-                <p>{reviews.summary.breakdown[5]}%</p>
+                <div className={styles.progressbar}>
+                  <div style={{ width: `${getPercentage(5)}%` }}></div>
+                </div>
+                <p>{getPercentage(5).toFixed(1)}%</p>
               </div>
               <div className={styles.ratings}>
                 <p>4 star </p>
-                <img src={stars4} alt="stars" />
-                <p>{reviews.summary.breakdown[4]}%</p>
+                <div className={styles.progressbar}>
+                  <div style={{ width: `${getPercentage(4)}%` }}></div>
+                </div>
+                <p>{getPercentage(4).toFixed(1)}%</p>
               </div>
               <div className={styles.ratings}>
                 <p>3 star </p>
-                <img src={stars3} alt="stars" />
-                <p>{reviews.summary.breakdown[3]}%</p>
+                <div className={styles.progressbar}>
+                  <div style={{ width: `${getPercentage(3)}%` }}></div>
+                </div>
+                <p>{getPercentage(3).toFixed(1)}%</p>
               </div>
               <div className={styles.ratings}>
                 <p>2 star </p>
-                <img src={stars2} alt="stars" />
-                <p>{reviews.summary.breakdown[2]}%</p>
+                <div className={styles.progressbar}>
+                  <div style={{ width: `${getPercentage(2)}%` }}></div>
+                </div>
+                <p>{getPercentage(2).toFixed(1)}%</p>
               </div>
               <div className={styles.ratings}>
                 <p>1 star </p>
-                <img src={stars1} alt="stars" />
-                <p>{reviews.summary.breakdown[1]}%</p>
+                <div className={styles.progressbar}>
+                  <div style={{ width: `${getPercentage(1)}%` }}></div>
+                </div>
+                <p>{getPercentage(1).toFixed(1)}%</p>
               </div>
               <div className={styles.write}>
                 <p className={styles.writeTitle}>Review the Product</p>
@@ -144,12 +190,16 @@ const ProductDetails = () => {
 
                 {showReviewForm && (
                   <div className={styles.reviewForm}>
-                    <input
-                      type="number"
-                      value={rating}
-                      onChange={(e) => handleRatingChange(e.target.value)}
-                      placeholder="Rating"
-                    />
+                    <div className={styles.starRating}>
+                      {[1, 2, 3, 4, 5].map((star) => (
+                        <img
+                          key={star}
+                          onClick={() => handleRatingChange(star.toString())}
+                          className={styles.star}
+                          src={star <= rating ? filled : empty}
+                        />
+                      ))}
+                    </div>
 
                     <input
                       type="text"
@@ -179,7 +229,14 @@ const ProductDetails = () => {
                   <p>{review.reviewerName}</p>
                 </div>
                 <div className={styles.reviewStars}>
-                  <img src={stars} alt="stars" />
+                  {[1, 2, 3, 4, 5].map((star) => (
+                    <img
+                      key={star}
+                      className={styles.starsImg}
+                      src={star <= Math.round(review.rating) ? filled : empty}
+                      alt="star"
+                    />
+                  ))}
                   <h3>{review.title}</h3>
                 </div>
                 <p>

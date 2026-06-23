@@ -88,12 +88,20 @@ export interface ProductDetailsDto{
   stock: number;
   ratingAverage: number;
   ratingCount: number;
+
  images: {
   id: number;
   url: string;
   alt: string;
   sortOrder: number;
 }[];
+
+features:{
+id: number;
+tet:string;
+}[];
+
+aboutThisItem: string[];
 }
 
 export interface ProductReviewsDto {

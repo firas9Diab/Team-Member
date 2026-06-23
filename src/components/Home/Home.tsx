@@ -28,6 +28,7 @@ const Home = ({ search }: IHome) => {
             handleCategorychange={handleCategorychange}
             categories={categories}
           />
+          <Footer />
         </div>
       ) : (
         <>
