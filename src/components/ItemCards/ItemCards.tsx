@@ -21,7 +21,9 @@ const ItemCards = ({
 
         <div
           className={
-            (!selectedcategoryId && !search) ? styles.scrollproducts : styles.products
+            !selectedcategoryId && !search
+              ? styles.scrollproducts
+              : styles.products
           }
         >
           {!selectedcategoryId && !search
