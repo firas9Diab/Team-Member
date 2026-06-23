@@ -1,18 +1,18 @@
 import Footer from "../Footer/Footer";
 import useProductDetails from "./useProductDetails";
 import styles from "./ProductDetails.module.scss";
-import stars from "../../Assets/stars.svg";
-import free from "../../Assets/free.svg";
-import cod from "../../Assets/cod.svg";
-import returns from "../../Assets/returns.svg";
-import warranty from "../../Assets/warranty.svg";
-import brand from "../../Assets/brand.svg";
-import delivered from "../../Assets/delivered.svg";
-import payment from "../../Assets/payment.svg";
-import profile from "../../Assets/profile.svg";
-import filled from "../../Assets/filled.svg";
-import empty from "../../Assets/empty.svg";
+import Free from "../../Assets/free.svg";
+import Cod from "../../Assets/cod.svg";
+import Returns from "../../Assets/returns.svg";
+import Warranty from "../../Assets/warranty.svg";
+import Brand from "../../Assets/brand.svg";
+import Delivered from "../../Assets/delivered.svg";
+import Payment from "../../Assets/payment.svg";
+import Profile from "../../Assets/profile.svg";
+import Filled from "../../Assets/filled.svg";
+import Empty from "../../Assets/empty.svg";
 import moment from "moment";
+import type { Star } from "../../interface/interface";
 
 const ProductDetails = () => {
   const {
@@ -34,9 +34,32 @@ const ProductDetails = () => {
     handleSelectedImgChange,
     hoveredStar,
     setHoveredStar,
+    starRating,
+    starBar,
   } = useProductDetails();
 
-  const getPercentage = (star: 1 | 2 | 3 | 4 | 5) =>
+  const images = [
+    { name: "free", src: Free },
+    { name: "cod", src: Cod },
+    { name: "returns", src: Returns },
+    { name: "warranty", src: Warranty },
+    { name: "brand", src: Brand },
+    { name: "delivered", src: Delivered },
+    { name: "payment", src: Payment },
+  ];
+
+  const renderStars = (rating: number) => {
+    return starRating.map((star) => (
+      <img
+        key={star}
+        className={styles.starsImg}
+        src={star <= Math.round(rating) ? Filled : Empty}
+        alt="star"
+      />
+    ));
+  };
+
+  const getPercentage = (star: Star) =>
     ((reviews?.summary.breakdown[star] || 0) / (reviews?.summary.total || 1)) *
     100;
 
@@ -65,7 +88,7 @@ const ProductDetails = () => {
             </div>
             <div>
               <img
-                className={styles.detailsimg}
+                className={styles.detailsImg}
                 src={productDetails.images[selectedImg]?.url}
                 alt={productDetails.images[selectedImg]?.alt}
               />
@@ -77,17 +100,13 @@ const ProductDetails = () => {
                 <p className={styles.ratingAvg}>
                   {productDetails.ratingAverage}
                 </p>
-                {[1, 2, 3, 4, 5].map((star) => (
-                  <img
-                    key={star}
-                    className={styles.starsImg}
-                    src={star <= Math.round(average) ? filled : empty}
-                    alt="star"
-                  />
-                ))}
-                <p className={styles.ratingCount}>
-                  {reviews.items.length} ratings
-                </p>
+
+                <div className={styles.ratings}>
+                  {renderStars(average)}
+                  <p className={styles.ratingCount}>
+                    {reviews.items.length} ratings
+                  </p>
+                </div>
               </div>
               <hr />
               <div className={styles.discount}>
@@ -116,33 +135,20 @@ const ProductDetails = () => {
             ))}
           </ul>
         </div>
-
         <div className={styles.images}>
-          <img src={free} alt="free" />
-          <img src={cod} alt="cod" />
-          <img src={returns} alt="returns" />
-          <img src={warranty} alt="warranty" />
-          <img src={brand} alt="brand" />
-          <img src={delivered} alt="delivered" />
-          <img src={payment} alt="payment" />
+          {images.map((image) => (
+            <div key={image.name}>
+              <img src={image.src} alt={image.name} />
+            </div>
+          ))}
         </div>
+
         <p className={styles.items}>Customer Review</p>
         <div className={styles.reviews}>
           <div>
             <div>
               <div className={styles.reviewsStars}>
-                {[1, 2, 3, 4, 5].map((star) => (
-                  <img
-                    key={star}
-                    className={styles.starsImg}
-                    src={
-                      star <= Math.round(reviews.summary.average)
-                        ? filled
-                        : empty
-                    }
-                    alt="star"
-                  />
-                ))}
+                {renderStars(average)}
                 <p>{reviews.summary.average} out of 5</p>
               </div>
               <p className={styles.global}>
@@ -150,41 +156,18 @@ const ProductDetails = () => {
               </p>
             </div>
             <div className={styles.left}>
-              <div className={styles.ratings}>
-                <p>5 star </p>
-                <div className={styles.progressbar}>
-                  <div style={{ width: `${getPercentage(5)}%` }}></div>
+              {starBar.map((star: any) => (
+                <div key={star} className={styles.ratings}>
+                  <p>{star} star</p>
+
+                  <div className={styles.progressbar}>
+                    <div style={{ width: `${getPercentage(star)}%` }}></div>
+                  </div>
+
+                  <p>{getPercentage(star).toFixed(1)}%</p>
                 </div>
-                <p>{getPercentage(5).toFixed(1)}%</p>
-              </div>
-              <div className={styles.ratings}>
-                <p>4 star </p>
-                <div className={styles.progressbar}>
-                  <div style={{ width: `${getPercentage(4)}%` }}></div>
-                </div>
-                <p>{getPercentage(4).toFixed(1)}%</p>
-              </div>
-              <div className={styles.ratings}>
-                <p>3 star </p>
-                <div className={styles.progressbar}>
-                  <div style={{ width: `${getPercentage(3)}%` }}></div>
-                </div>
-                <p>{getPercentage(3).toFixed(1)}%</p>
-              </div>
-              <div className={styles.ratings}>
-                <p>2 star </p>
-                <div className={styles.progressbar}>
-                  <div style={{ width: `${getPercentage(2)}%` }}></div>
-                </div>
-                <p>{getPercentage(2).toFixed(1)}%</p>
-              </div>
-              <div className={styles.ratings}>
-                <p>1 star </p>
-                <div className={styles.progressbar}>
-                  <div style={{ width: `${getPercentage(1)}%` }}></div>
-                </div>
-                <p>{getPercentage(1).toFixed(1)}%</p>
-              </div>
+              ))}
+
               <div className={styles.write}>
                 <p className={styles.writeTitle}>Review the Product</p>
                 <p className={styles.writeP}>
@@ -197,14 +180,14 @@ const ProductDetails = () => {
                 {showReviewForm && (
                   <div className={styles.reviewForm}>
                     <div className={styles.starRating}>
-                      {[1, 2, 3, 4, 5].map((star) => (
+                      {starRating.map((star) => (
                         <img
                           key={star}
                           onClick={() => handleRatingChange(star.toString())}
                           onMouseEnter={() => setHoveredStar(star)}
                           onMouseLeave={() => setHoveredStar(0)}
                           className={styles.star}
-                          src={star <= (hoveredStar || rating) ? filled : empty}
+                          src={star <= (hoveredStar || rating) ? Filled : Empty}
                         />
                       ))}
                     </div>
@@ -223,7 +206,7 @@ const ProductDetails = () => {
                       placeholder="Write your review"
                     />
 
-                    <button onClick={() => postReviews()}>Submit Review</button>
+                    <button onClick={postReviews}>Submit Review</button>
                   </div>
                 )}
               </div>
@@ -233,19 +216,12 @@ const ProductDetails = () => {
             {reviews?.items.map((review) => (
               <div key={review.id}>
                 <div className={styles.reviewProfile}>
-                  <img src={profile} alt={profile} />
+                  <img src={Profile} alt={Profile} />
                   <p>{review.reviewerName}</p>
                 </div>
                 <div className={styles.reviewTitle}>
                   <div className={styles.reviewStars}>
-                    {[1, 2, 3, 4, 5].map((star) => (
-                      <img
-                        key={star}
-                        className={styles.starsImg}
-                        src={star <= Math.round(review.rating) ? filled : empty}
-                        alt="star"
-                      />
-                    ))}
+                    {renderStars(review.rating)}
                   </div>
                   <h3>{review.title}</h3>
                 </div>

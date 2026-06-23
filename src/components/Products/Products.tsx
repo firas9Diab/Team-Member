@@ -23,7 +23,7 @@ const Products = ({
         handleCategorychange={handleCategorychange}
       />
 
-      {products.length === 0 ? (
+      {!products.length ? (
         <h3 className={styles.empty}>no products</h3>
       ) : (
         <div>

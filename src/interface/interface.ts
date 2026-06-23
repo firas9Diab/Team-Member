@@ -118,13 +118,7 @@ export interface ProductReviewsDto {
   summary: {
     average: number;
     total: number;
-    breakdown: {
-      1: number;
-      2: number;
-      3: number;
-      4: number;
-      5: number;
-    };
+    breakdown:  Record<Star, number>
   };
 
   pagination: {
@@ -136,3 +130,5 @@ export interface ProductReviewsDto {
 
 
 }
+
+export type Star = 1 | 2 | 3 | 4 | 5;

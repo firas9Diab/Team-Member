@@ -37,6 +37,10 @@ const useProductDetails = () => {
     setSelectedImg(value);
   };
 
+  const starRating = [1, 2, 3, 4, 5];
+
+  const starBar = [5, 4, 3, 2, 1];
+
   const getProductsDetails = async () => {
     try {
       const response = await requestBuilder({
@@ -110,6 +114,8 @@ const useProductDetails = () => {
     handleSelectedImgChange,
     hoveredStar,
     setHoveredStar,
+    starRating,
+    starBar,
   };
 };
 
