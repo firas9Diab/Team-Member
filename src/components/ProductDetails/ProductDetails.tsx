@@ -156,7 +156,7 @@ const ProductDetails = () => {
               </p>
             </div>
             <div className={styles.left}>
-              {starBar.map((star: any) => (
+              {starBar.map((star: Star) => (
                 <div key={star} className={styles.ratings}>
                   <p>{star} star</p>
 
