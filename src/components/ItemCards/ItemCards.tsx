@@ -11,22 +11,15 @@ const ItemCards = ({
   selectedcategoryId,
   products,
   search,
+  show,
 }: IItemCards) => {
   return (
     <>
       <div className={styles.todaydealssection}>
-        <div className={styles.title}>
-          {!selectedcategoryId && !search ? "Today deals" : ""}
-        </div>
+        <div className={styles.title}>{show ? "Today deals" : ""}</div>
 
-        <div
-          className={
-            !selectedcategoryId && !search
-              ? styles.scrollproducts
-              : styles.products
-          }
-        >
-          {!selectedcategoryId && !search
+        <div className={show ? styles.scrollproducts : styles.products}>
+          {show
             ? todayDeals.map((todayDeal) => (
                 <Product key={todayDeal.id} card={todayDeal} />
               ))
@@ -36,7 +29,7 @@ const ItemCards = ({
         </div>
 
         <ul className={styles.list}>
-          {selectedcategoryId
+          {selectedcategoryId || search
             ? new Array(totalPages).fill(0).map((_, i) => {
                 return (
                   <button
@@ -59,13 +52,13 @@ const ItemCards = ({
         </ul>
       </div>
 
-      {!selectedcategoryId && !search && (
+      {show && (
         <div className={styles.moreitemssection}>
           <div className={styles.title}>More Items to Consider</div>
 
           <div className={styles.scrollproducts}>
             {moreItemsToConsider.map((item) => (
-              <Product card={item} />
+              <Product key={item.id} card={item} />
             ))}
           </div>
         </div>

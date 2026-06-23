@@ -1,15 +1,15 @@
-.container {
+.containers {
   display: flex;
   flex-direction: column;
   overflow-x: hidden;
 }
-.container1 {
+.fashinsale {
   background: #f7f7f7;
   padding-bottom: 150px;
   padding-top: 100px;
   padding-left: 128px;
 
-  .h1container1 {
+  .fashinsaleheader1 {
     font-family: "Outfit";
     font-style: normal;
     font-weight: 700;
@@ -19,7 +19,7 @@
     color: #000000;
   }
 
-  .pcontainer1 {
+  .fashinsaleparegraph {
     font-family: "Inter";
     font-style: normal;
     font-weight: 500;
@@ -29,11 +29,11 @@
   }
 }
 
-.container2 {
+.Categories {
   background: #ffffff;
 }
 
-.container5 {
+.ads {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -77,21 +77,21 @@
   .sonyimage {
     width: 100%;
   }
-  .container1 {
+  .fashinsale {
     padding: 60px 20px 90px;
 
-    .h1container1 {
+    .fashinsaleheader1 {
       font-size: 36px;
       line-height: 46px;
     }
 
-    .pcontainer1 {
+    .fashinsaleparegraph {
       font-size: 18px;
       line-height: 24px;
     }
   }
 
-  .container5 {
+  .ads {
     flex-direction: column;
     padding: 50px 20px;
     gap: 30px;
@@ -127,21 +127,21 @@
   .sonyimage {
     width: 100%;
   }
-  .container1 {
+  .fashinsale {
     padding: 80px 60px 120px;
 
-    .h1container1 {
+    .fashinsaleheader1 {
       font-size: 48px;
       line-height: 60px;
     }
 
-    .pcontainer1 {
+    .fashinsaleparegraph {
       font-size: 20px;
       line-height: 26px;
     }
   }
 
-  .container5 {
+  .ads {
     padding: 70px 40px 50px;
     gap: 35px;
     flex-wrap: wrap;

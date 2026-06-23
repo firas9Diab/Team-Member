@@ -9,12 +9,7 @@ const Navbar = ({ search, setSearch }: INavbar) => {
 
   return (
     <div className={styles.header}>
-      <div
-        className={styles.logoheader}
-        onClick={() => {
-          goToHome();
-        }}
-      >
+      <div className={styles.logoheader} onClick={goToHome}>
         CRIO
       </div>
 

@@ -32,8 +32,8 @@ export type MethodType = "GET" | "POST" | "PATCH" | "DELETE";
 export type IRequestBuilder = {
   url: string;
   method?: MethodType;
-  data?: unknown;
-  params?: unknown;
+  data?: object[] | undefined;
+  params?: object | undefined;
 };
 
 export type Category = {
@@ -75,6 +75,7 @@ export type IItemCards = {
   selectedcategoryId: number | null;
   products: ProductDTO[];
   search: string | undefined;
+  show: boolean;
 };
 
 export type IProduct = {

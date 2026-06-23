@@ -11,6 +11,7 @@ const useHome = (search: string | undefined) => {
     null,
   );
   const [currentPage, setCurrentPage] = useState<number>(1);
+  const [show, setShow] = useState<boolean>(false);
 
   const handleGetHome = async () => {
     const response = await RequestBuilder({
@@ -50,12 +51,15 @@ const useHome = (search: string | undefined) => {
 
   useEffect(() => {
     setCurrentPage(1);
+    setShow(!selectedcategoryId && !search);
   }, [selectedcategoryId, search]);
 
   useEffect(() => {
-    if (selectedcategoryId === null)
-      handleGetProduct(currentPage, null, search);
-    else handleGetProduct(currentPage, selectedcategoryId, search);
+    handleGetProduct(
+      currentPage,
+      selectedcategoryId === null ? null : selectedcategoryId,
+      search,
+    );
   }, [currentPage, selectedcategoryId, search]);
   return {
     categories,
@@ -67,7 +71,7 @@ const useHome = (search: string | undefined) => {
     totalPages,
     selectedcategoryId,
     product,
-    search,
+    show,
   };
 };
 
