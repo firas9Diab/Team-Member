@@ -134,3 +134,11 @@ export type IProtectedRoute = {
 export type IHome = {
   search: string | undefined;
 };
+
+export type FooterCategory = {
+  id: string | number;
+  title?: string;
+  items: string[];
+};
+
+export type FooterCategories = FooterCategory[];

@@ -2,7 +2,7 @@ import styles from "./Footer.module.scss";
 import useFooter from "./useFooter";
 
 const Footer = () => {
-  const { socialMedias } = useFooter();
+  const { socialMedias, footerCategories } = useFooter();
 
   return (
     <div className={styles.footer}>
@@ -10,53 +10,21 @@ const Footer = () => {
         <div className={styles.footerHeader}></div>
 
         <div className={styles.footerLinks}>
-          <div className={styles.footerColumn}>
-            <h3>Category</h3>
+          {footerCategories.map((column) => (
+            <div className={styles.footerColumn} key={column.id}>
+              {column.title ? (
+                <h3>{column.title}</h3>
+              ) : (
+                <div className={styles.columnSpacer}></div>
+              )}
 
-            <ul className={styles.footerList}>
-              <li>Mobile and computers</li>
-              <li>TV, Appliances, Electronics</li>
-              <li>Men’s Fashion</li>
-              <li>Home</li>
-              <li>Kitchen</li>
-              <li>Beauty</li>
-              <li>Health</li>
-              <li>Sports</li>
-              <li>Baby Products</li>
-            </ul>
-          </div>
-
-          <div className={styles.footerColumn}>
-            <div className={styles.columnSpacer}></div>
-
-            <ul className={styles.footerList}>
-              <li>Car</li>
-              <li>Motor Bikes</li>
-              <li>Book</li>
-              <li>Video Games</li>
-              <li>Shoes</li>
-              <li>Toys</li>
-              <li>Consoles</li>
-              <li>Accessories</li>
-              <li>Groceries</li>
-            </ul>
-          </div>
-
-          <div className={styles.footerColumn}>
-            <div className={styles.columnSpacer}></div>
-
-            <ul className={styles.footerList}>
-              <li>Mobile and computers</li>
-              <li>TV, Appliances, Electronics</li>
-              <li>Men’s Fashion</li>
-              <li>Home</li>
-              <li>Kitchen</li>
-              <li>Beauty</li>
-              <li>Health</li>
-              <li>Sports</li>
-              <li>Baby Products</li>
-            </ul>
-          </div>
+              <ul className={styles.footerList}>
+                {column.items.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
 
           <div className={styles.footerDivider}></div>
 
