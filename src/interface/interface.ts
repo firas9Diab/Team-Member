@@ -97,15 +97,7 @@ aboutThisItem: string[];
 }
 
 export interface ProductReviewDTO{
-  items: {
-    id: number;
-    reviewerName: string;
-    rating: number;
-    title: string;
-    comment: string;
-    isVerified: boolean;
-    createdAt: string;
-  }[];
+  items:items[];
 
   summary: {
     average: number;
@@ -134,4 +126,41 @@ interface  features{
 text:string;
 }
 
+
+interface items {
+    id: number;
+    reviewerName: string;
+    rating: number;
+    title: string;
+    comment: string;
+    isVerified: boolean;
+    createdAt: string;
+  };
+
 export type Star = 1 | 2 | 3 | 4 | 5;
+
+  export interface ICustomerReview {
+  page: number;
+  setPage: React.Dispatch<React.SetStateAction<number>>;
+  totalPages: number;
+  handleRatingChange: (value: string) => void;
+  handleTitleChange: (value: string) => void;
+  handleCommentChange: (value: string) => void;
+  rating: number;
+  title: string;
+  comment: string;
+  setShowReviewForm: React.Dispatch<React.SetStateAction<boolean>>;
+  showReviewForm: boolean;
+  postReviews: () => void;
+  hoveredStar: number;
+  setHoveredStar: React.Dispatch<React.SetStateAction<number>>;
+  starBar: readonly Star[];
+  starRating:  readonly Star[];
+  reviews: ProductReviewDTO[];
+  getPercentage:(star: Star) => number;
+}
+
+  export interface IRenderStars {
+    starRating:readonly Star[];
+    rating: number;
+  }

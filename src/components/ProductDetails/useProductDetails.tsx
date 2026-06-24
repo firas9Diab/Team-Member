@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import type {
   ProductDetailsDto,
   ProductReviewDTO,
+  Star,
 } from "../../interface/interface";
 import requestBuilder from "../utility/requestBuilder";
 import { useParams } from "react-router-dom";
@@ -37,10 +38,13 @@ const useProductDetails = () => {
     setSelectedImg(value);
   };
 
-  const starRating = [1, 2, 3, 4, 5];
+  const getPercentage = (star: Star) =>
+    ((reviews[0]?.summary.breakdown[star] || 0) /
+      (reviews[0]?.summary.total || 1)) *
+    100;
 
-  const starBar = [5, 4, 3, 2, 1] as const;
-
+  const starRating: readonly Star[] = [1, 2, 3, 4, 5];
+  const starBar: readonly Star[] = [5, 4, 3, 2, 1];
   const getProductsDetails = async () => {
     try {
       const response = await requestBuilder({
@@ -117,6 +121,7 @@ const useProductDetails = () => {
     setHoveredStar,
     starRating,
     starBar,
+    getPercentage,
   };
 };
 

@@ -1,4 +1,3 @@
-import Footer from "../Footer/Footer";
 import useProductDetails from "./useProductDetails";
 import styles from "./ProductDetails.module.scss";
 import Free from "../../Assets/free.svg";
@@ -8,9 +7,8 @@ import Warranty from "../../Assets/warranty.svg";
 import Brand from "../../Assets/brand.svg";
 import Delivered from "../../Assets/delivered.svg";
 import Payment from "../../Assets/payment.svg";
-import Filled from "../../Assets/filled.svg";
-import Empty from "../../Assets/empty.svg";
 import CustomerReview from "../CustomerReview/CustomerReview";
+import RenderStars from "../RenderStars/RenderStars";
 
 const ProductDetails = () => {
   const {
@@ -19,6 +17,22 @@ const ProductDetails = () => {
     selectedImg,
     handleSelectedImgChange,
     starRating,
+    page,
+    setPage,
+    totalPages,
+    handleRatingChange,
+    handleTitleChange,
+    handleCommentChange,
+    rating,
+    title,
+    comment,
+    setShowReviewForm,
+    showReviewForm,
+    postReviews,
+    hoveredStar,
+    setHoveredStar,
+    starBar,
+    getPercentage,
   } = useProductDetails();
 
   const images = [
@@ -30,17 +44,6 @@ const ProductDetails = () => {
     { name: "delivered", src: Delivered },
     { name: "payment", src: Payment },
   ];
-
-  const renderStars = (rating: number) => {
-    return starRating.map((star) => (
-      <img
-        key={star}
-        className={styles.starsImg}
-        src={star <= Math.round(rating) ? Filled : Empty}
-        alt="star"
-      />
-    ));
-  };
 
   const average = reviews[0]?.summary.average ?? 0;
 
@@ -81,7 +84,8 @@ const ProductDetails = () => {
                 </p>
 
                 <div className={styles.ratings}>
-                  {renderStars(average)}
+                  <RenderStars starRating={starRating} rating={average} />
+
                   <p className={styles.ratingCount}>
                     {reviews[0]?.items.length} ratings
                   </p>
@@ -123,7 +127,26 @@ const ProductDetails = () => {
         </div>
 
         <p className={styles.items}>Customer Review</p>
-        <CustomerReview />
+        <CustomerReview
+          page={page}
+          setPage={setPage}
+          totalPages={totalPages}
+          handleRatingChange={handleRatingChange}
+          handleTitleChange={handleTitleChange}
+          handleCommentChange={handleCommentChange}
+          rating={rating}
+          title={title}
+          comment={comment}
+          setShowReviewForm={setShowReviewForm}
+          showReviewForm={showReviewForm}
+          postReviews={postReviews}
+          hoveredStar={hoveredStar}
+          setHoveredStar={setHoveredStar}
+          starBar={starBar}
+          starRating={starRating}
+          reviews={reviews}
+          getPercentage={getPercentage}
+        />
       </div>
     </>
   );

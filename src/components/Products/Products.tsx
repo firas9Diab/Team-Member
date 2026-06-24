@@ -3,7 +3,6 @@ import styles from "./Products.module.scss";
 import useProducts from "./useProducts";
 import Categories from "../Categories/Categories";
 import Card from "../ItemCards/Card/Card";
-import Footer from "../Footer/Footer";
 
 const Products = ({
   search,

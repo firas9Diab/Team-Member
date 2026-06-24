@@ -1,49 +1,31 @@
 import moment from "moment";
-import useProductDetails from "../ProductDetails/useProductDetails";
 import styles from "./CustomerReview.module.scss";
-import type { Star } from "../../interface/interface";
+import type { ICustomerReview, Star } from "../../interface/interface";
 import Filled from "../../Assets/filled.svg";
 import Empty from "../../Assets/empty.svg";
 import Profile from "../../Assets/profile.svg";
+import RenderStars from "../RenderStars/RenderStars";
 
-const CustomerReview = () => {
-  const {
-    reviews,
-    page,
-    setPage,
-    totalPages,
-    handleRatingChange,
-    handleTitleChange,
-    handleCommentChange,
-    rating,
-    title,
-    comment,
-    setShowReviewForm,
-    showReviewForm,
-    postReviews,
-
-    hoveredStar,
-    setHoveredStar,
-    starRating,
-    starBar,
-  } = useProductDetails();
-
-  const getPercentage = (star: Star) =>
-    ((reviews[0]?.summary.breakdown[star] || 0) /
-      (reviews[0]?.summary.total || 1)) *
-    100;
-
-  const renderStars = (rating: number) => {
-    return starRating.map((star) => (
-      <img
-        key={star}
-        className={styles.starsImg}
-        src={star <= Math.round(rating) ? Filled : Empty}
-        alt="star"
-      />
-    ));
-  };
-
+const CustomerReview = ({
+  page,
+  setPage,
+  totalPages,
+  handleRatingChange,
+  handleTitleChange,
+  handleCommentChange,
+  rating,
+  title,
+  comment,
+  setShowReviewForm,
+  showReviewForm,
+  postReviews,
+  hoveredStar,
+  setHoveredStar,
+  starBar,
+  reviews,
+  starRating,
+  getPercentage,
+}: ICustomerReview) => {
   const average = reviews[0]?.summary.average ?? 0;
 
   return (
@@ -52,7 +34,8 @@ const CustomerReview = () => {
         <div>
           <div>
             <div className={styles.reviewsStars}>
-              {renderStars(average)}
+              <RenderStars starRating={starRating} rating={average} />
+
               <p>{reviews[0]?.summary.average} out of 5</p>
             </div>
             <p className={styles.global}>
@@ -125,7 +108,7 @@ const CustomerReview = () => {
               </div>
               <div className={styles.reviewTitle}>
                 <div className={styles.reviewStars}>
-                  {renderStars(review.rating)}
+                  <RenderStars starRating={starRating} rating={review.rating} />
                 </div>
                 <h3>{review.title}</h3>
               </div>
