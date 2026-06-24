@@ -1,23 +1,25 @@
-.signupbody {
+.signUpPage {
   background-color: #ececec;
 }
-.signupcard {
+
+.signUpCard {
   padding: 30px;
   align-items: center;
   text-align: center;
-  border: 2px solid black;
-  display: flex;
   border: 1px solid #e5e7eb;
+  display: flex;
   border-radius: 15px;
   gap: 65px;
   justify-content: center;
 }
-.signuptext {
+
+.signUpHeader {
   display: flex;
   flex-direction: column;
   gap: 4px;
 }
-.signupfield {
+
+.signUpForm {
   height: 726px;
   width: 533px;
   background-color: #ffffff;
@@ -30,12 +32,23 @@
   border-radius: 15px;
   gap: 26px;
 }
-.signupdesc {
+
+.signUpContent {
   gap: 10px;
   display: flex;
   flex-direction: column;
 }
-.emailfield {
+
+.formGroup {
+  text-align: left;
+  width: 100%;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+.inputWrapper {
   width: 100%;
   display: flex;
   align-items: center;
@@ -44,18 +57,22 @@
   padding: 15px 35px;
   background: white;
 }
-.passwordfieldtext {
+
+.inputText {
   font-weight: 900;
-  width: 100%;
-  display: flex;
-}
-.eyes {
-  background: transparent;
-  border: none;
   align-items: center;
-  cursor: pointer;
+  width: 100%;
+  border: none;
+  border-radius: 0;
+  padding: 5px 10px;
+  background: white;
 }
-.passwordfield {
+
+.inputText:focus {
+  outline: none;
+}
+
+.passwordWrapper {
   width: 100%;
   justify-content: space-between;
   align-items: center;
@@ -65,23 +82,14 @@
   background: white;
   display: flex;
 }
-.email {
-  text-align: left;
+
+.passwordInputWrapper {
+  font-weight: 900;
   width: 100%;
   display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  flex-direction: column;
 }
-.password {
-  width: 100%;
-  text-align: left;
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  flex-direction: column;
-}
-.passwordtext {
+
+.passwordInput {
   border: none;
   align-items: center;
   width: 100%;
@@ -89,23 +97,19 @@
   background: white;
   font-weight: 900;
 }
-.passwordtext:focus {
-  outline: none;
-}
-.emailtext {
-  font-weight: 900;
-  align-items: center;
-  width: 100%;
-  border: none;
-  border-radius: 0px;
-  padding: 5px 10px;
-  background: white;
-}
-.emailtext:focus {
+
+.passwordInput:focus {
   outline: none;
 }
 
-.signinbutton {
+.passwordToggle {
+  background: transparent;
+  border: none;
+  align-items: center;
+  cursor: pointer;
+}
+
+.createAccountButton {
   background: #5a6afa;
   color: white;
   padding: 12px;
@@ -115,19 +119,22 @@
   font-size: 16px;
   font-weight: 500;
 }
-.signinbutton:hover {
+
+.createAccountButton:hover {
   background-color: #3145f5;
 }
-.buttonfield {
+
+.authActions {
   display: flex;
-  padding-bottom: 0px;
+  padding-bottom: 0;
   width: 100%;
   border-top: 1px solid black;
   padding-top: 20px;
   flex-direction: column;
   gap: 16px;
 }
-.signinwaybutton {
+
+.googleButton {
   background: #ffffff;
   color: rgb(0, 0, 0);
   padding: 15px;
@@ -141,44 +148,53 @@
   justify-content: space-between;
   border-width: 1px;
 }
-.textfield {
+
+.loginRedirect {
   width: 100%;
   text-align: right;
   font-weight: 600;
 }
-.card {
+
+.loginLink {
+  color: #5a6afa;
+}
+
+.sideCard {
   width: 100%;
   height: 967px;
   background-color: #5a6afa;
   border-radius: 36px;
 }
-.gotosignin {
-  color: #5a6afa;
-}
+
 @media (max-width: 768px) {
-  .signupcard {
+  .signUpCard {
     flex-direction: column;
   }
 }
+
 @media (max-width: 550px) {
-  .signupcard {
+  .signUpCard {
     display: flex;
     justify-content: center;
     flex-direction: column;
   }
-  .signupfield {
+
+  .signUpForm {
     width: 280px;
   }
-  .signupdesc {
+
+  .signUpContent {
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
   }
-  .emailfield {
-    padding: 5px 5px;
+
+  .inputWrapper {
+    padding: 5px;
   }
-  .passwordfield {
-    padding: 5px 5px;
+
+  .passwordWrapper {
+    padding: 5px;
   }
 }

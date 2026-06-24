@@ -8,7 +8,7 @@ const useAddress = () => {
   const [addresses, setAddresses] = useState<Address[]>([]);
   const [error, setError] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
-  const [mode, setMode] = useState<string>("view");
+  const [mode, setMode] = useState<string>("View");
   const [selectedAddress, setSelectedAddress] = useState<Address | null>(null);
 
   const handleGetAddresses = async () => {
@@ -68,7 +68,7 @@ const useAddress = () => {
         text: "Address deleted successfully!",
         icon: "success",
       });
-      setMode("view");
+      setMode("View");
       await handleGetAddresses();
 
       setSelectedAddress(null);

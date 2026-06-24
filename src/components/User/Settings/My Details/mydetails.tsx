@@ -15,68 +15,75 @@ const MyDetails = () => {
   } = useMyDetails();
 
   return (
-    <div className={styles.settingswork}>
-      <p className={styles.settingsworkparegraph}>
-        Update your personal details quickly and conveniently right here.Whether
-        you've got a new address, phone number, or just want to keep things
-        current, this is the place to do it.Keep your profile up-to-date
+    <div className={styles.detailsCard}>
+      <p className={styles.detailsDescription}>
+        Update your personal details quickly and conveniently right here.
+        Whether you've got a new address, phone number, or just want to keep
+        things current, this is the place to do it. Keep your profile up-to-date
         hassle-free.
       </p>
 
-      <div className={styles.settingsinputfields}>
-        <div className={styles.inputfields}>
+      <div className={styles.detailsForm}>
+        <div className={styles.formGroup}>
           <label>Name</label>
           <input
             name="name"
             type="text"
             value={name}
             onChange={handleDataChange}
-            className={styles.inputfield}
+            className={styles.formInput}
             placeholder="Nandhu Santhosh"
           />
         </div>
-        <div className={styles.inputfields}>
+
+        <div className={styles.formGroup}>
           <label>Email</label>
           <input
             disabled
             type="text"
             value={email}
             onChange={handleDataChange}
-            className={styles.inputfield}
+            className={styles.formInput}
             placeholder="nandhusanthosh@gmail.com"
           />
         </div>
-        <div className={styles.inputfields}>
-          Phone
+
+        <div className={styles.formGroup}>
+          <label>Phone</label>
           <input
             name="phone"
             type="text"
             value={phone}
             onChange={handleDataChange}
-            className={styles.inputfield}
+            className={styles.formInput}
             placeholder="6238973581"
           />
         </div>
-        <div className={styles.inputfields}>
-          Date of Birth{" "}
-          <div className={styles.inputfield}>
+
+        <div className={styles.formGroup}>
+          <label>Date of Birth</label>
+
+          <div className={styles.dateInputWrapper}>
             <input
               name="dateOfBirth"
               ref={ref}
               value={dateofBirth}
               onChange={handleDataChange}
               type="date"
-              className={styles.inputfielddate}
+              className={styles.dateInput}
             />
+
             <img
               src={date}
               alt="date icon"
               onClick={() => ref.current?.showPicker?.()}
             />
           </div>
+
           {error}
         </div>
-        <button className={styles.inputfieldbutton} onClick={handleUpdateuser}>
+
+        <button className={styles.updateButton} onClick={handleUpdateuser}>
           Update Details
         </button>
       </div>

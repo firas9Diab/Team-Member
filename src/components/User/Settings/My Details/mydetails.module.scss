@@ -1,4 +1,4 @@
-.settingswork {
+.detailsCard {
   margin-top: 85px;
   min-height: 765px;
   background: #f5f5f5;
@@ -6,7 +6,7 @@
   padding: 35px 72px 40px 51px;
 }
 
-.settingsworkparegraph {
+.detailsDescription {
   height: 60px;
   font-style: normal;
   font-weight: 400;
@@ -15,7 +15,7 @@
   color: #4f4f4f;
 }
 
-.settingsinputfields {
+.detailsForm {
   display: flex;
   flex-direction: column;
   width: 543px;
@@ -24,13 +24,13 @@
   gap: 26px;
 }
 
-.inputfields {
+.formGroup {
   display: flex;
   flex-direction: column;
   gap: 6px;
 }
 
-.inputfield {
+.formInput {
   display: flex;
   align-items: center;
   width: 100%;
@@ -42,7 +42,19 @@
   border-radius: 9px;
 }
 
-.inputfielddate {
+.dateInputWrapper {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 46px;
+  box-sizing: border-box;
+  padding: 11px 21px 12px;
+  background: #ffffff;
+  border: 1px solid #cacaca;
+  border-radius: 9px;
+}
+
+.dateInput {
   width: 100%;
   box-sizing: border-box;
   background: #ffffff;
@@ -50,17 +62,17 @@
   outline: none;
 }
 
-.inputfielddate::-webkit-calendar-picker-indicator {
+.dateInput::-webkit-calendar-picker-indicator {
   opacity: 0;
   cursor: pointer;
   display: none;
 }
 
-.inputfield img {
+.dateInputWrapper img {
   cursor: pointer;
 }
 
-.inputfieldbutton {
+.updateButton {
   width: 100%;
   box-sizing: border-box;
   background: #5a6afa;
@@ -80,36 +92,36 @@
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {
-  .settingswork {
+  .detailsCard {
     margin-top: 0;
     min-height: auto;
     padding: 35px 40px;
   }
 
-  .settingsworkparegraph {
+  .detailsDescription {
     height: auto;
   }
 
-  .settingsinputfields {
+  .detailsForm {
     width: 100%;
     height: auto;
   }
 }
 
 @media (max-width: 767px) {
-  .settingswork {
+  .detailsCard {
     margin-top: 0;
     min-height: auto;
     padding: 28px 24px;
   }
 
-  .settingsworkparegraph {
+  .detailsDescription {
     height: auto;
     font-size: 15px;
     line-height: 22px;
   }
 
-  .settingsinputfields {
+  .detailsForm {
     width: 100%;
     height: auto;
     padding-top: 32px;
@@ -118,16 +130,16 @@
 }
 
 @media (max-width: 414px) {
-  .settingswork {
+  .detailsCard {
     padding: 24px 16px;
   }
 
-  .settingsworkparegraph {
+  .detailsDescription {
     font-size: 14px;
     line-height: 21px;
   }
 
-  .settingsinputfields {
+  .detailsForm {
     padding-top: 28px;
     gap: 20px;
   }

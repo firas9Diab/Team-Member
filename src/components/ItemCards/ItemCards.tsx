@@ -2,28 +2,71 @@ import type { IItemCards } from "../interface";
 import styles from "./ItemCards.module.scss";
 import Product from "./Product/Product";
 
-const ItemCards = ({ todayDeals, moreItemsToConsider }: IItemCards) => {
+const ItemCards = ({
+  todayDeals,
+  moreItemsToConsider,
+  setCurrentPage,
+  totalPages,
+  currentPage,
+  selectedCategoryId,
+  products,
+  search,
+  showContainer,
+}: IItemCards) => {
   return (
     <>
-      <div className={styles.todaydealssection}>
-        <div className={styles.title}>Today’s Deals</div>
+      <div className={styles.todayDealsSection}>
+        <div className={styles.sectionTitle}>
+          {showContainer ? "Today deals" : ""}
+        </div>
 
-        <div className={styles.products}>
-          {todayDeals.map((todayDeal) => (
-            <Product card={todayDeal} />
-          ))}
+        <div
+          className={showContainer ? styles.scrollProducts : styles.productGrid}
+        >
+          {showContainer
+            ? todayDeals.map((todayDeal) => (
+                <Product key={todayDeal.id} card={todayDeal} />
+              ))
+            : products.map((product) => (
+                <Product key={product.id} card={product} />
+              ))}
         </div>
       </div>
 
-      <div className={styles.moreitemssection}>
-        <div className={styles.title}>More Items to Consider</div>
+      {showContainer && (
+        <div className={styles.moreItemsSection}>
+          <div className={styles.sectionTitle}>More Items to Consider</div>
 
-        <div className={styles.products}>
-          {moreItemsToConsider.map((item) => (
-            <Product card={item} />
-          ))}
+          <div className={styles.scrollProducts}>
+            {moreItemsToConsider.map((item) => (
+              <Product key={item.id} card={item} />
+            ))}
+          </div>
         </div>
-      </div>
+      )}
+
+      <ul className={styles.paginationList}>
+        {selectedCategoryId || search
+          ? new Array(totalPages).fill(0).map((_, i) => {
+              return (
+                <button
+                  key={i + 1}
+                  onClick={() => {
+                    setCurrentPage(i + 1);
+                  }}
+                  disabled={currentPage === i + 1}
+                  className={
+                    currentPage === i + 1
+                      ? styles.activePageButton
+                      : styles.pageButton
+                  }
+                >
+                  {i + 1}
+                </button>
+              );
+            })
+          : null}
+      </ul>
     </>
   );
 };

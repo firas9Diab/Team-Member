@@ -1,31 +1,28 @@
 import { Routes, Route } from "react-router-dom";
 import Home from "./components/Home/Home";
-import Item from "./components/Item/Item";
 import SignUp from "./components/User/Sign Up/SignUp";
 import Login from "./components/User/Login/Login";
 import ProtectedRoute from "./ProtectedRoute";
 import Settings from "./components/User/Settings/Settings";
+import { useState } from "react";
 
 const App = () => {
+  const [search, setSearch] = useState("");
   return (
     <div>
       <Routes>
         <Route
           path="/"
           element={
-            <ProtectedRoute>
-              <Home />
+            <ProtectedRoute
+              search={search}
+              setSearch={(s?: string) => setSearch(s ?? "")}
+            >
+              <Home search={search} />
             </ProtectedRoute>
           }
         />
-        <Route
-          path="/item/:id"
-          element={
-            <ProtectedRoute>
-              <Item />
-            </ProtectedRoute>
-          }
-        />
+
         <Route
           path="/User/Settings"
           element={
