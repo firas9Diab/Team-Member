@@ -97,7 +97,7 @@ aboutThisItem: string[];
 }
 
 export interface ProductReviewDTO{
-  items:items[];
+  items:Item[];
 
   summary: {
     average: number;
@@ -125,9 +125,7 @@ interface  features{
   id: number;
 text:string;
 }
-
-
-interface items {
+interface Item {
     id: number;
     reviewerName: string;
     rating: number;
