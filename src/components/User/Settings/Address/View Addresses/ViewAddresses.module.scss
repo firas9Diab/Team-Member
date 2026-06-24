@@ -1,4 +1,4 @@
-.settingscard {
+.addressItem {
   display: flex;
   padding-top: 15px;
   min-width: 100%;
@@ -7,7 +7,7 @@
   border-radius: 25px;
   flex-direction: column;
 
-  .cardinfo {
+  .addressInfo {
     display: flex;
     flex-direction: column;
     gap: 38px;
@@ -16,17 +16,18 @@
     padding-bottom: 25px;
   }
 
-  .cardtitle {
+  .defaultBadge {
     padding-left: 25px;
     min-width: 100%;
     padding-bottom: 10px;
     border-bottom: 1px solid #000000;
   }
 
-  .cardbuttons {
+  .addressActions {
     display: flex;
     gap: 15px;
-    .cardbutton {
+
+    .addressActionButton {
       cursor: pointer;
       background: transparent;
       border: none;
@@ -38,7 +39,8 @@
     }
   }
 }
-.cardaddaddresses {
+
+.addAddressButton {
   box-sizing: border-box;
   width: 150px;
   height: 150px;

@@ -1,8 +1,9 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
+import type { IProtectedRoute } from "./components/interface";
 
-const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
+const ProtectedRoute = ({ children, search, setSearch }: IProtectedRoute) => {
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
 
@@ -14,7 +15,7 @@ const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <div>
-      <Navbar />
+      <Navbar search={search} setSearch={setSearch} />
       {children}
     </div>
   );

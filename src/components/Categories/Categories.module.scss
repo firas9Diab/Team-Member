@@ -2,13 +2,33 @@
   display: flex;
   width: 124px;
   height: 39px;
-  font-family: "Inter";
   font-style: normal;
   font-weight: 400;
   font-size: 15px;
   line-height: 18px;
   color: #000000;
   background: #f5f5f5;
+  border-radius: 33px;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+
+  &:hover {
+    background: grey;
+  }
+}
+
+.activeCategory {
+  display: flex;
+  width: 124px;
+  height: 39px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 18px;
+  background: grey;
+  color: #f5f5f5;
   border-radius: 33px;
   align-items: center;
   justify-content: center;
@@ -22,9 +42,9 @@
   gap: 25px;
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
 }
-@media (max-width: 768px) {
-  .categories {
-    flex-wrap: wrap;
-  }
+
+.chooseIcon {
+  cursor: pointer;
 }

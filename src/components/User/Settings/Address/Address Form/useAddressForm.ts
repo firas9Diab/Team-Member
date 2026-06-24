@@ -85,7 +85,7 @@ const useAddressForm = ({
           draggable: true,
         });
         await handleGetAddresses();
-        setMode("view");
+        setMode("View");
       } else {
         if (!address) {
           setError("Address not found");
@@ -113,7 +113,7 @@ const useAddressForm = ({
           draggable: true,
         });
         await handleGetAddresses();
-        setMode("view");
+        setMode("View");
       }
     } catch (err: any) {
       setError(err.response?.data?.message || "Failed to save Address");

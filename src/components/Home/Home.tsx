@@ -5,44 +5,76 @@ import ItemCards from "../ItemCards/ItemCards";
 import sony from "../../../public/Icons/sony-ad.svg";
 import bluetoothswitch from "../../../public/Icons/bluetoothswitch.svg";
 import Footer from "../../Footer/Footer";
+import type { IHome } from "../interface";
 
-const Home = () => {
-  const { categories, moreItemsToConsider, todayDeals } = useHome();
-
+const Home = ({ search }: IHome) => {
+  const {
+    categories,
+    moreItemsToConsider,
+    todayDeals,
+    handleChangeCategoryId,
+    setCurrentPage,
+    currentPage,
+    totalPages,
+    selectedCategoryId,
+    product,
+    showContainer,
+  } = useHome(search);
   return (
-    <div className={styles.container}>
-      <div className={styles.container1}>
-        <p className={styles.pcontainer1}>#Big Fashion Sale</p>
+    <div className={styles.containers}>
+      {showContainer && (
+        <div className={styles.fashionSale}>
+          <p className={styles.fashionSaleTitle}>#Big Fashion Sale</p>
 
-        <h1 className={styles.h1container1}>
-          Limited Time Offer! <br /> Up to 50% OFF!
-        </h1>
+          <h1 className={styles.fashionSaleOffer}>
+            Limited Time Offer! <br /> Up to 50% OFF!
+          </h1>
 
-        <p className={styles.pcontainer1}>Redefine Your Everyday Style</p>
+          <p className={styles.fashionSaleDescription}>
+            Redefine Your Everyday Style
+          </p>
+        </div>
+      )}
+
+      <div className={styles.categories}>
+        <Categories
+          categories={categories}
+          handleChangeCategoryId={handleChangeCategoryId}
+          categoryId={selectedCategoryId}
+        />
       </div>
 
-      <div className={styles.container2}>
-        <Categories categories={categories} />
-      </div>
       <ItemCards
         todayDeals={todayDeals}
         moreItemsToConsider={moreItemsToConsider}
+        setCurrentPage={setCurrentPage}
+        totalPages={totalPages}
+        currentPage={currentPage}
+        selectedCategoryId={selectedCategoryId}
+        products={product}
+        search={search}
+        showContainer={showContainer}
       />
 
-      <div className={styles.container5}>
-        <div className={styles.inner}>
-          <img src={sony} alt="" className={styles.sonyimage} />
-          <div className={styles.bluetoothswitch}>
-            <div>Bluetooth Calling Smartwatch starts at ₹1,999</div>
-            <img
-              src={bluetoothswitch}
-              alt=""
-              className={styles.bluetoothswitchimage}
-            />
-            <div>Shop now</div>
+      {showContainer && (
+        <div className={styles.ads}>
+          <div className={styles.inner}>
+            <img src={sony} alt="" className={styles.sonyImage} />
+
+            <div className={styles.bluetoothSwitch}>
+              <div>Bluetooth Calling Smartwatch starts at ₹1,999</div>
+
+              <img
+                src={bluetoothswitch}
+                alt=""
+                className={styles.bluetoothSwitchImage}
+              />
+
+              <div>Shop now</div>
+            </div>
           </div>
         </div>
-      </div>
+      )}
 
       <Footer />
     </div>

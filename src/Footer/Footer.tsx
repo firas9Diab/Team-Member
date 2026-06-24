@@ -1,88 +1,56 @@
 import styles from "./Footer.module.scss";
-import insta from "../../public/Social Media/insta.svg";
-import facebook from "../../public/Social Media/facebook.svg";
-import twitter from "../../public/Social Media/twitter.svg";
-import youtube from "../../public/Social Media/youtube.svg";
-import linkedin from "../../public/Social Media/linkedin.svg";
+import useFooter from "./useFooter";
 
 const Footer = () => {
+  const { socialMedias, footerCategories } = useFooter();
+
   return (
-    <>
-      <div className={styles.footer}>
-        <div className={styles.main}>
-          <div className={styles.title}></div>
+    <div className={styles.footer}>
+      <div className={styles.footerMain}>
+        <div className={styles.footerHeader}></div>
 
-          <div className={styles.texts}>
-            <div className={styles.textsfirst}>
-              <h3>Cateogry</h3>
-              <ul className={styles.textsul}>
-                <li>Mobile and computers</li>
-                <li>TV, Appliances, Electronics</li>
-                <li>Men’s Fashion</li>
-                <li>Home</li>
-                <li>Kitchen</li>
-                <li>Beauty</li>
-                <li>Health</li>
-                <li>Sports</li>
-                <li>Baby Products</li>
+        <div className={styles.footerLinks}>
+          {footerCategories.map((column) => (
+            <div className={styles.footerColumn} key={column.id}>
+              {column.title ? (
+                <h3>{column.title}</h3>
+              ) : (
+                <div className={styles.columnSpacer}></div>
+              )}
+
+              <ul className={styles.footerList}>
+                {column.items.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
               </ul>
             </div>
+          ))}
 
-            <div className={styles.textsfirst}>
-              <div className={styles.shape}></div>
-              <ul className={styles.textsul}>
-                <li>Car</li>
-                <li>Motor Bikes</li>
-                <li>Book</li>
-                <li>Video Games</li>
-                <li>Shoes</li>
-                <li>Toys</li>
-                <li>Consoles</li>
-                <li>Accessories</li>
-                <li>Groceries</li>
-              </ul>
-            </div>
-            <div className={styles.textsfirst}>
-              <div className={styles.shape}></div>
-              <ul className={styles.textsul}>
-                <li>Mobile and computers</li>
-                <li>TV, Appliances, Electronics</li>
-                <li>Men’s Fashion</li>
-                <li>Home</li>
-                <li>Kitchen</li>
-                <li>Beauty</li>
-                <li>Health</li>
-                <li>Sports</li>
-                <li>Baby Products</li>
-              </ul>
+          <div className={styles.footerDivider}></div>
+
+          <h3>Payment Partners</h3>
+        </div>
+
+        <div className={styles.footerBottom}>
+          <div className={styles.footerBottomInner}>
+            <div>
+              <p>
+                © 2022 - 2023 FreshCart eCommerce. All rights reserved. Powered
+                by Ecommerce.
+              </p>
             </div>
 
-            <div className={styles.line}></div>
-            <h3>Payment Partners</h3>
-          </div>
+            <div className={styles.socialLinks}>
+              <p>Lets get social</p>
 
-          <div className={styles.bottom}>
-            <div className={styles.bottominner}>
-              <div>
-                <p>
-                  © 2022 - 2023 FreshCart eCommerce. All rights reserved.
-                  Powered by Ecommerce.
-                </p>
-              </div>
-              <div className={styles.bottomIcons}>
-                <p>Lets get social</p>
-
-                <img src={insta} alt={insta} />
-                <img src={facebook} alt={facebook} />
-                <img src={twitter} alt={twitter} />
-                <img src={youtube} alt={youtube} />
-                <img src={linkedin} alt={linkedin} />
-              </div>
+              {socialMedias.map((socialMedia, index) => (
+                <img key={index} src={socialMedia} alt="social media" />
+              ))}
             </div>
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
