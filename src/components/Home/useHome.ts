@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
 import RequestBuilder from "../services/RequestBuilder";
+import type { Category } from "../interface";
+import type { Address } from "../interface";
 
 const useHome = (search: string | undefined) => {
-  const [categories, setCategories] = useState([]);
-  const [todayDeals, setTodayDeals] = useState([]);
-  const [moreItemsToConsider, setMoreItemsToConsider] = useState([]);
-  const [product, setProduct] = useState([]);
+  const [categories, setCategories] = useState<Category[]>([]);
+  const [todayDeals, setTodayDeals] = useState<Address[]>([]);
+  const [moreItemsToConsider, setMoreItemsToConsider] = useState<Address[]>([]);
+  const [product, setProduct] = useState<Address[]>([]);
   const [totalPages, setTotalPages] = useState<number>(0);
   const [selectedCategoryId, setSelectedCategoryId] = useState<number | null>(
     null,
@@ -31,6 +33,15 @@ const useHome = (search: string | undefined) => {
     categoryId: null | number = selectedCategoryId,
     searchValue: string | undefined = search,
   ) => {
+    const hasSearch = searchValue && searchValue.trim() !== "";
+    const hasSelectedCategory = categoryId !== null;
+
+    if (!hasSearch && !hasSelectedCategory) {
+      setProduct([]);
+      setTotalPages(1);
+      return;
+    }
+
     const response = await RequestBuilder({
       url: "/products",
       method: "GET",
@@ -58,14 +69,6 @@ const useHome = (search: string | undefined) => {
   }, [selectedCategoryId, search]);
 
   useEffect(() => {
-    const hasSearch = search && search.trim() !== "";
-    const hasSelectedCategory = selectedCategoryId !== null;
-    if (!hasSearch && !hasSelectedCategory) {
-      setProduct([]);
-      setTotalPages(1);
-      return;
-    }
-
     handleGetProduct(currentPage, selectedCategoryId, search);
   }, [currentPage, selectedCategoryId, search]);
   return {
