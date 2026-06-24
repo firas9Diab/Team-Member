@@ -57,7 +57,7 @@ export interface ProductDTO {
   ratingAverage: number;
   ratingCount: number;
   image: string;
-  category: ProductCategory;
+  category?: ProductCategory;
 }
 interface SignInDTO {
   email: string;

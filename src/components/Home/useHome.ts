@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import RequestBuilder from "../services/RequestBuilder";
 import type { Category } from "../interface";
-import type { Address } from "../interface";
+import type { ProductDTO } from "../interface";
 
 const useHome = (search: string | undefined) => {
   const [categories, setCategories] = useState<Category[]>([]);
-  const [todayDeals, setTodayDeals] = useState<Address[]>([]);
-  const [moreItemsToConsider, setMoreItemsToConsider] = useState<Address[]>([]);
-  const [product, setProduct] = useState<Address[]>([]);
+  const [todayDeals, setTodayDeals] = useState<ProductDTO[]>([]);
+  const [moreItemsToConsider, setMoreItemsToConsider] = useState<ProductDTO[]>([]);
+  const [product, setProduct] = useState<ProductDTO[]>([]);
   const [totalPages, setTotalPages] = useState<number>(0);
   const [selectedCategoryId, setSelectedCategoryId] = useState<number | null>(
     null,
