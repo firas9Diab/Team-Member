@@ -7,6 +7,8 @@ import ProtectedRoute from "./ProtectedRoutes";
 import Settings from "./components/Settings/Settings";
 import { useState } from "react";
 import Navbar from "./components/Navbar/Navbar";
+import ProductDetails from "./components/ProductDetails/ProductDetails";
+import Footer from "./components/Footer/Footer";
 
 const App = () => {
   const location = useLocation();
@@ -43,9 +45,20 @@ const App = () => {
           }
         />
 
+        <Route
+          path="/products/:id"
+          element={
+            <ProtectedRoute>
+              <ProductDetails />
+            </ProtectedRoute>
+          }
+        />
+
         <Route path="/sign" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
       </Routes>
+
+      <Footer />
     </div>
   );
 };

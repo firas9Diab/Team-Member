@@ -3,7 +3,6 @@ import Categories from "../Categories/Categories";
 import styles from "./Home.module.scss";
 import sony from "../../Assets/sony.png";
 import watch from "../../Assets/watch.png";
-import Footer from "../Footer/Footer";
 import ItemCards from "../ItemCards/ItemCards";
 import Products from "../Products/Products";
 import type { IHome } from "../../interface/interface";
@@ -65,8 +64,6 @@ const Home = ({ search }: IHome) => {
               <p>Shop now</p>
             </div>
           </div>
-
-          <Footer />
         </>
       )}
     </>

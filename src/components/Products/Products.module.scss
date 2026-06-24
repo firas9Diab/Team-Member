@@ -10,6 +10,13 @@
   padding: 15px;
 }
 
+.empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 3%;
+}
+
 .deals {
   border-radius: 21px;
   padding: 12px;
@@ -63,6 +70,7 @@
   font-weight: 500;
   align-items: center;
   flex-wrap: wrap;
+  margin: 3%;
 
   button {
     border-radius: 10px;
