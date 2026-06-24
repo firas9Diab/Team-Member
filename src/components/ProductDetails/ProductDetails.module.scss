@@ -1,0 +1,326 @@
+.details {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 2%;
+  width: 90%;
+  gap: 20px;
+}
+
+.small {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  width: 30px;
+  gap: 20px;
+  border: 1px solid white;
+  margin-bottom: 17%;
+
+  button {
+    border: none;
+  }
+}
+
+.smallImages {
+  width: 36px;
+  border-radius: 5px;
+  border: 1px solid white;
+}
+
+.detailsImg {
+  width: 70%;
+  margin: 5%;
+  border-radius: 5px;
+  border: 1px solid grey;
+}
+.description {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  gap: 10px;
+}
+.title {
+  font-weight: 400;
+  font-size: 25px;
+  color: #1b1919;
+}
+.brand {
+  font-weight: 400;
+  font-size: 18px;
+  color: #000000;
+}
+
+.ratings {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+
+  .ratingAvg {
+    font-weight: 400;
+    font-size: 18px;
+    color: black;
+    line-height: 32px;
+  }
+}
+
+.ratingCount {
+  font-weight: 400;
+  font-size: 10px;
+  color: black;
+  line-height: 32px;
+}
+
+.discount {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+}
+.discountPercent {
+  font-weight: 400;
+  font-size: 25px;
+  color: #cc0c39;
+  line-height: 32px;
+}
+
+.price {
+  font-weight: 400;
+  font-size: 25px;
+  color: black;
+  line-height: 32px;
+}
+
+.oldPrice {
+  font-weight: 500;
+  font-size: 15px;
+  color: #454545;
+  line-height: 32px;
+
+  p {
+    font-weight: 400;
+    font-size: 14px;
+    color: #000000;
+    line-height: 32px;
+  }
+}
+.stock {
+  width: 10%;
+  border-radius: 6px;
+  border: 1px solid #000000;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  gap: 15px;
+  margin: 1%;
+}
+
+.buttonYellow {
+  width: 50%;
+  height: 30px;
+  border-radius: 37px;
+  background-color: #ffd814;
+  border: none;
+}
+
+.buttonOrange {
+  width: 50%;
+  height: 30px;
+  border-radius: 37px;
+  border: none;
+  background-color: #fa8900;
+}
+
+.items {
+  font-weight: 500;
+  font-size: 18px;
+  color: #000000;
+  line-height: 32px;
+  margin-left: 3%;
+}
+
+.about {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-left: 4%;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 32px;
+  color: black;
+}
+.images {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  background-color: #f0f0f0;
+  border: 1px solid #bfbfbf;
+  margin: 5% 0;
+  padding: 15px;
+}
+
+@media (max-width: 1024px) {
+  .details {
+    flex-direction: column;
+    width: 100%;
+    margin: 0;
+    padding: 20px;
+  }
+  .small {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+  .detailsImg {
+    width: 100%;
+    max-width: 500px;
+  }
+
+  .description {
+    width: 100%;
+  }
+
+  .images {
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .reviews {
+    flex-direction: column;
+  }
+
+  .reviewSenders {
+    grid-template-columns: 1fr;
+    padding: 0;
+  }
+
+  .stock {
+    width: 20%;
+  }
+}
+
+@media (max-width: 768px) {
+  .details {
+    padding: 15px;
+  }
+
+  .title {
+    font-size: 20px;
+  }
+
+  .brand {
+    font-size: 16px;
+  }
+
+  .discountPercent,
+  .price {
+    font-size: 20px;
+  }
+
+  .items {
+    font-size: 16px;
+  }
+
+  .images {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+
+    img {
+      width: 100%;
+      max-width: 120px;
+      margin: auto;
+    }
+  }
+
+  .ratings {
+    gap: 10px;
+
+    p {
+      font-size: 14px;
+    }
+  }
+
+  .reviewStars {
+    flex-direction: column;
+    align-items: flex-start;
+
+    h3 {
+      font-size: 16px;
+    }
+  }
+
+  .reviewProfile {
+    p {
+      font-size: 14px;
+    }
+  }
+
+  .comment {
+    font-size: 14px;
+    line-height: 24px;
+  }
+
+  .buttons {
+    flex-direction: column;
+  }
+
+  .buttonYellow,
+  .buttonOrange {
+    width: 100%;
+  }
+
+  .stock {
+    width: 30%;
+  }
+
+  .reviewForm {
+    width: 100%;
+
+    input,
+    textarea,
+    button {
+      width: 100%;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 18px;
+  }
+
+  .discount {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .images {
+    grid-template-columns: 1fr;
+  }
+
+  .reviewsStars {
+    p {
+      font-size: 16px;
+    }
+  }
+
+  .global {
+    font-size: 14px;
+  }
+
+  .stock {
+    width: 40%;
+  }
+
+  .reviewSenders {
+    gap: 30px;
+  }
+}
