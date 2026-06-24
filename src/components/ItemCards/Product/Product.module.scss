@@ -49,4 +49,8 @@
   height: 36px;
   background: #7d7d7d;
   border-radius: 14px;
+  cursor: pointer;
+  &:hover {
+    background-color: black;
+  }
 }
