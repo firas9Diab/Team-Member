@@ -2,13 +2,17 @@ import chooses from "../../../public/Icons/chooses.svg";
 import type { ICategories } from "../interface";
 import styles from "./Categories.module.scss";
 
-const Categories = ({ categories, setCategoryId, categoryId }: ICategories) => {
+const Categories = ({
+  categories,
+  handleChangeCategoryId,
+  categoryId,
+}: ICategories) => {
   return (
     <div className={styles.categories}>
       {categories.map((category) => (
         <button
           key={category.id}
-          onClick={() => setCategoryId(category.id)}
+          onClick={() => handleChangeCategoryId(category.id)}
           disabled={categoryId === category.id}
           className={
             categoryId === category.id ? styles.activeCategory : styles.category
@@ -19,7 +23,7 @@ const Categories = ({ categories, setCategoryId, categoryId }: ICategories) => {
       ))}
 
       <img
-        onClick={() => setCategoryId(null)}
+        onClick={() => handleChangeCategoryId(null)}
         className={styles.chooseIcon}
         src={chooses}
         alt=""

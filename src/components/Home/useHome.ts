@@ -13,6 +13,9 @@ const useHome = (search: string | undefined) => {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [showContainer, setShowContainer] = useState<boolean>(false);
 
+  const handleChangeCategoryId = (id: number | null) => {
+    setSelectedCategoryId(id);
+  };
   const handleGetHome = async () => {
     const response = await RequestBuilder({
       url: "/home",
@@ -55,13 +58,21 @@ const useHome = (search: string | undefined) => {
   }, [selectedCategoryId, search]);
 
   useEffect(() => {
+    const hasSearch = search && search.trim() !== "";
+    const hasSelectedCategory = selectedCategoryId !== null;
+    if (!hasSearch && !hasSelectedCategory) {
+      setProduct([]);
+      setTotalPages(1);
+      return;
+    }
+
     handleGetProduct(currentPage, selectedCategoryId, search);
   }, [currentPage, selectedCategoryId, search]);
   return {
     categories,
     moreItemsToConsider,
     todayDeals,
-    setSelectedCategoryId,
+    handleChangeCategoryId,
     setCurrentPage,
     currentPage,
     totalPages,

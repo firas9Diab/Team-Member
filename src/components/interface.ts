@@ -100,7 +100,7 @@ export type Category = {
 
 export type ICategories = {
   categories: Category[];
-  setCategoryId: (categoryId: number | null) => void;
+  handleChangeCategoryId: (categoryId: number | null) => void;
   categoryId: number | null;
 };
 

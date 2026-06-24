@@ -12,7 +12,7 @@ const Home = ({ search }: IHome) => {
     categories,
     moreItemsToConsider,
     todayDeals,
-    setSelectedCategoryId,
+    handleChangeCategoryId,
     setCurrentPage,
     currentPage,
     totalPages,
@@ -39,7 +39,7 @@ const Home = ({ search }: IHome) => {
       <div className={styles.categories}>
         <Categories
           categories={categories}
-          setCategoryId={setSelectedCategoryId}
+          handleChangeCategoryId={handleChangeCategoryId}
           categoryId={selectedCategoryId}
         />
       </div>

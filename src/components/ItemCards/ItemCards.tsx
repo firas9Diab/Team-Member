@@ -31,29 +31,6 @@ const ItemCards = ({
                 <Product key={product.id} card={product} />
               ))}
         </div>
-
-        <ul className={styles.paginationList}>
-          {selectedCategoryId || search
-            ? new Array(totalPages).fill(0).map((_, i) => {
-                return (
-                  <button
-                    key={i + 1}
-                    onClick={() => {
-                      setCurrentPage(i + 1);
-                    }}
-                    disabled={currentPage === i + 1}
-                    className={
-                      currentPage === i + 1
-                        ? styles.activePageButton
-                        : styles.pageButton
-                    }
-                  >
-                    {i + 1}
-                  </button>
-                );
-              })
-            : ""}
-        </ul>
       </div>
 
       {showContainer && (
@@ -67,6 +44,29 @@ const ItemCards = ({
           </div>
         </div>
       )}
+
+      <ul className={styles.paginationList}>
+        {selectedCategoryId || search
+          ? new Array(totalPages).fill(0).map((_, i) => {
+              return (
+                <button
+                  key={i + 1}
+                  onClick={() => {
+                    setCurrentPage(i + 1);
+                  }}
+                  disabled={currentPage === i + 1}
+                  className={
+                    currentPage === i + 1
+                      ? styles.activePageButton
+                      : styles.pageButton
+                  }
+                >
+                  {i + 1}
+                </button>
+              );
+            })
+          : null}
+      </ul>
     </>
   );
 };
