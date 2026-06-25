@@ -1,6 +1,7 @@
 import moment from "moment";
 import useOrders from "./useOrders";
 import styles from "./Orders.module.scss";
+import OrderItem from "../OrderItem/OrderItem";
 
 const Orders = () => {
   const { orders } = useOrders();
@@ -10,6 +11,9 @@ const Orders = () => {
       <div className={styles.container}>
         <h1>Your Orders</h1>
         <hr />
+        {orders.length === 0 && (
+          <p className={styles.empty}>no cart is available</p>
+        )}
         {orders.map((order) => (
           <div key={order.id} className={styles.orderCard}>
             <div className={styles.orderHeader}>
@@ -36,20 +40,8 @@ const Orders = () => {
                 <p>{order.orderNumber}</p>
               </div>
             </div>
-            <div className={styles.order}>
-              <div className={styles.productInfo}>
-                <p>Arriving Today</p>
-                <img src={order.items[0].image} />
-              </div>
-              <div>
-                <p className={styles.orderText}>{order.items[0].title}</p>
-              </div>
-              <div className={styles.buttons}>
-                <button className={styles.Btn}>Track Package</button>
-                <button className={styles.Btn}>Get Product support</button>
-                <button className={styles.Btn}>Cancel this delivery</button>
-              </div>
-            </div>
+            <p className={styles.Arriving}>Arriving Today</p>
+            <OrderItem order={order} />
           </div>
         ))}
       </div>

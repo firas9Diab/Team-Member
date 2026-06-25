@@ -1,0 +1,54 @@
+.order {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.productInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  max-height: 220px;
+  object-fit: contain;
+}
+
+.orderDetails {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+}
+
+.allItems {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 19px;
+}
+
+.Btn {
+  border: none;
+  background: #ffd814;
+  border-radius: 20px;
+  padding: 10px 25px;
+  cursor: pointer;
+  min-width: 180px;
+  font-size: 14px;
+}
+
+.orderText {
+  font-size: 15px;
+  color: #262626;
+  font-weight: 600;
+}

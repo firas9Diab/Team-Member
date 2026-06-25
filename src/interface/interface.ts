@@ -207,3 +207,7 @@ interface items{
   quantity: number,
   lineTotal: number
 }
+
+export interface IOrders{
+  order:OrderDto;
+}

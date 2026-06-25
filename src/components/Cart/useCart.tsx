@@ -21,13 +21,12 @@ const useCart = () => {
       setCart(response.data.items);
       setSubtotal(response.data.subtotal);
       setTotal(response.data.totalItems);
-      console.log(response.data);
     } catch (error) {
       console.error("Error fetching user data:", error);
     }
   };
 
-  const Delete = async (id: number) => {
+  const handleDeleteCart = async (id: number) => {
     try {
       await requestBuilder({
         url: `http://localhost:3000/cart/${id}`,
@@ -40,7 +39,7 @@ const useCart = () => {
     }
   };
 
-  const AddToOrder = async () => {
+  const addToOrder = async () => {
     try {
       await requestBuilder({
         url: "http://localhost:3000/orders",
@@ -66,7 +65,7 @@ const useCart = () => {
     getCart();
   }, []);
 
-  return { cart, starRating, total, subtotal, Delete, AddToOrder };
+  return { cart, starRating, total, subtotal, handleDeleteCart, addToOrder };
 };
 
 export default useCart;
