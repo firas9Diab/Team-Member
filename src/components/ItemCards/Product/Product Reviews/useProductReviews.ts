@@ -8,9 +8,7 @@ const useProductReviews = ({ id }: IUseProductReviews) => {
   const [reviews, setReviews] = useState<ProductReview[]>([]);
   const [productReviewSummary, setProductReviewSummary] =
     useState<ProductReviewSummary | null>(null);
-
   const userIcon: string = UserIcon;
-
   const [reviewsTotalPages, setReviewsTotalPages] = useState<number>(1);
   const [reviewsCurrentPage, setReviewsCurrentPage] = useState<number>(1);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);

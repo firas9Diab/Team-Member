@@ -1,3 +1,24 @@
+export type MethodType = "GET" | "POST" | "PATCH" | "DELETE";
+
+interface SignInDTO {
+  email: string;
+  password: string;
+}
+
+interface SignUpDTO {
+  fullName: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+  phone: string;
+}
+
+type ChangeMyDetailsDTO = {
+  fullName: string;
+  phone: string;
+  dateOfBirth: string;
+};
+
 export interface Address {
   id?: number;
   name: string;
@@ -27,7 +48,17 @@ export type IViewAddresses = {
   handleDeleteAddresses: (address: Address) => void;
 };
 
-export type MethodType = "GET" | "POST" | "PATCH" | "DELETE";
+export type Category = {
+  id: number;
+  name: string;
+  slug: string;
+};
+
+export type ICategories = {
+  categories: Category[];
+  handleChangeCategoryId: (categoryId: number | null) => void;
+  categoryId: number | null;
+};
 
 type ProductType = "today-deals" | "recommended";
 
@@ -41,6 +72,11 @@ export type ProductParams = {
   page?: number;
   limit?: number;
 };
+
+export type ProductDetailsParams = {
+  id: string;
+};
+
 export interface ProductCategory {
   id: number;
   name: string;
@@ -68,21 +104,6 @@ export interface ProductReviewSummary {
   breakdown: ProductReviewBreakdown;
 }
 
-export interface IProductReviews {
-  selectedProduct: ProductDetailsDTO | null;
-  handleCalculateRatingPercentage: (rating: number) => number;
-  id: string | undefined;
-  handleGetProductDetails: (id: string) => void;
-}
-export interface IProductComments {
-  id: string | undefined;
-  reviewsTotalPages: number;
-  reviewsCurrentPage: number;
-  setReviewsCurrentPage: (page: number) => void;
-  userIcon: string;
-  reviews: ProductReview[];
-}
-
 export interface ProductListItemDTO {
   id: number;
   title: string;
@@ -96,32 +117,6 @@ export interface ProductListItemDTO {
   category: ProductCategory;
 }
 
-export interface IAddProductReview {
-  id: string | undefined;
-  isModalOpen: boolean;
-  setIsModalOpen: (isOpen: boolean) => void;
-  handleGetProductReviews: (page: number, id: string) => void;
-  handleGetProductDetails: (id: string) => void;
-}
-export interface IUseAddProductReview {
-  id: string | undefined;
-  handleGetProductReviews: (page: number, id: string) => void;
-  isModalOpen: boolean;
-  setIsModalOpen: (isOpen: boolean) => void;
-  handleGetProductDetails: (id: string) => void;
-}
-
-export interface IModal {
-  handleCloseModal: () => void;
-  handleAddProductReview: () => void;
-  handleChangeform: (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) => void;
-  setRating: (rating: number) => void;
-  rating: number;
-  title: string;
-  comment: string;
-}
 export interface ProductDetailsDTO {
   id: number;
   title: string;
@@ -140,68 +135,9 @@ export interface ProductDetailsDTO {
   reviewSummary: ProductReviewSummary;
 }
 
-interface SignInDTO {
-  email: string;
-  password: string;
-}
-interface SignUpDTO {
-  fullName: string;
-  email: string;
-  password: string;
-  confirmPassword: string;
-  phone: string;
-}
-
-type ChangeMyDetailsDTO = {
-  fullName: string;
-  phone: string;
-  dateOfBirth: string;
-};
-export type RequestData =
-  | ProductListItemDTO
-  | ProductListItemDTO[]
-  | ProductDetailsDTO[]
-  | Address
-  | Address[]
-  | SignInDTO
-  | SignUpDTO
-  | ChangeMyDetailsDTO
-  | ProductReview[]
-  | AddProductReviewDTO;
-
-export type AddProductReviewDTO = {
-  rating: number;
-  title: string;
-  comment: string;
-};
-export interface IUseProductReviews {
-  id: string | undefined;
-}
-export type ProductDetailsParams = {
-  id: string;
-};
-
-export type IRequestBuilder = {
-  url: string;
-  method?: MethodType;
-  data?: RequestData;
-  params?: ProductParams | ReviewParams | ProductDetailsParams | undefined;
-};
-
-export type Category = {
-  id: number;
-  name: string;
-  slug: string;
-};
-export interface IPaginationButtons {
-  setReviewsCurrentPage: (page: number) => void;
-  reviewsCurrentPage: number;
-  reviewsTotalPages: number;
-}
-export type ICategories = {
-  categories: Category[];
-  handleChangeCategoryId: (categoryId: number | null) => void;
-  categoryId: number | null;
+export type IProduct = {
+  card: ProductListItemDTO;
+  navigate?: (nav: string) => void;
 };
 
 export type IItemCards = {
@@ -215,26 +151,6 @@ export type IItemCards = {
   search: string | undefined;
   showContainer: boolean;
   navigate: (nav: string) => void;
-};
-
-export type IProduct = {
-  card: ProductListItemDTO;
-  navigate?: (nav: string) => void;
-};
-
-export type INavbar = {
-  search?: string;
-  setSearch?: (search: string | undefined) => void;
-};
-
-export type IProtectedRoute = {
-  children: React.ReactNode;
-  search?: string;
-  setSearch?: (search: string | undefined) => void;
-};
-
-export type IHome = {
-  search: string | undefined;
 };
 
 export type ReviewSortBy =
@@ -260,6 +176,81 @@ export interface ProductReview {
   createdAt: string;
 }
 
+export type AddProductReviewDTO = {
+  rating: number;
+  title: string;
+  comment: string;
+};
+
+export interface IProductReviews {
+  selectedProduct: ProductDetailsDTO | null;
+  handleCalculateRatingPercentage: (rating: number) => number;
+  id: string | undefined;
+  handleGetProductDetails: (id: string) => void;
+}
+
+export interface IProductComments {
+  id: string | undefined;
+  reviewsTotalPages: number;
+  reviewsCurrentPage: number;
+  setReviewsCurrentPage: (page: number) => void;
+  userIcon: string;
+  reviews: ProductReview[];
+}
+
+export interface IAddProductReview {
+  id: string | undefined;
+  isModalOpen: boolean;
+  setIsModalOpen: (isOpen: boolean) => void;
+  handleGetProductReviews: (page: number, id: string) => void;
+  handleGetProductDetails: (id: string) => void;
+}
+
+export interface IUseAddProductReview {
+  id: string | undefined;
+  handleGetProductReviews: (page: number, id: string) => void;
+  isModalOpen: boolean;
+  setIsModalOpen: (isOpen: boolean) => void;
+  handleGetProductDetails: (id: string) => void;
+}
+
+export interface IUseProductReviews {
+  id: string | undefined;
+}
+
+export interface IModal {
+  handleCloseModal: () => void;
+  handleAddProductReview: () => void;
+  handleChangeform: (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => void;
+  setRating: (rating: number) => void;
+  rating: number;
+  title: string;
+  comment: string;
+}
+
+export interface IPaginationButtons {
+  setReviewsCurrentPage: (page: number) => void;
+  reviewsCurrentPage: number;
+  reviewsTotalPages: number;
+}
+
+export type INavbar = {
+  search?: string;
+  setSearch?: (search: string | undefined) => void;
+};
+
+export type IProtectedRoute = {
+  children: React.ReactNode;
+  search?: string;
+  setSearch?: (search: string | undefined) => void;
+};
+
+export type IHome = {
+  search: string | undefined;
+};
+
 export type FooterCategory = {
   id: string | number;
   title?: string;
@@ -267,3 +258,22 @@ export type FooterCategory = {
 };
 
 export type FooterCategories = FooterCategory[];
+
+export type RequestData =
+  | ProductListItemDTO
+  | ProductListItemDTO[]
+  | ProductDetailsDTO[]
+  | Address
+  | Address[]
+  | SignInDTO
+  | SignUpDTO
+  | ChangeMyDetailsDTO
+  | ProductReview[]
+  | AddProductReviewDTO;
+
+export type IRequestBuilder = {
+  url: string;
+  method?: MethodType;
+  data?: RequestData;
+  params?: ProductParams | ReviewParams | ProductDetailsParams | undefined;
+};
