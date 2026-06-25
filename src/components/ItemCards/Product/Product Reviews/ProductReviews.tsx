@@ -14,7 +14,7 @@ const ProductReviews = ({
     reviews,
     reviewsTotalPages,
     reviewsCurrentPage,
-    setReviewsCurrentPage,
+    handleChangeReviewsCurrentPage,
     userIcon,
     isModalOpen,
     setIsModalOpen,
@@ -76,7 +76,7 @@ const ProductReviews = ({
       <ProductComments
         reviewsTotalPages={reviewsTotalPages}
         reviewsCurrentPage={reviewsCurrentPage}
-        setReviewsCurrentPage={setReviewsCurrentPage}
+        handleChangeReviewsCurrentPage={handleChangeReviewsCurrentPage}
         userIcon={userIcon}
         reviews={reviews}
         id={id}

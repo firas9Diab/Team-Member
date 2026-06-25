@@ -2,7 +2,7 @@ import styles from "./PaginationButtons.module.scss";
 import type { IPaginationButtons } from "../../../../../interface";
 
 const PaginationButtons = ({
-  setReviewsCurrentPage,
+  handleChangeReviewsCurrentPage,
   reviewsCurrentPage,
   reviewsTotalPages,
 }: IPaginationButtons) => {
@@ -13,7 +13,7 @@ const PaginationButtons = ({
           <button
             key={i + 1}
             onClick={() => {
-              setReviewsCurrentPage(i + 1);
+              handleChangeReviewsCurrentPage(i + 1);
             }}
             disabled={reviewsCurrentPage === i + 1}
             className={

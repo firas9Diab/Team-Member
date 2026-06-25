@@ -193,7 +193,7 @@ export interface IProductComments {
   id: string | undefined;
   reviewsTotalPages: number;
   reviewsCurrentPage: number;
-  setReviewsCurrentPage: (page: number) => void;
+  handleChangeReviewsCurrentPage: (page: number) => void;
   userIcon: string;
   reviews: ProductReview[];
 }
@@ -231,7 +231,7 @@ export interface IModal {
 }
 
 export interface IPaginationButtons {
-  setReviewsCurrentPage: (page: number) => void;
+  handleChangeReviewsCurrentPage: (page: number) => void;
   reviewsCurrentPage: number;
   reviewsTotalPages: number;
 }

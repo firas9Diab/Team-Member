@@ -25,6 +25,10 @@ const useProductDetails = () => {
       100
     );
   };
+const handleChangeImages =(image:ProductImage | null)=>{
+setSelectedImage(image)
+
+}
 
   const handleGetProductDetails = async (id: string) => {
     const response = await RequestBuilder({
@@ -47,10 +51,9 @@ const useProductDetails = () => {
     selectedProduct,
     selectedImage,
     handleCalculateRatingPercentage,
-    setSelectedImage,
     productFeatures,
     id,
-    handleGetProductDetails,
+    handleGetProductDetails,handleChangeImages
   };
 };
 

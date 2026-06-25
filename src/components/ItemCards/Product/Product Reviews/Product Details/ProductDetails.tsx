@@ -7,10 +7,9 @@ const ProductDetails = () => {
     selectedProduct,
     selectedImage,
     handleCalculateRatingPercentage,
-    setSelectedImage,
     productFeatures,
     id,
-    handleGetProductDetails,
+    handleGetProductDetails,handleChangeImages
   } = useProductDetails();
 
   return (
@@ -28,7 +27,7 @@ const ProductDetails = () => {
                 }
                 src={image.url}
                 alt={image.alt}
-                onClick={() => setSelectedImage(image)}
+                onClick={() => handleChangeImages(image)}
               />
             ))}
           </div>
@@ -61,8 +60,11 @@ const ProductDetails = () => {
                 {new Array(5).fill(0).map((_, i) => (
                   <span key={i + 1} className={styles.star}>
                     {i < Math.round(selectedProduct?.ratingAverage || 0)
-                      ? "★"
-                      : "☆"}
+                     ? (
+                      <>&#9733;</>
+                    ) : (
+                      <>&#9734;</>
+                    )}
                   </span>
                 ))}
               </div>

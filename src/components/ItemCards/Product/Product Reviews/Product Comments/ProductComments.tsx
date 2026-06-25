@@ -5,7 +5,7 @@ import PaginationButtons from "./Pagination Buttons/PaginationButtons";
 const ProductComments = ({
   reviewsTotalPages,
   reviewsCurrentPage,
-  setReviewsCurrentPage,
+  handleChangeReviewsCurrentPage,
   userIcon,
   reviews,
 }: IProductComments) => {
@@ -37,7 +37,7 @@ const ProductComments = ({
       ))}
 
       <PaginationButtons
-        setReviewsCurrentPage={setReviewsCurrentPage}
+        handleChangeReviewsCurrentPage={handleChangeReviewsCurrentPage}
         reviewsCurrentPage={reviewsCurrentPage}
         reviewsTotalPages={reviewsTotalPages}
       />

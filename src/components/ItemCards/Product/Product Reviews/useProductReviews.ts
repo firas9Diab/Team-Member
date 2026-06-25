@@ -33,6 +33,10 @@ const useProductReviews = ({ id }: IUseProductReviews) => {
     setReviewsTotalPages(response.data.pagination.totalPages);
   };
 
+const handleChangeReviewsCurrentPage =(page:number)=>{
+setReviewsCurrentPage(page);
+}
+
   useEffect(() => {
     setReviewsCurrentPage(1);
   }, [id]);
@@ -48,7 +52,7 @@ const useProductReviews = ({ id }: IUseProductReviews) => {
     productReviewSummary,
     reviewsTotalPages,
     reviewsCurrentPage,
-    setReviewsCurrentPage,
+    handleChangeReviewsCurrentPage,
     userIcon,
     isModalOpen,
     setIsModalOpen,
