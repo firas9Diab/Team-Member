@@ -1,7 +1,7 @@
 import type { IOrders } from "../../interface/interface";
 import styles from "./OrderItem.module.scss";
 
-const OrderItem = ({ order }: IOrders) => {
+const OrderItems = ({ order }: IOrders) => {
   return (
     <div>
       <div className={styles.order}>
@@ -23,4 +23,4 @@ const OrderItem = ({ order }: IOrders) => {
   );
 };
 
-export default OrderItem;
+export default OrderItems;

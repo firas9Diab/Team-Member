@@ -1,7 +1,7 @@
 import moment from "moment";
 import useOrders from "./useOrders";
 import styles from "./Orders.module.scss";
-import OrderItem from "../OrderItem/OrderItem";
+import OrderItems from "../OrderItem/OrderItem";
 
 const Orders = () => {
   const { orders } = useOrders();
@@ -41,7 +41,7 @@ const Orders = () => {
               </div>
             </div>
             <p className={styles.Arriving}>Arriving Today</p>
-            <OrderItem order={order} />
+            <OrderItems order={order} />
           </div>
         ))}
       </div>
