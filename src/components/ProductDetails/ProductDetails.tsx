@@ -33,6 +33,10 @@ const ProductDetails = () => {
     setHoveredStar,
     starBar,
     getPercentage,
+    AddToCart,
+    handleProductIdChange,
+    handleQuantityChange,
+    quantity,
   } = useProductDetails();
 
   const images = [
@@ -106,8 +110,19 @@ const ProductDetails = () => {
                 <button className={styles.stock}>{productDetails.stock}</button>
               </div>
               <div className={styles.buttons}>
-                <button className={styles.buttonYellow}></button>
-                <button className={styles.buttonOrange}></button>
+                <button
+                  className={styles.buttonYellow}
+                  onClick={() => AddToCart(productDetails.id, quantity)}
+                >
+                  Add To Cart
+                </button>
+
+                <input
+                  className={styles.buttonOrange}
+                  type="number"
+                  onChange={(e) => handleQuantityChange(Number(e.target.value))}
+                  placeholder="Quantity"
+                />
               </div>
             </div>
           </div>

@@ -57,8 +57,8 @@ const useSignUp = () => {
           },
         });
 
-        if (response.data.data.accessToken) {
-          localStorage.setItem("token", response.data.data.accessToken);
+        if (response.data.accessToken) {
+          localStorage.setItem("token", response.data.accessToken);
           navigate("/");
         }
       } catch (error: any) {

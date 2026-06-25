@@ -9,7 +9,7 @@ const requestBuilder = async ({ url, method, data }: IRequestBuilder) => {
     url,
     data,
     headers: {
-      Authorization: `Bearer ${token}`,
+      Authorization: token ? `Bearer ${token}` : "",
       "Content-Type": "application/json",
     },
   });

@@ -162,3 +162,52 @@ export type Star = 1 | 2 | 3 | 4 | 5;
     starRating:readonly Star[];
     rating: number;
   }
+
+
+  export interface CartDto {
+  items: CartItemDto[];
+  subtotal: number;
+  totalItems: number;
+}
+
+export interface CartItemDto {
+  id: number;
+  productId: number;
+  title: string;
+  slug: string;
+  brand: string;
+  image: string;
+  price: number;
+  oldPrice: number;
+  discountPercent: number;
+  ratingAverage: number;
+  ratingCount: number;
+  quantity: number;
+  lineTotal: number;
+}
+
+
+export interface OrderDto{
+      id: number,
+      orderNumber: string,
+      status: string,
+      subtotal: number,
+      total: number,
+      shipToName:string,
+      placedAt:string,
+      items:items[];
+}
+
+interface items{
+  id: number,
+  productId: number,
+  title: string,
+  image: string,
+  price: number,
+  quantity: number,
+  lineTotal: number
+}
+
+export interface IOrders{
+  order:OrderDto;
+}
