@@ -12,6 +12,7 @@ const ItemCards = ({
   products,
   search,
   showContainer,
+  navigate,
 }: IItemCards) => {
   return (
     <>
@@ -28,7 +29,7 @@ const ItemCards = ({
                 <Product key={todayDeal.id} card={todayDeal} />
               ))
             : products.map((product) => (
-                <Product key={product.id} card={product} />
+                <Product key={product.id} card={product} navigate={navigate} />
               ))}
         </div>
       </div>

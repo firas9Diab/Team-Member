@@ -1,0 +1,17 @@
+.addProductReview {
+  padding-top: 65px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 285px;
+}
+.writeReviewButton {
+  box-sizing: border-box;
+  background: #ffffff;
+  border: 1px solid #b2b2b2;
+  border-radius: 11px;
+  &:hover {
+    background: #535bf2;
+    color: #ffffff;
+  }
+}

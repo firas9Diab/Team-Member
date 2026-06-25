@@ -1,0 +1,171 @@
+.reviewModal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  border: 1px solid #011627;
+  border-radius: 0.3em;
+  box-shadow: -2px 5px 5px #cdceda;
+  background-color: #fdfffc;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  color: #011627;
+}
+
+.closeModalButton {
+  align-self: flex-end;
+  border: 1px solid #011627;
+  background: transparent;
+  font-size: 1.2em;
+  font-weight: 300;
+  color: #ffffff;
+  background-color: red;
+  cursor: pointer;
+}
+
+.modalContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  padding: 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.modalActions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding-bottom: 20px;
+}
+
+.ratingStars {
+  display: flex;
+  gap: 5px;
+}
+
+.ratingStar {
+  color: #c7c7c7;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.activeRatingStar {
+  color: #ffd814;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.reviewInput {
+  padding: 8px 12px;
+  border: 1px solid #cdceda;
+  border-radius: 6px;
+  outline: none;
+}
+
+.reviewTextarea {
+  padding: 8px 12px;
+  border: 1px solid #cdceda;
+  border-radius: 6px;
+  outline: none;
+  resize: vertical;
+}
+
+.modalButton {
+  color: white;
+  border: 1px solid #e5e7eb;
+  display: inline-block;
+  padding: 8px 20px;
+  background-color: #838383;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.2s;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #535bf2;
+  }
+}
+
+@media (max-width: 768px) {
+  .reviewModal {
+    width: 90%;
+    max-height: 90vh;
+  }
+
+  .modalContent {
+    padding: 16px;
+    gap: 14px;
+  }
+
+  .reviewInput,
+  .reviewTextarea {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .reviewTextarea {
+    max-width: 100%;
+  }
+
+  .modalActions {
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    padding: 0 16px 20px;
+    box-sizing: border-box;
+  }
+
+  .modalButton {
+    width: 100%;
+  }
+
+  .ratingStar,
+  .activeRatingStar {
+    font-size: 28px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .reviewModal {
+    width: 70%;
+  }
+
+  .modalContent {
+    padding: 20px;
+  }
+
+  .reviewInput,
+  .reviewTextarea {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .modalButton {
+    min-width: 30%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .reviewModal {
+    width: 50%;
+  }
+
+  .modalButton {
+    min-width: 30%;
+  }
+}

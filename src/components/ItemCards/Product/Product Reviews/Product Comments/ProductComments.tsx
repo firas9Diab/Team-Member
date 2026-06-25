@@ -1,0 +1,48 @@
+import styles from "./ProductComments.module.scss";
+import type { IProductComments } from "../../../../interface";
+import PaginationButtons from "./Pagination Buttons/PaginationButtons";
+
+const ProductComments = ({
+  reviewsTotalPages,
+  reviewsCurrentPage,
+  setReviewsCurrentPage,
+  userIcon,
+  reviews,
+}: IProductComments) => {
+  return (
+    <div className={styles.productComments}>
+      {reviews.map((review) => (
+        <div key={review.id}>
+          <div className={styles.userName}>
+            <span>
+              <img src={userIcon} alt="User" />
+            </span>{" "}
+            <span>{review.reviewerName}</span>
+          </div>
+          <div className={styles.commentHeader}>
+            <div className={styles.stars}>
+              {...new Array(5).fill(0).map((_, i) => (
+                <span key={i} className={styles.star}>
+                  {i < review.rating ? <>&#9733;</> : <>&#9734;</>}
+                </span>
+              ))}
+            </div>
+            <div>{review.title}</div>
+          </div>
+          <div className={styles.commentInformation}>
+            <div>Reviewed in India on {review.createdAt.slice(0, 10)}</div>
+            <div>{review.comment}</div>
+          </div>
+        </div>
+      ))}
+
+      <PaginationButtons
+        setReviewsCurrentPage={setReviewsCurrentPage}
+        reviewsCurrentPage={reviewsCurrentPage}
+        reviewsTotalPages={reviewsTotalPages}
+      />
+    </div>
+  );
+};
+
+export default ProductComments;

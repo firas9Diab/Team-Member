@@ -1,0 +1,58 @@
+.productComments {
+  padding-top: 40px;
+}
+.star {
+  color: #ffd814;
+  font-size: 20px;
+}
+
+.userName {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.commentHeader {
+  display: flex;
+  gap: 10px;
+}
+.commentInformation {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+@media (max-width: 768px) {
+  .productComments {
+    width: 100%;
+    padding-top: 28px;
+  }
+
+  .activePageButton,
+  .pageButton {
+    padding: 7px 14px;
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .productComments {
+    padding-top: 34px;
+  }
+
+  .activePageButton,
+  .pageButton {
+    padding: 8px 18px;
+    font-size: 15px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .productComments {
+    padding-top: 40px;
+  }
+
+  .activePageButton,
+  .pageButton {
+    padding: 8px 20px;
+  }
+}

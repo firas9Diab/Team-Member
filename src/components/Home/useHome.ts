@@ -1,13 +1,16 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import RequestBuilder from "../services/RequestBuilder";
-import type { Category } from "../interface";
-import type { ProductDTO } from "../interface";
+import type { Category, ProductListItemDTO } from "../interface";
 
 const useHome = (search: string | undefined) => {
+  const navigate = useNavigate();
   const [categories, setCategories] = useState<Category[]>([]);
-  const [todayDeals, setTodayDeals] = useState<ProductDTO[]>([]);
-  const [moreItemsToConsider, setMoreItemsToConsider] = useState<ProductDTO[]>([]);
-  const [product, setProduct] = useState<ProductDTO[]>([]);
+  const [todayDeals, setTodayDeals] = useState<ProductListItemDTO[]>([]);
+  const [moreItemsToConsider, setMoreItemsToConsider] = useState<
+    ProductListItemDTO[]
+  >([]);
+  const [product, setProduct] = useState<ProductListItemDTO[]>([]);
   const [totalPages, setTotalPages] = useState<number>(0);
   const [selectedCategoryId, setSelectedCategoryId] = useState<number | null>(
     null,
@@ -82,6 +85,7 @@ const useHome = (search: string | undefined) => {
     selectedCategoryId,
     product,
     showContainer,
+    navigate,
   };
 };
 

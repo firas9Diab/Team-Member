@@ -1,0 +1,158 @@
+.productReviewsLayout {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background: #f0f0f0;
+  padding-top: 10px;
+  padding-bottom: 36px;
+  gap: 60px;
+}
+
+.productReviewsSection {
+  width: 550px;
+  padding-left: 115px;
+}
+
+.reviewsContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.star {
+  color: #ffd814;
+  font-size: 20px;
+}
+
+.ratingProgresses {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 10px;
+}
+
+.ratingSummary {
+  padding-bottom: 40px;
+}
+
+.reviewBreakdown {
+  display: flex;
+  gap: 28px;
+  align-items: center;
+}
+
+.ratingProgress {
+  box-sizing: border-box;
+  width: 204px;
+  height: 21px;
+  appearance: none;
+  -webkit-appearance: none;
+  border: none;
+  background: transparent;
+}
+
+.reviewRating {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.ratingProgress::-webkit-progress-bar {
+  background: #d9d9d9;
+  border: 1px solid #b8b8b8;
+  border-radius: 7px;
+  overflow: hidden;
+}
+
+.ratingProgress::-webkit-progress-value {
+  background: #ffd814;
+  border-radius: 7px 0 0 7px;
+}
+
+.ratingProgress::-moz-progress-bar {
+  background: #ffd814;
+  border-radius: 7px 0 0 7px;
+}
+
+@media (max-width: 768px) {
+  .productReviewsLayout {
+    flex-direction: column;
+    align-items: center;
+    gap: 35px;
+    padding: 24px 16px 36px;
+  }
+
+  .productReviewsSection {
+    width: 100%;
+    padding-left: 0;
+  }
+
+  .reviewsContent {
+    width: 100%;
+  }
+
+  .ratingSummary {
+    padding-bottom: 28px;
+  }
+
+  .reviewRating {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .ratingProgresses {
+    width: 100%;
+    gap: 12px;
+  }
+
+  .reviewBreakdown {
+    width: 100%;
+    justify-content: space-between;
+    gap: 8px;
+    font-size: 14px;
+  }
+
+  .ratingProgress {
+    width: 140px;
+    height: 18px;
+  }
+
+  .star {
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .productReviewsLayout {
+    gap: 40px;
+    padding: 28px 24px 40px;
+  }
+
+  .productReviewsSection {
+    width: 460px;
+    padding-left: 40px;
+  }
+
+  .reviewBreakdown {
+    gap: 18px;
+  }
+
+  .ratingProgress {
+    width: 170px;
+    height: 20px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .productReviewsLayout {
+    flex-direction: row;
+  }
+
+  .productReviewsSection {
+    width: 550px;
+    padding-left: 115px;
+  }
+
+  .ratingProgress {
+    width: 204px;
+    height: 21px;
+  }
+}
