@@ -6,6 +6,7 @@ import type {
 } from "../../interface/interface";
 import requestBuilder from "../utility/requestBuilder";
 import { useParams } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const useProductDetails = () => {
   const [productDetails, setProductDetails] =
@@ -19,6 +20,8 @@ const useProductDetails = () => {
   const [showReviewForm, setShowReviewForm] = useState(false);
   const [selectedImg, setSelectedImg] = useState(0);
   const [hoveredStar, setHoveredStar] = useState(0);
+  const [productId, setProductId] = useState(1);
+  const [quantity, setQuantity] = useState(1);
 
   const { id } = useParams();
 
@@ -36,6 +39,14 @@ const useProductDetails = () => {
 
   const handleSelectedImgChange = (value: number) => {
     setSelectedImg(value);
+  };
+
+  const handleProductIdChange = (value: number) => {
+    setProductId(value);
+  };
+
+  const handleQuantityChange = (value: number) => {
+    setQuantity(value);
   };
 
   const getPercentage = (star: Star) =>
@@ -92,6 +103,31 @@ const useProductDetails = () => {
     }
   };
 
+  const AddToCart = async (id: number, qty: number) => {
+    try {
+      await requestBuilder({
+        url: "http://localhost:3000/cart",
+        method: "POST",
+        data: {
+          productId: id,
+          quantity: qty,
+        },
+      });
+      Swal.fire({
+        icon: "success",
+        title: "Added to cart!",
+        text: "Product has been added successfully",
+      });
+    } catch (error) {
+      Swal.fire({
+        icon: "error",
+        title: "Failed!",
+        text: "Could not add product to cart",
+      });
+      console.error(error);
+    }
+  };
+
   useEffect(() => {
     getProductsDetails();
   }, [id]);
@@ -122,6 +158,10 @@ const useProductDetails = () => {
     starRating,
     starBar,
     getPercentage,
+    AddToCart,
+    handleProductIdChange,
+    handleQuantityChange,
+    quantity,
   };
 };
 

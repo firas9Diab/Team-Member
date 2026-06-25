@@ -3,7 +3,7 @@ import styles from "./renderStars.module.scss";
 import Filled from "../../Assets/filled.svg";
 import Empty from "../../Assets/empty.svg";
 
-const RenderStars = ({ starRating, rating }: IRenderStars) => {
+const RenderStars = ({ starRating = [], rating }: IRenderStars) => {
   return (
     <>
       {starRating.map((star) => (

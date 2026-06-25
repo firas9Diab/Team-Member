@@ -9,6 +9,8 @@ import { useState } from "react";
 import Navbar from "./components/Navbar/Navbar";
 import ProductDetails from "./components/ProductDetails/ProductDetails";
 import Footer from "./components/Footer/Footer";
+import Cart from "./components/Cart/Cart";
+import Orders from "./components/Orders/Orders";
 
 const App = () => {
   const location = useLocation();
@@ -50,6 +52,24 @@ const App = () => {
           element={
             <ProtectedRoute>
               <ProductDetails />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/Cart"
+          element={
+            <ProtectedRoute>
+              <Cart />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/Orders"
+          element={
+            <ProtectedRoute>
+              <Orders />
             </ProtectedRoute>
           }
         />

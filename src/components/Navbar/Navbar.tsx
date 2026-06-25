@@ -27,8 +27,8 @@ const Navbar = ({ search, handleSearchChange }: INavbar) => {
         </div>
 
         <div className={styles.rightItems}>
-          <Link to="/" className={styles.rightLink}>
-            Orders
+          <Link to="/Cart" className={styles.rightLink}>
+            Cart
           </Link>
           <div className={styles.profile}>
             <Link
