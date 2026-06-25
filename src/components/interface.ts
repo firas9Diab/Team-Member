@@ -77,6 +77,13 @@ export type ProductDetailsParams = {
   id: string;
 };
 
+export type IProductDetails = {
+  selectedProduct: ProductDetailsDTO | null;
+  handleChangeImages: (image: ProductImage) => void;
+  selectedImage: ProductImage | null;
+  productFeatures: ProductFeature[];
+};
+
 export interface ProductCategory {
   id: number;
   name: string;

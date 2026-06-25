@@ -1,16 +1,8 @@
-import ProductReviews from "../ProductReviews";
 import styles from "./ProductDetails.module.scss";
-import useProductDetails from "./useProductDetails";
+import type{IProductDetails} from "../../../../interface";
 
-const ProductDetails = () => {
-  const {
-    selectedProduct,
-    selectedImage,
-    handleCalculateRatingPercentage,
-    productFeatures,
-    id,
-    handleGetProductDetails,handleChangeImages
-  } = useProductDetails();
+const ProductDetails = ({selectedProduct,handleChangeImages,selectedImage,productFeatures}:IProductDetails) => {
+
 
   return (
     <>
@@ -114,12 +106,7 @@ const ProductDetails = () => {
         </div>
       </div>
 
-      <ProductReviews
-        handleGetProductDetails={handleGetProductDetails}
-        selectedProduct={selectedProduct}
-        handleCalculateRatingPercentage={handleCalculateRatingPercentage}
-        id={id}
-      />
+     
     </>
   );
 };

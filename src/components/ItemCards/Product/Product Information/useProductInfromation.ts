@@ -1,15 +1,17 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import RequestBuilder from "../../../../services/RequestBuilder";
+import RequestBuilder from "../../../services/RequestBuilder";
 import type {
   ProductDetailsDTO,
   ProductDetailsParams,
   ProductFeature,
   ProductImage,
   ProductReviewSummary,
-} from "../../../../interface";
+} from "../../../interface";
 
-const useProductDetails = () => {
+
+const useProjectInfromation = () => {
+
   const [selectedImage, setSelectedImage] = useState<ProductImage | null>(null);
   const { id } = useParams<ProductDetailsParams>();
   const [selectedProduct, setSelectedProduct] =
@@ -55,6 +57,7 @@ setSelectedImage(image)
     id,
     handleGetProductDetails,handleChangeImages
   };
-};
 
-export default useProductDetails;
+}
+
+export default useProjectInfromation

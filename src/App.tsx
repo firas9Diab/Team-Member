@@ -5,7 +5,7 @@ import Login from "./components/User/Login/Login";
 import ProtectedRoute from "./ProtectedRoute";
 import Settings from "./components/User/Settings/Settings";
 import { useState } from "react";
-import ProductDetails from "./components/ItemCards/Product/Product Reviews/Product Details/ProductDetails";
+import ProjectInfromation from "./components/ItemCards/Product/Product Information/ProductInfromation";
 
 const App = () => {
   const [search, setSearch] = useState("");
@@ -36,7 +36,7 @@ const App = () => {
           path="/products/:id"
           element={
             <ProtectedRoute>
-              <ProductDetails />
+              <ProjectInfromation />
             </ProtectedRoute>
           }
         />
