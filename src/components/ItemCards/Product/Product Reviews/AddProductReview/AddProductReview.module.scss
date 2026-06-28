@@ -15,3 +15,114 @@
     color: #ffffff;
   }
 }
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.modalActions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding-bottom: 20px;
+}
+
+.ratingStars {
+  display: flex;
+  gap: 5px;
+}
+
+.ratingStar {
+  color: #c7c7c7;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.activeRatingStar {
+  color: #ffd814;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.reviewInput {
+  padding: 8px 12px;
+  border: 1px solid #cdceda;
+  border-radius: 6px;
+  outline: none;
+}
+
+.reviewTextarea {
+  padding: 8px 12px;
+  border: 1px solid #cdceda;
+  border-radius: 6px;
+  outline: none;
+  resize: vertical;
+}
+
+.modalButton {
+  color: white;
+  border: 1px solid #e5e7eb;
+  display: inline-block;
+  padding: 8px 20px;
+  background-color: #838383;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.2s;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #535bf2;
+  }
+}
+
+@media (max-width: 768px) {
+  .reviewInput,
+  .reviewTextarea {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .reviewTextarea {
+    max-width: 100%;
+  }
+
+  .modalActions {
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    padding: 0 16px 20px;
+    box-sizing: border-box;
+  }
+
+  .modalButton {
+    width: 100%;
+  }
+
+  .ratingStar,
+  .activeRatingStar {
+    font-size: 28px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .reviewInput,
+  .reviewTextarea {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .modalButton {
+    min-width: 30%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .modalButton {
+    min-width: 30%;
+  }
+}

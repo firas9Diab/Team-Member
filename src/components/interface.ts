@@ -1,3 +1,5 @@
+import type { ReactNode } from "react";
+
 export type MethodType = "GET" | "POST" | "PATCH" | "DELETE";
 
 interface SignInDTO {
@@ -226,15 +228,8 @@ export interface IUseProductReviews {
 }
 
 export interface IModal {
+  children: ReactNode;
   handleCloseModal: () => void;
-  handleAddProductReview: () => void;
-  handleChangeform: (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) => void;
-  setRating: (rating: number) => void;
-  rating: number;
-  title: string;
-  comment: string;
 }
 
 export interface IPaginationButtons {
