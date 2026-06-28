@@ -1,6 +1,7 @@
 import ProductDetails from "./Product Details/ProductDetails";
 import ProductReviews from "../Product Reviews/ProductReviews";
 import useProjectInfromation from "./useProductInfromation";
+import Footer from "../../../../Footer/Footer";
 
 const ProjectInfromation = () => {
   const {
@@ -27,6 +28,7 @@ const ProjectInfromation = () => {
         handleCalculateRatingPercentage={handleCalculateRatingPercentage}
         id={id}
       />
+      <Footer/>
     </>
   );
 };
