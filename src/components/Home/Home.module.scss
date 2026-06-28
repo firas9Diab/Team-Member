@@ -10,6 +10,15 @@
   padding-top: 100px;
   padding-left: 128px;
 
+  .fashionSaleTitle {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 27px;
+    color: #717171;
+  }
+
   .fashionSaleOffer {
     font-family: "Outfit";
     font-style: normal;
@@ -46,15 +55,10 @@
     gap: 25px;
     display: flex;
   }
+}
 
-  .title {
-    font-family: "Inter";
-    font-style: normal;
-    font-weight: 700;
-    font-size: 25px;
-    line-height: 30px;
-    color: #000000;
-  }
+.sonyImage {
+  max-width: 100%;
 }
 
 .bluetoothSwitch {
@@ -79,12 +83,13 @@
 }
 
 @media (max-width: 768px) {
-  .sonyImage {
-    width: 100%;
-  }
-
   .fashionSale {
     padding: 60px 20px 90px;
+
+    .fashionSaleTitle {
+      font-size: 18px;
+      line-height: 24px;
+    }
 
     .fashionSaleOffer {
       font-size: 36px;
@@ -108,12 +113,10 @@
       width: 100%;
       align-items: center;
     }
+  }
 
-    .title {
-      font-size: 22px;
-      line-height: 28px;
-      text-align: center;
-    }
+  .sonyImage {
+    width: 100%;
   }
 
   .bluetoothSwitch {
@@ -130,12 +133,13 @@
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {
-  .sonyImage {
-    width: 100%;
-  }
-
   .fashionSale {
     padding: 80px 60px 120px;
+
+    .fashionSaleTitle {
+      font-size: 20px;
+      line-height: 26px;
+    }
 
     .fashionSaleOffer {
       font-size: 48px;
@@ -159,146 +163,15 @@
     }
   }
 
+  .sonyImage {
+    width: 100%;
+  }
+
   .bluetoothSwitch {
     width: 320px;
   }
 
   .bluetoothSwitchImage {
-    width: 280px;
-  }
-}
-
-.container2 {
-  background: #ffffff;
-}
-
-.container5 {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  padding-top: 100px;
-  padding-left: 43px;
-  padding-bottom: 50px;
-  padding-right: 50px;
-  gap: 46px;
-  background-color: #e6e5e5;
-  .inner {
-    gap: 25px;
-    display: flex;
-  }
-  .title {
-    font-family: "Inter";
-    font-style: normal;
-    font-weight: 700;
-    font-size: 25px;
-    line-height: 30px;
-    color: #000000;
-  }
-}
-
-.bluetoothswitch {
-  width: 356px;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-  background: #ffffff;
-  border: 1px solid rgba(0, 0, 0, 0.5);
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 21px;
-  line-height: 25px;
-  color: #000000;
-  padding: 20px;
-  gap: 36px;
-}
-.bluetoothswitchimage {
-  width: 320px;
-}
-@media (max-width: 768px) {
-  .sonyimage {
-    width: 100%;
-  }
-  .container1 {
-    padding: 60px 20px 90px;
-
-    .h1container1 {
-      font-size: 36px;
-      line-height: 46px;
-    }
-
-    .pcontainer1 {
-      font-size: 18px;
-      line-height: 24px;
-    }
-  }
-
-  .container5 {
-    flex-direction: column;
-    padding: 50px 20px;
-    gap: 30px;
-    align-items: center;
-
-    .inner {
-      flex-direction: column;
-      width: 100%;
-      align-items: center;
-    }
-
-    .title {
-      font-size: 22px;
-      line-height: 28px;
-      text-align: center;
-    }
-  }
-
-  .bluetoothswitch {
-    width: 100%;
-    max-width: 356px;
-    font-size: 18px;
-    line-height: 24px;
-  }
-
-  .bluetoothswitchimage {
-    width: 100%;
-    max-width: 320px;
-  }
-}
-
-@media (min-width: 768px) and (max-width: 1024px) {
-  .sonyimage {
-    width: 100%;
-  }
-  .container1 {
-    padding: 80px 60px 120px;
-
-    .h1container1 {
-      font-size: 48px;
-      line-height: 60px;
-    }
-
-    .pcontainer1 {
-      font-size: 20px;
-      line-height: 26px;
-    }
-  }
-
-  .container5 {
-    padding: 70px 40px 50px;
-    gap: 35px;
-    flex-wrap: wrap;
-
-    .inner {
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-  }
-
-  .bluetoothswitch {
-    width: 320px;
-  }
-
-  .bluetoothswitchimage {
     width: 280px;
   }
 }

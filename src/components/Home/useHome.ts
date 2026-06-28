@@ -10,7 +10,7 @@ const useHome = (search: string | undefined) => {
   const [moreItemsToConsider, setMoreItemsToConsider] = useState<
     ProductListItemDTO[]
   >([]);
-  const [product, setProduct] = useState<ProductListItemDTO[]>([]);
+  const [products, setProducts] = useState<ProductListItemDTO[]>([]);
   const [totalPages, setTotalPages] = useState<number>(0);
   const [selectedCategoryId, setSelectedCategoryId] = useState<number | null>(
     null,
@@ -40,7 +40,7 @@ const useHome = (search: string | undefined) => {
     const hasSelectedCategory = categoryId !== null;
 
     if (!hasSearch && !hasSelectedCategory) {
-      setProduct([]);
+      setProducts([]);
       setTotalPages(1);
       return;
     }
@@ -58,7 +58,7 @@ const useHome = (search: string | undefined) => {
 
     const mapped = response.data.items;
 
-    setProduct(mapped);
+    setProducts(mapped);
     setTotalPages(response.data.pagination.totalPages);
   };
 
@@ -83,7 +83,7 @@ const useHome = (search: string | undefined) => {
     currentPage,
     totalPages,
     selectedCategoryId,
-    product,
+    products,
     showContainer,
     navigate,
   };
