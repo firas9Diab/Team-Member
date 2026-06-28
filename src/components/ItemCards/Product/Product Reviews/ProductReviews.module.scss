@@ -1,7 +1,7 @@
 .productReviewsLayout {
+  padding-left: 115px;
+  padding-right: 115px;
   display: flex;
-  flex-direction: row;
-  justify-content: center;
   background: #f0f0f0;
   padding-top: 10px;
   padding-bottom: 36px;
@@ -147,8 +147,7 @@
   }
 
   .productReviewsSection {
-    width: 550px;
-    padding-left: 115px;
+    width: 100%;
   }
 
   .ratingProgress {

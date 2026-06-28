@@ -12,7 +12,7 @@ const ProductComments = ({
   return (
     <div className={styles.productComments}>
       {reviews.map((review) => (
-        <div key={review.id}>
+        <div className={styles.productComment} key={review.id}>
           <div className={styles.userName}>
             <span>
               <img src={userIcon} alt="User" />
@@ -31,7 +31,7 @@ const ProductComments = ({
           </div>
           <div className={styles.commentInformation}>
             <div>Reviewed in India on {review.createdAt.slice(0, 10)}</div>
-            <div>{review.comment}</div>
+            <div className={styles.commentText}>{review.comment}</div>
           </div>
         </div>
       ))}
