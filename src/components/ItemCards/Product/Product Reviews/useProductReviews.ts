@@ -33,9 +33,9 @@ const useProductReviews = ({ id }: IUseProductReviews) => {
     setReviewsTotalPages(response.data.pagination.totalPages);
   };
 
-const handleChangeReviewsCurrentPage =(page:number)=>{
-setReviewsCurrentPage(page);
-}
+  const handleChangeReviewsCurrentPage = (page: number) => {
+    setReviewsCurrentPage(page);
+  };
 
   useEffect(() => {
     setReviewsCurrentPage(1);

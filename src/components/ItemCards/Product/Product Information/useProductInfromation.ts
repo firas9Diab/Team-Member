@@ -9,9 +9,7 @@ import type {
   ProductReviewSummary,
 } from "../../../interface";
 
-
 const useProjectInfromation = () => {
-
   const [selectedImage, setSelectedImage] = useState<ProductImage | null>(null);
   const { id } = useParams<ProductDetailsParams>();
   const [selectedProduct, setSelectedProduct] =
@@ -27,10 +25,9 @@ const useProjectInfromation = () => {
       100
     );
   };
-const handleChangeImages =(image:ProductImage | null)=>{
-setSelectedImage(image)
-
-}
+  const handleChangeImages = (image: ProductImage | null) => {
+    setSelectedImage(image);
+  };
 
   const handleGetProductDetails = async (id: string) => {
     const response = await RequestBuilder({
@@ -55,9 +52,9 @@ setSelectedImage(image)
     handleCalculateRatingPercentage,
     productFeatures,
     id,
-    handleGetProductDetails,handleChangeImages
+    handleGetProductDetails,
+    handleChangeImages,
   };
+};
 
-}
-
-export default useProjectInfromation
+export default useProjectInfromation;

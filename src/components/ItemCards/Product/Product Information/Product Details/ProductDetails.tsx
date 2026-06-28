@@ -1,9 +1,12 @@
 import styles from "./ProductDetails.module.scss";
-import type{IProductDetails} from "../../../../interface";
+import type { IProductDetails } from "../../../../interface";
 
-const ProductDetails = ({selectedProduct,handleChangeImages,selectedImage,productFeatures}:IProductDetails) => {
-
-
+const ProductDetails = ({
+  selectedProduct,
+  handleChangeImages,
+  selectedImage,
+  productFeatures,
+}: IProductDetails) => {
   return (
     <>
       <div className={styles.productDetailsLayout}>
@@ -51,8 +54,7 @@ const ProductDetails = ({selectedProduct,handleChangeImages,selectedImage,produc
 
                 {new Array(5).fill(0).map((_, i) => (
                   <span key={i + 1} className={styles.star}>
-                    {i < Math.round(selectedProduct?.ratingAverage || 0)
-                     ? (
+                    {i < Math.round(selectedProduct?.ratingAverage || 0) ? (
                       <>&#9733;</>
                     ) : (
                       <>&#9734;</>
@@ -105,8 +107,6 @@ const ProductDetails = ({selectedProduct,handleChangeImages,selectedImage,produc
           </div>
         </div>
       </div>
-
-     
     </>
   );
 };

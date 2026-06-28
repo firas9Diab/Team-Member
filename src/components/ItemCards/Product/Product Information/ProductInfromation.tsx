@@ -1,6 +1,6 @@
-import ProductDetails from './Product Details/ProductDetails'
-import ProductReviews from '../Product Reviews/ProductReviews';
-import useProjectInfromation from './useProductInfromation';
+import ProductDetails from "./Product Details/ProductDetails";
+import ProductReviews from "../Product Reviews/ProductReviews";
+import useProjectInfromation from "./useProductInfromation";
 
 const ProjectInfromation = () => {
   const {
@@ -9,24 +9,26 @@ const ProjectInfromation = () => {
     handleCalculateRatingPercentage,
     productFeatures,
     id,
-    handleGetProductDetails,handleChangeImages
+    handleGetProductDetails,
+    handleChangeImages,
   } = useProjectInfromation();
 
-  return (<>
- <ProductDetails
+  return (
+    <>
+      <ProductDetails
         selectedProduct={selectedProduct}
         handleChangeImages={handleChangeImages}
         selectedImage={selectedImage}
         productFeatures={productFeatures}
       />
-<ProductReviews
+      <ProductReviews
         handleGetProductDetails={handleGetProductDetails}
         selectedProduct={selectedProduct}
         handleCalculateRatingPercentage={handleCalculateRatingPercentage}
         id={id}
       />
-      </>
-)
-}
+    </>
+  );
+};
 
-export default ProjectInfromation
+export default ProjectInfromation;
