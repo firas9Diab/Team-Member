@@ -1,5 +1,6 @@
 import styles from "./ProductDetails.module.scss";
 import type { IProductDetails } from "../../../../interface";
+import classNames from "classnames";
 
 const ProductDetails = ({
   selectedProduct,
@@ -15,11 +16,9 @@ const ProductDetails = ({
             {selectedProduct?.images?.map((image) => (
               <img
                 key={image.id}
-                className={
-                  image.id === selectedImage?.id
-                    ? styles.activeThumbnailImage
-                    : styles.thumbnailImage
-                }
+                className={classNames(styles.thumbnailImage, {
+                  [styles.activeThumbnailImage]: image.id === selectedImage?.id,
+                })}
                 src={image.url}
                 alt={image.alt}
                 onClick={() => handleChangeImages(image)}

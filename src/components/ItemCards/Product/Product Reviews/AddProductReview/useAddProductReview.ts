@@ -56,9 +56,7 @@ const useAddProductReview = ({
     setRating(0);
     setTitle("");
     setComment("");
-
     setIsModalOpen(false);
-
     await handleGetProductReviews(1, id);
     await handleGetProductDetails(id);
   };

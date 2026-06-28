@@ -231,6 +231,17 @@ export interface IModal {
   children: ReactNode;
   handleCloseModal: () => void;
 }
+export interface IAddProductReviewForm {
+  handleCloseModal: () => void;
+  handleAddProductReview: () => void;
+  handleChangeform: (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => void;
+  setRating: (rating: number) => void;
+  rating: number;
+  title: string;
+  comment: string;
+}
 
 export interface IPaginationButtons {
   handleChangeReviewsCurrentPage: (page: number) => void;
