@@ -1,17 +1,11 @@
 .productReviewsLayout {
-  padding-left: 115px;
-  padding-right: 115px;
   display: flex;
   background: #f0f0f0;
-  padding-top: 10px;
-  padding-bottom: 36px;
+  padding: 10px 115px 36px;
   gap: 60px;
 }
 
-.productReviewsSection {
-  width: 550px;
-  padding-left: 115px;
-}
+
 
 .reviewsContent {
   display: flex;

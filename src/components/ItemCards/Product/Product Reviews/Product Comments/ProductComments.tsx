@@ -27,7 +27,7 @@ const ProductComments = ({
                 </span>
               ))}
             </div>
-            <div>{review.title}</div>
+            <div className={styles.commentTitle}>{review.title}</div>
           </div>
           <div className={styles.commentInformation}>
             <div>Reviewed in India on {review.createdAt.slice(0, 10)}</div>

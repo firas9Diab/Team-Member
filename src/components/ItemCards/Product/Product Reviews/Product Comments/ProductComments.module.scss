@@ -5,7 +5,6 @@
 
 .productComment {
   width: 796px;
-  min-height: 331px;
   height: auto;
   padding: 20px;
   box-sizing: border-box;
@@ -43,14 +42,20 @@
   line-height: 32px;
   color: #000000;
 }
-
+.commentTitle
+{
+font-style: normal;
+font-weight: 500;
+font-size: 18px;
+line-height: 32px;
+color: #000000;
+}
 .commentText {
   max-width: 100%;
   word-break: break-word;
   overflow-wrap: break-word;
 }
 
-/* Mobile */
 @media (max-width: 767px) {
   .productComments {
     padding-top: 28px;
@@ -93,7 +98,6 @@
   }
 }
 
-/* Tablet */
 @media (min-width: 768px) and (max-width: 1023px) {
   .productComments {
     padding-top: 34px;
@@ -120,14 +124,13 @@
   }
 }
 
-/* PC */
 @media (min-width: 1024px) {
   .productComments {
+    width: 100%;
     padding-top: 40px;
   }
 
   .productComment {
-    width: 796px;
     min-height: 331px;
   }
 
