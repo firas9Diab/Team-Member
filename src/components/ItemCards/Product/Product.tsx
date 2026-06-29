@@ -1,7 +1,7 @@
 import styles from "./Product.module.scss";
 import type { IProduct } from "../../interface";
 
-const Product = ({ card }: IProduct) => {
+const Product = ({ card, navigate }: IProduct) => {
   return (
     <div key={card.id} className={styles.productCard}>
       <img src={card.image} alt="" className={styles.productImage} />
@@ -11,7 +11,10 @@ const Product = ({ card }: IProduct) => {
       <div className={styles.productPrice}>
         <div className={styles.originalPrice}>₹{card.price}</div>
 
-        <button className={styles.buyButton}>
+        <button
+          className={styles.buyButton}
+          onClick={() => navigate && navigate(`/products/${card.id}`)}
+        >
           <span>Buy Now!</span>
         </button>
       </div>

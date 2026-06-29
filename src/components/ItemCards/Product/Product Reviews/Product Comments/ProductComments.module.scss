@@ -1,0 +1,140 @@
+.productComments {
+  padding-top: 40px;
+  width: 100%;
+}
+
+.productComment {
+  width: 796px;
+  height: auto;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.star {
+  color: #ffd814;
+  font-size: 20px;
+}
+
+.userName {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.userName img {
+  width: 28px;
+  height: 28px;
+}
+
+.commentHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.commentInformation {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 32px;
+  color: #000000;
+}
+.commentTitle {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 32px;
+  color: #000000;
+}
+.commentText {
+  max-width: 100%;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+@media (max-width: 767px) {
+  .productComments {
+    padding-top: 28px;
+  }
+
+  .productComment {
+    width: 100%;
+    min-height: auto;
+    padding: 14px;
+  }
+
+  .userName {
+    font-size: 14px;
+  }
+
+  .userName img {
+    width: 24px;
+    height: 24px;
+  }
+
+  .commentHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .star {
+    font-size: 18px;
+  }
+
+  .commentInformation {
+    font-size: 14px;
+    gap: 8px;
+  }
+
+  .activePageButton,
+  .pageButton {
+    padding: 7px 12px;
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .productComments {
+    padding-top: 34px;
+  }
+
+  .productComment {
+    width: 100%;
+    min-height: auto;
+    padding: 18px;
+  }
+
+  .commentHeader {
+    flex-wrap: wrap;
+  }
+
+  .star {
+    font-size: 19px;
+  }
+
+  .activePageButton,
+  .pageButton {
+    padding: 8px 18px;
+    font-size: 15px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .productComments {
+    width: 100%;
+    padding-top: 40px;
+  }
+
+  .productComment {
+    min-height: 331px;
+  }
+
+  .activePageButton,
+  .pageButton {
+    padding: 8px 20px;
+  }
+}

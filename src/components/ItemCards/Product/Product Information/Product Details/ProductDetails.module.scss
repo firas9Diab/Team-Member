@@ -1,0 +1,373 @@
+.productDetailsLayout {
+  background: #ffffff;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 44px;
+  padding-top: 10px;
+
+  .productGallery {
+    display: flex;
+    gap: 43px;
+  }
+
+  .thumbnailList {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-top: 10px;
+    width: 30px;
+    height: 30px;
+
+    .thumbnailImage {
+      cursor: pointer;
+      width: 30px;
+      height: 30px;
+
+      &:hover {
+        border: 1px solid #000000;
+      }
+    }
+
+    .activeThumbnailImage {
+      border: 1px solid #000000;
+      width: 30px;
+      height: 30px;
+    }
+  }
+
+  .mainImageWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .mainProductImage {
+    width: 500px;
+    height: 500px;
+    object-fit: cover;
+  }
+
+  .star {
+    color: #ffd814;
+    font-size: 20px;
+  }
+
+  .quantityInput {
+    text-align: center;
+    box-sizing: border-box;
+    width: 39px;
+    height: 21.88px;
+    background: #ffffff;
+    border: 1px solid #000000;
+    border-radius: 6px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 32px;
+    color: #000000;
+    margin-left: 8px;
+  }
+}
+
+.productInfo {
+  justify-content: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  width: 485px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+
+  .productBrand {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 32px;
+    color: #000000;
+  }
+
+  .productDescription {
+    margin: 0;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 32px;
+    color: #1b1919;
+  }
+
+  .ratingSection {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    .ratingScore {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+    }
+
+    .ratingCountText {
+      font-family: "Inter";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 10px;
+      line-height: 32px;
+      color: #000000;
+    }
+  }
+
+  .actionButtons {
+    gap: 33px;
+    padding-top: 15px;
+    display: flex;
+    justify-content: center;
+
+    .buyButton {
+      width: 226px;
+      height: 43px;
+      background: #ffd814;
+      border-radius: 37px;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .checkoutButton {
+      width: 226px;
+      height: 43px;
+      background: #fa8900;
+      border-radius: 37px;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      color: #ffffff;
+    }
+  }
+}
+
+.priceSection {
+  border-top: 1px solid #000000;
+  padding-top: 10px;
+  display: flex;
+  gap: 25px;
+}
+
+.productFeaturesSection {
+  background: #ffffff;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 44px;
+  padding-top: 27px;
+  min-height: 297px;
+}
+
+.featuresTitle {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 32px;
+  color: #000000;
+}
+
+.featuresContent {
+  display: flex;
+  width: 961px;
+  flex-direction: row;
+  gap: 15px;
+}
+
+.featuresList {
+  display: grid;
+  width: 585px;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 32px;
+  color: #000000;
+  padding-bottom: 55px;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 15px;
+}
+
+.featureItem {
+  width: 585px;
+  margin-bottom: 4px;
+}
+
+.productCategory {
+  display: flex;
+  width: 124px;
+  height: 39px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 18px;
+  color: #000000;
+  background: #f5f5f5;
+  border-radius: 33px;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .productDetailsLayout {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 10px 16px;
+
+    .productGallery {
+      flex-direction: column-reverse;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .thumbnailList {
+      flex-direction: row;
+      justify-content: center;
+      width: 100%;
+      height: auto;
+      padding-top: 0;
+    }
+
+    .mainProductImage {
+      width: 100%;
+      max-width: 330px;
+      height: auto;
+    }
+  }
+
+  .productInfo {
+    width: 100%;
+    padding-top: 10px;
+
+    .productBrand {
+      font-size: 15px;
+      line-height: 24px;
+    }
+
+    .productDescription {
+      font-size: 20px;
+      line-height: 28px;
+    }
+
+    .ratingSection {
+      flex-wrap: wrap;
+    }
+
+    .actionButtons {
+      flex-direction: column;
+      gap: 12px;
+      width: 100%;
+
+      .buyButton,
+      .checkoutButton {
+        width: 100%;
+      }
+    }
+  }
+
+  .priceSection {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .productFeaturesSection {
+    height: auto;
+    padding: 20px 16px;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .featuresContent {
+    width: 100%;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .featuresList {
+    width: 100%;
+    height: auto;
+    font-size: 14px;
+    line-height: 28px;
+    padding-bottom: 20px;
+    grid-template-columns: 1fr;
+    padding-left: 10px;
+  }
+  .featureItem {
+    width: 100%;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .productDetailsLayout {
+    gap: 24px;
+    padding: 20px;
+
+    .productGallery {
+      gap: 25px;
+    }
+
+    .mainProductImage {
+      width: 360px;
+      height: 360px;
+    }
+  }
+
+  .productInfo {
+    width: 380px;
+
+    .productDescription {
+      font-size: 22px;
+      line-height: 30px;
+    }
+
+    .actionButtons {
+      gap: 15px;
+
+      .buyButton,
+      .checkoutButton {
+        width: 170px;
+      }
+    }
+  }
+
+  .productFeaturesSection {
+    height: auto;
+    padding: 24px 20px;
+  }
+
+  .featuresContent {
+    width: 100%;
+    max-width: 850px;
+  }
+
+  .featuresList {
+    width: 100%;
+    height: auto;
+    font-size: 14px;
+    line-height: 28px;
+    padding-bottom: 20px;
+    grid-template-columns: 1fr 1fr;
+    padding-left: 10px;
+  }
+  .featureItem {
+    width: 100%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .productDetailsLayout {
+    flex-direction: row;
+  }
+
+  .productFeaturesSection {
+    flex-direction: row;
+  }
+}

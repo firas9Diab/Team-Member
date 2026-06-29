@@ -17,8 +17,9 @@ const Home = ({ search }: IHome) => {
     currentPage,
     totalPages,
     selectedCategoryId,
-    product,
+    products,
     showContainer,
+    navigate,
   } = useHome(search);
   return (
     <div className={styles.containers}>
@@ -51,9 +52,10 @@ const Home = ({ search }: IHome) => {
         totalPages={totalPages}
         currentPage={currentPage}
         selectedCategoryId={selectedCategoryId}
-        products={product}
+        products={products}
         search={search}
         showContainer={showContainer}
+        navigate={navigate}
       />
 
       {showContainer && (

@@ -10,6 +10,15 @@
   padding-top: 100px;
   padding-left: 128px;
 
+  .fashionSaleTitle {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 27px;
+    color: #717171;
+  }
+
   .fashionSaleOffer {
     font-family: "Outfit";
     font-style: normal;
@@ -46,15 +55,10 @@
     gap: 25px;
     display: flex;
   }
+}
 
-  .title {
-    font-family: "Inter";
-    font-style: normal;
-    font-weight: 700;
-    font-size: 25px;
-    line-height: 30px;
-    color: #000000;
-  }
+.sonyImage {
+  max-width: 100%;
 }
 
 .bluetoothSwitch {
@@ -79,12 +83,13 @@
 }
 
 @media (max-width: 768px) {
-  .sonyImage {
-    width: 100%;
-  }
-
   .fashionSale {
     padding: 60px 20px 90px;
+
+    .fashionSaleTitle {
+      font-size: 18px;
+      line-height: 24px;
+    }
 
     .fashionSaleOffer {
       font-size: 36px;
@@ -108,12 +113,10 @@
       width: 100%;
       align-items: center;
     }
+  }
 
-    .title {
-      font-size: 22px;
-      line-height: 28px;
-      text-align: center;
-    }
+  .sonyImage {
+    width: 100%;
   }
 
   .bluetoothSwitch {
@@ -130,12 +133,13 @@
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {
-  .sonyImage {
-    width: 100%;
-  }
-
   .fashionSale {
     padding: 80px 60px 120px;
+
+    .fashionSaleTitle {
+      font-size: 20px;
+      line-height: 26px;
+    }
 
     .fashionSaleOffer {
       font-size: 48px;
@@ -157,6 +161,10 @@
       flex-wrap: wrap;
       justify-content: center;
     }
+  }
+
+  .sonyImage {
+    width: 100%;
   }
 
   .bluetoothSwitch {

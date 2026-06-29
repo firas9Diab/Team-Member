@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import type { IItemCards } from "../interface";
 import styles from "./ItemCards.module.scss";
 import Product from "./Product/Product";
@@ -12,6 +13,7 @@ const ItemCards = ({
   products,
   search,
   showContainer,
+  navigate,
 }: IItemCards) => {
   return (
     <>
@@ -25,10 +27,14 @@ const ItemCards = ({
         >
           {showContainer
             ? todayDeals.map((todayDeal) => (
-                <Product key={todayDeal.id} card={todayDeal} />
+                <Product
+                  key={todayDeal.id}
+                  card={todayDeal}
+                  navigate={navigate}
+                />
               ))
             : products.map((product) => (
-                <Product key={product.id} card={product} />
+                <Product key={product.id} card={product} navigate={navigate} />
               ))}
         </div>
       </div>
@@ -39,7 +45,7 @@ const ItemCards = ({
 
           <div className={styles.scrollProducts}>
             {moreItemsToConsider.map((item) => (
-              <Product key={item.id} card={item} />
+              <Product key={item.id} card={item} navigate={navigate} />
             ))}
           </div>
         </div>
@@ -55,11 +61,9 @@ const ItemCards = ({
                     setCurrentPage(i + 1);
                   }}
                   disabled={currentPage === i + 1}
-                  className={
-                    currentPage === i + 1
-                      ? styles.activePageButton
-                      : styles.pageButton
-                  }
+                  className={classNames(styles.pageButton, {
+                    [styles.activePageButton]: currentPage === i + 1,
+                  })}
                 >
                   {i + 1}
                 </button>

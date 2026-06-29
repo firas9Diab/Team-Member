@@ -1,13 +1,16 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import RequestBuilder from "../services/RequestBuilder";
-import type { Category } from "../interface";
-import type { ProductDTO } from "../interface";
+import type { Category, ProductListItemDTO } from "../interface";
 
 const useHome = (search: string | undefined) => {
+  const navigate = useNavigate();
   const [categories, setCategories] = useState<Category[]>([]);
-  const [todayDeals, setTodayDeals] = useState<ProductDTO[]>([]);
-  const [moreItemsToConsider, setMoreItemsToConsider] = useState<ProductDTO[]>([]);
-  const [product, setProduct] = useState<ProductDTO[]>([]);
+  const [todayDeals, setTodayDeals] = useState<ProductListItemDTO[]>([]);
+  const [moreItemsToConsider, setMoreItemsToConsider] = useState<
+    ProductListItemDTO[]
+  >([]);
+  const [products, setProducts] = useState<ProductListItemDTO[]>([]);
   const [totalPages, setTotalPages] = useState<number>(0);
   const [selectedCategoryId, setSelectedCategoryId] = useState<number | null>(
     null,
@@ -37,7 +40,7 @@ const useHome = (search: string | undefined) => {
     const hasSelectedCategory = categoryId !== null;
 
     if (!hasSearch && !hasSelectedCategory) {
-      setProduct([]);
+      setProducts([]);
       setTotalPages(1);
       return;
     }
@@ -55,7 +58,7 @@ const useHome = (search: string | undefined) => {
 
     const mapped = response.data.items;
 
-    setProduct(mapped);
+    setProducts(mapped);
     setTotalPages(response.data.pagination.totalPages);
   };
 
@@ -80,8 +83,9 @@ const useHome = (search: string | undefined) => {
     currentPage,
     totalPages,
     selectedCategoryId,
-    product,
+    products,
     showContainer,
+    navigate,
   };
 };
 
