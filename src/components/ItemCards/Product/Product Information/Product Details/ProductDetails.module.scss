@@ -184,7 +184,6 @@
 .featuresList {
   display: grid;
   width: 585px;
-  min-height: 297px;
   font-style: normal;
   font-weight: 300;
   font-size: 16px;
@@ -301,10 +300,8 @@
     grid-template-columns: 1fr;
     padding-left: 10px;
   }
-  .featureItem
-  {
-
-    width:100%
+  .featureItem {
+    width: 100%;
   }
 }
 
@@ -360,10 +357,8 @@
     grid-template-columns: 1fr 1fr;
     padding-left: 10px;
   }
-    .featureItem
-  {
-
-    width:100%
+  .featureItem {
+    width: 100%;
   }
 }
 

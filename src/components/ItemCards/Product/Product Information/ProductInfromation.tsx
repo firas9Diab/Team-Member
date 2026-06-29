@@ -28,7 +28,7 @@ const ProjectInfromation = () => {
         handleCalculateRatingPercentage={handleCalculateRatingPercentage}
         id={id}
       />
-      <Footer/>
+      <Footer />
     </>
   );
 };
