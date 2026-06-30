@@ -12,7 +12,7 @@ const AddProductReviewForm = ({
   comment,
 }: IAddProductReviewForm) => {
   return (
-    <form className={styles.formGroup}>
+    <div className={styles.formGroup}>
       <label>Rating:</label>
       <div className={styles.ratingStars}>
         {new Array(5).fill(0).map((_, i) => {
@@ -71,7 +71,7 @@ const AddProductReviewForm = ({
           Cancel
         </button>
       </div>
-    </form>
+    </div>
   );
 };
 export default AddProductReviewForm;
