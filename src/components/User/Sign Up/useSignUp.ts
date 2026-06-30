@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import RequestBuilder from "../../services/RequestBuilder";
+
 const useSignUp = () => {
   const navigation = useNavigate();
   const [password, setPassword] = useState<string>("");
@@ -13,6 +14,7 @@ const useSignUp = () => {
   const [fullName, setFullName] = useState<string>("");
   const [emailValue, setEmailValue] = useState<string>("");
   const [phoneValue, setphoneValue] = useState<string>("");
+  
   const handleSignup = async () => {
     if (password !== confirmPassword) {
       setErrorMssage("Passwords do not match");
