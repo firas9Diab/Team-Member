@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useEffect, useState, type ChangeEvent } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import RequestBuilder from "../../../services/RequestBuilder";
 import type {
   ProductDetailsDTO,
@@ -7,17 +7,22 @@ import type {
   ProductFeature,
   ProductImage,
   ProductReviewSummary,
-} from "../../../interface";
+} from "../../../../Interfaces";
 
 const useProjectInfromation = () => {
-  const [selectedImage, setSelectedImage] = useState<ProductImage | null>(null);
+  const navigate = useNavigate();
   const { id } = useParams<ProductDetailsParams>();
+  const [selectedImage, setSelectedImage] = useState<ProductImage | null>(null);
   const [selectedProduct, setSelectedProduct] =
     useState<ProductDetailsDTO | null>(null);
   const [productFeatures, setProductFeatures] = useState<ProductFeature[]>([]);
   const [productReviewSummary, setProductReviewSummary] =
     useState<ProductReviewSummary | null>(null);
+  const [quantity, setQuantity] = useState<number>(0);
 
+  const handleChangeQuantity = (e: ChangeEvent<HTMLInputElement>) => {
+    setQuantity(Number(e.target.value));
+  };
   const handleCalculateRatingPercentage = (key: number) => {
     return (
       ((productReviewSummary?.breakdown[`${key}`] || 0) /
@@ -41,6 +46,15 @@ const useProjectInfromation = () => {
     setProductReviewSummary(response.data.reviewSummary);
   };
 
+  const handleAddProductToCart = async () => {
+    await RequestBuilder({
+      url: `/cart`,
+      data: { productId: Number(id), quantity },
+      method: "POST",
+    });
+    navigate("/Cart");
+  };
+
   useEffect(() => {
     if (!id) return;
     handleGetProductDetails(id);
@@ -54,6 +68,9 @@ const useProjectInfromation = () => {
     id,
     handleGetProductDetails,
     handleChangeImages,
+    handleAddProductToCart,
+    quantity,
+    handleChangeQuantity,
   };
 };
 

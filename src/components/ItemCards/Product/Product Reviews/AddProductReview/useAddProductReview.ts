@@ -1,6 +1,6 @@
 import { useState } from "react";
 import RequestBuilder from "../../../../services/RequestBuilder";
-import type { IUseAddProductReview } from "../../../../interface";
+import type { IUseAddProductReview } from "../../../../../Interfaces";
 
 const useAddProductReview = ({
   id,
@@ -56,7 +56,7 @@ const useAddProductReview = ({
     setRating(0);
     setTitle("");
     setComment("");
-    setIsModalOpen(false);
+    handleCloseModal();
     await handleGetProductReviews(1, id);
     await handleGetProductDetails(id);
   };

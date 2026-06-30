@@ -1,37 +1,56 @@
 import { useNavigate } from "react-router-dom";
 
+type NavbarRoute =
+  | "signOut"
+  | "settings"
+  | "signup"
+  | "login"
+  | "home"
+  | "cart"
+  | "orders";
+
 const useNavbar = () => {
   const token = localStorage.getItem("token");
   const navigation = useNavigate();
 
-  const goToSignOut = () => {
-    localStorage.removeItem("token");
-    navigation("/User/Login");
-  };
+  const handleNavigate = (route: NavbarRoute) => {
+    switch (route) {
+      case "signOut":
+        localStorage.removeItem("token");
+        navigation("/User/Login");
+        break;
 
-  const goToSettings = () => {
-    navigation("/User/Settings");
-  };
+      case "settings":
+        navigation("/User/Settings");
+        break;
 
-  const goToSignup = () => {
-    navigation("/User/SignUp");
-  };
+      case "signup":
+        navigation("/User/SignUp");
+        break;
 
-  const goToLogin = () => {
-    navigation("/User/Login");
-  };
+      case "login":
+        navigation("/User/Login");
+        break;
 
-  const goToHome = () => {
-    navigation("/");
+      case "home":
+        navigation("/");
+        break;
+
+      case "cart":
+        navigation("/Cart");
+        break;
+      case "orders":
+        navigation("/Orders");
+        break;
+      default:
+        navigation("/");
+        break;
+    }
   };
 
   return {
     token,
-    goToSignOut,
-    goToSettings,
-    goToSignup,
-    goToLogin,
-    goToHome,
+    handleNavigate,
   };
 };
 

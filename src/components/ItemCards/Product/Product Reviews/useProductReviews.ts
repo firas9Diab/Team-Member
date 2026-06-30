@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
 import RequestBuilder from "../../../services/RequestBuilder";
-import type { ProductReview, ProductReviewSummary } from "../../../interface";
+import type {
+  ProductReview,
+  ProductReviewSummary,
+  IUseProductReviews,
+} from "../../../../Interfaces";
 import UserIcon from "../../../../../public/Icons/UserIcon.svg";
-import type { IUseProductReviews } from "../../../interface";
 
 const useProductReviews = ({ id }: IUseProductReviews) => {
   const [reviews, setReviews] = useState<ProductReview[]>([]);

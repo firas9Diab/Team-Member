@@ -1,5 +1,5 @@
 import styles from "./ProductDetails.module.scss";
-import type { IProductDetails } from "../../../../interface";
+import type { IProductDetails } from "../../../../../Interfaces";
 import classNames from "classnames";
 
 const ProductDetails = ({
@@ -7,6 +7,9 @@ const ProductDetails = ({
   handleChangeImages,
   selectedImage,
   productFeatures,
+  quantity,
+  handleChangeQuantity,
+  handleAddProductToCart,
 }: IProductDetails) => {
   return (
     <>
@@ -81,12 +84,22 @@ const ProductDetails = ({
 
           <div>
             Quantity:
-            <input type="text" className={styles.quantityInput} />
+            <input
+              type="text"
+              value={quantity}
+              onChange={handleChangeQuantity}
+              className={styles.quantityInput}
+            />
           </div>
 
           <div className={styles.actionButtons}>
             <button className={styles.buyButton}>Buy Now</button>
-            <button className={styles.checkoutButton}>Add to Cart</button>
+            <button
+              onClick={handleAddProductToCart}
+              className={styles.checkoutButton}
+            >
+              Add to Cart
+            </button>
           </div>
         </div>
       </div>

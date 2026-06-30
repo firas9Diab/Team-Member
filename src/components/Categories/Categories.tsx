@@ -1,5 +1,5 @@
 import chooses from "../../../public/Icons/chooses.svg";
-import type { ICategories } from "../interface";
+import type { ICategories } from "../../Interfaces";
 import styles from "./Categories.module.scss";
 
 const Categories = ({

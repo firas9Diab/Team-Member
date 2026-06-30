@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import RequestBuilder from "../services/RequestBuilder";
-import type { Category, ProductListItemDTO } from "../interface";
+import type { Category, ProductListItemDTO } from "../../Interfaces";
 
 const useHome = (search: string | undefined) => {
   const navigate = useNavigate();

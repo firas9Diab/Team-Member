@@ -1,7 +1,7 @@
 import styles from "./AddProductReview.module.scss";
 import useAddProductReview from "./useAddProductReview";
 import Modal from "./Modal/Modal";
-import type { IAddProductReview } from "../../../../interface";
+import type { IAddProductReview } from "../../../../../Interfaces";
 import AddProductReviewForm from "./AddProductReviewForm/AddProductReviewForm";
 
 const AddProductReview = ({

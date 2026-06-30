@@ -5,7 +5,7 @@ import ItemCards from "../ItemCards/ItemCards";
 import sony from "../../../public/Icons/sony-ad.svg";
 import bluetoothswitch from "../../../public/Icons/bluetoothswitch.svg";
 import Footer from "../../Footer/Footer";
-import type { IHome } from "../interface";
+import type { IHome } from "../../Interfaces";
 
 const Home = ({ search }: IHome) => {
   const {

@@ -6,6 +6,8 @@ import ProtectedRoute from "./ProtectedRoute";
 import Settings from "./components/User/Settings/Settings";
 import { useState } from "react";
 import ProjectInfromation from "./components/ItemCards/Product/Product Information/ProductInfromation";
+import Cart from "./components/ItemCards/Product/Cart/Cart";
+import Orders from "./components/ItemCards/Product/Orders/Orders";
 
 const App = () => {
   const [search, setSearch] = useState("");
@@ -37,6 +39,22 @@ const App = () => {
           element={
             <ProtectedRoute>
               <ProjectInfromation />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/Cart"
+          element={
+            <ProtectedRoute>
+              <Cart />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/Orders"
+          element={
+            <ProtectedRoute>
+              <Orders />
             </ProtectedRoute>
           }
         />

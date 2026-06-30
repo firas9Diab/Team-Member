@@ -12,6 +12,9 @@ const ProjectInfromation = () => {
     id,
     handleGetProductDetails,
     handleChangeImages,
+    handleAddProductToCart,
+    quantity,
+    handleChangeQuantity,
   } = useProjectInfromation();
 
   return (
@@ -21,6 +24,9 @@ const ProjectInfromation = () => {
         handleChangeImages={handleChangeImages}
         selectedImage={selectedImage}
         productFeatures={productFeatures}
+        handleAddProductToCart={handleAddProductToCart}
+        quantity={quantity}
+        handleChangeQuantity={handleChangeQuantity}
       />
       <ProductReviews
         handleGetProductDetails={handleGetProductDetails}

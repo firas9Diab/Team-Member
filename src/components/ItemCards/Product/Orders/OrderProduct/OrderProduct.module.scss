@@ -1,0 +1,163 @@
+.orderProduct {
+  background-color: white;
+  border-radius: 23px;
+  overflow: hidden;
+}
+
+.orderOverview {
+  padding-top: 25px;
+  padding-bottom: 20px;
+  display: flex;
+  justify-content: space-around;
+  background-color: #d9d9d9;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #5d5d5d;
+}
+
+.orderItem {
+  border-bottom-right-radius: 23px;
+  border-bottom-left-radius: 23px;
+  justify-content: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+}
+
+.orderItemDetails {
+  gap: 14px;
+  display: flex;
+  padding-left: 30px;
+  padding-right: 30px;
+  flex-direction: column;
+}
+
+.orderItemMainInfo {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+}
+
+.orderItemImageWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.orderItemImage {
+  width: 335px;
+  height: 291px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.orderItemDescription {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 32px;
+  color: #262626;
+  width: 657px;
+  display: flex;
+  justify-content: center;
+}
+
+.orderItemActions {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  button {
+    width: 247px;
+    height: 43px;
+    border: none;
+    background: #ffd814;
+    border-radius: 17px;
+    cursor: pointer;
+  }
+}
+
+@media (max-width: 767px) {
+  .orderOverview {
+    flex-direction: column;
+    gap: 14px;
+    padding-left: 16px;
+  }
+
+  .orderItem {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px;
+    box-sizing: border-box;
+  }
+
+  .orderItemDetails {
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 16px;
+    text-align: center;
+  }
+
+  .orderItemMainInfo {
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .orderItemImage {
+    width: 180px;
+    height: auto;
+  }
+
+  .orderItemDescription {
+    max-width: 100%;
+    font-size: 14px;
+    line-height: 22px;
+  }
+
+  .orderItemActions {
+    width: 100%;
+
+    button {
+      width: 100%;
+    }
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .orderItem {
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+
+  .orderItemMainInfo {
+    gap: 20px;
+  }
+
+  .orderItemImage {
+    width: 240px;
+    height: auto;
+  }
+
+  .orderItemDescription {
+    max-width: 330px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .orderItem {
+    width: 100%;
+  }
+
+  .orderItemImage {
+    width: 335px;
+    height: 291px;
+  }
+}

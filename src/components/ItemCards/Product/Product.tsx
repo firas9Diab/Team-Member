@@ -1,5 +1,5 @@
 import styles from "./Product.module.scss";
-import type { IProduct } from "../../interface";
+import type { IProduct } from "../../../Interfaces";
 
 const Product = ({ card, navigate }: IProduct) => {
   return (

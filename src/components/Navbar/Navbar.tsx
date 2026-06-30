@@ -1,15 +1,14 @@
 import styles from "./Navbar.module.scss";
 import useNavbar from "./useNavbar";
 import Search from "../../../public/Icons/Search.svg";
-import type { INavbar } from "../interface";
+import type { INavbar } from "../../Interfaces";
 
 const Navbar = ({ search, setSearch }: INavbar) => {
-  const { token, goToSignOut, goToSettings, goToSignup, goToLogin, goToHome } =
-    useNavbar();
+  const { token, handleNavigate } = useNavbar();
 
   return (
     <div className={styles.header}>
-      <div className={styles.headerLogo} onClick={goToHome}>
+      <div className={styles.headerLogo} onClick={() => handleNavigate("home")}>
         CRIO
       </div>
 
@@ -28,29 +27,49 @@ const Navbar = ({ search, setSearch }: INavbar) => {
       </div>
 
       <div className={styles.headerActions}>
-        <div className={styles.ordersLink}>Orders</div>
+        <div className={styles.cartLink} onClick={() => handleNavigate("cart")}>
+          Cart
+        </div>
+        <div
+          className={styles.ordersLink}
+          onClick={() => handleNavigate("orders")}
+        >
+          Orders
+        </div>
 
         {!token ? (
           <div className={styles.authLinks}>
-            <span className={styles.authLink} onClick={goToLogin}>
+            <span
+              className={styles.authLink}
+              onClick={() => handleNavigate("login")}
+            >
               Login In
             </span>
 
             <span>|</span>
 
-            <span className={styles.authLink} onClick={goToSignup}>
+            <span
+              className={styles.authLink}
+              onClick={() => handleNavigate("signup")}
+            >
               Sign up
             </span>
           </div>
         ) : (
           <div className={styles.authLinks}>
-            <span className={styles.authLink} onClick={goToSettings}>
+            <span
+              className={styles.authLink}
+              onClick={() => handleNavigate("settings")}
+            >
               Profile
             </span>
 
             <span>|</span>
 
-            <span className={styles.authLink} onClick={goToSignOut}>
+            <span
+              className={styles.authLink}
+              onClick={() => handleNavigate("signOut")}
+            >
               Logout
             </span>
           </div>

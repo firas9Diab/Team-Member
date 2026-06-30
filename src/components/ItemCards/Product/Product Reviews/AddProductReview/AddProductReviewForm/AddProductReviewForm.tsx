@@ -1,4 +1,4 @@
-import type { IAddProductReviewForm } from "../../../../../interface";
+import type { IAddProductReviewForm } from "../../../../../../Interfaces";
 import styles from "./AddProductReviewForm.module.scss";
 import classNames from "classnames";
 

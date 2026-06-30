@@ -1,5 +1,5 @@
 import styles from "./ProductReviews.module.scss";
-import type { IProductReviews } from "../../../interface";
+import type { IProductReviews } from "../../../../Interfaces";
 import ProductComments from "./Product Comments/ProductComments";
 import AddProductReview from "./AddProductReview/AddProductReview";
 import useProductReviews from "./useProductReviews";
