@@ -1,8 +1,13 @@
 import styles from "./Footer.module.scss";
 import useFooter from "./useFooter";
+import Insta from "../../public/Social Media/insta.svg";
+import Facebook from "../../public/Social Media/facebook.svg";
+import Twitter from "../../public/Social Media/twitter.svg";
+import Youtube from "../../public/Social Media/youtube.svg";
+import Linkedin from "../../public/Social Media/linkedin.svg";
 
 const Footer = () => {
-  const { socialMedias, footerCategories } = useFooter();
+  const { footerCategories } = useFooter();
 
   return (
     <div className={styles.footer}>
@@ -43,9 +48,11 @@ const Footer = () => {
             <div className={styles.socialLinks}>
               <p>Lets get social</p>
 
-              {socialMedias.map((socialMedia, index) => (
-                <img key={index} src={socialMedia} alt="social media" />
-              ))}
+              <img src={Insta} alt="social media" />
+              <img src={Facebook} alt="social media" />
+              <img src={Twitter} alt="social media" />
+              <img src={Youtube} alt="social media" />
+              <img src={Linkedin} alt="social media" />
             </div>
           </div>
         </div>

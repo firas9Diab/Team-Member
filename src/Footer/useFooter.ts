@@ -1,13 +1,6 @@
-import Insta from "../../public/Social Media/insta.svg";
-import Facebook from "../../public/Social Media/facebook.svg";
-import Twitter from "../../public/Social Media/twitter.svg";
-import Youtube from "../../public/Social Media/youtube.svg";
-import Linkedin from "../../public/Social Media/linkedin.svg";
-import type { FooterCategories } from "../components/interface";
+import type { FooterCategories } from "../Interfaces";
 
 const useFooter = () => {
-  const socialMedias: string[] = [Insta, Facebook, Twitter, Youtube, Linkedin];
-
   const footerCategories: FooterCategories = [
     {
       id: 1,
@@ -56,7 +49,7 @@ const useFooter = () => {
     },
   ];
 
-  return { socialMedias, footerCategories };
+  return { footerCategories };
 };
 
 export default useFooter;
