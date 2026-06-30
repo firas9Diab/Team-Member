@@ -33,3 +33,12 @@ export type FooterCategory = {
 };
 
 export type FooterCategories = FooterCategory[];
+
+export type NavbarRoute =
+  | "signOut"
+  | "settings"
+  | "signup"
+  | "login"
+  | "home"
+  | "cart"
+  | "orders";

@@ -1,13 +1,5 @@
 import { useNavigate } from "react-router-dom";
-
-type NavbarRoute =
-  | "signOut"
-  | "settings"
-  | "signup"
-  | "login"
-  | "home"
-  | "cart"
-  | "orders";
+import type { NavbarRoute } from "../../Interfaces";
 
 const useNavbar = () => {
   const token = localStorage.getItem("token");
