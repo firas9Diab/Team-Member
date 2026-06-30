@@ -1,29 +1,38 @@
 import { useEffect, useState } from "react";
 import RequestBuilder from "../../../services/RequestBuilder";
-import Trash from "../../../../../public/Icons/trash.svg";
 import type { CartData } from "../../../../Interfaces";
 import { useNavigate } from "react-router-dom";
 
 const useCart = () => {
   const navigate = useNavigate();
   const [cart, setCart] = useState<CartData | null>(null);
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-  const [titleCartItem, settitleCartItem] = useState<string>("");
-  const [selectedIdByCartItem, setSelectedIdByCartItem] = useState<number>(0);
-  const trash: string = Trash;
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState<boolean>(false);
 
-  const handleOpenModal = () => {
-    setIsModalOpen(true);
+  const [selectedCartItemTitle, setSelectedCartItemTitle] =
+    useState<string>("");
+
+  const [selectedCartItemId, setSelectedCartItemId] = useState<number | null>(
+    null,
+  );
+
+  const handleOpenDeleteModal = () => {
+    setIsDeleteModalOpen(true);
   };
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
+  const handleCloseDeleteModal = () => {
+    setIsDeleteModalOpen(false);
   };
 
-  const handlechangeIdCartItem = (id: number) => {
-    setSelectedIdByCartItem(id);
+  const handleSelectCartItem = (id: number) => {
+    setSelectedCartItemId(id);
   };
   const handlechangeTitleCartItem = (titleCartItem: string) => {
-    settitleCartItem(titleCartItem);
+    setSelectedCartItemTitle(titleCartItem);
+  };
+
+  const handleConfirmDeleteCartItem = () => {
+    if (selectedCartItemId === null) return;
+
+    handleDeleteCart(selectedCartItemId);
   };
 
   const handleAddtoOrders = async () => {
@@ -34,13 +43,14 @@ const useCart = () => {
     navigate("/Orders");
   };
 
-  const handleDeleteCart = async (selectedIdByCartItem: number) => {
+  const handleDeleteCart = async (cartItemId: number) => {
     await RequestBuilder({
-      url: `/cart/${selectedIdByCartItem}`,
+      url: `/cart/${cartItemId}`,
       method: "DELETE",
     });
+
     await handleGetCart();
-    handleCloseModal();
+    handleCloseDeleteModal();
   };
 
   const handleGetCart = async () => {
@@ -58,14 +68,12 @@ const useCart = () => {
 
   return {
     cart,
-    trash,
-    isModalOpen,
-    handleOpenModal,
-    handleCloseModal,
-    titleCartItem,
-    handleDeleteCart,
-    selectedIdByCartItem,
-    handlechangeIdCartItem,
+    isDeleteModalOpen,
+    handleOpenDeleteModal,
+    handleCloseDeleteModal,
+    selectedCartItemTitle,
+    handleConfirmDeleteCartItem,
+    handleSelectCartItem,
     handlechangeTitleCartItem,
     handleAddtoOrders,
   };

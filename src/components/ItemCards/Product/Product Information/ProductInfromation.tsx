@@ -1,9 +1,9 @@
 import ProductDetails from "./Product Details/ProductDetails";
 import ProductReviews from "../Product Reviews/ProductReviews";
-import useProjectInfromation from "./useProductInfromation";
+import useProductInfromation from "./useProductInfromation";
 import Footer from "../../../../Footer/Footer";
 
-const ProjectInfromation = () => {
+const ProductInfromation = () => {
   const {
     selectedProduct,
     selectedImage,
@@ -15,7 +15,7 @@ const ProjectInfromation = () => {
     handleAddProductToCart,
     quantity,
     handleChangeQuantity,
-  } = useProjectInfromation();
+  } = useProductInfromation();
 
   return (
     <>
@@ -39,4 +39,4 @@ const ProjectInfromation = () => {
   );
 };
 
-export default ProjectInfromation;
+export default ProductInfromation;

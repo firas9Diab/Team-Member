@@ -18,7 +18,7 @@ const useProjectInfromation = () => {
   const [productFeatures, setProductFeatures] = useState<ProductFeature[]>([]);
   const [productReviewSummary, setProductReviewSummary] =
     useState<ProductReviewSummary | null>(null);
-  const [quantity, setQuantity] = useState<number>(0);
+  const [quantity, setQuantity] = useState<number>(1);
 
   const handleChangeQuantity = (e: ChangeEvent<HTMLInputElement>) => {
     setQuantity(Number(e.target.value));

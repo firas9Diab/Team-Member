@@ -1,11 +1,12 @@
 import styles from "./CartItems.module.scss";
 import type { ICartItems } from "../../../../../Interfaces";
+import TrashIcon from "../../../../../../public/Icons/trash.svg";
 
 const CartItems = ({
   cart,
-  handleOpenModal,
-  handlechangeIdCartItem,
-  trash,
+  handleOpenDeleteModal,
+  handleSelectCartItem,
+
   handlechangeTitleCartItem,
 }: ICartItems) => {
   return (
@@ -56,13 +57,13 @@ const CartItems = ({
           <div className={styles.removeCartItem}>
             <button
               onClick={() => {
-                handleOpenModal();
-                handlechangeIdCartItem(Number(item.id));
+                handleOpenDeleteModal();
+                handleSelectCartItem(Number(item.id));
                 handlechangeTitleCartItem(item.title);
               }}
             >
               {" "}
-              <img src={trash} alt="" />
+              <img src={TrashIcon} alt="" />
             </button>
           </div>
         </div>

@@ -1,4 +1,3 @@
-import Modal from "../Product Reviews/AddProductReview/Modal/Modal";
 import styles from "./Cart.module.scss";
 import CartItems from "./CartItems/CartItems";
 import DeleteCartItem from "./DeleteCartItem/DeleteCartItem";
@@ -7,14 +6,12 @@ import useCart from "./useCart";
 const Cart = () => {
   const {
     cart,
-    trash,
-    isModalOpen,
-    handleOpenModal,
-    handleCloseModal,
-    titleCartItem,
-    handleDeleteCart,
-    selectedIdByCartItem,
-    handlechangeIdCartItem,
+    isDeleteModalOpen,
+    handleOpenDeleteModal,
+    handleCloseDeleteModal,
+    selectedCartItemTitle,
+    handleConfirmDeleteCartItem,
+    handleSelectCartItem,
     handlechangeTitleCartItem,
     handleAddtoOrders,
   } = useCart();
@@ -30,21 +27,17 @@ const Cart = () => {
           <div className={styles.cartProducts}>
             <CartItems
               cart={cart}
-              handleOpenModal={handleOpenModal}
-              handlechangeIdCartItem={handlechangeIdCartItem}
-              trash={trash}
+              handleOpenDeleteModal={handleOpenDeleteModal}
+              handleSelectCartItem={handleSelectCartItem}
               handlechangeTitleCartItem={handlechangeTitleCartItem}
             />
           </div>
-          {isModalOpen && (
-            <Modal handleCloseModal={handleCloseModal}>
-              <DeleteCartItem
-                handleDeleteCart={handleDeleteCart}
-                selectedIdByCartItem={selectedIdByCartItem}
-                titleCartItem={titleCartItem}
-                handleCloseModal={handleCloseModal}
-              />
-            </Modal>
+          {isDeleteModalOpen && (
+            <DeleteCartItem
+              handleConfirmDeleteCartItem={handleConfirmDeleteCartItem}
+              selectedCartItemTitle={selectedCartItemTitle}
+              handleCloseDeleteModal={handleCloseDeleteModal}
+            />
           )}
           <div className={styles.checkoutSummary}>
             <span>

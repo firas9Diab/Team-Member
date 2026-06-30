@@ -57,7 +57,7 @@
 
 .cartItemImage img {
   max-width: 100%;
-  height: 291px;
+  height: 100%;
 }
 
 .cartItemDetails {
@@ -108,7 +108,6 @@
   border-radius: 37px;
   background: #ffd814;
   color: #000000;
-  font-family: "Inter";
   font-weight: 400;
   font-size: 16px;
   line-height: 32px;
@@ -140,7 +139,7 @@
   }
 
   .cartItemImage img {
-    width: 180px;
+    width: 100%;
   }
 
   .cartItemDetails {
@@ -176,8 +175,9 @@
   }
 
   .cartItemImage {
-    width: 260px;
-    height: 240px;
+    max-width: 260px;
+    width: 100%;
+    height: auto;
   }
 
   .cartItemDetails {

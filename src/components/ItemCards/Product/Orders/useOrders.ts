@@ -20,7 +20,6 @@ const useOrders = () => {
 
   return {
     orders,
-    handleGetOrders,
   };
 };
 

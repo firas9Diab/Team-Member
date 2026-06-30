@@ -25,15 +25,13 @@ export interface CartData {
 
 export interface ICartItems {
   cart: CartData;
-  handleOpenModal: () => void;
-  handlechangeIdCartItem: (id: number) => void;
-  trash: string;
+  handleOpenDeleteModal: () => void;
+  handleSelectCartItem: (id: number) => void;
   handlechangeTitleCartItem: (title: string) => void;
 }
 
 export interface IDeleteCartItem {
-  selectedIdByCartItem: number;
-  handleDeleteCart: (id: number) => void;
-  titleCartItem: string;
-  handleCloseModal: () => void;
+  handleConfirmDeleteCartItem: () => void;
+  selectedCartItemTitle: string;
+  handleCloseDeleteModal: () => void;
 }
