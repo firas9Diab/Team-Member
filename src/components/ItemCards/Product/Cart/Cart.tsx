@@ -15,7 +15,8 @@ const Cart = () => {
     handleDeleteCart,
     selectedIdByCartItem,
     handlechangeIdCartItem,
-    handlechangeTitleCartItem,handleAddtoOrders
+    handlechangeTitleCartItem,
+    handleAddtoOrders,
   } = useCart();
 
   if (!cart) return null;
@@ -50,7 +51,12 @@ const Cart = () => {
               Subtotal ({cart.totalItems} items): ₹{cart.subtotal}
             </span>
 
-            <button className={styles.checkoutButton} onClick={handleAddtoOrders}>Proceed to buy</button>
+            <button
+              className={styles.checkoutButton}
+              onClick={handleAddtoOrders}
+            >
+              Proceed to buy
+            </button>
           </div>
         </div>
       </div>

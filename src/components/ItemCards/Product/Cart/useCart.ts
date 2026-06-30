@@ -2,8 +2,10 @@ import { useEffect, useState } from "react";
 import RequestBuilder from "../../../services/RequestBuilder";
 import Trash from "../../../../../public/Icons/trash.svg";
 import type { CartData } from "../../../../Interfaces";
+import { useNavigate } from "react-router-dom";
 
 const useCart = () => {
+  const navigate = useNavigate();
   const [cart, setCart] = useState<CartData | null>(null);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [titleCartItem, settitleCartItem] = useState<string>("");
@@ -25,12 +27,11 @@ const useCart = () => {
   };
 
   const handleAddtoOrders = async () => {
-
-  await RequestBuilder({
+    await RequestBuilder({
       url: `/orders`,
       method: "POST",
     });
-
+    navigate("/Orders");
   };
 
   const handleDeleteCart = async (selectedIdByCartItem: number) => {
@@ -65,7 +66,8 @@ const useCart = () => {
     handleDeleteCart,
     selectedIdByCartItem,
     handlechangeIdCartItem,
-    handlechangeTitleCartItem,handleAddtoOrders
+    handlechangeTitleCartItem,
+    handleAddtoOrders,
   };
 };
 

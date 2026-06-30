@@ -7,7 +7,7 @@ const OrderProduct = ({ order }: IOrderProduct) => {
       <div className={styles.orderOverview}>
         <div>
           <div>ORDER PLACED</div>
-          <div>{order.placedAt.slice(0,10)}</div>
+          <div>{order.placedAt.slice(0, 10)}</div>
         </div>
 
         <div>
@@ -41,10 +41,9 @@ const OrderProduct = ({ order }: IOrderProduct) => {
 
                 <h2>Quantity: {item.quantity}</h2>
               </div>
-<div className={styles.orderItemDescription}>
- <div>{item.title}</div>
-</div>
-             
+              <div className={styles.orderItemDescription}>
+                <div>{item.title}</div>
+              </div>
 
               <div className={styles.orderItemActions}>
                 <button>Track Package</button>
