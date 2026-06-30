@@ -1,5 +1,4 @@
 import type { FooterCategories } from "../Interfaces";
-
 const useFooter = () => {
   const footerCategories: FooterCategories = [
     {
@@ -48,8 +47,6 @@ const useFooter = () => {
       ],
     },
   ];
-
   return { footerCategories };
 };
-
 export default useFooter;

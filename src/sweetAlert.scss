@@ -1,0 +1,48 @@
+.swalConfirmButton {
+  background-color: #f83200;
+  color: #000000;
+  border: none;
+  padding: 10px 24px;
+  font-size: 15px;
+  cursor: pointer;
+  margin: 0 8px;
+}
+
+.swalCancelButton {
+  background-color: #d9d9d9;
+  color: #000000;
+  border: none;
+  padding: 10px 24px;
+  font-size: 15px;
+  cursor: pointer;
+  margin: 0 8px;
+}
+.swalCancelOkButton {
+  background-color: #d9d9d9;
+  color: #000000;
+  border: none;
+  padding: 10px 24px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.swalSuccessButton {
+  background-color: #09e727;
+  color: #000000;
+  border: none;
+  padding: 10px 24px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.swalConfirmButton:hover {
+  background-color: #ca4e38;
+}
+
+.swalSuccessButton:hover {
+  background-color: #a89895;
+}
+.swalCancelButton:hover,
+.swalCancelOkButton:hover {
+  background-color: #c9c9c9;
+}

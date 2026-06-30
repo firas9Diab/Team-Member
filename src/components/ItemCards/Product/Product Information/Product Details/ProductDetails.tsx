@@ -1,7 +1,6 @@
 import styles from "./ProductDetails.module.scss";
 import type { IProductDetails } from "../../../../../Interfaces";
 import classNames from "classnames";
-
 const ProductDetails = ({
   selectedProduct,
   handleChangeImages,
@@ -28,7 +27,6 @@ const ProductDetails = ({
               />
             ))}
           </div>
-
           <div className={styles.mainImageWrapper}>
             {selectedImage && (
               <img
@@ -39,21 +37,17 @@ const ProductDetails = ({
             )}
           </div>
         </div>
-
         <div className={styles.productInfo}>
           <div>
             <p className={styles.productDescription}>
               {selectedProduct?.description}
             </p>
-
             <span className={styles.productBrand}>
               Brand: {selectedProduct?.brand}
             </span>
-
             <div className={styles.ratingSection}>
               <div className={styles.ratingScore}>
                 <span>{selectedProduct?.ratingAverage}</span>
-
                 {new Array(5).fill(0).map((_, i) => (
                   <span key={i + 1} className={styles.star}>
                     {i < Math.round(selectedProduct?.ratingAverage || 0) ? (
@@ -64,24 +58,19 @@ const ProductDetails = ({
                   </span>
                 ))}
               </div>
-
               <span className={styles.ratingCountText}>
                 {selectedProduct?.ratingCount} ratings
               </span>
             </div>
-
             <div className={styles.priceSection}>
               <span>
                 {selectedProduct?.discountPercent &&
                   `-${selectedProduct.discountPercent}%`}
               </span>
-
               <span>₹{selectedProduct?.price}</span>
             </div>
           </div>
-
           <div>M.R.P.: ₹{selectedProduct?.oldPrice}</div>
-
           <div>
             Quantity:
             <input
@@ -91,7 +80,6 @@ const ProductDetails = ({
               className={styles.quantityInput}
             />
           </div>
-
           <div className={styles.actionButtons}>
             <button className={styles.buyButton}>Buy Now</button>
             <button
@@ -103,11 +91,9 @@ const ProductDetails = ({
           </div>
         </div>
       </div>
-
       <div className={styles.productFeaturesSection}>
         <div>
           <h1 className={styles.featuresTitle}>About this item</h1>
-
           <div className={styles.featuresContent}>
             <ul className={styles.featuresList}>
               {productFeatures.map((feature) => (
@@ -122,5 +108,4 @@ const ProductDetails = ({
     </>
   );
 };
-
 export default ProductDetails;

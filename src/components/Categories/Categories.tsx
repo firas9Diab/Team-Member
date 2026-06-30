@@ -1,7 +1,6 @@
 import chooses from "../../../public/Icons/chooses.svg";
 import type { ICategories } from "../../Interfaces";
 import styles from "./Categories.module.scss";
-
 const Categories = ({
   categories,
   handleChangeCategoryId,
@@ -21,7 +20,6 @@ const Categories = ({
           {category.name}
         </button>
       ))}
-
       <img
         onClick={() => handleChangeCategoryId(null)}
         className={styles.chooseIcon}
@@ -31,5 +29,4 @@ const Categories = ({
     </div>
   );
 };
-
 export default Categories;

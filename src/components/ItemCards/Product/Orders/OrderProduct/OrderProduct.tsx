@@ -9,23 +9,19 @@ const OrderProduct = ({ order }: IOrderProduct) => {
           <div>ORDER PLACED</div>
           <div>{order.placedAt.slice(0, 10)}</div>
         </div>
-
         <div>
           <div>TOTAL</div>
           <div>{order.total}</div>
         </div>
-
         <div>
           <div>SHIP TO</div>
           <div>{order.shipToName}</div>
         </div>
-
         <div>
           <div>ORDER</div>
           <div>#{order.orderNumber}</div>
         </div>
       </div>
-
       <div className={styles.orderItems}>
         <div className={styles.orderItemsList}>
           {order.items.map((item) => (
@@ -34,16 +30,13 @@ const OrderProduct = ({ order }: IOrderProduct) => {
                 <div className={styles.orderItemMainInfo}>
                   <div className={styles.orderItemImageWrapper}>
                     <h2>Arriving Today</h2>
-
                     <img
                       src={item.image}
                       alt={item.title}
                       className={styles.orderItemImage}
                     />
-
                     <h2>Quantity: {item.quantity}</h2>
                   </div>
-
                   <div className={styles.orderItemDescription}>
                     <div>{item.title}</div>
                   </div>
@@ -52,7 +45,6 @@ const OrderProduct = ({ order }: IOrderProduct) => {
             </div>
           ))}
         </div>
-
         <div className={styles.orderActions}>
           <button>Track Package</button>
           <button>Get Product support</button>
@@ -62,5 +54,4 @@ const OrderProduct = ({ order }: IOrderProduct) => {
     </div>
   );
 };
-
 export default OrderProduct;

@@ -8,7 +8,6 @@ import { useState } from "react";
 import ProjectInfromation from "./components/ItemCards/Product/Product Information/ProductInfromation";
 import Cart from "./components/ItemCards/Product/Cart/Cart";
 import Orders from "./components/ItemCards/Product/Orders/Orders";
-
 const App = () => {
   const [search, setSearch] = useState("");
   return (
@@ -25,7 +24,6 @@ const App = () => {
             </ProtectedRoute>
           }
         />
-
         <Route
           path="/User/Settings"
           element={
@@ -64,5 +62,4 @@ const App = () => {
     </div>
   );
 };
-
 export default App;

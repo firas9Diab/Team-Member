@@ -3,7 +3,6 @@ import type { IProductReviews } from "../../../../Interfaces";
 import ProductComments from "./Product Comments/ProductComments";
 import AddProductReview from "./AddProductReview/AddProductReview";
 import useProductReviews from "./useProductReviews";
-
 const ProductReviews = ({
   selectedProduct,
   handleCalculateRatingPercentage,
@@ -42,7 +41,6 @@ const ProductReviews = ({
                 {Math.round(selectedProduct?.ratingAverage || 0)} out of 5
               </span>
             </div>
-
             <div>{selectedProduct?.ratingCount} global ratings</div>
           </div>
           <div className={styles.ratingProgresses}>
@@ -72,7 +70,6 @@ const ProductReviews = ({
           handleGetProductDetails={handleGetProductDetails}
         />
       </div>
-
       <ProductComments
         reviewsTotalPages={reviewsTotalPages}
         reviewsCurrentPage={reviewsCurrentPage}
@@ -84,5 +81,4 @@ const ProductReviews = ({
     </div>
   );
 };
-
 export default ProductReviews;

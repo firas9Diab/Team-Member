@@ -5,18 +5,15 @@ import type { INavbar } from "../../Interfaces";
 
 const Navbar = ({ search, setSearch }: INavbar) => {
   const { token, handleNavigate } = useNavbar();
-
   return (
     <div className={styles.header}>
       <div className={styles.headerLogo} onClick={() => handleNavigate("home")}>
         CRIO
       </div>
-
       <div className={styles.searchBox}>
         <button className={styles.searchButton}>
           <img src={Search} alt="Search" />
         </button>
-
         <input
           type="text"
           value={search ?? ""}
@@ -25,7 +22,6 @@ const Navbar = ({ search, setSearch }: INavbar) => {
           className={styles.searchInput}
         />
       </div>
-
       <div className={styles.headerActions}>
         <div className={styles.cartLink} onClick={() => handleNavigate("cart")}>
           Cart
@@ -36,7 +32,6 @@ const Navbar = ({ search, setSearch }: INavbar) => {
         >
           Orders
         </div>
-
         {!token ? (
           <div className={styles.authLinks}>
             <span
@@ -45,9 +40,7 @@ const Navbar = ({ search, setSearch }: INavbar) => {
             >
               Login In
             </span>
-
             <span>|</span>
-
             <span
               className={styles.authLink}
               onClick={() => handleNavigate("signup")}
@@ -63,9 +56,7 @@ const Navbar = ({ search, setSearch }: INavbar) => {
             >
               Profile
             </span>
-
             <span>|</span>
-
             <span
               className={styles.authLink}
               onClick={() => handleNavigate("signOut")}
@@ -78,5 +69,4 @@ const Navbar = ({ search, setSearch }: INavbar) => {
     </div>
   );
 };
-
 export default Navbar;

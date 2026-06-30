@@ -2,7 +2,6 @@ export interface SignInDTO {
   email: string;
   password: string;
 }
-
 export interface SignUpDTO {
   fullName: string;
   email: string;
@@ -10,7 +9,6 @@ export interface SignUpDTO {
   confirmPassword: string;
   phone: string;
 }
-
 export type ChangeMyDetailsDTO = {
   fullName: string;
   phone: string;

@@ -6,11 +6,9 @@ import Address from "./Address/Address";
 
 const Settings = () => {
   const [activeTab, setActiveTab] = useState("My Details");
-
   return (
     <div className={styles.settingsPage}>
       <p className={styles.settingsTitle}>Settings</p>
-
       <div className={styles.settingsContent}>
         <aside className={styles.settingsSidebar}>
           <nav
@@ -21,14 +19,12 @@ const Settings = () => {
           >
             My Details
           </nav>
-
           <nav
             className={activeTab === "Address" ? styles.activeSidebarLink : ""}
             onClick={() => setActiveTab("Address")}
           >
             Address
           </nav>
-
           <nav
             className={activeTab === "Password" ? styles.activeSidebarLink : ""}
             onClick={() => setActiveTab("Password")}
@@ -36,7 +32,6 @@ const Settings = () => {
             Password
           </nav>
         </aside>
-
         {activeTab === "My Details" && <MyDetails />}
         {activeTab === "Address" && <Address />}
         {activeTab === "Password" && <Password />}
@@ -44,5 +39,4 @@ const Settings = () => {
     </div>
   );
 };
-
 export default Settings;

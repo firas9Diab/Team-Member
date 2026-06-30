@@ -1,6 +1,5 @@
 import axios from "axios";
 import type { IRequestBuilder } from "../interface";
-
 const RequestBuilder = async ({
   url,
   method,
@@ -8,7 +7,6 @@ const RequestBuilder = async ({
   params,
 }: IRequestBuilder) => {
   const token = localStorage.getItem("token");
-
   const response = await axios({
     url: `http://localhost:3000${url}`,
     method,
@@ -19,8 +17,6 @@ const RequestBuilder = async ({
       "Content-Type": "application/json",
     },
   });
-
   return response.data;
 };
-
 export default RequestBuilder;

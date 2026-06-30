@@ -1,5 +1,5 @@
 import styles from "./PaginationButtons.module.scss";
-import type { IPaginationButtons } from "../../../../../interface";
+import type { IPaginationButtons } from "../../../../../../Interfaces";
 import classNames from "classnames";
 
 const PaginationButtons = ({
@@ -28,5 +28,4 @@ const PaginationButtons = ({
     </div>
   );
 };
-
 export default PaginationButtons;

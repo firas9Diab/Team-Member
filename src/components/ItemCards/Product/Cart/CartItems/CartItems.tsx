@@ -2,30 +2,23 @@ import styles from "./CartItems.module.scss";
 import type { ICartItems } from "../../../../../Interfaces";
 import TrashIcon from "../../../../../../public/Icons/trash.svg";
 
-const CartItems = ({
-  cart,
-  handleOpenDeleteModal,
-  handleSelectCartItem,
-
-  handlechangeTitleCartItem,
-}: ICartItems) => {
+const CartItems = ({ cart, handleConfirmDeleteCartItem }: ICartItems) => {
   return (
     <>
-      {cart.items.map((item) => (
-        <div className={styles.cartItem} key={item.id}>
-          <div className={styles.cartItem}>
+      {cart.items.map((order) => (
+        <div className={styles.cartItem} key={order.id}>
+          <div className={styles.cartItemContent}>
             <div className={styles.cartItemImage}>
-              <img src={item.image} alt={item.title} />
+              <img src={order.image} alt={order.title} />
             </div>
             <div className={styles.cartItemDetails}>
               <div className={styles.cartItemMainInfo}>
-                <div>{item.title}</div>
-
+                <div>{order.title}</div>
                 <div>
                   <span>
                     {new Array(5).fill(0).map((_, i) => (
                       <span key={i} className={styles.star}>
-                        {i < Math.round(item?.ratingAverage || 0) ? (
+                        {i < Math.round(order?.ratingAverage || 0) ? (
                           <>&#9733;</>
                         ) : (
                           <>&#9734;</>
@@ -35,31 +28,26 @@ const CartItems = ({
                   </span>
                   <span className={styles.cartItemRatingCount}>
                     {" "}
-                    {item.ratingCount}
+                    {order.ratingCount}
                   </span>
                 </div>
-
                 <div>
-                  <span>{item.price}</span>
-                  <span> M.R.P: ₹{item.oldPrice}</span>
-                  <span> ({item.discountPercent}% off)</span>
+                  <span>{order.price}</span>
+                  <span> M.R.P: ₹{order.oldPrice}</span>
+                  <span> ({order.discountPercent}% off)</span>
                 </div>
               </div>
-
               <div>
-                <div>Brand: {item.brand}</div>
-                <div>Quantity: {item.quantity}</div>
-                <div>Line Total: ₹{item.lineTotal}</div>
+                <div>Brand: {order.brand}</div>
+                <div>Quantity: {order.quantity}</div>
+                <div>Line Total: ₹{order.lineTotal}</div>
               </div>
             </div>
           </div>
-
           <div className={styles.removeCartItem}>
             <button
               onClick={() => {
-                handleOpenDeleteModal();
-                handleSelectCartItem(Number(item.id));
-                handlechangeTitleCartItem(item.title);
+                handleConfirmDeleteCartItem(order.id, order.title);
               }}
             >
               {" "}
@@ -71,5 +59,4 @@ const CartItems = ({
     </>
   );
 };
-
 export default CartItems;

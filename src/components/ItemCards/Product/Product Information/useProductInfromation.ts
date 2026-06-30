@@ -33,19 +33,16 @@ const useProjectInfromation = () => {
   const handleChangeImages = (image: ProductImage | null) => {
     setSelectedImage(image);
   };
-
   const handleGetProductDetails = async (id: string) => {
     const response = await RequestBuilder({
       url: `/products/${id}`,
       method: "GET",
     });
-
     setSelectedProduct(response.data);
     setSelectedImage(response.data.images[0]);
     setProductFeatures(response.data.features);
     setProductReviewSummary(response.data.reviewSummary);
   };
-
   const handleAddProductToCart = async () => {
     await RequestBuilder({
       url: `/cart`,
@@ -54,12 +51,10 @@ const useProjectInfromation = () => {
     });
     navigate("/Cart");
   };
-
   useEffect(() => {
     if (!id) return;
     handleGetProductDetails(id);
   }, [id]);
-
   return {
     selectedProduct,
     selectedImage,
@@ -73,5 +68,4 @@ const useProjectInfromation = () => {
     handleChangeQuantity,
   };
 };
-
 export default useProjectInfromation;

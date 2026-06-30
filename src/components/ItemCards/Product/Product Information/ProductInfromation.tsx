@@ -38,5 +38,4 @@ const ProductInfromation = () => {
     </>
   );
 };
-
 export default ProductInfromation;

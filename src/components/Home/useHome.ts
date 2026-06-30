@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import RequestBuilder from "../services/RequestBuilder";
 import type { Category, ProductListItemDTO } from "../../Interfaces";
-
 const useHome = (search: string | undefined) => {
   const navigate = useNavigate();
   const [categories, setCategories] = useState<Category[]>([]);
@@ -17,7 +16,6 @@ const useHome = (search: string | undefined) => {
   );
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [showContainer, setShowContainer] = useState<boolean>(false);
-
   const handleChangeCategoryId = (id: number | null) => {
     setSelectedCategoryId(id);
   };
@@ -30,7 +28,6 @@ const useHome = (search: string | undefined) => {
     setTodayDeals(response.data.todayDeals);
     setMoreItemsToConsider(response.data.moreItemsToConsider);
   };
-
   const handleGetProduct = async (
     page: number = 1,
     categoryId: null | number = selectedCategoryId,
@@ -38,13 +35,11 @@ const useHome = (search: string | undefined) => {
   ) => {
     const hasSearch = searchValue && searchValue.trim() !== "";
     const hasSelectedCategory = categoryId !== null;
-
     if (!hasSearch && !hasSelectedCategory) {
       setProducts([]);
       setTotalPages(1);
       return;
     }
-
     const response = await RequestBuilder({
       url: "/products",
       method: "GET",
@@ -55,22 +50,17 @@ const useHome = (search: string | undefined) => {
         limit: 5,
       },
     });
-
     const mapped = response.data.items;
-
     setProducts(mapped);
     setTotalPages(response.data.pagination.totalPages);
   };
-
   useEffect(() => {
     handleGetHome();
   }, []);
-
   useEffect(() => {
     setCurrentPage(1);
     setShowContainer(!selectedCategoryId && !search);
   }, [selectedCategoryId, search]);
-
   useEffect(() => {
     handleGetProduct(currentPage, selectedCategoryId, search);
   }, [currentPage, selectedCategoryId, search]);
@@ -88,5 +78,4 @@ const useHome = (search: string | undefined) => {
     navigate,
   };
 };
-
 export default useHome;

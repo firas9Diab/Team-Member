@@ -35,7 +35,8 @@
   gap: 9px;
 }
 
-.cartItem {
+.cartItem,
+.cartItemContent {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;

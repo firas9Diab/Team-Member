@@ -35,7 +35,6 @@ const ProductComments = ({
           </div>
         </div>
       ))}
-
       <PaginationButtons
         handleChangeReviewsCurrentPage={handleChangeReviewsCurrentPage}
         reviewsCurrentPage={reviewsCurrentPage}
@@ -44,5 +43,4 @@ const ProductComments = ({
     </div>
   );
 };
-
 export default ProductComments;

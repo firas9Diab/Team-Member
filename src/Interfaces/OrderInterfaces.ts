@@ -7,7 +7,6 @@ export interface OrderItem {
   quantity: number;
   lineTotal: number;
 }
-
 export interface Order {
   id: number;
   orderNumber: string;
@@ -18,7 +17,6 @@ export interface Order {
   placedAt: string;
   items: OrderItem[];
 }
-
 export interface IOrderProduct {
   order: Order;
 }

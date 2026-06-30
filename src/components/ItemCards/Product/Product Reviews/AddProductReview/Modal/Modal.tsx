@@ -11,10 +11,8 @@ const Modal = ({ children, handleCloseModal }: IModal) => {
       >
         X
       </button>
-
       <div className={styles.modalContent}>{children}</div>
     </div>
   );
 };
-
 export default Modal;

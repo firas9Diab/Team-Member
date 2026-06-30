@@ -1,4 +1,4 @@
-export interface Address {
+export interface AddressDTO {
   id?: number;
   name: string;
   country: string;
@@ -10,19 +10,16 @@ export interface Address {
   state: string;
   isDefault?: boolean;
 }
-
 export type Mode = "Add" | "Edit" | "View";
-
 export type IAddressForm = {
-  address: Address | null;
+  address: AddressDTO | null;
   mode: Mode;
   setMode: (mode: Mode) => void;
   handleGetAddresses: () => void;
 };
-
 export type IViewAddresses = {
-  addresses: Address[];
-  setSelectedAddress: (address: Address | null) => void;
+  addresses: AddressDTO[];
+  setSelectedAddress: (address: AddressDTO | null) => void;
   setMode: (mode: Mode) => void;
-  handleDeleteAddresses: (address: Address) => void;
+  handleDeleteAddresses: (address: AddressDTO) => void;
 };

@@ -2,7 +2,6 @@ import styles from "../Sign Up/SignUp.module.scss";
 import googlelogo from "../../../../public/Icons/google-logo.svg";
 import useSignUp from "./useSignUp";
 import eyeIcon from "../../../../public/Icons/EyeIcon.svg";
-
 const SignUp = () => {
   const {
     password,
@@ -32,7 +31,6 @@ const SignUp = () => {
               <h1>Sign up</h1>
               <p>Shop Smarter, Shop Easier: Your One-Stop</p>
             </div>
-
             <div className={styles.signUpForm}>
               <div className={styles.formGroup}>
                 <div className={styles.inputWrapper}>
@@ -47,7 +45,6 @@ const SignUp = () => {
                   />
                 </div>
               </div>
-
               <div className={styles.formGroup}>
                 <div className={styles.inputWrapper}>
                   <img alt="" />
@@ -61,7 +58,6 @@ const SignUp = () => {
                   />
                 </div>
               </div>
-
               <div className={styles.formGroup}>
                 <div className={styles.passwordWrapper}>
                   <div className={styles.passwordInputWrapper}>
@@ -75,7 +71,6 @@ const SignUp = () => {
                       required
                     />
                   </div>
-
                   <button
                     onClick={() => {
                       handleVisiblePasswordChange();
@@ -86,7 +81,6 @@ const SignUp = () => {
                   </button>
                 </div>
               </div>
-
               <div className={styles.formGroup}>
                 <div className={styles.passwordWrapper}>
                   <div className={styles.passwordInputWrapper}>
@@ -100,7 +94,6 @@ const SignUp = () => {
                       required
                     />
                   </div>
-
                   <button
                     onClick={() => {
                       handleVisiblePasswordConfirmChange();
@@ -111,7 +104,6 @@ const SignUp = () => {
                   </button>
                 </div>
               </div>
-
               <div className={styles.formGroup}>
                 <div className={styles.inputWrapper}>
                   <img alt="" />
@@ -124,7 +116,6 @@ const SignUp = () => {
                     required
                   />
                 </div>
-
                 <p
                   className={
                     errorMessage === "Password is Match"
@@ -135,7 +126,6 @@ const SignUp = () => {
                   {errorMessage}
                 </p>
               </div>
-
               <button
                 onClick={() => {
                   handleSignup();
@@ -144,14 +134,12 @@ const SignUp = () => {
               >
                 Create Account
               </button>
-
               <div className={styles.authActions}>
                 <button onClick={() => {}} className={styles.googleButton}>
                   <img src={googlelogo} alt="" />
                   <b>Continue with Google</b>
                   <div></div>
                 </button>
-
                 <div className={styles.loginRedirect}>
                   <div>
                     Already have a account?{" "}
@@ -168,12 +156,10 @@ const SignUp = () => {
               </div>
             </div>
           </div>
-
           <div className={styles.sideCard}></div>
         </div>
       </div>
     </div>
   );
 };
-
 export default SignUp;

@@ -21,7 +21,6 @@ const useProductReviews = ({ id }: IUseProductReviews) => {
     productId: string | undefined = id,
   ) => {
     if (!productId) return;
-
     const response = await RequestBuilder({
       url: `/products/${productId}/reviews`,
       method: "GET",
@@ -30,26 +29,20 @@ const useProductReviews = ({ id }: IUseProductReviews) => {
         limit: 2,
       },
     });
-
     setReviews(response.data.items);
     setProductReviewSummary(response.data.summary);
     setReviewsTotalPages(response.data.pagination.totalPages);
   };
-
   const handleChangeReviewsCurrentPage = (page: number) => {
     setReviewsCurrentPage(page);
   };
-
   useEffect(() => {
     setReviewsCurrentPage(1);
   }, [id]);
-
   useEffect(() => {
     if (!id) return;
-
     handleGetProductReviews(reviewsCurrentPage, id);
   }, [id, reviewsCurrentPage]);
-
   return {
     reviews,
     productReviewSummary,
@@ -62,5 +55,4 @@ const useProductReviews = ({ id }: IUseProductReviews) => {
     handleGetProductReviews,
   };
 };
-
 export default useProductReviews;

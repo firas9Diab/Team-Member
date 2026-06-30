@@ -11,27 +11,16 @@ interface CartItemsDTO {
   quantity: number;
   lineTotal: number;
 }
-
 export interface AddCartDTO {
   productId: number;
   quantity: number;
 }
-
 export interface CartData {
   items: CartItemsDTO[];
   subtotal: number;
   totalItems: number;
 }
-
 export interface ICartItems {
   cart: CartData;
-  handleOpenDeleteModal: () => void;
-  handleSelectCartItem: (id: number) => void;
-  handlechangeTitleCartItem: (title: string) => void;
-}
-
-export interface IDeleteCartItem {
-  handleConfirmDeleteCartItem: () => void;
-  selectedCartItemTitle: string;
-  handleCloseDeleteModal: () => void;
+  handleConfirmDeleteCartItem: (id: number, titleCartItem: string) => void;
 }

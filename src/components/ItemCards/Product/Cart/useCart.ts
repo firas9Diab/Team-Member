@@ -2,37 +2,29 @@ import { useEffect, useState } from "react";
 import RequestBuilder from "../../../services/RequestBuilder";
 import type { CartData } from "../../../../Interfaces";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const useCart = () => {
   const navigate = useNavigate();
   const [cart, setCart] = useState<CartData | null>(null);
-  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState<boolean>(false);
-
   const [selectedCartItemTitle, setSelectedCartItemTitle] =
     useState<string>("");
-
   const [selectedCartItemId, setSelectedCartItemId] = useState<number | null>(
     null,
   );
-
-  const handleOpenDeleteModal = () => {
-    setIsDeleteModalOpen(true);
-  };
-  const handleCloseDeleteModal = () => {
-    setIsDeleteModalOpen(false);
-  };
-
   const handleSelectCartItem = (id: number) => {
     setSelectedCartItemId(id);
   };
-  const handlechangeTitleCartItem = (titleCartItem: string) => {
+  const handleChangeTitleCartItem = (titleCartItem: string) => {
     setSelectedCartItemTitle(titleCartItem);
   };
 
-  const handleConfirmDeleteCartItem = () => {
-    if (selectedCartItemId === null) return;
+  const handleConfirmDeleteCartItem = (id: number, titleCartItem: string) => {
+    if (id === null) return;
 
-    handleDeleteCart(selectedCartItemId);
+    handleSelectCartItem(id);
+    handleChangeTitleCartItem(titleCartItem);
+    handleDeleteCart();
   };
 
   const handleAddtoOrders = async () => {
@@ -43,14 +35,57 @@ const useCart = () => {
     navigate("/Orders");
   };
 
-  const handleDeleteCart = async (cartItemId: number) => {
+  const handleDeleteCart = async () => {
+    const result = await Swal.fire({
+      title: "Are you sure?",
+      text: `Do you Delete ${selectedCartItemTitle} from your Cart?`,
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Yes, delete it!",
+      cancelButtonText: "No, cancel!",
+      reverseButtons: true,
+      customClass: {
+        confirmButton: "swalConfirmButton",
+        cancelButton: "swalCancelButton",
+      },
+      buttonsStyling: false,
+    });
+    if (result.dismiss === Swal.DismissReason.cancel) {
+      await Swal.fire({
+        title: "Cancelled",
+        text: "Cart item not deleted",
+        icon: "error",
+
+        customClass: {
+          confirmButton: "swalCancelOkButton",
+        },
+        buttonsStyling: false,
+      });
+
+      return;
+    }
+
+    if (!result.isConfirmed) {
+      return;
+    }
+
     await RequestBuilder({
-      url: `/cart/${cartItemId}`,
+      url: `/cart/${selectedCartItemId}`,
       method: "DELETE",
     });
+    await Swal.fire({
+      title: "Deleted!",
+      text: "Cart item deleted successfully!",
+      icon: "success",
 
+      customClass: {
+        confirmButton: "swalSuccessButton",
+      },
+      buttonsStyling: false,
+    });
     await handleGetCart();
-    handleCloseDeleteModal();
+    setSelectedCartItemId(null);
+    setSelectedCartItemTitle("");
   };
 
   const handleGetCart = async () => {
@@ -58,7 +93,6 @@ const useCart = () => {
       url: "/cart",
       method: "GET",
     });
-
     setCart(response.data);
   };
 
@@ -66,17 +100,6 @@ const useCart = () => {
     handleGetCart();
   }, []);
 
-  return {
-    cart,
-    isDeleteModalOpen,
-    handleOpenDeleteModal,
-    handleCloseDeleteModal,
-    selectedCartItemTitle,
-    handleConfirmDeleteCartItem,
-    handleSelectCartItem,
-    handlechangeTitleCartItem,
-    handleAddtoOrders,
-  };
+  return { cart, handleConfirmDeleteCartItem, handleAddtoOrders };
 };
-
 export default useCart;

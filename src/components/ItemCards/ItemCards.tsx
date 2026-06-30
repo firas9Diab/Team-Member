@@ -21,7 +21,6 @@ const ItemCards = ({
         <div className={styles.sectionTitle}>
           {showContainer ? "Today deals" : ""}
         </div>
-
         <div
           className={showContainer ? styles.scrollProducts : styles.productGrid}
         >
@@ -38,11 +37,9 @@ const ItemCards = ({
               ))}
         </div>
       </div>
-
       {showContainer && (
         <div className={styles.moreItemsSection}>
           <div className={styles.sectionTitle}>More Items to Consider</div>
-
           <div className={styles.scrollProducts}>
             {moreItemsToConsider.map((item) => (
               <Product key={item.id} card={item} navigate={navigate} />
@@ -50,7 +47,6 @@ const ItemCards = ({
           </div>
         </div>
       )}
-
       <ul className={styles.paginationList}>
         {selectedCategoryId || search
           ? new Array(totalPages).fill(0).map((_, i) => {
@@ -74,5 +70,4 @@ const ItemCards = ({
     </>
   );
 };
-
 export default ItemCards;

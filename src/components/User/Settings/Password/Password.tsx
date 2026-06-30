@@ -15,7 +15,6 @@ const Password = () => {
     handleUpdatePassword,
     handleVisibleChange,
   } = usePassword();
-
   return (
     <div className={styles.settingswork}>
       <p className={styles.settingsworkparegraph}>
@@ -24,7 +23,6 @@ const Password = () => {
         current, this is the place to do it.Keep your profile up-to-date
         hassle-free.
       </p>
-
       <div className={styles.settingsinputfields}>
         <div className={styles.inputfields}>
           <label>Old Password</label>
@@ -76,10 +74,8 @@ const Password = () => {
               alt=""
             />
           </div>
-
           {error}
         </div>
-
         <button
           className={styles.inputfieldbutton}
           onClick={handleUpdatePassword}
@@ -90,5 +86,4 @@ const Password = () => {
     </div>
   );
 };
-
 export default Password;

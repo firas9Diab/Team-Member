@@ -22,7 +22,6 @@ const MyDetails = () => {
         things current, this is the place to do it. Keep your profile up-to-date
         hassle-free.
       </p>
-
       <div className={styles.detailsForm}>
         <div className={styles.formGroup}>
           <label>Name</label>
@@ -35,7 +34,6 @@ const MyDetails = () => {
             placeholder="Nandhu Santhosh"
           />
         </div>
-
         <div className={styles.formGroup}>
           <label>Email</label>
           <input
@@ -47,7 +45,6 @@ const MyDetails = () => {
             placeholder="nandhusanthosh@gmail.com"
           />
         </div>
-
         <div className={styles.formGroup}>
           <label>Phone</label>
           <input
@@ -59,10 +56,8 @@ const MyDetails = () => {
             placeholder="6238973581"
           />
         </div>
-
         <div className={styles.formGroup}>
           <label>Date of Birth</label>
-
           <div className={styles.dateInputWrapper}>
             <input
               name="dateOfBirth"
@@ -72,17 +67,14 @@ const MyDetails = () => {
               type="date"
               className={styles.dateInput}
             />
-
             <img
               src={date}
               alt="date icon"
               onClick={() => ref.current?.showPicker?.()}
             />
           </div>
-
           {error}
         </div>
-
         <button className={styles.updateButton} onClick={handleUpdateuser}>
           Update Details
         </button>
@@ -90,5 +82,4 @@ const MyDetails = () => {
     </div>
   );
 };
-
 export default MyDetails;

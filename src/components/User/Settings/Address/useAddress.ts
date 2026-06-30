@@ -1,26 +1,26 @@
 import { useEffect, useState } from "react";
-import type { Address } from "../../../interface";
+import type { AddressDTO } from "../../../../Interfaces";
 import Swal from "sweetalert2/dist/sweetalert2.js";
 import "sweetalert2/src/sweetalert2.scss";
 import RequestBuilder from "../../../services/RequestBuilder";
 
 const useAddress = () => {
-  const [addresses, setAddresses] = useState<Address[]>([]);
+  const [addresses, setAddresses] = useState<AddressDTO[]>([]);
   const [error, setError] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
   const [mode, setMode] = useState<string>("View");
-  const [selectedAddress, setSelectedAddress] = useState<Address | null>(null);
+  const [selectedAddress, setSelectedAddress] = useState<AddressDTO | null>(
+    null,
+  );
 
   const handleGetAddresses = async () => {
     try {
       setLoading(true);
       setError("");
-
       const response = await RequestBuilder({
         url: "/addresses",
         method: "GET",
       });
-
       setAddresses(response.data);
     } catch (err: any) {
       setError(err.response?.data?.message || "Failed to load addresses");
@@ -28,8 +28,7 @@ const useAddress = () => {
       setLoading(false);
     }
   };
-
-  const handleDeleteAddresses = async (address: Address) => {
+  const handleDeleteAddresses = async (address: AddressDTO) => {
     const result = await Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -39,30 +38,24 @@ const useAddress = () => {
       cancelButtonText: "No, cancel!",
       reverseButtons: true,
     });
-
     if (result.dismiss === Swal.DismissReason.cancel) {
       await Swal.fire({
         title: "Cancelled",
         text: "Address not deleted",
         icon: "error",
       });
-
       return;
     }
-
     if (!result.isConfirmed) {
       return;
     }
-
     try {
       setLoading(true);
       setError("");
-
       await RequestBuilder({
         url: `/addresses/${address.id}`,
         method: "DELETE",
       });
-
       await Swal.fire({
         title: "Deleted!",
         text: "Address deleted successfully!",
@@ -70,7 +63,6 @@ const useAddress = () => {
       });
       setMode("View");
       await handleGetAddresses();
-
       setSelectedAddress(null);
     } catch (err: any) {
       setError(err.response?.data?.message || "Failed to delete address");
@@ -78,11 +70,9 @@ const useAddress = () => {
       setLoading(false);
     }
   };
-
   useEffect(() => {
     handleGetAddresses();
   }, []);
-
   return {
     addresses,
     error,
@@ -95,5 +85,4 @@ const useAddress = () => {
     handleGetAddresses,
   };
 };
-
 export default useAddress;
