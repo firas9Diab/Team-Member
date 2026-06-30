@@ -2,8 +2,8 @@ import styles from "./Home.module.scss";
 import Categories from "../Categories/Categories";
 import useHome from "./useHome";
 import ItemCards from "../ItemCards/ItemCards";
-import sony from "../../../public/Icons/sony-ad.svg";
-import bluetoothswitch from "../../../public/Icons/bluetoothswitch.svg";
+import sony from "../../../public/icons/sony-ad.svg";
+import bluetoothswitch from "../../../public/icons/bluetoothswitch.svg";
 import Footer from "../../Footer/Footer";
 import type { IHome } from "../../Interfaces";
 const Home = ({ search }: IHome) => {

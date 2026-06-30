@@ -1,6 +1,6 @@
 import styles from "./CartItems.module.scss";
 import type { ICartItems } from "../../../../../Interfaces";
-import TrashIcon from "../../../../../../public/Icons/trash.svg";
+import TrashIcon from "../../../../../../public/icons/trash.svg";
 
 const CartItems = ({ cart, handleConfirmDeleteCartItem }: ICartItems) => {
   return (

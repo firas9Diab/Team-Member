@@ -1,7 +1,7 @@
 import styles from "../Sign Up/SignUp.module.scss";
-import googlelogo from "../../../../public/Icons/google-logo.svg";
+import googlelogo from "../../../../public/icons/google-logo.svg";
 import useSignUp from "./useSignUp";
-import eyeIcon from "../../../../public/Icons/EyeIcon.svg";
+import eyeIcon from "../../../../public/icons/EyeIcon.svg";
 const SignUp = () => {
   const {
     password,

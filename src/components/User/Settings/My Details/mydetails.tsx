@@ -1,5 +1,5 @@
 import styles from "./MyDetails.module.scss";
-import date from "../../../../../public/Icons/date.svg";
+import date from "../../../../../public/icons/date.svg";
 import useMyDetails from "./useMyDetails";
 
 const MyDetails = () => {

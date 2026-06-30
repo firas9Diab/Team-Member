@@ -1,6 +1,6 @@
 import styles from "./Navbar.module.scss";
 import useNavbar from "./useNavbar";
-import Search from "../../../public/Icons/Search.svg";
+import Search from "../../../public/icons/Search.svg";
 import type { INavbar } from "../../Interfaces";
 
 const Navbar = ({ search, setSearch }: INavbar) => {

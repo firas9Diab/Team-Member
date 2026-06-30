@@ -1,6 +1,6 @@
 import styles from "./Password.module.scss";
 import usePassword from "./usePassword";
-import eyeIcon from "../../../../../public/Icons/EyeIcon.svg";
+import eyeIcon from "../../../../../public/icons/EyeIcon.svg";
 
 const Password = () => {
   const {

@@ -5,7 +5,7 @@ import type {
   ProductReviewSummary,
   IUseProductReviews,
 } from "../../../../Interfaces";
-import UserIcon from "../../../../../public/Icons/UserIcon.svg";
+import UserIcon from "../../../../../public/icons/UserIcon.svg";
 
 const useProductReviews = ({ id }: IUseProductReviews) => {
   const [reviews, setReviews] = useState<ProductReview[]>([]);
