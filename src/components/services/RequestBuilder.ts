@@ -1,5 +1,5 @@
 import axios from "axios";
-import type { IRequestBuilder } from "../interface";
+import type { IRequestBuilder } from "../../Interfaces";
 const RequestBuilder = async ({
   url,
   method,
