@@ -13,7 +13,6 @@ const useLogin = () => {
   const handleSignIn = async () => {
     try {
       seterrormessage("");
-
       const response = await RequestBuilder({
         url: "/auth/login",
         method: "POST",
@@ -22,23 +21,18 @@ const useLogin = () => {
           password,
         },
       });
-
       const token = response.data.accessToken;
       const userId = response.data.user.id;
-
       if (!token) {
         seterrormessage("Token not found in response");
         return;
       }
-
       if (!userId) {
         seterrormessage("User id not found in response");
         return;
       }
-
       localStorage.setItem("token", token);
       localStorage.setItem("userId", String(userId));
-
       navigate("/");
     } catch (error: unknown) {
       if (axios.isAxiosError(error)) {
@@ -50,19 +44,15 @@ const useLogin = () => {
       }
     }
   };
-
   const handleEmailChange = (e: ChangeEvent<HTMLInputElement>) => {
     setEmailValue(e.target.value);
   };
-
   const handlePasswordChange = (e: ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value);
   };
-
   const handleVisiblePasswordChange = () => {
     setVisiblePassword((prev) => !prev);
   };
-
   return {
     password,
     handlePasswordChange,
@@ -75,5 +65,4 @@ const useLogin = () => {
     handleVisiblePasswordChange,
   };
 };
-
 export default useLogin;

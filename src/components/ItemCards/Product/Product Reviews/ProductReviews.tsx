@@ -1,5 +1,5 @@
 import styles from "./ProductReviews.module.scss";
-import type { IProductReviews } from "../../../interface";
+import type { IProductReviews } from "../../../../Interfaces/ReviewInterfaces";
 import ProductComments from "./Product Comments/ProductComments";
 import AddProductReview from "./AddProductReview/AddProductReview";
 import useProductReviews from "./useProductReviews";
@@ -20,6 +20,7 @@ const ProductReviews = ({
     setIsModalOpen,
     handleGetProductReviews,
   } = useProductReviews({ id });
+
   return (
     <div className={styles.productReviewsLayout}>
       <div className={styles.productReviewsSection}>
@@ -42,7 +43,6 @@ const ProductReviews = ({
                 {Math.round(selectedProduct?.ratingAverage || 0)} out of 5
               </span>
             </div>
-
             <div>{selectedProduct?.ratingCount} global ratings</div>
           </div>
           <div className={styles.ratingProgresses}>
@@ -72,7 +72,6 @@ const ProductReviews = ({
           handleGetProductDetails={handleGetProductDetails}
         />
       </div>
-
       <ProductComments
         reviewsTotalPages={reviewsTotalPages}
         reviewsCurrentPage={reviewsCurrentPage}
@@ -84,5 +83,4 @@ const ProductReviews = ({
     </div>
   );
 };
-
 export default ProductReviews;

@@ -1,4 +1,4 @@
-import type { IAddProductReviewForm } from "../../../../../interface";
+import type { IAddProductReviewForm } from "../../../../../../Interfaces/ReviewInterfaces";
 import styles from "./AddProductReviewForm.module.scss";
 import classNames from "classnames";
 
@@ -12,13 +12,11 @@ const AddProductReviewForm = ({
   comment,
 }: IAddProductReviewForm) => {
   return (
-    <form className={styles.formGroup}>
+    <div className={styles.formGroup}>
       <label>Rating:</label>
-
       <div className={styles.ratingStars}>
         {new Array(5).fill(0).map((_, i) => {
           const starValue = i + 1;
-
           return (
             <span
               key={starValue}
@@ -32,10 +30,8 @@ const AddProductReviewForm = ({
           );
         })}
       </div>
-
       <div className={styles.formGroup}>
         <label htmlFor="title">Title:</label>
-
         <input
           id="title"
           type="text"
@@ -46,10 +42,8 @@ const AddProductReviewForm = ({
           required
         />
       </div>
-
       <div className={styles.formGroup}>
         <label htmlFor="comment">Write your review:</label>
-
         <textarea
           id="comment"
           name="comment"
@@ -61,7 +55,6 @@ const AddProductReviewForm = ({
           required
         />
       </div>
-
       <div className={styles.modalActions}>
         <button
           type="button"
@@ -70,7 +63,6 @@ const AddProductReviewForm = ({
         >
           Submit Review
         </button>
-
         <button
           type="button"
           onClick={handleCloseModal}
@@ -79,8 +71,7 @@ const AddProductReviewForm = ({
           Cancel
         </button>
       </div>
-    </form>
+    </div>
   );
 };
-
 export default AddProductReviewForm;

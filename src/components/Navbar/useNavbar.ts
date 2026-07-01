@@ -1,38 +1,43 @@
 import { useNavigate } from "react-router-dom";
+import type { NavbarRoute } from "../../Interfaces/CommonInterfaces";
 
 const useNavbar = () => {
   const token = localStorage.getItem("token");
   const navigation = useNavigate();
 
-  const goToSignOut = () => {
-    localStorage.removeItem("token");
-    navigation("/User/Login");
-  };
-
-  const goToSettings = () => {
-    navigation("/User/Settings");
-  };
-
-  const goToSignup = () => {
-    navigation("/User/SignUp");
-  };
-
-  const goToLogin = () => {
-    navigation("/User/Login");
-  };
-
-  const goToHome = () => {
-    navigation("/");
+  const handleNavigate = (route: NavbarRoute) => {
+    switch (route) {
+      case "signOut":
+        localStorage.removeItem("token");
+        navigation("/User/Login");
+        break;
+      case "settings":
+        navigation("/User/Settings");
+        break;
+      case "signup":
+        navigation("/User/SignUp");
+        break;
+      case "login":
+        navigation("/User/Login");
+        break;
+      case "home":
+        navigation("/");
+        break;
+      case "cart":
+        navigation("/Cart");
+        break;
+      case "orders":
+        navigation("/Orders");
+        break;
+      default:
+        navigation("/");
+        break;
+    }
   };
 
   return {
     token,
-    goToSignOut,
-    goToSettings,
-    goToSignup,
-    goToLogin,
-    goToHome,
+    handleNavigate,
   };
 };
-
 export default useNavbar;

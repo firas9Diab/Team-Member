@@ -1,9 +1,9 @@
 import ProductDetails from "./Product Details/ProductDetails";
 import ProductReviews from "../Product Reviews/ProductReviews";
-import useProjectInfromation from "./useProductInfromation";
+import useProductInfromation from "./useProductInfromation";
 import Footer from "../../../../Footer/Footer";
 
-const ProjectInfromation = () => {
+const ProductInfromation = () => {
   const {
     selectedProduct,
     selectedImage,
@@ -12,7 +12,10 @@ const ProjectInfromation = () => {
     id,
     handleGetProductDetails,
     handleChangeImages,
-  } = useProjectInfromation();
+    handleAddProductToCart,
+    quantity,
+    handleChangeQuantity,
+  } = useProductInfromation();
 
   return (
     <>
@@ -21,6 +24,9 @@ const ProjectInfromation = () => {
         handleChangeImages={handleChangeImages}
         selectedImage={selectedImage}
         productFeatures={productFeatures}
+        handleAddProductToCart={handleAddProductToCart}
+        quantity={quantity}
+        handleChangeQuantity={handleChangeQuantity}
       />
       <ProductReviews
         handleGetProductDetails={handleGetProductDetails}
@@ -32,5 +38,4 @@ const ProjectInfromation = () => {
     </>
   );
 };
-
-export default ProjectInfromation;
+export default ProductInfromation;

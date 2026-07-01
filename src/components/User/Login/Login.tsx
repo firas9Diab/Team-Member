@@ -1,8 +1,7 @@
 import styles from "../Login/Login.module.scss";
 import useLogin from "./useLogin";
-import googlelogo from "../../../../public/Icons/google-logo.svg";
-import eyeIcon from "../../../../public/Icons/EyeIcon.svg";
-
+import GoogleLogo from "../../../../public/icons/GoogleLogo.svg";
+import EyeIcon from "../../../../public/icons/EyeIcon.svg";
 const Login = () => {
   const {
     password,
@@ -15,7 +14,6 @@ const Login = () => {
     visiblePassword,
     handleVisiblePasswordChange,
   } = useLogin();
-
   return (
     <div className={styles.signupbody}>
       <div className={styles.signupcontainer}>
@@ -25,7 +23,6 @@ const Login = () => {
               <h1>Welcome back</h1>
               <p>Shop Smarter, Shop Easier: Your One-Stop Online Marketplace</p>
             </div>
-
             <div className={styles.signupfield}>
               <div className={styles.email}>
                 <div className={styles.emailfield}>
@@ -59,7 +56,7 @@ const Login = () => {
                     }}
                     className={styles.eyes}
                   >
-                    <img src={eyeIcon} alt="" />
+                    <img src={EyeIcon} alt="" />
                   </button>
                 </div>
               </div>
@@ -74,7 +71,7 @@ const Login = () => {
               </button>
               <div className={styles.buttonfield}>
                 <button onClick={() => {}} className={styles.signinwaybutton}>
-                  <img src={googlelogo} alt="" />
+                  <img src={GoogleLogo} alt="" />
                   <b>Continue with Google</b>
                   <div></div>
                 </button>
@@ -95,12 +92,10 @@ const Login = () => {
               </div>
             </div>
           </div>
-
           <div className={styles.card}></div>
         </div>
       </div>
     </div>
   );
 };
-
 export default Login;

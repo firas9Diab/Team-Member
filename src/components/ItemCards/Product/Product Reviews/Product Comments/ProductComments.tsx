@@ -1,5 +1,5 @@
 import styles from "./ProductComments.module.scss";
-import type { IProductComments } from "../../../../interface";
+import type { IProductComments } from "../../../../../Interfaces/ReviewInterfaces";
 import PaginationButtons from "./Pagination Buttons/PaginationButtons";
 
 const ProductComments = ({
@@ -35,7 +35,6 @@ const ProductComments = ({
           </div>
         </div>
       ))}
-
       <PaginationButtons
         handleChangeReviewsCurrentPage={handleChangeReviewsCurrentPage}
         reviewsCurrentPage={reviewsCurrentPage}
@@ -44,5 +43,4 @@ const ProductComments = ({
     </div>
   );
 };
-
 export default ProductComments;

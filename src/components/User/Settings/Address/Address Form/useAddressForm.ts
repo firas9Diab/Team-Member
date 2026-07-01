@@ -1,6 +1,6 @@
 import Swal from "sweetalert2";
 import { useEffect, useState, type ChangeEvent } from "react";
-import type { IAddressForm } from "../../../../interface";
+import type { IAddressForm } from "../../../../../Interfaces/AddressInterfaces";
 import RequestBuilder from "../../../../services/RequestBuilder";
 
 const useAddressForm = ({
@@ -22,7 +22,6 @@ const useAddressForm = ({
 
   const handleDataChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-
     switch (name) {
       case "name":
         setName(value);
@@ -106,7 +105,6 @@ const useAddressForm = ({
             state,
           },
         });
-
         await Swal.fire({
           title: "Address updated successfully!",
           icon: "success",
@@ -147,5 +145,4 @@ const useAddressForm = ({
     handleSubmitAddress,
   };
 };
-
 export default useAddressForm;

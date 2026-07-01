@@ -13,7 +13,6 @@ const Address = () => {
     handleDeleteAddresses,
     handleGetAddresses,
   } = useAddress();
-
   return (
     <div className={styles.addressCard}>
       <h1>
@@ -25,7 +24,6 @@ const Address = () => {
               ? "Your Addresses / Add Address"
               : ""}
       </h1>
-
       <div className={styles.addressContent}>
         {mode === "View" && (
           <ViewAddresses
@@ -35,7 +33,6 @@ const Address = () => {
             setMode={setMode}
           />
         )}
-
         {mode === "Edit" && selectedAddress && (
           <AddressForm
             address={selectedAddress}
@@ -44,7 +41,6 @@ const Address = () => {
             handleGetAddresses={handleGetAddresses}
           />
         )}
-
         {mode === "Add" && (
           <AddressForm
             address={null}
@@ -57,5 +53,4 @@ const Address = () => {
     </div>
   );
 };
-
 export default Address;

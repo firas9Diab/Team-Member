@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
 import RequestBuilder from "../../../services/RequestBuilder";
-import type { ProductReview, ProductReviewSummary } from "../../../interface";
-import UserIcon from "../../../../../public/Icons/UserIcon.svg";
-import type { IUseProductReviews } from "../../../interface";
+import type {
+  ProductReview,
+  IUseProductReviews,
+} from "../../../../Interfaces/ReviewInterfaces";
+import type { ProductReviewSummary } from "../../../../Interfaces/ProductInterfaces";
+import UserIcon from "../../../../../public/icons/UserIcon.svg";
 
 const useProductReviews = ({ id }: IUseProductReviews) => {
   const [reviews, setReviews] = useState<ProductReview[]>([]);
@@ -18,7 +21,6 @@ const useProductReviews = ({ id }: IUseProductReviews) => {
     productId: string | undefined = id,
   ) => {
     if (!productId) return;
-
     const response = await RequestBuilder({
       url: `/products/${productId}/reviews`,
       method: "GET",
@@ -27,23 +29,18 @@ const useProductReviews = ({ id }: IUseProductReviews) => {
         limit: 2,
       },
     });
-
     setReviews(response.data.items);
     setProductReviewSummary(response.data.summary);
     setReviewsTotalPages(response.data.pagination.totalPages);
   };
-
   const handleChangeReviewsCurrentPage = (page: number) => {
     setReviewsCurrentPage(page);
   };
-
   useEffect(() => {
     setReviewsCurrentPage(1);
   }, [id]);
-
   useEffect(() => {
     if (!id) return;
-
     handleGetProductReviews(reviewsCurrentPage, id);
   }, [id, reviewsCurrentPage]);
 
@@ -59,5 +56,4 @@ const useProductReviews = ({ id }: IUseProductReviews) => {
     handleGetProductReviews,
   };
 };
-
 export default useProductReviews;

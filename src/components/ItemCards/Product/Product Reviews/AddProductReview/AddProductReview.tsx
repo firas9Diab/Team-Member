@@ -1,7 +1,7 @@
 import styles from "./AddProductReview.module.scss";
 import useAddProductReview from "./useAddProductReview";
 import Modal from "./Modal/Modal";
-import type { IAddProductReview } from "../../../../interface";
+import type { IAddProductReview } from "../../../../../Interfaces/ReviewInterfaces";
 import AddProductReviewForm from "./AddProductReviewForm/AddProductReviewForm";
 
 const AddProductReview = ({
@@ -27,16 +27,13 @@ const AddProductReview = ({
     setIsModalOpen,
     handleGetProductDetails,
   });
-
   return (
     <div className={styles.addProductReview}>
       <span>Review the Product</span>
       <span>Share your thoughts with our customers</span>
-
       <button className={styles.writeReviewButton} onClick={handleOpenModal}>
         Write a product review
       </button>
-
       {isModalOpen && (
         <Modal handleCloseModal={handleCloseModal}>
           <AddProductReviewForm
@@ -53,5 +50,4 @@ const AddProductReview = ({
     </div>
   );
 };
-
 export default AddProductReview;

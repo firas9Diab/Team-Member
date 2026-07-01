@@ -1,4 +1,4 @@
-import type { IViewAddresses } from "../../../../interface";
+import type { IViewAddresses } from "../../../../../Interfaces/AddressInterfaces";
 import styles from "../View Addresses/ViewAddresses.module.scss";
 
 const ViewAddresses = ({
@@ -15,29 +15,22 @@ const ViewAddresses = ({
             {address.isDefault && (
               <span className={styles.defaultBadge}>Default</span>
             )}
-
             <div className={styles.addressInfo}>
               <div>
                 <b>{address.name}</b>
-
                 <div>
                   {address.flatHouseBuilding} <span>{address.city}</span>
                 </div>
-
                 <div>{address.city}</div>
-
                 <div>
                   {address.city}, <span>{address.state}</span>{" "}
                   <span>{address.pincode}</span>
                 </div>
-
                 <div>{address.country}</div>
-
                 <div>
                   Phone Number: <span>{address.mobileNumber}</span>
                 </div>
               </div>
-
               <div className={styles.addressActions}>
                 <button
                   onClick={() => {
@@ -48,9 +41,7 @@ const ViewAddresses = ({
                 >
                   Edit
                 </button>
-
                 <span>|</span>
-
                 <button
                   onClick={() => {
                     handleDeleteAddresses(address);
@@ -66,7 +57,6 @@ const ViewAddresses = ({
       ) : (
         <span>No addresses found.</span>
       )}
-
       <button
         className={styles.addAddressButton}
         onClick={() => {
@@ -79,5 +69,4 @@ const ViewAddresses = ({
     </>
   );
 };
-
 export default ViewAddresses;

@@ -1,6 +1,6 @@
 import styles from "./Password.module.scss";
 import usePassword from "./usePassword";
-import eyeIcon from "../../../../../public/Icons/EyeIcon.svg";
+import EyeIcon from "../../../../../public/icons/EyeIcon.svg";
 
 const Password = () => {
   const {
@@ -15,7 +15,6 @@ const Password = () => {
     handleUpdatePassword,
     handleVisibleChange,
   } = usePassword();
-
   return (
     <div className={styles.settingswork}>
       <p className={styles.settingsworkparegraph}>
@@ -24,7 +23,6 @@ const Password = () => {
         current, this is the place to do it.Keep your profile up-to-date
         hassle-free.
       </p>
-
       <div className={styles.settingsinputfields}>
         <div className={styles.inputfields}>
           <label>Old Password</label>
@@ -38,7 +36,7 @@ const Password = () => {
             />
             <img
               onClick={() => handleVisibleChange("oldPassword")}
-              src={eyeIcon}
+              src={EyeIcon}
               alt=""
             />
           </div>
@@ -55,7 +53,7 @@ const Password = () => {
             />
             <img
               onClick={() => handleVisibleChange("newPassword")}
-              src={eyeIcon}
+              src={EyeIcon}
               alt=""
             />
           </div>
@@ -72,14 +70,12 @@ const Password = () => {
             />
             <img
               onClick={() => handleVisibleChange("confirmNewPassword")}
-              src={eyeIcon}
+              src={EyeIcon}
               alt=""
             />
           </div>
-
           {error}
         </div>
-
         <button
           className={styles.inputfieldbutton}
           onClick={handleUpdatePassword}
@@ -90,5 +86,4 @@ const Password = () => {
     </div>
   );
 };
-
 export default Password;

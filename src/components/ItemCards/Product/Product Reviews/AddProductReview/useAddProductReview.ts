@@ -1,6 +1,6 @@
 import { useState } from "react";
 import RequestBuilder from "../../../../services/RequestBuilder";
-import type { IUseAddProductReview } from "../../../../interface";
+import type { IUseAddProductReview } from "../../../../../Interfaces/ReviewInterfaces";
 
 const useAddProductReview = ({
   id,
@@ -17,32 +17,25 @@ const useAddProductReview = ({
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const { name, value } = e.target;
-
     switch (name) {
       case "title":
         setTitle(value);
         break;
-
       case "comment":
         setComment(value);
         break;
-
       default:
         break;
     }
   };
-
   const handleOpenModal = () => {
     setIsModalOpen(true);
   };
-
   const handleCloseModal = () => {
     setIsModalOpen(false);
   };
-
   const handleAddProductReview = async () => {
     if (!id) return;
-
     await RequestBuilder({
       url: `/products/${id}/reviews`,
       method: "POST",
@@ -52,11 +45,10 @@ const useAddProductReview = ({
         comment,
       },
     });
-
     setRating(0);
     setTitle("");
     setComment("");
-    setIsModalOpen(false);
+    handleCloseModal();
     await handleGetProductReviews(1, id);
     await handleGetProductDetails(id);
   };
@@ -73,5 +65,4 @@ const useAddProductReview = ({
     rating,
   };
 };
-
 export default useAddProductReview;

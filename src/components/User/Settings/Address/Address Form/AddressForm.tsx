@@ -1,6 +1,6 @@
 import styles from "./AddressForm.module.scss";
 import useAddressForm from "./useAddressForm";
-import type { IAddressForm } from "../../../../interface";
+import type { IAddressForm } from "../../../../../Interfaces/AddressInterfaces";
 
 const AddressForm = ({
   address,
@@ -21,7 +21,6 @@ const AddressForm = ({
     state,
     error,
   } = useAddressForm({ address, mode, setMode, handleGetAddresses });
-
   return (
     <div className={styles.addressForm}>
       <div className={styles.addressFormFields}>
@@ -35,7 +34,6 @@ const AddressForm = ({
             className={styles.formInput}
           />
         </div>
-
         <div className={styles.formGroup}>
           <label>Country/Region</label>
           <input
@@ -46,7 +44,6 @@ const AddressForm = ({
             className={styles.formInput}
           />
         </div>
-
         <div className={styles.formGroup}>
           <label>Flat, House no., Building, Company, Apartment</label>
           <input
@@ -57,7 +54,6 @@ const AddressForm = ({
             className={styles.formInput}
           />
         </div>
-
         <div className={styles.formGroup}>
           <label>Mobile Number</label>
           <input
@@ -68,7 +64,6 @@ const AddressForm = ({
             className={styles.formInput}
           />
         </div>
-
         <div className={styles.formGroup}>
           <label>Alternative Mobile Number</label>
           <input
@@ -79,7 +74,6 @@ const AddressForm = ({
             className={styles.formInput}
           />
         </div>
-
         <div className={styles.formGroup}>
           <label>Pincode</label>
           <input
@@ -92,7 +86,6 @@ const AddressForm = ({
             placeholder="6 digits [0-9] PIN code"
           />
         </div>
-
         <div className={styles.formGroup}>
           <label>City</label>
           <input
@@ -103,7 +96,6 @@ const AddressForm = ({
             className={styles.formInput}
           />
         </div>
-
         <div className={styles.formGroup}>
           <label>State</label>
           <input
@@ -114,9 +106,7 @@ const AddressForm = ({
             className={styles.formInput}
           />
         </div>
-
         {error && <p className={styles.errorMessage}>{error}</p>}
-
         <button
           type="button"
           className={styles.submitAddressButton}
@@ -128,5 +118,4 @@ const AddressForm = ({
     </div>
   );
 };
-
 export default AddressForm;

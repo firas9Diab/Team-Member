@@ -1,5 +1,5 @@
 import styles from "./Modal.module.scss";
-import type { IModal } from "../../../../../interface";
+import type { IModal } from "../../../../../../Interfaces/CommonInterfaces";
 
 const Modal = ({ children, handleCloseModal }: IModal) => {
   return (
@@ -11,10 +11,8 @@ const Modal = ({ children, handleCloseModal }: IModal) => {
       >
         X
       </button>
-
       <div className={styles.modalContent}>{children}</div>
     </div>
   );
 };
-
 export default Modal;

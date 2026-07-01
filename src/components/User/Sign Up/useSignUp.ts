@@ -20,7 +20,6 @@ const useSignUp = () => {
       setErrorMssage("Passwords do not match");
       return;
     }
-
     try {
       const response = await RequestBuilder({
         url: "/auth/signup",
@@ -33,11 +32,8 @@ const useSignUp = () => {
           phone: phoneValue,
         },
       });
-
       setErrorMssage("Account created successfully");
-
       const token = response.data?.accessToken;
-
       if (token) {
         localStorage.setItem("token", token);
       }
@@ -52,36 +48,29 @@ const useSignUp = () => {
       }
     }
   };
-
   const handleFullNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFullName(e.target.value);
   };
-
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmailValue(e.target.value);
   };
-
   const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value);
   };
-
   const handleConfirmPasswordChange = (
     e: React.ChangeEvent<HTMLInputElement>,
   ) => {
     setconfirmPassword(e.target.value);
   };
-
   const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setphoneValue(e.target.value);
   };
-
   const handleVisiblePasswordChange = () => {
     setVisiblePassword(!visiblePassword);
   };
   const handleVisiblePasswordConfirmChange = () => {
     setVisiblePasswordConfirm(!visiblePasswordConfirm);
   };
-
   return {
     password,
     handlePasswordChange,
@@ -103,5 +92,4 @@ const useSignUp = () => {
     navigation,
   };
 };
-
 export default useSignUp;
