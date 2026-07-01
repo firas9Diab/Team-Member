@@ -3,7 +3,7 @@ import type {
   SignUpDTO,
   ChangeMyDetailsDTO,
 } from "./AuthInterfaces";
-import type { Address } from "./AddressInterfaces";
+import type { AddressDTO } from "./AddressInterfaces";
 import type {
   ProductListItemDTO,
   ProductDetailsDTO,
@@ -21,8 +21,8 @@ export type RequestData =
   | ProductListItemDTO
   | ProductListItemDTO[]
   | ProductDetailsDTO[]
-  | Address
-  | Address[]
+  | AddressDTO
+  | AddressDTO[]
   | SignInDTO
   | SignUpDTO
   | ChangeMyDetailsDTO

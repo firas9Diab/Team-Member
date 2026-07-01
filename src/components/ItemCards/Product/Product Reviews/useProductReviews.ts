@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 import RequestBuilder from "../../../services/RequestBuilder";
 import type {
   ProductReview,
-  ProductReviewSummary,
   IUseProductReviews,
-} from "../../../../Interfaces";
+} from "../../../../Interfaces/ReviewInterfaces";
+import type { ProductReviewSummary } from "../../../../Interfaces/ProductInterfaces";
+
 import UserIcon from "../../../../../public/icons/UserIcon.svg";
 
 const useProductReviews = ({ id }: IUseProductReviews) => {

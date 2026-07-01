@@ -1,5 +1,5 @@
 import styles from "./MyDetails.module.scss";
-import date from "../../../../../public/icons/date.svg";
+import Date from "../../../../../public/icons/Date.svg";
 import useMyDetails from "./useMyDetails";
 
 const MyDetails = () => {
@@ -68,7 +68,7 @@ const MyDetails = () => {
               className={styles.dateInput}
             />
             <img
-              src={date}
+              src={Date}
               alt="date icon"
               onClick={() => ref.current?.showPicker?.()}
             />

@@ -1,6 +1,6 @@
 import styles from "./Password.module.scss";
 import usePassword from "./usePassword";
-import eyeIcon from "../../../../../public/icons/EyeIcon.svg";
+import EyeIcon from "../../../../../public/icons/EyeIcon.svg";
 
 const Password = () => {
   const {
@@ -36,7 +36,7 @@ const Password = () => {
             />
             <img
               onClick={() => handleVisibleChange("oldPassword")}
-              src={eyeIcon}
+              src={EyeIcon}
               alt=""
             />
           </div>
@@ -53,7 +53,7 @@ const Password = () => {
             />
             <img
               onClick={() => handleVisibleChange("newPassword")}
-              src={eyeIcon}
+              src={EyeIcon}
               alt=""
             />
           </div>
@@ -70,7 +70,7 @@ const Password = () => {
             />
             <img
               onClick={() => handleVisibleChange("confirmNewPassword")}
-              src={eyeIcon}
+              src={EyeIcon}
               alt=""
             />
           </div>

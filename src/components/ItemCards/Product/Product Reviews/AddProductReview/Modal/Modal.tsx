@@ -1,5 +1,5 @@
 import styles from "./Modal.module.scss";
-import type { IModal } from "../../../../../../Interfaces";
+import type { IModal } from "../../../../../../Interfaces/CommonInterfaces";
 
 const Modal = ({ children, handleCloseModal }: IModal) => {
   return (

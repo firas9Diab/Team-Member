@@ -1,6 +1,6 @@
 import Swal from "sweetalert2";
 import { useEffect, useState, type ChangeEvent } from "react";
-import type { IAddressForm } from "../../../../../Interfaces";
+import type { IAddressForm } from "../../../../../Interfaces/AddressInterfaces";
 import RequestBuilder from "../../../../services/RequestBuilder";
 const useAddressForm = ({
   address,

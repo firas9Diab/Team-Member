@@ -1,5 +1,5 @@
 import styles from "./PaginationButtons.module.scss";
-import type { IPaginationButtons } from "../../../../../../Interfaces";
+import type { IPaginationButtons } from "../../../../../../Interfaces/CommonInterfaces";
 import classNames from "classnames";
 
 const PaginationButtons = ({

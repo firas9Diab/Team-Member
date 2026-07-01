@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import type { IItemCards } from "../../Interfaces";
+import type { IItemCards } from "../../Interfaces/ProductInterfaces";
 import styles from "./ItemCards.module.scss";
 import Product from "./Product/Product";
 

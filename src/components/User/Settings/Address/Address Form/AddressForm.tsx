@@ -1,6 +1,6 @@
 import styles from "./AddressForm.module.scss";
 import useAddressForm from "./useAddressForm";
-import type { IAddressForm } from "../../../../../Interfaces";
+import type { IAddressForm } from "../../../../../Interfaces/AddressInterfaces";
 
 const AddressForm = ({
   address,

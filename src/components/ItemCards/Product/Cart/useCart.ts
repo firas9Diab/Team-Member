@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import RequestBuilder from "../../../services/RequestBuilder";
-import type { CartData } from "../../../../Interfaces";
+import type { CartData } from "../../../../Interfaces/CartInterfaces";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
@@ -27,7 +27,7 @@ const useCart = () => {
     handleDeleteCart();
   };
 
-  const handleAddtoOrders = async () => {
+  const handleAddToOrders = async () => {
     await RequestBuilder({
       url: `/orders`,
       method: "POST",
@@ -100,6 +100,6 @@ const useCart = () => {
     handleGetCart();
   }, []);
 
-  return { cart, handleConfirmDeleteCartItem, handleAddtoOrders };
+  return { cart, handleConfirmDeleteCartItem, handleAddToOrders };
 };
 export default useCart;

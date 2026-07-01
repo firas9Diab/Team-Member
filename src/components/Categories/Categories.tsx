@@ -1,5 +1,5 @@
-import chooses from "../../../public/icons/chooses.svg";
-import type { ICategories } from "../../Interfaces";
+import Chooses from "../../../public/icons/chooses.svg";
+import type { ICategories } from "../../Interfaces/ProductInterfaces";
 import styles from "./Categories.module.scss";
 const Categories = ({
   categories,
@@ -23,7 +23,7 @@ const Categories = ({
       <img
         onClick={() => handleChangeCategoryId(null)}
         className={styles.chooseIcon}
-        src={chooses}
+        src={Chooses}
         alt=""
       />
     </div>

@@ -1,4 +1,4 @@
-import type { FooterCategories } from "../Interfaces";
+import type { FooterCategories } from "../Interfaces/CommonInterfaces";
 const useFooter = () => {
   const footerCategories: FooterCategories = [
     {

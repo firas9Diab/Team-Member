@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import type { NavbarRoute } from "../../Interfaces";
+import type { NavbarRoute } from "../../Interfaces/CommonInterfaces";
 const useNavbar = () => {
   const token = localStorage.getItem("token");
   const navigation = useNavigate();

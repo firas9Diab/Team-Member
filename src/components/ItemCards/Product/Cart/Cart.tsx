@@ -3,7 +3,7 @@ import CartItems from "./CartItems/CartItems";
 import useCart from "./useCart";
 
 const Cart = () => {
-  const { cart, handleConfirmDeleteCartItem, handleAddtoOrders } = useCart();
+  const { cart, handleConfirmDeleteCartItem, handleAddToOrders } = useCart();
   if (!cart) return null;
 
   return (
@@ -23,7 +23,7 @@ const Cart = () => {
             </span>
             <button
               className={styles.checkoutButton}
-              onClick={handleAddtoOrders}
+              onClick={handleAddToOrders}
             >
               Proceed to buy
             </button>

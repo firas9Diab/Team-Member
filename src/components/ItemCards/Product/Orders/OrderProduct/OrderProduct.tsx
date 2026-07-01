@@ -1,5 +1,5 @@
 import styles from "./OrderProduct.module.scss";
-import type { IOrderProduct } from "../../../../../Interfaces";
+import type { IOrderProduct } from "../../../../../Interfaces/OrderInterfaces";
 
 const OrderProduct = ({ order }: IOrderProduct) => {
   return (

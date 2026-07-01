@@ -1,4 +1,4 @@
-import type { IViewAddresses } from "../../../../../Interfaces";
+import type { IViewAddresses } from "../../../../../Interfaces/AddressInterfaces";
 import styles from "../View Addresses/ViewAddresses.module.scss";
 
 const ViewAddresses = ({

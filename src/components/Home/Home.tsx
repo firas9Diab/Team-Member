@@ -2,10 +2,10 @@ import styles from "./Home.module.scss";
 import Categories from "../Categories/Categories";
 import useHome from "./useHome";
 import ItemCards from "../ItemCards/ItemCards";
-import sony from "../../../public/icons/sony-ad.svg";
-import bluetoothswitch from "../../../public/icons/bluetoothswitch.svg";
+import Sony from "../../../public/icons/SonyAd.svg";
+import BluetoothSwitch from "../../../public/icons/BluetoothSwitch.svg";
 import Footer from "../../Footer/Footer";
-import type { IHome } from "../../Interfaces";
+import type { IHome } from "../../Interfaces/CommonInterfaces";
 const Home = ({ search }: IHome) => {
   const {
     categories,
@@ -55,11 +55,11 @@ const Home = ({ search }: IHome) => {
       {showContainer && (
         <div className={styles.ads}>
           <div className={styles.inner}>
-            <img src={sony} alt="" className={styles.sonyImage} />
+            <img src={Sony} alt="" className={styles.sonyImage} />
             <div className={styles.bluetoothSwitch}>
               <div>Bluetooth Calling Smartwatch starts at ₹1,999</div>
               <img
-                src={bluetoothswitch}
+                src={BluetoothSwitch}
                 alt=""
                 className={styles.bluetoothSwitchImage}
               />

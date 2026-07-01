@@ -14,7 +14,7 @@ const useSignUp = () => {
   const [fullName, setFullName] = useState<string>("");
   const [emailValue, setEmailValue] = useState<string>("");
   const [phoneValue, setphoneValue] = useState<string>("");
-  
+
   const handleSignup = async () => {
     if (password !== confirmPassword) {
       setErrorMssage("Passwords do not match");

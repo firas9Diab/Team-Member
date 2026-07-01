@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import RequestBuilder from "../../../services/RequestBuilder";
-import type { Order } from "../../../../Interfaces";
+import type { Order } from "../../../../Interfaces/OrderInterfaces";
 
 const useOrders = () => {
   const [orders, setOrders] = useState<Order[]>([]);

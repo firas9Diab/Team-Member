@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import type { AddressDTO } from "../../../../Interfaces";
+import type { AddressDTO } from "../../../../Interfaces/AddressInterfaces";
 import Swal from "sweetalert2/dist/sweetalert2.js";
 import "sweetalert2/src/sweetalert2.scss";
 import RequestBuilder from "../../../services/RequestBuilder";

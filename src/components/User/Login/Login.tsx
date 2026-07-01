@@ -1,7 +1,7 @@
 import styles from "../Login/Login.module.scss";
 import useLogin from "./useLogin";
-import googlelogo from "../../../../public/icons/google-logo.svg";
-import eyeIcon from "../../../../public/icons/EyeIcon.svg";
+import GoogleLogo from "../../../../public/icons/GoogleLogo.svg";
+import EyeIcon from "../../../../public/icons/EyeIcon.svg";
 const Login = () => {
   const {
     password,
@@ -56,7 +56,7 @@ const Login = () => {
                     }}
                     className={styles.eyes}
                   >
-                    <img src={eyeIcon} alt="" />
+                    <img src={EyeIcon} alt="" />
                   </button>
                 </div>
               </div>
@@ -71,7 +71,7 @@ const Login = () => {
               </button>
               <div className={styles.buttonfield}>
                 <button onClick={() => {}} className={styles.signinwaybutton}>
-                  <img src={googlelogo} alt="" />
+                  <img src={GoogleLogo} alt="" />
                   <b>Continue with Google</b>
                   <div></div>
                 </button>

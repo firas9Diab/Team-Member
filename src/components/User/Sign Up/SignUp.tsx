@@ -1,7 +1,7 @@
 import styles from "../Sign Up/SignUp.module.scss";
-import googlelogo from "../../../../public/icons/google-logo.svg";
+import GoogleLogo from "../../../../public/icons/GoogleLogo.svg";
 import useSignUp from "./useSignUp";
-import eyeIcon from "../../../../public/icons/EyeIcon.svg";
+import EyeIcon from "../../../../public/icons/EyeIcon.svg";
 const SignUp = () => {
   const {
     password,
@@ -77,7 +77,7 @@ const SignUp = () => {
                     }}
                     className={styles.passwordToggle}
                   >
-                    <img src={eyeIcon} alt="" />
+                    <img src={EyeIcon} alt="" />
                   </button>
                 </div>
               </div>
@@ -100,7 +100,7 @@ const SignUp = () => {
                     }}
                     className={styles.passwordToggle}
                   >
-                    <img src={eyeIcon} alt="" />
+                    <img src={EyeIcon} alt="" />
                   </button>
                 </div>
               </div>
@@ -136,7 +136,7 @@ const SignUp = () => {
               </button>
               <div className={styles.authActions}>
                 <button onClick={() => {}} className={styles.googleButton}>
-                  <img src={googlelogo} alt="" />
+                  <img src={GoogleLogo} alt="" />
                   <b>Continue with Google</b>
                   <div></div>
                 </button>

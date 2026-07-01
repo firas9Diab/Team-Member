@@ -7,7 +7,7 @@ import type {
   ProductFeature,
   ProductImage,
   ProductReviewSummary,
-} from "../../../../Interfaces";
+} from "../../../../Interfaces/ProductInterfaces";
 
 const useProjectInfromation = () => {
   const navigate = useNavigate();

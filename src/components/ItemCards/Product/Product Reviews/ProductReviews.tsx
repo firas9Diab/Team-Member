@@ -1,5 +1,5 @@
 import styles from "./ProductReviews.module.scss";
-import type { IProductReviews } from "../../../../Interfaces";
+import type { IProductReviews } from "../../../../Interfaces/ReviewInterfaces";
 import ProductComments from "./Product Comments/ProductComments";
 import AddProductReview from "./AddProductReview/AddProductReview";
 import useProductReviews from "./useProductReviews";
@@ -20,7 +20,7 @@ const ProductReviews = ({
     setIsModalOpen,
     handleGetProductReviews,
   } = useProductReviews({ id });
-  
+
   return (
     <div className={styles.productReviewsLayout}>
       <div className={styles.productReviewsSection}>

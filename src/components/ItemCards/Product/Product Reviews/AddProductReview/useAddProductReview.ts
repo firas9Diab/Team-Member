@@ -1,6 +1,6 @@
 import { useState } from "react";
 import RequestBuilder from "../../../../services/RequestBuilder";
-import type { IUseAddProductReview } from "../../../../../Interfaces";
+import type { IUseAddProductReview } from "../../../../../Interfaces/ReviewInterfaces";
 const useAddProductReview = ({
   id,
   handleGetProductReviews,

@@ -1,5 +1,5 @@
 import styles from "./ProductComments.module.scss";
-import type { IProductComments } from "../../../../../Interfaces";
+import type { IProductComments } from "../../../../../Interfaces/ReviewInterfaces";
 import PaginationButtons from "./Pagination Buttons/PaginationButtons";
 
 const ProductComments = ({
