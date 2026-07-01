@@ -1,8 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import type { NavbarRoute } from "../../Interfaces/CommonInterfaces";
+
 const useNavbar = () => {
   const token = localStorage.getItem("token");
   const navigation = useNavigate();
+
   const handleNavigate = (route: NavbarRoute) => {
     switch (route) {
       case "signOut":
@@ -32,6 +34,7 @@ const useNavbar = () => {
         break;
     }
   };
+
   return {
     token,
     handleNavigate,

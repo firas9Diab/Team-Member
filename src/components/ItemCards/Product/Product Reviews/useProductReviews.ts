@@ -5,7 +5,6 @@ import type {
   IUseProductReviews,
 } from "../../../../Interfaces/ReviewInterfaces";
 import type { ProductReviewSummary } from "../../../../Interfaces/ProductInterfaces";
-
 import UserIcon from "../../../../../public/icons/UserIcon.svg";
 
 const useProductReviews = ({ id }: IUseProductReviews) => {
@@ -44,6 +43,7 @@ const useProductReviews = ({ id }: IUseProductReviews) => {
     if (!id) return;
     handleGetProductReviews(reviewsCurrentPage, id);
   }, [id, reviewsCurrentPage]);
+
   return {
     reviews,
     productReviewSummary,

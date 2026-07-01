@@ -5,6 +5,7 @@ import type { INavbar } from "../../Interfaces/CommonInterfaces";
 
 const Navbar = ({ search, setSearch }: INavbar) => {
   const { token, handleNavigate } = useNavbar();
+
   return (
     <div className={styles.header}>
       <div className={styles.headerLogo} onClick={() => handleNavigate("home")}>

@@ -9,6 +9,7 @@ const useMyDetails = () => {
   const [phone, setPhone] = useState<string>("");
   const [dateofBirth, setDateofBirth] = useState<string>("");
   const [error, setError] = useState<string>("");
+
   const handleDataChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     switch (name) {
@@ -67,6 +68,7 @@ const useMyDetails = () => {
   useEffect(() => {
     fetchUserById();
   }, []);
+
   return {
     ref,
     name,

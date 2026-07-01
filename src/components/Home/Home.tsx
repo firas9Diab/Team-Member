@@ -6,6 +6,7 @@ import Sony from "../../../public/icons/SonyAd.svg";
 import BluetoothSwitch from "../../../public/icons/BluetoothSwitch.svg";
 import Footer from "../../Footer/Footer";
 import type { IHome } from "../../Interfaces/CommonInterfaces";
+
 const Home = ({ search }: IHome) => {
   const {
     categories,

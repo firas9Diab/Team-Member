@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import type { IProtectedRoute } from "./Interfaces/CommonInterfaces";
+
 const ProtectedRoute = ({ children, search, setSearch }: IProtectedRoute) => {
   const navigate = useNavigate();
   const token = localStorage.getItem("token");

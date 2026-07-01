@@ -17,6 +17,13 @@ export type IAddressForm = {
   setMode: (mode: Mode) => void;
   handleGetAddresses: () => void;
 };
+
+export type IPasswordForm = {
+  oldPassword: string;
+  newPassword: string;
+  confirmNewPassword: string;
+};
+
 export type IViewAddresses = {
   addresses: AddressDTO[];
   setSelectedAddress: (address: AddressDTO | null) => void;

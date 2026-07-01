@@ -1,6 +1,7 @@
 import styles from "./ProductDetails.module.scss";
 import type { IProductDetails } from "../../../../../Interfaces/ProductInterfaces";
 import classNames from "classnames";
+
 const ProductDetails = ({
   selectedProduct,
   handleChangeImages,

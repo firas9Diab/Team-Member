@@ -3,7 +3,7 @@ import type {
   SignUpDTO,
   ChangeMyDetailsDTO,
 } from "./AuthInterfaces";
-import type { AddressDTO } from "./AddressInterfaces";
+import type { AddressDTO, IPasswordForm } from "./AddressInterfaces";
 import type {
   ProductListItemDTO,
   ProductDetailsDTO,
@@ -28,7 +28,8 @@ export type RequestData =
   | ChangeMyDetailsDTO
   | ProductReview[]
   | AddProductReviewDTO
-  | AddCartDTO;
+  | AddCartDTO
+  | IPasswordForm;
 export type RequestParams =
   ProductParams | ReviewParams | ProductDetailsParams | undefined;
 export type IRequestBuilder = {

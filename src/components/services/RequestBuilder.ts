@@ -1,5 +1,6 @@
 import axios from "axios";
 import type { IRequestBuilder } from "../../Interfaces/ApiInterfaces";
+
 const RequestBuilder = async ({
   url,
   method,
@@ -17,6 +18,7 @@ const RequestBuilder = async ({
       "Content-Type": "application/json",
     },
   });
+
   return response.data;
 };
 export default RequestBuilder;

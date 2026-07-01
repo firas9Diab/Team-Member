@@ -1,6 +1,7 @@
 import Chooses from "../../../public/icons/chooses.svg";
 import type { ICategories } from "../../Interfaces/ProductInterfaces";
 import styles from "./Categories.module.scss";
+
 const Categories = ({
   categories,
   handleChangeCategoryId,

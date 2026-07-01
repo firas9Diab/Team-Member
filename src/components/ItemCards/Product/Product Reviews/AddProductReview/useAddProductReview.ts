@@ -1,6 +1,7 @@
 import { useState } from "react";
 import RequestBuilder from "../../../../services/RequestBuilder";
 import type { IUseAddProductReview } from "../../../../../Interfaces/ReviewInterfaces";
+
 const useAddProductReview = ({
   id,
   handleGetProductReviews,
@@ -11,6 +12,7 @@ const useAddProductReview = ({
   const [rating, setRating] = useState<number>(0);
   const [title, setTitle] = useState<string>("");
   const [comment, setComment] = useState<string>("");
+
   const handleChangeform = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
@@ -50,6 +52,7 @@ const useAddProductReview = ({
     await handleGetProductReviews(1, id);
     await handleGetProductDetails(id);
   };
+
   return {
     isModalOpen,
     handleOpenModal,

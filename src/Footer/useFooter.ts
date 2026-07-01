@@ -1,4 +1,5 @@
 import type { FooterCategories } from "../Interfaces/CommonInterfaces";
+
 const useFooter = () => {
   const footerCategories: FooterCategories = [
     {
