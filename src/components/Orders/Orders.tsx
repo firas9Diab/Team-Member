@@ -2,6 +2,7 @@ import moment from "moment";
 import useOrders from "./useOrders";
 import styles from "./Orders.module.scss";
 import OrderItems from "../OrderItem/OrderItem";
+import OrderMap from "../Map/OrderMap";
 
 const Orders = () => {
   const { orders } = useOrders();
@@ -41,6 +42,10 @@ const Orders = () => {
               </div>
             </div>
             <p className={styles.Arriving}>Arriving Today</p>
+
+            <h3 className={styles.Arriving}>🚚 Out For Delivery</h3>
+
+            <OrderMap />
             <OrderItems order={order} />
           </div>
         ))}

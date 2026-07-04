@@ -2,10 +2,19 @@ import RenderStars from "../RenderStars/RenderStars";
 import useCart from "./useCart";
 import styles from "./Cart.module.scss";
 import DeleteIcon from "../../Assets/DeleteIcon.svg";
+import AddressMap from "../Map/AddressMap";
 
 const Cart = () => {
-  const { cart, starRating, total, subtotal, handleDeleteCart, addToOrder } =
-    useCart();
+  const {
+    cart,
+    starRating,
+    total,
+    subtotal,
+    handleDeleteCart,
+    addToOrder,
+    deliveryAddress,
+    setDeliveryAddress,
+  } = useCart();
 
   return (
     <>
@@ -53,6 +62,20 @@ const Cart = () => {
             </div>
           ))}
         </div>
+        <AddressMap
+          onSelectLocation={(lat, lng, address) => {
+            const location = {
+              latitude: lat,
+              longitude: lng,
+              address,
+            };
+
+            setDeliveryAddress(location);
+
+            localStorage.setItem("deliveryLocation", JSON.stringify(location));
+          }}
+        />
+
         <div className={styles.total}>
           <p>
             Subtotal ( {total} items) : <h3> ₹{subtotal}</h3>

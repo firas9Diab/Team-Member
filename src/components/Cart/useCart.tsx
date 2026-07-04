@@ -9,6 +9,11 @@ const useCart = () => {
   const [subtotal, setSubtotal] = useState(0);
   const [total, setTotal] = useState(0);
   const starRating: readonly Star[] = [1, 2, 3, 4, 5];
+  const [deliveryAddress, setDeliveryAddress] = useState({
+    latitude: 0,
+    longitude: 0,
+    address: "",
+  });
 
   const navigate = useNavigate();
 
@@ -65,7 +70,16 @@ const useCart = () => {
     getCart();
   }, []);
 
-  return { cart, starRating, total, subtotal, handleDeleteCart, addToOrder };
+  return {
+    cart,
+    starRating,
+    total,
+    subtotal,
+    handleDeleteCart,
+    addToOrder,
+    deliveryAddress,
+    setDeliveryAddress,
+  };
 };
 
 export default useCart;
