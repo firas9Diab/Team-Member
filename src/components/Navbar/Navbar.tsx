@@ -14,6 +14,10 @@ const Navbar = ({ search, handleSearchChange }: INavbar) => {
           CRIO
         </Link>
 
+        <Link to="/map" className={styles.brand}>
+          Map
+        </Link>
+
         <div className={styles.search}>
           <img src={searchsvg} alt="search" />
           <input

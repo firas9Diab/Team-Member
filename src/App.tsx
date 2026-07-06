@@ -11,6 +11,7 @@ import ProductDetails from "./components/ProductDetails/ProductDetails";
 import Footer from "./components/Footer/Footer";
 import Cart from "./components/Cart/Cart";
 import Orders from "./components/Orders/Orders";
+import MapBox from "./components/Map/MapBox";
 
 const App = () => {
   const location = useLocation();
@@ -70,6 +71,14 @@ const App = () => {
           element={
             <ProtectedRoute>
               <Orders />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/map"
+          element={
+            <ProtectedRoute>
+              <MapBox />
             </ProtectedRoute>
           }
         />

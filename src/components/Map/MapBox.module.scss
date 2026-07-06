@@ -1,0 +1,30 @@
+.search {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+  gap: 20px;
+}
+
+button {
+  padding: 8px;
+  border-radius: 8px;
+  background-color: bisque;
+}
+
+h2 {
+  margin: 20px;
+  color: black;
+}
+.delivery {
+  display: flex;
+  flex-direction: row;
+  margin: 20px;
+  gap: 10px;
+
+  button {
+    background-color: #ffd814;
+    border: none;
+  }
+}

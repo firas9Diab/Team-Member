@@ -11,7 +11,16 @@ const useOrders = () => {
         url: "http://localhost:3000/orders",
         method: "GET",
       });
-      setOrders(response.data);
+
+      const updatedOrders = response.data.map((order: any) => ({
+        ...order,
+        customerLocation: {
+          latitude: 31.9539,
+          longitude: 35.9106,
+        },
+      }));
+
+      setOrders(updatedOrders);
       console.log(response.data);
     } catch (error) {
       console.error("Error fetching user data:", error);
