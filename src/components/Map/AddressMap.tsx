@@ -1,6 +1,7 @@
 import Map, { Marker } from "react-map-gl/mapbox";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { useState } from "react";
+import styles from "./MapBox.module.scss";
 
 interface IAddress {
   onSelectLocation: (
@@ -91,17 +92,17 @@ const AddressMap = ({ onSelectLocation }: IAddress) => {
   return (
     <div>
       <h2>Choose Delivery Address</h2>
+      <div className={styles.delivery}>
+        <input
+          placeholder="Search Address"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
 
-      <input
-        placeholder="Search Address"
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-      />
+        <button onClick={searchAddress}>Search</button>
 
-      <button onClick={searchAddress}>Search</button>
-
-      <button onClick={getCurrentLocation}>Use Current Location</button>
-
+        <button onClick={getCurrentLocation}>Use Current Location</button>
+      </div>
       <Map
         mapboxAccessToken={import.meta.env.VITE_MAPBOX_TOKEN}
         initialViewState={{

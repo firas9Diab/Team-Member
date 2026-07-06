@@ -2,6 +2,7 @@ import Map, { Marker, Source, Layer, type MapRef } from "react-map-gl/mapbox";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { useState, useEffect } from "react";
 import { useRef } from "react";
+import styles from "./MapBox.module.scss";
 
 const Mapbox = () => {
   const [search, setSearch] = useState("");
@@ -94,6 +95,83 @@ const Mapbox = () => {
         "model-cast-shadows": true,
       },
     });
+
+    addCatIcon();
+    addFogAndTerrain();
+  };
+
+  const addCatIcon = () => {
+    const map = mapRef.current?.getMap();
+
+    if (!map) return;
+
+    map.loadImage(
+      "https://docs.mapbox.com/mapbox-gl-js/assets/cat.png",
+      (error, image) => {
+        if (error || !image) return;
+
+        if (!map.hasImage("cat")) {
+          map.addImage("cat", image);
+        }
+
+        if (!map.getSource("cat-point")) {
+          map.addSource("cat-point", {
+            type: "geojson",
+            data: {
+              type: "FeatureCollection",
+              features: [
+                {
+                  type: "Feature",
+                  geometry: {
+                    type: "Point",
+                    coordinates: [35.9102, 31.9539],
+                  },
+                },
+              ],
+            },
+          });
+
+          map.addLayer({
+            id: "cat-layer",
+            type: "symbol",
+            source: "cat-point",
+            layout: {
+              "icon-image": "cat",
+              "icon-size": 0.3,
+            },
+          });
+        }
+      },
+    );
+  };
+
+  const addFogAndTerrain = () => {
+    const map = mapRef.current?.getMap();
+
+    if (!map) return;
+
+    map.setFog({
+      range: [-1, 2],
+      "horizon-blend": 0.3,
+      color: "white",
+      "high-color": "#add8e6",
+      "space-color": "#d8f2ff",
+      "star-intensity": 0,
+    });
+
+    if (!map.getSource("mapbox-dem")) {
+      map.addSource("mapbox-dem", {
+        type: "raster-dem",
+        url: "mapbox://mapbox.terrain-rgb",
+        tileSize: 512,
+        maxzoom: 14,
+      });
+
+      map.setTerrain({
+        source: "mapbox-dem",
+        exaggeration: 1.5,
+      });
+    }
   };
 
   useEffect(() => {
@@ -102,14 +180,15 @@ const Mapbox = () => {
 
   return (
     <div>
-      <input
-        type="text"
-        placeholder="Search for an address"
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-      />
-      <button onClick={searchAddress}>Search</button>
-
+      <div className={styles.search}>
+        <input
+          type="text"
+          placeholder="Search for an address"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
+        <button onClick={searchAddress}>Search</button>
+      </div>
       <Map
         ref={mapRef}
         onLoad={addModel}
@@ -117,9 +196,9 @@ const Mapbox = () => {
         initialViewState={{
           latitude: 31.9539,
           longitude: 35.9106,
-          zoom: 17,
-          pitch: 70,
-          bearing: -30,
+          zoom: 16,
+          pitch: 80,
+          bearing: 160,
         }}
         onMove={(evt) =>
           setLocation({
@@ -128,7 +207,8 @@ const Mapbox = () => {
           })
         }
         style={{ width: "100%", height: "500px" }}
-        mapStyle="mapbox://styles/mapbox/standard"
+        // mapStyle="mapbox://styles/mapbox/standard"
+        mapStyle="mapbox://styles/mapbox/standard-satellite"
       >
         <Marker latitude={location.latitude} longitude={location.longitude}>
           📍
